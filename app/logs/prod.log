@@ -11,3 +11,4 @@
 [2012-12-08 17:16:38] request.ERROR: Symfony\Component\HttpKernel\Exception\NotFoundHttpException: No route found for "GET /bundles/nurix/image/3.jpg" (uncaught exception) at C:\wamp\www\nurix\app\cache\prod\classes.php line 5060 [] []
 [2012-12-08 17:16:38] request.ERROR: Symfony\Component\HttpKernel\Exception\NotFoundHttpException: No route found for "GET /bundles/nurix/image/1.jpg" (uncaught exception) at C:\wamp\www\nurix\app\cache\prod\classes.php line 5060 [] []
 [2012-12-08 17:16:40] request.ERROR: Symfony\Component\HttpKernel\Exception\NotFoundHttpException: No route found for "GET /bundles/nurix/image/facebook.jpg" (uncaught exception) at C:\wamp\www\nurix\app\cache\prod\classes.php line 5060 [] []
+[2012-12-08 18:36:18] request.ERROR: Symfony\Component\HttpKernel\Exception\NotFoundHttpException: No route found for "GET /bundles/nurix/images/header2.jpg" (uncaught exception) at C:\wamp\www\nurix\app\cache\prod\classes.php line 5060 [] []

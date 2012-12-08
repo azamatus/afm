@@ -1,12 +1,12 @@
 .mainframe
 {
-    width: 1000px;
+    width: 950px;
     margin: 0 auto;
 }
 header
 {
-    border: 1px solid #000000;
     text-align: center;
+    height: 140px;
 }
 .leftColumn
 {
@@ -37,4 +37,16 @@ footer
     text-align: center;
     border: 1px solid #000000;
     overflow: hidden;
+}
+#info
+{
+ position: absolute;
+    top: 13px;
+    left: 180px;
+}
+.text
+{
+    font-family: arial;
+    font-size: 12px;
+
 }

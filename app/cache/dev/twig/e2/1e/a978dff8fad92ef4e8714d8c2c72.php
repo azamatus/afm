@@ -33,23 +33,23 @@ class __TwigTemplate_e21ea978dff8fad92ef4e8714d8c2c72 extends Twig_Template
     <img src=\"";
         // line 6
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/nurix/images/1.jpg"), "html", null, true);
-        echo "\" width=\"200\" height=\"250\" alt=\"Quick tour\"/>
+        echo "\" width=\"200\" height=\"250\" alt=\"main\"/>
     <img src=\"";
         // line 7
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/nurix/images/4.jpg"), "html", null, true);
-        echo "\" width=\"200\" height=\"250\" alt=\"Quick tour\" />
+        echo "\" width=\"200\" height=\"250\" alt=\"main\" />
     <img src=\"";
         // line 8
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/nurix/images/2.jpg"), "html", null, true);
-        echo "\" width=\"200\" height=\"250\" alt=\"Quick tour\" />
+        echo "\" width=\"200\" height=\"250\" alt=\"main\" />
     <img src=\"";
         // line 9
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/nurix/images/3.jpg"), "html", null, true);
-        echo "\" width=\"240\" height=\"250\" alt=\"Quick tour\" />
+        echo "\" width=\"240\" height=\"250\" alt=\"main\" />
     <img src=\"";
         // line 10
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/nurix/images/facebook.jpg"), "html", null, true);
-        echo "\" width=\"210\" height=\"250\" alt=\"Quick tour\" />
+        echo "\" width=\"210\" height=\"250\" alt=\"main\" />
 
 ";
     }

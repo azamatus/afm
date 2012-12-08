@@ -43,8 +43,11 @@ class __TwigTemplate_76e0c165b02062f0bda48a18cab2491a extends Twig_Template
 <body>
 <div class=\"mainframe\">
     <header>
-        Header
-        <h1>Nurix</h1>
+        <img src=\"";
+        // line 13
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/nurix/images/header.jpg"), "html", null, true);
+        echo "\" alt=\"header\"/>
+        <div id=\"info\" class=\"text\"><pre>Главная | Контакты | Карта сайта</pre></div>
     </header>
     <div class=\"leftColumn\">
         <div class=\"catalog\">
@@ -125,6 +128,6 @@ class __TwigTemplate_76e0c165b02062f0bda48a18cab2491a extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  110 => 49,  105 => 38,  100 => 7,  94 => 5,  85 => 49,  73 => 39,  71 => 38,  35 => 7,  31 => 6,  27 => 5,  21 => 1,  49 => 10,  45 => 9,  41 => 8,  37 => 8,  33 => 6,  29 => 4,  26 => 3,);
+        return array (  113 => 49,  108 => 38,  103 => 7,  97 => 5,  88 => 49,  76 => 39,  74 => 38,  46 => 13,  37 => 8,  35 => 7,  31 => 6,  27 => 5,  21 => 1,);
     }
 }
