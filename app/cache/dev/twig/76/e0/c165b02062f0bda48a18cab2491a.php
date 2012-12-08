@@ -47,8 +47,54 @@ class __TwigTemplate_76e0c165b02062f0bda48a18cab2491a extends Twig_Template
         // line 13
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/nurix/images/header.jpg"), "html", null, true);
         echo "\" alt=\"header\"/>
-        <div id=\"info\" class=\"text\"><pre>Главная | Контакты | Карта сайта</pre></div>
-    </header>
+
+        <div id=\"info\" class=\"text\">
+            <a href=\"http//:www.nurix.kg\">Главная</a> |
+            <a href=\"http//:www.nurix.kg\">Контакты</a> |
+            <a href=\"http//:www.nurix.kg\">Карта сайта</a>
+        </div>
+        <script language=\"javascript\">
+            function del()
+            {
+               document.forma.poisk.value='';
+            }
+            function dob()
+            {
+                if(document.forma.poisk.value=='')
+                {document.forma.poisk.value='Поиск...';}
+            }
+        </script>
+        <form id=\"form\" name=\"forma\">
+            <input type=\"text\" value=\"Поиск...\" name=\"poisk\" onmouseover=\"del();\" onmouseout=\"dob();\">
+        </form>
+        <div id=\"logo\">
+            <img src=\"";
+        // line 35
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/nurix/images/logo.jpg"), "html", null, true);
+        echo "\" alt=\"header\"/>
+        </div>
+        <div id=\"contacts\">
+            <span style=\"color: gray; font-size: 14px; font-family: arial;\">+996</span>
+            <span style=\"font-size: 18px; font-family: arial;\">555</span>
+            <span style=\"font-size: 24px; font-family: arial;\">231</span>
+            <span style=\"font-size: 24px; font-family: arial;\">654</span><br>
+            <span style=\"color: gray; font-size: 14px; font-family: arial;\">+996</span>
+            <span style=\"font-size: 18px; font-family: arial;\">312</span>
+            <span style=\"font-size: 24px; font-family: arial;\">987</span>
+            <span style=\"font-size: 24px; font-family: arial;\">159</span>
+        </div>
+        <div align=\"left\" id=\"times\">
+            <span style=\"color:gray; font-family: arial; font-size: 12px;\">Время работы:</span><br>
+            <span style=\"color:gray; font-family: arial; font-size: 12px;\">c</span>
+            <span style=\"color:gray; font-family: arial; font-size: 20px;\">9:00</span>
+            <span style=\"color:gray; font-family: arial; font-size: 12px;\">до</span>
+            <span style=\"color:gray; font-family: arial; font-size: 20px;\">18:00</span><br>
+            <img src=\"";
+        // line 53
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/nurix/images/days.jpg"), "html", null, true);
+        echo "\" alt=\"header\"/>
+        </div>
+        </header>
     <div class=\"leftColumn\">
         <div class=\"catalog\">
             <h4>Каталог</h4>
@@ -72,9 +118,9 @@ class __TwigTemplate_76e0c165b02062f0bda48a18cab2491a extends Twig_Template
     </div>
     <div class=\"content\">
         ";
-        // line 38
+        // line 78
         $this->displayBlock('body', $context, $blocks);
-        // line 39
+        // line 79
         echo "    </div>
     <footer>
         Footer<br>
@@ -86,7 +132,7 @@ class __TwigTemplate_76e0c165b02062f0bda48a18cab2491a extends Twig_Template
 
 
 ";
-        // line 49
+        // line 89
         $this->displayBlock('javascripts', $context, $blocks);
         echo "\\
 
@@ -106,12 +152,12 @@ class __TwigTemplate_76e0c165b02062f0bda48a18cab2491a extends Twig_Template
     {
     }
 
-    // line 38
+    // line 78
     public function block_body($context, array $blocks = array())
     {
     }
 
-    // line 49
+    // line 89
     public function block_javascripts($context, array $blocks = array())
     {
     }
@@ -128,6 +174,6 @@ class __TwigTemplate_76e0c165b02062f0bda48a18cab2491a extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  113 => 49,  108 => 38,  103 => 7,  97 => 5,  88 => 49,  76 => 39,  74 => 38,  46 => 13,  37 => 8,  35 => 7,  31 => 6,  27 => 5,  21 => 1,);
+        return array (  159 => 89,  154 => 78,  149 => 7,  143 => 5,  134 => 89,  122 => 79,  120 => 78,  92 => 53,  71 => 35,  46 => 13,  37 => 8,  35 => 7,  31 => 6,  27 => 5,  21 => 1,);
     }
 }

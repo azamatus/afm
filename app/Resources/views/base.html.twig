@@ -10,9 +10,49 @@
 <body>
 <div class="mainframe">
     <header>
-        <img src="{{ asset('bundles/nurix/images/header.jpg')  }}" alt="header"/>
-        <div id="info" class="text"><pre>Главная | Контакты | Карта сайта</pre></div>
-    </header>
+        <img src="{{ asset('bundles/nurix/images/header.jpg') }}" alt="header"/>
+
+        <div id="info" class="text">
+            <a href="http//:www.nurix.kg">Главная</a> |
+            <a href="http//:www.nurix.kg">Контакты</a> |
+            <a href="http//:www.nurix.kg">Карта сайта</a>
+        </div>
+        <script language="javascript">
+            function del()
+            {
+               document.forma.poisk.value='';
+            }
+            function dob()
+            {
+                if(document.forma.poisk.value=='')
+                {document.forma.poisk.value='Поиск...';}
+            }
+        </script>
+        <form id="form" name="forma">
+            <input type="text" value="Поиск..." name="poisk" onmouseover="del();" onmouseout="dob();">
+        </form>
+        <div id="logo">
+            <img src="{{ asset('bundles/nurix/images/logo.jpg') }}" alt="header"/>
+        </div>
+        <div id="contacts">
+            <span style="color: gray; font-size: 14px; font-family: arial;">+996</span>
+            <span style="font-size: 18px; font-family: arial;">555</span>
+            <span style="font-size: 24px; font-family: arial;">231</span>
+            <span style="font-size: 24px; font-family: arial;">654</span><br>
+            <span style="color: gray; font-size: 14px; font-family: arial;">+996</span>
+            <span style="font-size: 18px; font-family: arial;">312</span>
+            <span style="font-size: 24px; font-family: arial;">987</span>
+            <span style="font-size: 24px; font-family: arial;">159</span>
+        </div>
+        <div align="left" id="times">
+            <span style="color:gray; font-family: arial; font-size: 12px;">Время работы:</span><br>
+            <span style="color:gray; font-family: arial; font-size: 12px;">c</span>
+            <span style="color:gray; font-family: arial; font-size: 20px;">9:00</span>
+            <span style="color:gray; font-family: arial; font-size: 12px;">до</span>
+            <span style="color:gray; font-family: arial; font-size: 20px;">18:00</span><br>
+            <img src="{{ asset('bundles/nurix/images/days.jpg') }}" alt="header"/>
+        </div>
+        </header>
     <div class="leftColumn">
         <div class="catalog">
             <h4>Каталог</h4>
