@@ -162,6 +162,11 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        // nurix_homepage
+        if ($pathinfo === '/home') {
+            return array (  '_controller' => 'Nurix\\NurixBundle\\Controller\\HomeController::homeAction',  '_route' => 'nurix_homepage',);
+        }
+
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
     }
 }

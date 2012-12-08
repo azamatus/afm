@@ -1,0 +1,40 @@
+.mainframe
+{
+    width: 1000px;
+    margin: 0 auto;
+}
+header
+{
+    border: 1px solid #000000;
+    text-align: center;
+}
+.leftColumn
+{
+    float: left;
+    overflow: hidden;
+}
+.catalog
+{
+    border: 1px solid #000000;
+}
+.interesting
+{
+    border: 1px solid #000000;
+}
+.content
+{
+    text-align: center;
+    padding-left: 10px;
+    overflow: hidden;
+
+}
+.feedbacks
+ {
+    border: 1px solid #000000;
+ }
+footer
+{
+    text-align: center;
+    border: 1px solid #000000;
+    overflow: hidden;
+}

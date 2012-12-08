@@ -1,13 +1,52 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link href="{{ asset('bundles/nurix/css/mainframe.css') }} " type="text/css" rel="stylesheet"/>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>
+<body>
+<div class="mainframe">
+    <header>
+        Header
+        <h1>Nurix</h1>
+    </header>
+    <div class="leftColumn">
+        <div class="catalog">
+            <h4>Каталог</h4>
+            Аудиотехника<br>
+            Видеотехника<br>
+            Оргтехника<br>
+            Ноутбуки<br>
+            Нетбуки<br>
+            ...<br>
+        </div>
+        <div class="interesting">
+            <h4>Интересное</h4>
+            Наши новости<br>
+            Мировые новости<br>
+            О нас<br>
+            ...<br>
+        </div>
+        <div class="feedbacks">
+            feedbacks
+        </div>
+    </div>
+    <div class="content">
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+    </div>
+    <footer>
+        Footer<br>
+
+        <h3>Nurix.kg</h3>
+    </footer>
+    \
+</div>
+
+
+{% block javascripts %}{% endblock %}\
+
+</body>
 </html>
