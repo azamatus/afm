@@ -1,0 +1,7 @@
+parameters:
+#    nurix.example.class: Nurix\NurixBundle\Example
+
+services:
+#    nurix.example:
+#        class: %nurix.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

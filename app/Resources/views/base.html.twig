@@ -1,13 +1,106 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Nurix.kg{% endblock %}</title>
+
+
+    {% block stylesheets %}
+        <link href="{{ asset('bundles/nurix/css/mainframe.css') }} " type="text/css" rel="stylesheet"/>
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>
+<body>
+<div class="mainframe">
+    <header>
+        <div class="header_line">
+            <div id="info" class="f12">
+                <a class="ssylka" href="/">Главная</a> |
+                <a class="ssylka" href="/">Контакты</a> |
+                <a class="ssylka" href="/">Карта сайта</a>
+            </div>
+            <div class="search">
+                <form action="" name="forma">
+                <input type="text" class="search" value="Поиск..." name="poisk" onblur="dob();" onfocus="del();"/>
+                <input type="submit" value="">
+                </form>
+            </div>
+            <div>
+                <a class="vhod f12" href="/">Вход</a>
+            </div>
+            <a  href="/"><div class="button f12">
+                Зарегистрироваться
+            </div></a>
+        </div>
+        <div class="header_line2">
+            <div id="logo">
+                <a href="/"><img src="{{ asset('bundles/nurix/images/logo.png') }}" alt="header"/></a>
+            </div>
+            <div id="contacts">
+                <span class="gray_color f14">+996</span>
+                <span class="f18">555</span>
+                <span class="f24">231</span>
+                <span class="f24">654</span><br>
+                <span class="gray_color f14">+996</span>
+                <span class="f18">312</span>
+                <span class="f24">987</span>
+                <span class="f24">159</span>
+            </div>
+            <div align="left" id="times">
+                <span class="gray_color f12">Время работы:</span><br>
+                <span class="gray_color f12">c</span>
+                <span class="gray_color f20">9:00</span>
+                <span class="gray_color f12">до</span>
+                <span class="gray_color f20">18:00</span><br>
+                <img class="otstup" src="{{ asset('bundles/nurix/images/days.png') }}" alt="header"/>
+            </div>
+            <div class="f12 korzina" align="left">
+                <div class="brown_color">
+                    <img src="{{ asset('bundles/nurix/images/korzinka.png') }}" alt="header">Ваша корзина:<br></div>
+                <div class="otstup">5 товаров</div>
+                <div class="otstup">на сумму 45000 сомов</div>
+            </div>
+        </div>
+    </header>
+    <div class="middle">
+        <div class="leftColumn">
+            <div class="catalog">
+                <h4>Каталог</h4>
+                Аудиотехника<br>
+                Видеотехника<br>
+                Оргтехника<br>
+                Ноутбуки<br>
+                Нетбуки<br>
+                ...<br>
+            </div>
+            <div class="interesting">
+                <h4>Интересное</h4>
+                Наши новости<br>
+                Мировые новости<br>
+                О нас<br>
+                ...<br>
+            </div>
+            <div class="feedbacks">
+                feedbacks
+            </div>
+        </div>
+        <div class="content">
+            {% block body %}{% endblock %}
+        </div>
+    </div>
+    <footer>
+        Footer<br>
+
+        <h3>Nurix.kg</h3>
+    </footer>
+    \
+</div>
+
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/nurix/js/header.js') }}" type="text/javascript" lang="javascript"></script>
+{% endblock %}
+\
+
+</body>
 </html>
