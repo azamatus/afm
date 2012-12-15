@@ -1,2 +1,9 @@
-#idea
 .idea/
+vendor/
+app/cache/*
+app/logs/*
+web/bundles/
+app/config/parameters.yml
+
+
+
