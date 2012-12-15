@@ -1,6 +1,18 @@
+<<<<<<< HEAD
 #idea
 .idea/
 
 app/cache/
 vendor/
 web/bundles/
+=======
+.idea/
+vendor/
+app/cache/*
+app/logs/*
+web/bundles/
+app/config/parameters.yml
+
+
+
+>>>>>>> 44d3918c8b1d69a4e1d26858e75c8efc0a88744f
