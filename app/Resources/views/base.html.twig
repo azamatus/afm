@@ -88,19 +88,40 @@
             {% block body %}{% endblock %}
         </div>
     </div>
-    <footer>
-        Footer<br>
 
-        <h3>Nurix.kg</h3>
+    <footer>
+        <div class="footer">
+            <div class="aboutUs">
+                <div class="logoFooter">
+                    <a href="/"><img src="{{ asset('bundles/nurix/images/logoFooter.png') }}"/></a>
+                </div>
+                <div class="aboutUsText">
+                    Изменение глобальной стратегии,<br>
+                    как следует из вышесказанного,<br>
+                    программирует стратегический<br>
+                    презентационный материал,<br>
+                    оптимизируя бюджеты. Более того,<br>
+                    метод изучения рынка экономит BTL,<br>
+                    расширяя долю рынка.<br>
+                    Представляется логичным,<br>
+                    что общество потребления не<br>
+                    критично. Выставочный стенд<br>
+                    довольно хорошо сбалансирован<br>
+                    <a href="">подробнее о магазине...</a>
+                </div>
+                <div class="nurixKgText">
+                    © Nurix.kg, 2010 - 2013
+                </div>
+            </div>
+        </div>
     </footer>
-    \
+
 </div>
 
 
 {% block javascripts %}
     <script src="{{ asset('bundles/nurix/js/header.js') }}" type="text/javascript" lang="javascript"></script>
 {% endblock %}
-\
 
 </body>
 </html>
