@@ -6,6 +6,10 @@ a, a:hover,a:link,a:visited
 {
     color: black;
 }
+a img
+{
+    border: none;
+}
 .f12
 {
     font-size: 12px;
@@ -32,18 +36,28 @@ a, a:hover,a:link,a:visited
 }
 .mainframe
 {
-    width: 950px;
     margin: 0 auto;
+    background-color: #f9f9fa;
 }
 header
 {
+    background: url("../images/header.png") repeat-x;
     text-align: center;
     height: 140px;
+}
+hr
+{
+  width: 950px;
+}
+
+.center
+{
+    width: 950px;
+    margin: 0 auto;
 }
 .header_line
 {
     height: 35px;
-    background-image: url("../images/header.jpg");
     margin-bottom: 10px;
     padding-top: 15px;
 }
@@ -57,6 +71,14 @@ header
     float: left;
     padding-left: 30px;
     padding-top: 15px;
+    margin-bottom: 22px;
+ }
+.line
+{
+    background: url("../images/line.png") repeat-x;
+    width: 900px;
+    height: 3px;
+    border: 1px solid;
 }
 .leftColumn
 {
@@ -127,7 +149,7 @@ input[type="submit"]
     margin-left: -30px;
     background: url("../images/search.png") no-repeat 50% 50%;
 }
-input.search
+div.search
 {
     border: none;
     outline: none;
