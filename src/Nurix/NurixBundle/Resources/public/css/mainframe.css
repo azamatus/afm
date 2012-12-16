@@ -215,11 +215,12 @@ div.search
     padding: 40px 120px 55px 0;
 }
 .footerColumn
-{
-    width: 240px;
+ {
+    width: 210px;
     height: 360px;
     float: left;
-}
+    padding-right: 30px;
+ }
 .logoFooter
 {
     height: 30px;
@@ -260,5 +261,10 @@ ul.otherLinks li a
 }
 .otherLinks
 {
-    margin: 30px 0 0 0;
+    margin: 25px 0 0 0;
+}
+.shareLinks a
+{
+    padding-left: 10px;
+    float: right;
 }
