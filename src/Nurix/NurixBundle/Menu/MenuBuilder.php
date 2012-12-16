@@ -18,11 +18,11 @@ class MenuBuilder
 
     public function createMainMenu(Request $request)
     {
-        $menu = $this->factory->createItem('root');
+        $menu = $this->factory->createItem('main_menu');
 
         $menu->addChild('home', array('route' => 'nurix_homepage','label'=>'Главная'));
-        $menu->addChild('contacts', array('route' => 'nurix_homepage','label'=>'Контакты'));
-        $menu->addChild('sitemap', array('route' => 'nurix_homepage','label'=>'Карта сайта'));
+        $menu->addChild('contacts', array('route' => 'nurix_default','label'=>'Контакты'));
+        $menu->addChild('sitemap', array('route' => 'nurix_default','label'=>'Карта сайта'));
         $menu->setChildrenAttribute('class','main_menu');
         return $menu;
     }
@@ -30,9 +30,15 @@ class MenuBuilder
     public function createSidebarMenu(Request $request)
     {
         $menu = $this->factory->createItem('sidebar');
-        $menu->setChildrenAttribute('class','sidebar');
-        $menu->addChild('Catalog', array('route' => 'nurix_homepage','label'=>'Каталог'))->setLinkAttribute('class','catalog_menu');
-        $menu->addChild('Catalog2', array('route' => 'nurix_homepage'));
+        $menu->setChildrenAttribute('class','side_menu');
+        $menu->addChild('Catalog', array('route' => 'nurix_default','label'=>'Каталог'))
+            ->setAttribute('class','catalog_menu')
+            ->setLinkAttribute('class','f20');
+        $menu->addChild('audio', array('route' => 'nurix_default','label'=>'Аудиотехника'));
+        $menu->addChild('video', array('route' => 'nurix_homepage','label'=>'Видеотехника'));
+        $menu->addChild('comp', array('route' => 'nurix_default','label'=>'Компьютеры'))
+            ->addChild('comp_1', array('route' => 'nurix_default','label'=>'Комплектующие'));
+        $menu->addChild('mobile', array('route' => 'nurix_default','label'=>'Сотовые телефоны'));
 
         return $menu;
     }
