@@ -2,7 +2,7 @@
 namespace Nurix\NurixBundle\Menu;
 
 use Knp\Menu\FactoryInterface;
-use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\HttpFoundation\Request;
 
 class MenuBuilder
 {
@@ -16,22 +16,23 @@ class MenuBuilder
         $this->factory = $factory;
     }
 
-    public function mainMenu(Request $request)
+    public function createMainMenu(Request $request)
     {
         $menu = $this->factory->createItem('root');
 
-        $menu->addChild('Главная', array('route' => 'nurix_homepage'));
-        $menu->addChild('Контакты', array('route' => 'nurix_homepage'));
-        $menu->addChild('Карта сайта', array('route' => 'nurix_homepage'));
-        $menu->setChildrenAttribute('class','ssylka');
+        $menu->addChild('home', array('route' => 'nurix_homepage','label'=>'Главная'));
+        $menu->addChild('contacts', array('route' => 'nurix_homepage','label'=>'Контакты'));
+        $menu->addChild('sitemap', array('route' => 'nurix_homepage','label'=>'Карта сайта'));
+        $menu->setChildrenAttribute('class','main_menu');
         return $menu;
     }
 
     public function createSidebarMenu(Request $request)
     {
         $menu = $this->factory->createItem('sidebar');
-
-        $menu->addChild('Home', array('route' => 'nurix_homepage'));
+        $menu->setChildrenAttribute('class','sidebar');
+        $menu->addChild('Catalog', array('route' => 'nurix_homepage','label'=>'Каталог'))->setLinkAttribute('class','catalog_menu');
+        $menu->addChild('Catalog2', array('route' => 'nurix_homepage'));
 
         return $menu;
     }

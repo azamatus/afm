@@ -1,14 +1,21 @@
 *
 {
     font-family: Arial;
+    font-size: 12px;
 }
-a, a:hover,a:link,a:visited
+a, a:hover, a:link, a:visited
 {
     color: black;
+    text-decoration: none;
 }
-.f12
+li
 {
-    font-size: 12px;
+    list-style: none;
+}
+ul
+{
+    margin: 0;
+    padding: 0;
 }
 .f14
 {
@@ -58,16 +65,24 @@ header
     padding-left: 30px;
     padding-top: 15px;
 }
+.clearbox
+{
+    clear: both;
+}
 .leftColumn
 {
-    margin-top: 100px;
     float: left;
     overflow: hidden;
-
+    width: 210px;
 }
-.catalog
+.catalog_menu
 {
-    border: 1px solid #000000;
+    font-style: italic;
+    font-size: 20px;
+}
+.side_menu
+{
+
 }
 .interesting
 {
@@ -75,11 +90,9 @@ header
 }
 .content
 {
-    margin-top: 400px;
     text-align: center;
     padding-left: 10px;
     overflow: hidden;
-
 }
 .feedbacks
 {
@@ -91,19 +104,20 @@ footer
     border: 1px solid #000000;
     overflow: hidden;
 }
-#info
+ul.main_menu
 {
     float:left;
     width: 200px;
     margin-top: 4px;
     margin-left: 20px;
 }
-.ssylka
+ul.main_menu a
 {
     color: #000000;
     text-decoration: none;
+
 }
-.ssylka:hover
+ul.main_menu a:hover
 {
     text-decoration: underline;
 }
