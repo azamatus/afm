@@ -3,8 +3,6 @@
 <head>
     <meta charset="UTF-8"/>
     <title>{% block title %}Nurix.kg{% endblock %}</title>
-
-
     {% block stylesheets %}
         <link href="{{ asset('bundles/nurix/css/mainframe.css') }} " type="text/css" rel="stylesheet"/>
     {% endblock %}
@@ -13,20 +11,19 @@
 <body>
 <div class="mainframe">
     <header>
+        <div class="center">
         <div class="header_line">
-            <div id="info" class="f12">
-                <a class="ssylka" href="/">Главная</a> |
-                <a class="ssylka" href="/">Контакты</a> |
-                <a class="ssylka" href="/">Карта сайта</a>
-            </div>
+                {% block mainMenu %}
+                {{ knp_menu_render('main',{template : '::main_menu.html.twig'}) }}
+                {% endblock %}
             <div class="search">
                 <form action="" name="forma">
-                    <input type="text" class="search" value="Поиск..." name="poisk" onblur="dob();" onfocus="del();"/>
-                    <input type="submit" value="">
+                <input type="text" class="search" value="Поиск..." name="poisk" onblur="dob();" onfocus="del();"/>
+                <input type="submit" value="">
                 </form>
             </div>
             <div>
-                <a class="vhod f12" href="/">Вход</a>
+                <a class="vhod" href="/">Вход</a>
             </div>
             <a href="/">
                 <div class="button f12">
@@ -49,32 +46,33 @@
                 <span class="f24">159</span>
             </div>
             <div align="left" id="times">
-                <span class="gray_color f12">Время работы:</span><br>
-                <span class="gray_color f12">c</span>
+                <span class="gray_color">Время работы:</span><br>
+                <span class="gray_color">c</span>
                 <span class="gray_color f20">9:00</span>
-                <span class="gray_color f12">до</span>
+                <span class="gray_color">до</span>
                 <span class="gray_color f20">18:00</span><br>
                 <img class="otstup" src="{{ asset('bundles/nurix/images/days.png') }}" alt="header"/>
             </div>
-            <div class="f12 korzina" align="left">
+            <div class="korzina" align="left">
                 <div class="brown_color">
                     <img src="{{ asset('bundles/nurix/images/korzinka.png') }}" alt="header">Ваша корзина:<br></div>
                 <div class="otstup">5 товаров</div>
                 <div class="otstup">на сумму 45000 сомов</div>
             </div>
-        </div>
-    </header>
-    <div class="middle">
-        <div class="leftColumn">
-            <div class="catalog">
-                <h4>Каталог</h4>
-                Аудиотехника<br>
-                Видеотехника<br>
-                Оргтехника<br>
-                Ноутбуки<br>
-                Нетбуки<br>
-                ...<br>
+            <div class="line">
+
             </div>
+ </div>
+
+
+</div>
+</header>
+    <div class="clearbox"></div>
+    <div class="middle center">
+        <div class="leftColumn">
+                {% block side_menu %}
+                    {{ knp_menu_render('sidebar') }}
+                {% endblock %}
             <div class="interesting">
                 <h4>Интересное</h4>
                 Наши новости<br>
