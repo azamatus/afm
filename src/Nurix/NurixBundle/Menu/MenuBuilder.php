@@ -19,7 +19,6 @@ class MenuBuilder
     public function createMainMenu(Request $request)
     {
         $menu = $this->factory->createItem('main_menu');
-
         $menu->addChild('home', array('route' => 'nurix_homepage','label'=>'Главная'));
         $menu->addChild('contacts', array('route' => 'nurix_default','label'=>'Контакты'));
         $menu->addChild('sitemap', array('route' => 'nurix_default','label'=>'Карта сайта'));
@@ -39,7 +38,6 @@ class MenuBuilder
         $menu->addChild('comp', array('route' => 'nurix_default','label'=>'Компьютеры'))
             ->addChild('comp_1', array('route' => 'nurix_default','label'=>'Комплектующие'));
         $menu->addChild('mobile', array('route' => 'nurix_default','label'=>'Сотовые телефоны'));
-
         return $menu;
     }
 }

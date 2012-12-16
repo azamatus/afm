@@ -80,13 +80,6 @@ hr
     padding-top: 15px;
     margin-bottom: 22px;
  }
-.line
-{
-    background: url("../images/line.png") repeat-x;
-    width: 900px;
-    height: 3px;
-    border: 1px solid;
-}
 .clearbox
 {
     clear: both;
@@ -175,13 +168,14 @@ div.search
     width: 210px;
     float: left;
     padding-left: 30px;
-    padding-top: 18px;
+    padding-top: 16px;
 }
 #times
 {
     width: 210px;
     float: left;
     margin-left: 50px;
+    margin-top: 6px;
 }
 .vhod
 {
