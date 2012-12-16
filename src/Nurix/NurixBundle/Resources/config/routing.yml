@@ -1,3 +1,6 @@
 nurix_homepage:
     pattern:  /home
     defaults: { _controller: NurixBundle:Home:home }
+nurix_default:
+    pattern:  /default
+    defaults: { _controller: NurixBundle:Default:index }
