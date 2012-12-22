@@ -163,11 +163,25 @@
                 </div>
 
                 <div class="footerColumn footerColumnLast">
+
                     <div class="shareLinks">
                         <a href=""><img src="{{ asset('bundles/nurix/images/icon/fb_icon.png') }}"></a>
                         <a href=""><img src="{{ asset('bundles/nurix/images/icon/ok_icon.png') }}"></a>
                         <a href=""><img src="{{ asset('bundles/nurix/images/icon/twit_icon.png') }}"></a>
                     </div>
+
+                    <div class="f20 white_color">
+                        <div class="clearbox"></div>
+                        Подписка на новости:
+                        <form action="" name="forma2">
+                            <input type="text" class="podpiska" value=" Введите ваш электронный адрес" name="podpiska" onblur="add_value();" onfocus="delete_value();"/>
+                        </form>
+                    </div>
+
+                    <div class="button_podpiska">
+                            <a href="/"><img src="{{ asset('bundles/nurix/images/buttonPodpiska.png') }}"/></a>
+                    </div>
+
                 </div>
 
             </div>

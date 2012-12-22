@@ -308,6 +308,7 @@ div.search
 .footerColumnLast
 {
     padding-right: 0px;
+    float: left;
 }
 .logoFooter
 {
@@ -349,10 +350,28 @@ ul.otherLinks li a
 }
 .otherLinks
 {
-    margin: 25px 0 0 0;
+    margin: 30px 0 0 0;
+}
+.shareLinks
+{
+    float: right;
+    padding-bottom: 30px;
 }
 .shareLinks a
 {
     padding-left: 10px;
+}
+.podpiska
+{
+    height: 28px;
+    width: 210px;
     float: right;
+    margin-top: 10px;
+}
+.button_podpiska
+{
+    height: 20px;
+    width: 80px;
+    float: right;
+    padding-top: 10px;
 }
