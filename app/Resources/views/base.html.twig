@@ -25,9 +25,11 @@
             <div>
                 <a class="vhod" href="/">Вход</a>
             </div>
-            <a  href="/"><div class="button">
-                Зарегистрироваться
-            </div></a>
+            <a href="/">
+                <div class="button f12">
+                    Зарегистрироваться
+                </div>
+            </a>
         </div>
         <div class="header_line2">
             <div id="logo">
@@ -83,12 +85,110 @@
             {% block body %}{% endblock %}
         </div>
     </div>
-    <footer>
-        Footer<br>
 
-        <h3>Nurix.kg</h3>
+    <footer>
+        <div class="footerLine"></div>
+        <div class="footerBackgroung">
+        <div class="center">
+            <div class="footer">
+
+                <div class="footerColumn">
+
+                    <div class="logoFooter">
+                        <a href="/"><img src="{{ asset('bundles/nurix/images/logoFooter.png') }}"/></a>
+                    </div>
+
+                    <div class="aboutUsText f12">
+                        Изменение глобальной стратегии,
+                        как следует из вышесказанного,
+                        программирует стратегический
+                        презентационный материал,
+                        оптимизируя бюджеты. Более того,
+                        метод изучения рынка экономит BTL,
+                        расширяя долю рынка.
+                        Представляется логичным,
+                        что общество потребления не
+                        критично. Выставочный стенд
+                        довольно хорошо сбалансирован
+                        <br/>
+                        <a href="">подробнее о магазине...</a>
+                    </div>
+
+                    <div class="f12 white_color">
+                        © Nurix.kg, 2010 - 2013
+                    </div>
+
+                </div>
+
+                <div class="footerColumn">
+
+                    <div class="f20 white_color">
+                        Карта Сайта:
+                    </div>
+
+                    <ul class="siteMapLinks">
+                        <li><a href="">Аудиотехника</a></li>
+                        <li><a href="">Видеотехника</a></li>
+                        <li><a href="">Компьютерные комплектующие</a></li>
+                        <li><a href="">Оргтехника</a></li>
+                        <li><a href="">Ноутбуки</a></li>
+                        <li><a href="">Нетбуки</a></li>
+                        <li><a href="">Планшеты</a></li>
+                        <li><a href="">Сотовые телефоны</a></li>
+                        <li><a href="">Фототехника</a></li>
+                        <li><a href="">Климат</a></li>
+                        <li><a href="">Крупная бытовая техника</a></li>
+                        <li><a href="">Мелкая бытовая техника</a></li>
+                    </ul>
+
+                </div>
+
+                <div class="footerColumn">
+                    <ul class="otherLinks">
+
+                        <li><a href="">Наши новости</a></li>
+                        <li><a href="">Мировые новости</a></li>
+                        <li><a href="">О магазине</a></li>
+                        <li><a href="">Контакты</a></li>
+                        <li><a href="">Условия доставки</a></li>
+                        <li><a href="">Способы оплаты</a></li>
+                        <li><a href="">Справка</a></li>
+                        <li><a href="">Отзывы</a></li>
+                        <li><a href="">Оптовым покупателям</a></li>
+
+                    </ul>
+                </div>
+
+                <div class="footerColumn footerColumnLast">
+
+                    <div class="shareLinks">
+                        <a href=""><img src="{{ asset('bundles/nurix/images/icon/fb_icon.png') }}"></a>
+                        <a href=""><img src="{{ asset('bundles/nurix/images/icon/ok_icon.png') }}"></a>
+                        <a href=""><img src="{{ asset('bundles/nurix/images/icon/twit_icon.png') }}"></a>
+                    </div>
+
+                    <div class="f20 white_color">
+                        <div class="clearbox"></div>
+                        Подписка на новости:
+                        <form action="" name="forma2">
+                            <input type="text" class="podpiska" value=" Введите ваш электронный адрес" name="podpiska" onblur="add_value();" onfocus="delete_value();"/>
+                        </form>
+                    </div>
+
+                    <div class="button_podpiska">
+                            <a href="/"><img src="{{ asset('bundles/nurix/images/buttonPodpiska.png') }}"/></a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+            <div class="clearbox"></div>
+        </div>
     </footer>
-  </div>
+
+</div>
 
 
 {% block javascripts %}
