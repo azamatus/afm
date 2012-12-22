@@ -88,7 +88,7 @@ class Categories
      *
      * @return string 
      */
-    public function getAlias()
+        public function getAlias()
     {
         return $this->alias;
     }
