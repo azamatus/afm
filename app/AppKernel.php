@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Nurix\NurixBundle\NurixBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Catalog\CatalogBundle\CatalogBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

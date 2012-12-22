@@ -20,7 +20,7 @@ class MenuBuilder
     {
         $menu = $this->factory->createItem('main_menu');
         $menu->addChild('home', array('route' => 'nurix_homepage','label'=>'Главная'));
-        $menu->addChild('contacts', array('route' => 'nurix_default','label'=>'Контакты'));
+        $menu->addChild('contacts', array('route' => 'nurix_default','routeParameters' => array('name' => 'Aza'),'label'=>'Контакты'));
         $menu->addChild('sitemap', array('route' => 'nurix_default','label'=>'Карта сайта'));
         $menu->setChildrenAttribute('class','main_menu');
         return $menu;
@@ -34,9 +34,9 @@ class MenuBuilder
             ->setAttribute('class','catalog_menu')
             ->setLinkAttribute('class','f20');
         $menu->addChild('audio', array('route' => 'nurix_default','label'=>'Аудиотехника'));
-        $menu->addChild('video', array('route' => 'nurix_homepage','label'=>'Видеотехника'));
+        $menu->addChild('video', array('route' => 'nurix_default','label'=>'Видеотехника'));
         $menu->addChild('comp', array('route' => 'nurix_default','label'=>'Компьютеры'))
-            ->addChild('comp_1', array('route' => 'nurix_default','label'=>'Комплектующие'));
+            ->addChild('comp_1', array('route' => 'nurix_homepage','label'=>'Комплектующие'));
         $menu->addChild('mobile', array('route' => 'nurix_default','label'=>'Сотовые телефоны'));
         return $menu;
     }
