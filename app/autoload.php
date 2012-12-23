@@ -10,6 +10,8 @@ if (!function_exists('intl_get_error_code')) {
 
     $loader->add('', __DIR__.'/../vendor/symfony/symfony/src/Symfony/Component/Locale/Resources/stubs');
 }
+$loader->add('Knp\Bundle', __DIR__.'/../vendor/bundles');
+$loader->add('Knp\Menu'  , __DIR__.'/../vendor/KnpMenu/src');
 
 AnnotationRegistry::registerLoader(array($loader, 'loadClass'));
 

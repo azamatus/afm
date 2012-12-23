@@ -1,0 +1,74 @@
+<?php
+
+namespace Catalog\CatalogBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Catalog\CatalogBundle\Entity\Goods
+ *
+ * @ORM\Table(name="goods")
+ * @ORM\Entity
+ */
+class Goods
+{
+    /**
+     * @var integer $id
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer $categoriyaId
+     *
+     * @ORM\Column(name="categoriya_id", type="integer", nullable=false)
+     */
+    private $categoriyaId;
+
+    /**
+     * @var string $name
+     *
+     * @ORM\Column(name="name", type="string", length=50, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var string $alias
+     *
+     * @ORM\Column(name="alias", type="string", length=30, nullable=false)
+     */
+    private $alias;
+
+    /**
+     * @var string $shortDescription
+     *
+     * @ORM\Column(name="short_description", type="text", nullable=false)
+     */
+    private $shortDescription;
+
+    /**
+     * @var string $fullDesctiption
+     *
+     * @ORM\Column(name="full_desctiption", type="text", nullable=false)
+     */
+    private $fullDesctiption;
+
+    /**
+     * @var float $price
+     *
+     * @ORM\Column(name="price", type="decimal", nullable=false)
+     */
+    private $price;
+
+    /**
+     * @var string $imagePath
+     *
+     * @ORM\Column(name="image_path", type="string", length=50, nullable=false)
+     */
+    private $imagePath;
+
+
+}

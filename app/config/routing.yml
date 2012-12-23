@@ -1,3 +1,11 @@
+catalog:
+    resource: "@CatalogBundle/Resources/config/routing.yml"
+    prefix:   /
+
+nurix:
+    resource: "@NurixBundle/Resources/config/routing.yml"
+    prefix:   /
+
 # Internal routing configuration to handle ESI
 #_internal:
 #    resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
