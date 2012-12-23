@@ -38,6 +38,10 @@ ul
 {
     font-size: 24px;
 }
+.white_color
+{
+    color: #ffffff;
+}
 .gray_color
 {
     color: #666666;
@@ -60,7 +64,7 @@ hr
 
 .center
 {
-    width: 950px;
+    width: 930px;
     margin: 0 auto;
 }
 .header_line
@@ -80,13 +84,6 @@ hr
     padding-top: 15px;
     margin-bottom: 22px;
  }
-.line
-{
-    background: url("../images/line.png") repeat-x;
-    width: 900px;
-    height: 3px;
-    border: 1px solid;
-}
 .clearbox
 {
     clear: both;
@@ -112,7 +109,7 @@ hr
 {
     border: 1px solid #000000;
 }
-footer
+#info
 {
     text-align: center;
     border: 1px solid #000000;
@@ -175,13 +172,14 @@ div.search
     width: 210px;
     float: left;
     padding-left: 30px;
-    padding-top: 18px;
+    padding-top: 16px;
 }
 #times
 {
     width: 210px;
     float: left;
     margin-left: 50px;
+    margin-top: 6px;
 }
 .vhod
 {
@@ -279,4 +277,95 @@ div.search
 .side_menu li>ul
 {
     display: none;
+}
+
+.footerLine
+{
+    background: url("../images/footer_krugliwki.png") repeat-x;
+    height: 4px;
+}
+.footerBackgroung
+{
+    background-color: #454545;
+}
+.footer
+{
+    padding-top: 40px;
+}
+.footerColumn
+ {
+    width: 210px;
+    height: 360px;
+    float: left;
+    padding-right: 30px;
+ }
+.footerColumnLast
+{
+    padding-right: 0px;
+    float: left;
+}
+.logoFooter
+{
+    height: 30px;
+    width: 120px;
+    padding: 0 0 20px 0;
+}
+.aboutUsText
+{
+    width: 210px;
+    word-wrap: break-word;
+    color: white;
+    text-align: left;
+    padding: 0 0 110px 0;
+}
+.aboutUsText a
+{
+    color: #ffffff;
+}
+li
+{
+    list-style: none;
+    margin-top: 4px;
+}
+ul
+{
+    margin: 0;
+    padding: 0;
+}
+ul.siteMapLinks li a
+{
+    font-size: 12px;
+    color: #ffffff;
+}
+ul.otherLinks li a
+{
+    font-size: 12px;
+    color: #ffffff;
+}
+.otherLinks
+{
+    margin: 30px 0 0 0;
+}
+.shareLinks
+{
+    float: right;
+    padding-bottom: 30px;
+}
+.shareLinks a
+{
+    padding-left: 10px;
+}
+.podpiska
+{
+    height: 28px;
+    width: 210px;
+    float: right;
+    margin-top: 10px;
+}
+.button_podpiska
+{
+    height: 20px;
+    width: 80px;
+    float: right;
+    padding-top: 10px;
 }
