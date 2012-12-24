@@ -67,15 +67,13 @@
     <br>
     <div class="middle center">
         <div class="leftColumn">
-                {% block side_menu %}
-                    {{ knp_menu_render('sidebar') }}
+                {% block catalog_menu %}
+                    {{ knp_menu_render('catalog_sidebar') }}
                 {% endblock %}
             <div class="interesting">
-                <h4>Интересное</h4>
-                Наши новости<br>
-                Мировые новости<br>
-                О нас<br>
-                ...<br>
+                {% block side_menu %}
+                    {{ knp_menu_render('info_sidebar') }}
+                {% endblock %}
             </div>
             <div class="feedbacks">
                 feedbacks
