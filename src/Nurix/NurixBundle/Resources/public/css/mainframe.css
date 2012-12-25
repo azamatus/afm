@@ -3,6 +3,10 @@
     font-family: Arial;
     font-size: 12px;
 }
+body
+{
+	margin: 0;
+}
 a, a:hover, a:link, a:visited
 {
     color: black;
