@@ -282,7 +282,10 @@ div.search
 {
     display: none;
 }
-
+footer
+{
+	margin-top: 60px;
+}
 .footerLine
 {
     background: url("../images/footer_krugliwki.png") repeat-x;
@@ -371,4 +374,12 @@ ul.otherLinks li a
     width: 80px;
     float: right;
     padding-top: 10px;
+}
+
+.facebook_page
+{
+	height: 306px;
+	width: 210px;
+	padding-top: 40px;
+	padding-bottom: 20px;
 }
