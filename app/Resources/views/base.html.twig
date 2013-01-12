@@ -6,9 +6,15 @@
     {% block stylesheets %}
         <link href="{{ asset('bundles/nurix/css/mainframe.css') }} " type="text/css" rel="stylesheet"/>
     {% endblock %}
+    {% stylesheets '../app/Resources/public/css/facebook.css' %}
+        <link type="text/css" rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 </head>
 <body>
+<script type="text/javascript" src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/en_US"></script>
+<script type="text/javascript">FB.init("");</script>
+<div id="fb-root"></div>
 <div class="mainframe">
     <header>
         <div class="center">
@@ -64,7 +70,6 @@
 </div>
 </header>
     <div class="clearbox"></div>
-    <br>
     <div class="middle center">
         <div class="leftColumn">
                 {% block catalog_menu %}
@@ -78,12 +83,18 @@
             <div class="feedbacks">
                 feedbacks
             </div>
+            <div class="facebook_page">
+                {% block facebook_page %}
+                    <fb:fan profile_id="128170930622470" stream="0" connections="6" width="210px" height="306px" header="0" logobar="0"   css="http://mobile-shop-nurix.googlecode.com/files/facebook.css?v=4"></fb:fan>
+                {% endblock %}
+            </div>
+
         </div>
         <div class="content">
             {% block body %}{% endblock %}
         </div>
     </div>
-
+<div class="clearbox"></div>
     <footer>
         <div class="footerLine"></div>
         <div class="footerBackgroung">
@@ -191,6 +202,11 @@
 
 {% block javascripts %}
     <script src="{{ asset('bundles/nurix/js/header.js') }}" type="text/javascript" lang="javascript"></script>
+    {% javascripts
+    "../app/Resources/public/js/facebook.js"
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}
 
 </body>

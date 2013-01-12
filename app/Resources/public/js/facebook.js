@@ -2,6 +2,6 @@
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/ru_RU/all.js#xfbml=1&appId=203063883111530";
+    js.src = "//connect.facebook.net/ru_RU/all.js#xfbml=1&appId=544638332213162";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
