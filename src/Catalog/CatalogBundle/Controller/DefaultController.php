@@ -4,13 +4,15 @@ namespace Catalog\CatalogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Catalog\CatalogBundle\Entity\Categories;
+use Doctrine\ORM\QueryBuilder;
 
 class DefaultController extends Controller
 {
     public function indexAction($name)
     {
-        $category = new Categories();
+        $repository = $this->getDoctrine()->getRepository("CatalogBundle:Categories");
+        $categories = $repository->findAll();
+        return $this->render('CatalogBundle:Default:index.html.twig', array('name' => $name, 'categories'=>$categories));
 
-        return $this->render('CatalogBundle:Default:index.html.twig', array('name' => $name));
     }
 }

@@ -1,0 +1,16 @@
+{% block stylesheets %}
+    <link href="{{ asset('bundles/catalog/css/catalog.css') }} " type="text/css" rel="stylesheet"/>
+{% endblock %}
+<div class="sale">
+    Main<br><br>
+    <h2>Топ продаж</h2><br>
+    <div>
+        <h3>Тут короче тоже телефоны</h3>
+    </div><br>
+</div>
+<div>
+    <h1 class="left size24px font">Весь каталог</h1>
+    {% for product in products  %}
+    {% include  "CatalogBundle:Content:item.html.twig" with {'product':product} %}
+    {% endfor %}
+</div>

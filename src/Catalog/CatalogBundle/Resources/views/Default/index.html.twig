@@ -1,1 +1,5 @@
 Hello {{ name }}!
+{% for item in categories %}
+    <img src="public/images/goods/{{ item.picture }}"/>
+{{ item.name}}
+{% endfor %}

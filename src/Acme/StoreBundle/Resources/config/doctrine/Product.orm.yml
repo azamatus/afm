@@ -1,0 +1,19 @@
+Acme\StoreBundle\Entity\Product:
+    type: entity
+    table: null
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        name:
+            type: string
+            length: '255'
+        price:
+            type: float
+            length: null
+        description:
+            type: text
+            length: null
+    lifecycleCallbacks: {  }

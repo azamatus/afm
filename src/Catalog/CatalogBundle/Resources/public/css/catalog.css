@@ -1,0 +1,40 @@
+
+.font
+{
+    font-family: Arial;
+}
+.random
+{
+border: 1px solid #000000;
+}
+.sale
+{
+
+}
+.phones
+{
+
+    text-align: left;
+    float: left;
+}
+.name
+{
+    border-bottom: 1px dashed;
+    float: left;
+}
+.clearbox
+{
+    clear: both;
+}
+.name:hover
+{
+    border-bottom:1px solid;
+}
+.left
+{
+    text-align: left;
+}
+.size24px
+{
+    font-size: 24px;
+}
