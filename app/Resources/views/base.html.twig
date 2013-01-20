@@ -24,8 +24,8 @@
                 {% endblock %}
             <div class="search">
                 <form action="" name="forma">
-                <input type="text" class="search" value="Поиск..." name="poisk" onblur="dob();" onfocus="del();"/>
-                <input type="submit" value="">
+                <input type="text" class="search" placeholder="Поиск..." />
+                <input type="submit" class="search_button" value="">
                 </form>
             </div>
             <div>
@@ -181,7 +181,7 @@
                         <div class="clearbox"></div>
                         Подписка на новости:
                         <form action="" name="forma2">
-                            <input type="text" class="podpiska" value=" Введите ваш электронный адрес" name="podpiska" onblur="add_value();" onfocus="delete_value();"/>
+                            <input type="text" class="podpiska" placeholder="Введите ваш электронный адрес" name="podpiska" />
                         </form>
                     </div>
 
@@ -202,7 +202,6 @@
 
 
 {% block javascripts %}
-    <script src="{{ asset('bundles/nurix/js/header.js') }}" type="text/javascript" lang="javascript"></script>
     {% javascripts
     "../app/Resources/public/js/facebook.js"
     %}

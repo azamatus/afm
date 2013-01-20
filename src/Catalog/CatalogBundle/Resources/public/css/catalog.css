@@ -1,4 +1,3 @@
-
 .font
 {
     font-family: Arial;
@@ -7,26 +6,23 @@
 {
 border: 1px solid #000000;
 }
-.sale
+.size16px
 {
-
+    font-size: 16px;
 }
 .phones
 {
-
     text-align: left;
-    float: left;
-}
-.name
-{
-    border-bottom: 1px dashed;
-    float: left;
 }
 .clearbox
 {
     clear: both;
 }
-.name:hover
+#name
+{
+    border-bottom: 1px dashed;
+}
+#name:hover
 {
     border-bottom:1px solid;
 }
@@ -37,4 +33,48 @@ border: 1px solid #000000;
 .size24px
 {
     font-size: 24px;
+}
+.gray
+{
+    color: #666666;
+}
+.margin_top10px
+{
+    margin-top: 10px;
+}
+.image
+{
+    margin-right: 25px;
+}
+.float_left
+{
+    float: left;
+}
+.price
+{
+   padding-top: 7px;
+}
+.margin_right5px
+{
+    margin-right: 5px;
+}
+.button_buy
+{
+    background-image: url("../phones/button_gray.png");
+    background-repeat: no-repeat;
+    height: 20px;
+    width: 48px;
+    margin-left: 150px;
+    padding-top: 5px;
+    padding-left: 11px;
+}
+.button_buy:hover
+{
+    background-image: url("../phones/button_yellow.png");
+    background-repeat: no-repeat;
+    height: 20px;
+    width: 48px;
+    margin-left: 150px;
+    padding-top: 5px;
+    padding-left: 11px;
 }

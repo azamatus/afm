@@ -1,7 +1,15 @@
 <div>
-    <div class="phones">
-        <div class='name'><a href="/">{{ product.name }}</a></div>
+    <div class="phones float_left">
+        <div><a id="name" class="size16px" href="/">{{ product.name }}</a></div>
+        <div class="gray margin_top10px ">{{ product.shortDescription }}</div>
         <div class="clearbox"></div>
-        <img src="{{ asset('bundles/nurix/images/phones/'~product.imagePath) }}" alt="Catalog">
+        <div class="image">
+            <img src="{{ asset('bundles/nurix/images/phones/'~product.imagePath) }}" alt="Catalog">
+        </div>
+        <div class="margin_right5px">
+            <div class="gray float_left margin_top10px margin_right5px">Цена:</div>
+            <div class="size16px price float_left">{{ product.price }}</div>
+            <div class="button_buy"><a href="/"">Купить</a></div>
+        </div>
     </div>
-</div>
+ </div>
