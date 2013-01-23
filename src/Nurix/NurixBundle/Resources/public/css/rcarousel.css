@@ -21,3 +21,32 @@
 	overflow: hidden;
 	width: 100px;	
 }
+.center
+{
+    margin: 0 auto;
+}
+.bullet
+{
+    background: url("../images/slider/page-off.png") center center no-repeat;
+    display: block;
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-left: 10px;
+}
+#pages
+{
+    padding-top: 10px;
+    padding-right: 4px;
+    width: 200px;
+    margin: 0 auto;
+}
+.bullet2
+{
+    background: url("../images/slider/page-on.png") center center no-repeat;
+    display: block;
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-left: 10px;
+}

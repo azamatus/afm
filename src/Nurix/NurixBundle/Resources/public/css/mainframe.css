@@ -63,7 +63,7 @@ header
 {
     background: url("../images/header.png") repeat-x;
     text-align: center;
- }
+}
 hr
 {
   width: 950px;
@@ -156,7 +156,7 @@ input.search
 .search_button
 {
     width: 20px;
-    height: 20px;
+    height: 18px;
     border: none;
     margin-left: -30px;
     background: url("../images/search.png") no-repeat 50% 50%;
@@ -371,8 +371,18 @@ ul.otherLinks li a
 .podpiska
 {
     width: 210px;
+    height: 26px;
     float: right;
     margin-top: 10px;
+    border-radius:5px;
+    border: 1px solid #242424;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    -o-border-radius:5px;
+}
+.podpiska:focus
+{
+    outline: none;
 }
 .button_podpiska
 {
