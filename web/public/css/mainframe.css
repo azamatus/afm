@@ -336,9 +336,8 @@ footer
 {
     color: #ffffff;
 }
-li
+ul.siteMapLinks li, ul.otherLinks li
 {
-    list-style: none;
     margin-top: 4px;
 }
 ul
