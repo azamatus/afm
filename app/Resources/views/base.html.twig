@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8"/>
     <title>{% block title %}Nurix.kg{% endblock %}</title>
@@ -11,7 +10,7 @@
     {% block javascripts %}
         <script type="text/javascript" src="{{ asset("public/js/facebook.js") }}"></script>
         <script type="text/javascript" src="{{ asset("public/js/jquery-1.9.0.min.js") }}"></script>
-
+        <script type="text/javascript"  src="{{  asset("public/js/html5placeholder.jquery.js")}}"></script>
         <script type="text/javascript"
                 src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/en_US"></script>
         <script type="text/javascript">FB.init("");</script>
