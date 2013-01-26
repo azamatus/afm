@@ -11,8 +11,7 @@ jQuery(function($)
         {
             visible: 3,
             step: 3,
-
-            //speed: 2000,
+            speed: 2000,
             navigation: {
                 prev: "#slider-carousel-prev",
                 next: "#slider-carousel-next"
@@ -25,7 +24,7 @@ jQuery(function($)
             width: 210,
             margin: 25,
             height: 345,
-            start: generatePages,
+            start: generatePages
         }
     );
     function generatePages()

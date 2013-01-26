@@ -61,7 +61,7 @@ ul
 }
 header
 {
-    background: url("../images/header.png") repeat-x;
+    background: url("../img/header.png") repeat-x;
     text-align: center;
 }
 hr
@@ -144,7 +144,8 @@ input.search:focus
 }
 input.search
 {
-    width: 360px;
+    width: 350px;
+    padding-left: 10px;
     height: 25px;
     border-radius:5px;
     border: 1px solid orange;
@@ -159,7 +160,7 @@ input.search
     height: 18px;
     border: none;
     margin-left: -30px;
-    background: url("../images/search.png") no-repeat 50% 50%;
+    background: url("../img/search.png") no-repeat 50% 50%;
 }
 div.search
 {
@@ -205,7 +206,7 @@ div.search
 }
 .button
 {
-    background-image: url("../images/button2.png");
+    background-image: url("../img/button2.png");
     background-repeat: no-repeat;
     float: left;
     padding: 7px;
@@ -215,7 +216,7 @@ div.search
 }
 .button:hover
 {
-    background-image: url("../images/button.png");
+    background-image: url("../img/button.png");
     background-repeat: no-repeat;
     float: left;
     padding: 7px;
@@ -294,7 +295,7 @@ footer
 }
 .footerLine
 {
-    background: url("../images/footer_krugliwki.png") repeat-x;
+    background: url("../img/footer_krugliwki.png") repeat-x;
     height: 4px;
 }
 .footerBackgroung
@@ -370,9 +371,10 @@ ul.otherLinks li a
 }
 .podpiska
 {
-    width: 210px;
+    width: 200px;
     height: 26px;
     float: right;
+    padding-left: 10px;
     margin-top: 10px;
     border-radius:5px;
     border: 1px solid #242424;
@@ -386,10 +388,8 @@ ul.otherLinks li a
 }
 .button_podpiska
 {
-    height: 20px;
-    width: 80px;
     float: right;
-    padding-top: 10px;
+    margin-top: 10px;
 }
 
 .facebook_page
