@@ -12,5 +12,9 @@ class ContentController extends Controller
         $products = $this->getDoctrine()->getRepository('CatalogBundle:Goods')->findAll();
         return $this->render('CatalogBundle:Content:showRandomProductList.html.twig', array('products' => $products));
     }
-
+    public function showSliderProductListAction()
+    {
+        $products = $this->getDoctrine()->getRepository('CatalogBundle:Goods')->findAll();
+        return $this->render('CatalogBundle:Content:showCatalogSlider.html.twig', array('products' => $products));
+    }
 }

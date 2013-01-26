@@ -2,10 +2,7 @@
 {
     font-family: Arial;
 }
-.random
-{
-border: 1px solid #000000;
-}
+
 .size16px
 {
     font-size: 16px;
@@ -13,6 +10,8 @@ border: 1px solid #000000;
 .phones
 {
     text-align: left;
+    height: 308px;
+    margin-right: 25px;
 }
 .clearbox
 {
@@ -42,10 +41,6 @@ border: 1px solid #000000;
 {
     margin-top: 10px;
 }
-.image
-{
-    margin-right: 25px;
-}
 .float_left
 {
     float: left;
@@ -53,10 +48,7 @@ border: 1px solid #000000;
 .price
 {
    padding-top: 7px;
-}
-.margin_right5px
-{
-    margin-right: 5px;
+   padding-left: 5px;
 }
 .button_buy
 {

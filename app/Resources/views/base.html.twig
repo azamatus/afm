@@ -9,6 +9,16 @@
     {% stylesheets '../app/Resources/public/css/facebook.css' %}
         <link type="text/css" rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
+
+    {% block javascripts %}
+        {% javascripts
+        "../app/Resources/public/js/facebook.js"
+        %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        <script type="text/javascript" src="{{ asset("public/js/jquery-1.9.0.min.js") }}"></script>
+    {% endblock %}
+
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 </head>
 <body>
@@ -69,7 +79,6 @@
             <div class="clearbox"></div
 </div>
         {% block slider %}
-
         {% endblock %}
 </header>
     <div class="clearbox"></div>
@@ -202,16 +211,6 @@
     </footer>
 
 </div>
-
-
-{% block javascripts %}
-    {% javascripts
-    "../app/Resources/public/js/facebook.js"
-    %}
-    <script type="text/javascript" src="{{ asset_url }}"></script>
-    {% endjavascripts %}
-    <script type="text/javascript" src="{{ asset("public/js/jquery-1.9.0.min.js") }}"></script>
-{% endblock %}
 
 </body>
 </html>

@@ -4,24 +4,39 @@
     <link href="{{ asset('bundles/nurix/css/rcarousel.css') }} " type="text/css" rel="stylesheet"/>
 {% endblock %}
 {% block body %}
+    {% render "CatalogBundle:Content:showSliderProductList" %}
+    <div class="clearbox"></div>
     {% render  "CatalogBundle:Content:showRandomProductList" %}
 {% endblock %}
 {% block slider %}
+ <div class="container">
  <div id="carousel" class="center">
-        <img src="{{ asset('bundles/nurix/images/slider/1.jpg') }}" alt="Catalog">
+     <div>
+        <div class="slide_image">
+            <img src="{{ asset('bundles/nurix/images/slider/phone_slider.png') }}" alt="Catalog">
+        </div>
+        <div>
+            <p class="slide_text"><span class="phone_name">iPhone 4S</span><br><br>Dual-core A5 чип<br> Новая 8 мгпикс. камера<br>iOS 5 и iCloud<br>и шикраный дизайн<br><br>
+                Это самый обаденный iPhone</p>
+        </div>
+         <a href="/">
+         <div class="slide_button">
+             <span class="slide_btext">Купить</span>
+         </div></a>
+     </div>
         <img src="{{ asset('bundles/nurix/images/slider/2.jpg') }}" alt="Catalog">
         <img src="{{ asset('bundles/nurix/images/slider/3.jpg') }}" alt="Catalog">
         <img src="{{ asset('bundles/nurix/images/slider/4.jpg') }}" alt="Catalog">
         <img src="{{ asset('bundles/nurix/images/slider/5.jpg') }}" alt="Catalog">
-        <img src="{{ asset('bundles/nurix/images/slider/6.jpg') }}" alt="Catalog">
-    </div>
+ </div>
         <div id="pages"></div>
+ </div>
 
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-    <script type="text/javascript" src="{{ asset("bundles/nurix/js/slider.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("bundles/nurix/js/slider_header.js") }}"></script>
     <script type="text/javascript" src="{{ asset("bundles/nurix/js/jquery.ui.core.min.js") }}"></script>
     <script type="text/javascript" src="{{ asset("bundles/nurix/js/jquery.ui.widget.min.js") }}"></script>
     <script type="text/javascript" src="{{ asset("bundles/nurix/js/jquery.ui.rcarousel.min.js") }}"></script>
