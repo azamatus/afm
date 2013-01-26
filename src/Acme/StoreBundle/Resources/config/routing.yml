@@ -1,9 +1,0 @@
-acme_store_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: AcmeStoreBundle:Default:index }
-acme_store_insert:
-    pattern:  /doctrine/insert
-    defaults: { _controller: AcmeStoreBundle:Default:create }
-acme_store_show:
-        pattern:  /show/{id}
-        defaults: { _controller: AcmeStoreBundle:Default:show }
