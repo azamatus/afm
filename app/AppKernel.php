@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new Nurix\NurixBundle\NurixBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Catalog\CatalogBundle\CatalogBundle(),
+            new Nurix\ArticleBundle\ArticleBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
