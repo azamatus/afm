@@ -22,26 +22,11 @@ class Goods
     private $id;
 
     /**
-     * @var integer $categoriyaId
-     *
-     * @ORM\Column(name="categoriya_id", type="integer", nullable=false)
-     */
-    private $categoriyaId;
-
-    /**
      * @var string $name
      *
      * @ORM\Column(name="name", type="string", length=50, nullable=false)
      */
     private $name;
-
-    /**
-     * @var string $alias
-     *
-     * @ORM\Column(name="alias", type="string", length=30, nullable=false)
-     */
-    private $alias;
-
     /**
      * @var string $shortDescription
      *
@@ -70,6 +55,16 @@ class Goods
      */
     private $imagePath;
 
+    /**
+     * @var Catalog
+     *
+     * @ORM\ManyToOne(targetEntity="Catalog")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="catalog_id", referencedColumnName="id")
+     * })
+     */
+    private $catalog;
+
 
 
     /**
@@ -80,29 +75,6 @@ class Goods
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set categoriyaId
-     *
-     * @param integer $categoriyaId
-     * @return Goods
-     */
-    public function setCategoriyaId($categoriyaId)
-    {
-        $this->categoriyaId = $categoriyaId;
-    
-        return $this;
-    }
-
-    /**
-     * Get categoriyaId
-     *
-     * @return integer 
-     */
-    public function getCategoriyaId()
-    {
-        return $this->categoriyaId;
     }
 
     /**
@@ -127,30 +99,6 @@ class Goods
     {
         return $this->name;
     }
-
-    /**
-     * Set alias
-     *
-     * @param string $alias
-     * @return Goods
-     */
-    public function setAlias($alias)
-    {
-        $this->alias = $alias;
-    
-        return $this;
-    }
-
-    /**
-     * Get alias
-     *
-     * @return string 
-     */
-    public function getAlias()
-    {
-        return $this->alias;
-    }
-
     /**
      * Set shortDescription
      *
@@ -241,5 +189,28 @@ class Goods
     public function getImagePath()
     {
         return $this->imagePath;
+    }
+
+    /**
+     * Set catalog
+     *
+     * @param Catalog\CatalogBundle\Entity\Catalog $catalog
+     * @return Goods
+     */
+    public function setCatalog(\Catalog\CatalogBundle\Entity\Catalog $catalog = null)
+    {
+        $this->catalog = $catalog;
+    
+        return $this;
+    }
+
+    /**
+     * Get catalog
+     *
+     * @return Catalog\CatalogBundle\Entity\Catalog 
+     */
+    public function getCatalog()
+    {
+        return $this->catalog;
     }
 }

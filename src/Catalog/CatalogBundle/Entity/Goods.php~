@@ -22,13 +22,6 @@ class Goods
     private $id;
 
     /**
-     * @var integer $categoriyaId
-     *
-     * @ORM\Column(name="categoriya_id", type="integer", nullable=false)
-     */
-    private $categoriyaId;
-
-    /**
      * @var string $name
      *
      * @ORM\Column(name="name", type="string", length=50, nullable=false)
@@ -69,6 +62,16 @@ class Goods
      * @ORM\Column(name="image_path", type="string", length=50, nullable=false)
      */
     private $imagePath;
+
+    /**
+     * @var Catalog
+     *
+     * @ORM\ManyToOne(targetEntity="Catalog")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="catalog_id", referencedColumnName="id")
+     * })
+     */
+    private $catalog;
 
 
 }
