@@ -9,11 +9,6 @@ Goods:
             nullable: false
             generator:
                 strategy: IDENTITY
-        categoriyaId:
-            type: integer
-            unsigned: false
-            nullable: false
-            column: categoriyaId
         name:
             type: string
             length: 50
@@ -27,11 +22,11 @@ Goods:
         shortDescription:
             type: text
             nullable: false
-            column: shortDescription
+            column: short_description
         fullDesctiption:
             type: text
             nullable: false
-            column: fullDesctiption
+            column: full_desctiption
         price:
             type: decimal
             nullable: false
@@ -40,5 +35,15 @@ Goods:
             length: 50
             fixed: false
             nullable: false
-            column: imagePath
+            column: image_path
+    manyToOne:
+        catalog:
+            targetEntity: Catalog
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                catalog_id:
+                    referencedColumnName: id
+            orphanRemoval: false
     lifecycleCallbacks: {  }

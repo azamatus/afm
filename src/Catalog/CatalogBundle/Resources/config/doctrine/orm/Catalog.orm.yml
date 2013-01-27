@@ -1,0 +1,30 @@
+Catalog:
+    type: entity
+    table: catalog
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        cname:
+            type: string
+            length: 100
+            fixed: false
+            nullable: false
+        active:
+            type: boolean
+            nullable: false
+    manyToOne:
+        parent:
+            targetEntity: Catalog
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                parent_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

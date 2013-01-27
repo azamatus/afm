@@ -80,7 +80,7 @@
     <div class="middle center">
         <div class="leftColumn">
             {% block catalog_menu %}
-                {{ knp_menu_render('catalog_sidebar') }}
+                {% render "CatalogBundle:Content:catalog" %}
             {% endblock %}
             <div class="interesting">
                 {% block side_menu %}

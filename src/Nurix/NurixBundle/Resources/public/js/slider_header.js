@@ -4,10 +4,10 @@ jQuery(function($)
         {
             visible: 1,
             step: 1,
-            speed: 700,
+            speed: 2000,
             auto:
             {
-                enabled: false,
+                enabled: true,
                 interval: 2000
             },
             width: 700,
