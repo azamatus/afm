@@ -127,7 +127,7 @@ class Process
         }
 
         $this->commandline = $commandline;
-        $this->cwd = null === $cwd ? getcwd() : $cwd;
+        $this->cwd = $cwd;
         if (null !== $env) {
             $this->env = array();
             foreach ($env as $key => $value) {
@@ -159,8 +159,8 @@ class Process
      * The STDOUT and STDERR are also available after the process is finished
      * via the getOutput() and getErrorOutput() methods.
      *
-     * @param Closure|string|array $callback A PHP callback to run whenever there is some
-     *                                       output available on STDOUT or STDERR
+     * @param callback|null $callback A PHP callback to run whenever there is some
+     *                                output available on STDOUT or STDERR
      *
      * @return integer The exit status code
      *
@@ -190,8 +190,8 @@ class Process
      * with true as a second parameter then the callback will get all data occurred
      * in (and since) the start call.
      *
-     * @param Closure|string|array $callback A PHP callback to run whenever there is some
-     *                                       output available on STDOUT or STDERR
+     * @param callback|null $callback A PHP callback to run whenever there is some
+     *                                output available on STDOUT or STDERR
      *
      * @throws \RuntimeException When process can't be launch or is stopped
      * @throws \RuntimeException When process is already running
@@ -229,8 +229,6 @@ class Process
                 $descriptors = array_merge($descriptors, array(array('pipe', 'w')));
 
                 $this->commandline = '('.$this->commandline.') 3>/dev/null; code=$?; echo $code >&3; exit $code';
-            } else {
-                $this->commandline = 'exec ' . $this->commandline;
             }
         }
 
@@ -320,11 +318,12 @@ class Process
      * from the output in real-time while writing the standard input to the process.
      * It allows to have feedback from the independent process during execution.
      *
-     * @param mixed $callback A valid PHP callback
+     * @param callback|null $callback A valid PHP callback
      *
-     * @return int The exitcode of the process
+     * @return integer The exitcode of the process
      *
-     * @throws \RuntimeException
+     * @throws \RuntimeException When process timed out
+     * @throws \RuntimeException When process stopped after receiving signal
      */
     public function wait($callback = null)
     {
@@ -340,10 +339,13 @@ class Process
                 $w = null;
                 $e = null;
 
-                $n = @stream_select($r, $w, $e, $this->timeout);
+                if (false === $n = @stream_select($r, $w, $e, $this->timeout)) {
+                    $lastError = error_get_last();
 
-                if (false === $n) {
-                    $this->pipes = array();
+                    // stream_select returns false when the `select` system call is interrupted by an incoming signal
+                    if (isset($lastError['message']) && false === stripos($lastError['message'], 'interrupted system call')) {
+                        $this->pipes = array();
+                    }
 
                     continue;
                 }
@@ -454,8 +456,6 @@ class Process
      *
      * @return string A string representation for the exit status code
      *
-     * @throws RuntimeException In case --enable-sigchild is activated and the sigchild compatibility mode is disabled
-     *
      * @see http://tldp.org/LDP/abs/html/exitcodes.html
      * @see http://en.wikipedia.org/wiki/Unix_signal
      */
@@ -470,8 +470,6 @@ class Process
      * Checks if the process ended successfully.
      *
      * @return Boolean true if the process ended successfully, false otherwise
-     *
-     * @throws RuntimeException In case --enable-sigchild is activated and the sigchild compatibility mode is disabled
      *
      * @api
      */
@@ -541,7 +539,7 @@ class Process
     }
 
     /**
-     * Returns the number of the signal that caused the child process to stop its execution
+     * Returns the number of the signal that caused the child process to stop its execution.
      *
      * It is only meaningful if hasBeenStopped() returns true.
      *
@@ -575,11 +573,9 @@ class Process
     /**
      * Stops the process.
      *
-     * @param float $timeout The timeout in seconds
+     * @param integer|float $timeout The timeout in seconds
      *
-     * @return integer The exitcode of the process
-     *
-     * @throws \RuntimeException if the process got signaled
+     * @return integer The exit-code of the process
      */
     public function stop($timeout=10)
     {
@@ -612,26 +608,51 @@ class Process
         return $this->exitcode;
     }
 
+    /**
+     * Adds a line to the STDOUT stream.
+     *
+     * @param string $line The line to append
+     */
     public function addOutput($line)
     {
         $this->stdout .= $line;
     }
 
+    /**
+     * Adds a line to the STDERR stream.
+     *
+     * @param string $line The line to append
+     */
     public function addErrorOutput($line)
     {
         $this->stderr .= $line;
     }
 
+    /**
+     * Gets the command line to be executed.
+     *
+     * @return string The command to execute
+     */
     public function getCommandLine()
     {
         return $this->commandline;
     }
 
+    /**
+     * Sets the command line to be executed.
+     *
+     * @param string $commandline The command to execute
+     */
     public function setCommandLine($commandline)
     {
         $this->commandline = $commandline;
     }
 
+    /**
+     * Gets the process timeout.
+     *
+     * @return integer|null The timeout in seconds or null if it's disabled
+     */
     public function getTimeout()
     {
         return $this->timeout;
@@ -642,7 +663,9 @@ class Process
      *
      * To disable the timeout, set this value to null.
      *
-     * @param integer|null
+     * @param integer|null $timeout The timeout in seconds
+     *
+     * @throws \InvalidArgumentException if the timeout is negative
      */
     public function setTimeout($timeout)
     {
@@ -661,51 +684,110 @@ class Process
         $this->timeout = $timeout;
     }
 
+    /**
+     * Gets the working directory.
+     *
+     * @return string The current working directory
+     */
     public function getWorkingDirectory()
     {
+        // This is for BC only
+        if (null === $this->cwd) {
+            // getcwd() will return false if any one of the parent directories does not have
+            // the readable or search mode set, even if the current directory does
+            return getcwd() ?: null;
+        }
+
         return $this->cwd;
     }
 
+    /**
+     * Sets the current working directory.
+     *
+     * @param string $cwd The new working directory
+     */
     public function setWorkingDirectory($cwd)
     {
         $this->cwd = $cwd;
     }
 
+    /**
+     * Gets the environment variables.
+     *
+     * @return array The current environment variables
+     */
     public function getEnv()
     {
         return $this->env;
     }
 
+    /**
+     * Sets the environment variables.
+     *
+     * @param array $env The new environment variables
+     */
     public function setEnv(array $env)
     {
         $this->env = $env;
     }
 
+    /**
+     * Gets the contents of STDIN.
+     *
+     * @return string The current contents
+     */
     public function getStdin()
     {
         return $this->stdin;
     }
 
+    /**
+     * Sets the contents of STDIN.
+     *
+     * @param string $stdin The new contents
+     */
     public function setStdin($stdin)
     {
         $this->stdin = $stdin;
     }
 
+    /**
+     * Gets the options for proc_open.
+     *
+     * @return array The current options
+     */
     public function getOptions()
     {
         return $this->options;
     }
 
+    /**
+     * Sets the options for proc_open.
+     *
+     * @param array $options The new options
+     */
     public function setOptions(array $options)
     {
         $this->options = $options;
     }
 
+    /**
+     * Gets whether or not Windows compatibility is enabled
+     *
+     * This is true by default.
+     *
+     * @return Boolean
+     */
     public function getEnhanceWindowsCompatibility()
     {
         return $this->enhanceWindowsCompatibility;
     }
 
+    /**
+     * Sets whether or not Windows compatibility is enabled
+     *
+     * @param Boolean $enhance
+     */
     public function setEnhanceWindowsCompatibility($enhance)
     {
         $this->enhanceWindowsCompatibility = (Boolean) $enhance;
@@ -741,9 +823,9 @@ class Process
      * The callbacks adds all occurred output to the specific buffer and calls
      * the user callback (if present) with the received output.
      *
-     * @param mixed $callback The user defined PHP callback
+     * @param callback|null $callback The user defined PHP callback
      *
-     * @return mixed A PHP callable
+     * @return callback A PHP callable
      */
     protected function buildCallback($callback)
     {
@@ -783,6 +865,9 @@ class Process
         }
     }
 
+    /**
+     * Updates the current error output of the process (STDERR).
+     */
     protected function updateErrorOutput()
     {
         if (isset($this->pipes[self::STDERR]) && is_resource($this->pipes[self::STDERR])) {
@@ -790,6 +875,9 @@ class Process
         }
     }
 
+    /**
+     * Updates the current output of the process (STDOUT).
+     */
     protected function updateOutput()
     {
         if (defined('PHP_WINDOWS_VERSION_BUILD') && isset($this->fileHandles[self::STDOUT]) && is_resource($this->fileHandles[self::STDOUT])) {
