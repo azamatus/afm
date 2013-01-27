@@ -1,9 +1,9 @@
 <?php
 
-namespace Catalog\CatalogBundle\Controller;
+namespace Nurix\CatalogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Catalog\CatalogBundle\Entity\Categories;
+use Nurix\CatalogBundle\Entity\Categories;
 use Doctrine\ORM\QueryBuilder;
 
 class DefaultController extends Controller

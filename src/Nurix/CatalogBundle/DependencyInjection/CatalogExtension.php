@@ -1,6 +1,6 @@
 <?php
 
-namespace Catalog\CatalogBundle\DependencyInjection;
+namespace Nurix\CatalogBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;

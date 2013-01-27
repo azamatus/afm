@@ -6,7 +6,7 @@
  * Time: 14:08
  * To change this template use File | Settings | File Templates.
  */
-namespace Catalog\CatalogBundle\Entity;
+namespace Nurix\CatalogBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 

@@ -1,15 +1,15 @@
 <?php
 
-namespace Catalog\CatalogBundle\Entity;
+namespace Nurix\CatalogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Catalog\CatalogBundle\Entity\Catalog
+ * Nurix\CatalogBundle\Entity\Catalog
  *
  * @ORM\Table(name="catalog")
  * @ORM\Entity
- * @ORM\Entity(repositoryClass="Catalog\CatalogBundle\Entity\CatalogRepository")
+ * @ORM\Entity(repositoryClass="Nurix\CatalogBundle\Entity\CatalogRepository")
  */
 class Catalog
 {
@@ -121,10 +121,10 @@ class Catalog
     /**
      * Set parent
      *
-     * @param Catalog\CatalogBundle\Entity\Catalog $parent
+     * @param Nurix\CatalogBundle\Entity\Catalog $parent
      * @return Catalog
      */
-    public function setParent(\Catalog\CatalogBundle\Entity\Catalog $parent = null)
+    public function setParent(\Nurix\CatalogBundle\Entity\Catalog $parent = null)
     {
         $this->parent = $parent;
     
@@ -134,7 +134,7 @@ class Catalog
     /**
      * Get parent
      *
-     * @return Catalog\CatalogBundle\Entity\Catalog 
+     * @return Nurix\CatalogBundle\Entity\Catalog
      */
     public function getParent()
     {

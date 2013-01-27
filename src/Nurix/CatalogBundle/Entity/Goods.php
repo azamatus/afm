@@ -1,11 +1,11 @@
 <?php
 
-namespace Catalog\CatalogBundle\Entity;
+namespace Nurix\CatalogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Catalog\CatalogBundle\Entity\Goods
+ * Nurix\CatalogBundle\Entity\Goods
  *
  * @ORM\Table(name="goods")
  * @ORM\Entity
@@ -194,10 +194,10 @@ class Goods
     /**
      * Set catalog
      *
-     * @param Catalog\CatalogBundle\Entity\Catalog $catalog
+     * @param Nurix\CatalogBundle\Entity\Catalog $catalog
      * @return Goods
      */
-    public function setCatalog(\Catalog\CatalogBundle\Entity\Catalog $catalog = null)
+    public function setCatalog(\Nurix\CatalogBundle\Entity\Catalog $catalog = null)
     {
         $this->catalog = $catalog;
     
@@ -207,7 +207,7 @@ class Goods
     /**
      * Get catalog
      *
-     * @return Catalog\CatalogBundle\Entity\Catalog 
+     * @return Nurix\CatalogBundle\Entity\Catalog
      */
     public function getCatalog()
     {

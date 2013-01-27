@@ -1,6 +1,6 @@
 <?php
 
-namespace Catalog\CatalogBundle\Tests\Controller;
+namespace Nurix\CatalogBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

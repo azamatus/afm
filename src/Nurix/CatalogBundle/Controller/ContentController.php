@@ -1,9 +1,9 @@
 <?php
 
-namespace Catalog\CatalogBundle\Controller;
+namespace Nurix\CatalogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Catalog\CatalogBundle\Entity;
+use Nurix\CatalogBundle\Entity;
 
 class ContentController extends Controller
 {

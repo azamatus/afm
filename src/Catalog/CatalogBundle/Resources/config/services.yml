@@ -1,7 +1,0 @@
-parameters:
-#    catalog.example.class: Catalog\CatalogBundle\Example
-
-services:
-    catalog.model:
-        class: Catalog\CatalogBundle\Model\CatalogModel
-        arguments: [ @doctrine.orm.entity_manager ]

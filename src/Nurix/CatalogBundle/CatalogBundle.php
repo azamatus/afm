@@ -1,6 +1,6 @@
 <?php
 
-namespace Catalog\CatalogBundle;
+namespace Nurix\CatalogBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Catalog\CatalogBundle\Model;
+namespace Nurix\CatalogBundle\Model;
 
 use Doctrine\ORM\EntityManager;
 
