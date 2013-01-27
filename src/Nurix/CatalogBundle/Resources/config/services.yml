@@ -1,0 +1,7 @@
+parameters:
+#    catalog.example.class: Nurix\CatalogBundle\Example
+
+services:
+    catalog.model:
+        class: Nurix\CatalogBundle\Model\CatalogModel
+        arguments: [ @doctrine.orm.entity_manager ]

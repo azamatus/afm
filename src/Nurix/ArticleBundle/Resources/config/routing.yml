@@ -1,0 +1,7 @@
+article_all_news:
+    pattern:  /news/{type}
+    defaults: { _controller: ArticleBundle:News:allNews,type:'all'}
+
+article_show_article:
+    pattern:  /show/{id}
+    defaults: { _controller: ArticleBundle:News:showArticle}

@@ -1,0 +1,49 @@
+Goods:
+    type: entity
+    table: goods
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        name:
+            type: string
+            length: 50
+            fixed: false
+            nullable: false
+        alias:
+            type: string
+            length: 30
+            fixed: false
+            nullable: false
+        shortDescription:
+            type: text
+            nullable: false
+            column: short_description
+        fullDesctiption:
+            type: text
+            nullable: false
+            column: full_desctiption
+        price:
+            type: decimal
+            nullable: false
+        imagePath:
+            type: string
+            length: 50
+            fixed: false
+            nullable: false
+            column: image_path
+    manyToOne:
+        catalog:
+            targetEntity: Catalog
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                catalog_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

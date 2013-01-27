@@ -1,0 +1,16 @@
+{% extends "::base.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/catalog/css/catalog.css') }} " type="text/css" rel="stylesheet"/>
+{% endblock %}
+{% block body %}
+<div>
+    <div class="clearbox"></div>
+    <h1 class="left size24px">Весь каталог</h1>
+    {% for product in products  %}
+        {% include  "CatalogBundle:Content:item.html.twig" with {'product':product} %}
+    {% endfor %}
+</div>
+{% endblock body %}
+
+

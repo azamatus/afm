@@ -69,11 +69,22 @@ class MenuBuilder
         $menu->addChild('Interesting',array('label'=>'Интересное'))
             ->setAttribute('class','catalog_menu')
             ->setLabelAttribute('class','f20');
-        $menu->addChild('audio', array('route' => 'nurix_default', 'routeParameters' => array('name' => 'Наши новости'),'label'=>'Наши новости'));
-        $menu->addChild('audio', array('route' => 'nurix_default', 'routeParameters' => array('name' => 'Мировые новости'),'label'=>'Мировые новости'));
-        $menu->addChild('comp', array('route' => 'nurix_default', 'routeParameters' => array('name' => 'О нас'),'label'=>'О нас'))
-            ->addChild('comp_1', array('route' => 'nurix_default', 'routeParameters' => array('name' => 'Контакты'),'label'=>'Контакты'));
-        $menu->addChild('mobile', array('route' => 'nurix_default', 'routeParameters' => array('name' => 'Nurlan'),'label'=>'Сотовые телефоны'));
+        $menu->addChild('Наши новости',array('route'=>'article_all_news','routeParameters'=>array('type'=>'local')));
+        $menu->addChild('Мировые новости',array('route'=>'article_all_news','routeParameters'=>array('type'=>'global')));
+
+        $menu->addChild('О магазине',array('route'=>'article_all_news'));
+
+        $menu->addChild('Контакты',array('route'=>'article_all_news'));
+
+        $menu->addChild('Условия доставки',array('route'=>'article_all_news'));
+
+        $menu->addChild('Способы оплаты',array('route'=>'article_all_news'));
+
+        $menu->addChild('Справка',array('route'=>'article_all_news'));
+
+        $menu->addChild('Отзывы',array('route'=>'article_all_news'));
+
+        $menu->addChild('Оптовым покупателям',array('route'=>'article_all_news'));
 
         return $menu;
     }
