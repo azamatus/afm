@@ -177,11 +177,6 @@ class FlashBag implements FlashBagInterface, \IteratorAggregate, \Countable
     /**
      * Returns the number of flashes.
      *
-     * This method does not work.
-     *
-     * @deprecated in 2.2, removed in 2.3
-     * @see https://github.com/symfony/symfony/issues/6408
-     *
      * @return int The number of flashes
      */
     public function count()

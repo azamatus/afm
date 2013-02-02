@@ -151,7 +151,6 @@ class SessionTest extends \PHPUnit_Framework_TestCase
 
     public function testSave()
     {
-        $this->session->start();
         $this->session->save();
     }
 

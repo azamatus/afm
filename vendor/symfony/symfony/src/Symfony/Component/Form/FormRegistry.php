@@ -33,9 +33,9 @@ class FormRegistry implements FormRegistryInterface
     private $types = array();
 
     /**
-     * @var FormTypeGuesserInterface|false|null
+     * @var FormTypeGuesserInterface
      */
-    private $guesser = false;
+    private $guesser;
 
     /**
      * @var ResolvedFormTypeFactoryInterface
@@ -158,7 +158,7 @@ class FormRegistry implements FormRegistryInterface
      */
     public function getTypeGuesser()
     {
-        if (false === $this->guesser) {
+        if (null === $this->guesser) {
             $guessers = array();
 
             foreach ($this->extensions as $extension) {
@@ -170,7 +170,7 @@ class FormRegistry implements FormRegistryInterface
                 }
             }
 
-            $this->guesser = !empty($guessers) ? new FormTypeGuesserChain($guessers) : null;
+            $this->guesser = new FormTypeGuesserChain($guessers);
         }
 
         return $this->guesser;

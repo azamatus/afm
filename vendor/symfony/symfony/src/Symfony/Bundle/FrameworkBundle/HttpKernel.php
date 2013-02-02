@@ -116,30 +116,18 @@ class HttpKernel extends BaseHttpKernel
         }
 
         if ($this->esiSupport && (true === $options['standalone'] || 'esi' === $options['standalone'])) {
-            if (0 === strpos($controller, 'http://') || 0 === strpos($controller, 'https://')) {
-                $uri = $controller;
-            } else {
-                $uri = $this->generateInternalUri($controller, $options['attributes'], $options['query']);
-            }
+            $uri = $this->generateInternalUri($controller, $options['attributes'], $options['query']);
 
             $alt = '';
             if ($options['alt']) {
-                if (is_string($options['alt']) && (0 === strpos($options['alt'], 'http://') || 0 === strpos($options['alt'], 'https://'))) {
-                    $alt = $options['alt'];
-                } else {
-                    $alt = $this->generateInternalUri($options['alt'][0], isset($options['alt'][1]) ? $options['alt'][1] : array(), isset($options['alt'][2]) ? $options['alt'][2] : array());
-                }
+                $alt = $this->generateInternalUri($options['alt'][0], isset($options['alt'][1]) ? $options['alt'][1] : array(), isset($options['alt'][2]) ? $options['alt'][2] : array());
             }
 
             return $this->container->get('esi')->renderIncludeTag($uri, $alt, $options['ignore_errors'], $options['comment']);
         }
 
         if ('js' === $options['standalone']) {
-            if (0 === strpos($controller, 'http://') || 0 === strpos($controller, 'https://')) {
-                $uri = $controller;
-            } else {
-                $uri = $this->generateInternalUri($controller, $options['attributes'], $options['query'], false);
-            }
+            $uri = $this->generateInternalUri($controller, $options['attributes'], $options['query'], false);
             $defaultContent = null;
 
             if ($template = $this->container->getParameter('templating.hinclude.default_template')) {
@@ -151,13 +139,8 @@ class HttpKernel extends BaseHttpKernel
 
         $request = $this->container->get('request');
 
-        // controller or URI or path?
-        if (0 === strpos($controller, 'http://') || 0 === strpos($controller, 'https://')) {
-            $subRequest = Request::create($controller, 'get', array(), $request->cookies->all(), array(), $request->server->all());
-            if ($session = $request->getSession()) {
-                $subRequest->setSession($session);
-            }
-        } elseif (0 === strpos($controller, '/')) {
+        // controller or URI?
+        if (0 === strpos($controller, '/')) {
             $subRequest = Request::create($request->getUriForPath($controller), 'get', array(), $request->cookies->all(), array(), $request->server->all());
             if ($session = $request->getSession()) {
                 $subRequest->setSession($session);

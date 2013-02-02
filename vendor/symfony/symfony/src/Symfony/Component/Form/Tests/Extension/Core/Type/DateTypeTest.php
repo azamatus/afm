@@ -313,7 +313,7 @@ class DateTypeTest extends LocalizedTestCase
         ));
     }
 
-    public function testSetDataWithDifferentTimezones()
+    public function testSetData_differentTimezones()
     {
         $form = $this->factory->create('date', null, array(
             'format' => \IntlDateFormatter::MEDIUM,
@@ -328,7 +328,7 @@ class DateTypeTest extends LocalizedTestCase
         $this->assertEquals('01.06.2010', $form->getViewData());
     }
 
-    public function testSetDataWithDifferentTimezonesDateTime()
+    public function testSetData_differentTimezonesDateTime()
     {
         $form = $this->factory->create('date', null, array(
             'format' => \IntlDateFormatter::MEDIUM,
@@ -510,18 +510,18 @@ class DateTypeTest extends LocalizedTestCase
         $form = $this->factory->create('date');
         $view = $form->createView();
 
-        $this->assertSame('{{ day }}.{{ month }}.{{ year }}', $view->vars['date_pattern']);
+        $this->assertSame('{{ year }}-{{ month }}-{{ day }}', $view->vars['date_pattern']);
     }
 
     public function testPassDatePatternToViewDifferentFormat()
     {
         $form = $this->factory->create('date', null, array(
-            'format' => \IntlDateFormatter::LONG,
+            'format' => \IntlDateFormatter::MEDIUM,
         ));
 
         $view = $form->createView();
 
-        $this->assertSame('{{ day }}. {{ month }} {{ year }}', $view->vars['date_pattern']);
+        $this->assertSame('{{ day }}.{{ month }}.{{ year }}', $view->vars['date_pattern']);
     }
 
     public function testPassDatePatternToViewDifferentPattern()
@@ -625,7 +625,7 @@ class DateTypeTest extends LocalizedTestCase
         $this->assertSame('Empty day', $view['day']->vars['empty_value']);
     }
 
-    public function testPassEmptyValueAsPartialArrayAddEmptyIfNotRequired()
+    public function testPassEmptyValueAsPartialArray_addEmptyIfNotRequired()
     {
         $form = $this->factory->create('date', null, array(
             'required' => false,
@@ -641,7 +641,7 @@ class DateTypeTest extends LocalizedTestCase
         $this->assertSame('Empty day', $view['day']->vars['empty_value']);
     }
 
-    public function testPassEmptyValueAsPartialArrayAddNullIfRequired()
+    public function testPassEmptyValueAsPartialArray_addNullIfRequired()
     {
         $form = $this->factory->create('date', null, array(
             'required' => true,

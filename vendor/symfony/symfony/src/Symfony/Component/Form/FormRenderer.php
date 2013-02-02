@@ -11,6 +11,7 @@
 
 namespace Symfony\Component\Form;
 
+use Symfony\Component\Form\Extension\Core\View\ChoiceView;
 use Symfony\Component\Form\Exception\FormException;
 use Symfony\Component\Form\Extension\Csrf\CsrfProvider\CsrfProviderInterface;
 

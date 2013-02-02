@@ -329,7 +329,7 @@ class EntityChoiceList extends ObjectChoiceList
     protected function createIndex($entity)
     {
         if ($this->idAsIndex) {
-            return $this->fixIndex(current($this->getIdentifierValues($entity)));
+            return current($this->getIdentifierValues($entity));
         }
 
         return parent::createIndex($entity);
@@ -353,23 +353,6 @@ class EntityChoiceList extends ObjectChoiceList
         }
 
         return parent::createValue($entity);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function fixIndex($index)
-    {
-        $index = parent::fixIndex($index);
-
-        // If the ID is a single-field integer identifier, it is used as
-        // index. Replace any leading minus by underscore to make it a valid
-        // form name.
-        if ($this->idAsIndex && $index < 0) {
-            $index = strtr($index, '-', '_');
-        }
-
-        return $index;
     }
 
     /**
@@ -409,10 +392,7 @@ class EntityChoiceList extends ObjectChoiceList
     private function getIdentifierValues($entity)
     {
         if (!$this->em->contains($entity)) {
-            throw new FormException(
-                'Entities passed to the choice field must be managed. Maybe ' .
-                'persist them in the entity manager?'
-            );
+            throw new FormException('Entities passed to the choice field must be managed');
         }
 
         $this->em->initializeObject($entity);

@@ -33,5 +33,10 @@
         "psr-0": { "Symfony\\Component\\Routing": "" }
     },
     "target-dir": "Symfony/Component/Routing",
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.1-dev"
+        }
+    }
 }

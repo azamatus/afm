@@ -1,7 +1,5 @@
 {% extends 'WebProfilerBundle:Profiler:layout.html.twig' %}
 
-{% from _self import display_timeline, dump_request_data %}
-
 {% if colors is not defined %}
     {% set colors = {
         'default':                '#aacd4e',
@@ -43,7 +41,7 @@
         {{ block('panelContent') }}
     {% else %}
         <p>
-            <em>No timing events have been recorded. Are you sure that debugging is enabled in the kernel?</em>
+            <em>No timing events have been recorded. Are you sure that debugging is enabled in the kernel ?</em>
         </p>
     {% endif %}
 {% endblock %}
@@ -79,7 +77,7 @@
 
     {% set max = collector.events.__section__.endtime %}
 
-    {{ display_timeline('timeline_' ~ token, collector.events, colors) }}
+    {{ _self.display_timeline('timeline_' ~ token, collector.events, colors) }}
 
     {% if profile.children|length %}
         {% for child in profile.children %}
@@ -89,7 +87,7 @@
                 <small> - {{ events.__section__.totaltime }} ms</small>
             </h3>
 
-            {{ display_timeline('timeline_' ~ child.token, events, colors) }}
+            {{ _self.display_timeline('timeline_' ~ child.token, events, colors) }}
         {% endfor %}
     {% endif %}
 
@@ -390,12 +388,12 @@
         var requests_data = {
             "max": {{ "%F"|format(collector.events.__section__.endtime) }},
             "requests": [
-{{ dump_request_data(token, profile, collector.events, collector.events.__section__.origin) }}
+{{ _self.dump_request_data(token, profile, collector.events, collector.events.__section__.origin) }}
 
 {% if profile.children|length %}
                 ,
 {% for child in profile.children %}
-{{ dump_request_data(child.token, child, child.getcollector('time').events, collector.events.__section__.origin) }}{{ loop.last ? '' : ',' }}
+{{ _self.dump_request_data(child.token, child, child.getcollector('time').events, collector.events.__section__.origin) }}{{ loop.last ? '' : ',' }}
 {% endfor %}
 {% endif %}
             ]
@@ -429,12 +427,11 @@
 {% endblock %}
 
 {% macro dump_request_data(token, profile, events, origin) %}
-{% from _self import dump_events %}
                 {
                     "id": "{{ token }}",
                     "left": {{ "%F"|format(events.__section__.origin - origin) }},
                     "events": [
-{{ dump_events(events) }}
+{{ _self.dump_events(events) }}
                     ]
                 }
 {% endmacro %}

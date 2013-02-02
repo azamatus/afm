@@ -6,7 +6,7 @@ namespace Symfony\Component\Security\Tests\Core\Util
 
     class ClassUtilsTest extends \PHPUnit_Framework_TestCase
     {
-        public static function dataGetClass()
+        static public function dataGetClass()
         {
             return array(
                 array('stdClass', 'stdClass'),

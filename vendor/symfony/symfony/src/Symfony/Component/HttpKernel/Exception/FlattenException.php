@@ -195,7 +195,7 @@ class FlattenException
                 'short_class' => $class,
                 'class'       => isset($entry['class']) ? $entry['class'] : '',
                 'type'        => isset($entry['type']) ? $entry['type'] : '',
-                'function'    => isset($entry['function']) ? $entry['function'] : null,
+                'function'    => $entry['function'],
                 'file'        => isset($entry['file']) ? $entry['file'] : null,
                 'line'        => isset($entry['line']) ? $entry['line'] : null,
                 'args'        => isset($entry['args']) ? $this->flattenArgs($entry['args']) : array(),

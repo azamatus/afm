@@ -13,6 +13,7 @@ namespace Symfony\Component\Validator;
 
 use Symfony\Component\Validator\Mapping\ClassMetadataFactory;
 use Symfony\Component\Validator\Exception\ValidatorException;
+use Symfony\Component\Validator\Mapping\BlackholeMetadataFactory;
 use Symfony\Component\Validator\Mapping\Loader\LoaderChain;
 use Symfony\Component\Validator\Mapping\ClassMetadataFactoryInterface;
 use Symfony\Component\Validator\Mapping\Cache\CacheInterface;
@@ -232,7 +233,7 @@ class ValidatorBuilder implements ValidatorBuilderInterface
         if (null !== $this->metadataFactory) {
             throw new ValidatorException('You cannot set a custom metadata cache after setting a custom metadata factory. Configure your metadata factory instead.');
         }
-
+        
         $this->metadataCache = $cache;
 
         return $this;

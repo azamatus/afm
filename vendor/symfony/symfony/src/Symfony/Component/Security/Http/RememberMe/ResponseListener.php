@@ -11,6 +11,7 @@
 
 namespace Symfony\Component\Security\Http\RememberMe;
 
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 
 /**

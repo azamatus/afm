@@ -110,14 +110,6 @@ class EntityTypeTest extends TypeTestCase
         // be managed!
     }
 
-    /**
-     * @expectedException Symfony\Component\OptionsResolver\Exception\MissingOptionsException
-     */
-    public function testClassOptionIsRequired()
-    {
-        $this->factory->createNamed('name', 'entity');
-    }
-
     public function testSetDataToUninitializedEntityWithNonRequired()
     {
         $entity1 = new SingleIdentEntity(1, 'Foo');
@@ -350,7 +342,7 @@ class EntityTypeTest extends TypeTestCase
         $this->assertSame(array('1', '3'), $field->getClientData());
     }
 
-    public function testSubmitMultipleNonExpandedSingleIdentifierForExistingData()
+    public function testSubmitMultipleNonExpandedSingleIdentifier_existingData()
     {
         $entity1 = new SingleIdentEntity(1, 'Foo');
         $entity2 = new SingleIdentEntity(2, 'Bar');
@@ -407,7 +399,7 @@ class EntityTypeTest extends TypeTestCase
         $this->assertSame(array('0', '2'), $field->getClientData());
     }
 
-    public function testSubmitMultipleNonExpandedCompositeIdentifierExistingData()
+    public function testSubmitMultipleNonExpandedCompositeIdentifier_existingData()
     {
         $entity1 = new CompositeIdentEntity(10, 20, 'Foo');
         $entity2 = new CompositeIdentEntity(30, 40, 'Bar');
@@ -583,7 +575,7 @@ class EntityTypeTest extends TypeTestCase
         $this->assertEquals(array(2 => new ChoiceView($entity2, '2', 'Bar')), $field->createView()->vars['choices']);
     }
 
-    public function testDisallowChoicesThatAreNotIncludedChoicesSingleIdentifier()
+    public function testDisallowChoicesThatAreNotIncluded_choicesSingleIdentifier()
     {
         $entity1 = new SingleIdentEntity(1, 'Foo');
         $entity2 = new SingleIdentEntity(2, 'Bar');
@@ -604,7 +596,7 @@ class EntityTypeTest extends TypeTestCase
         $this->assertNull($field->getData());
     }
 
-    public function testDisallowChoicesThatAreNotIncludedChoicesCompositeIdentifier()
+    public function testDisallowChoicesThatAreNotIncluded_choicesCompositeIdentifier()
     {
         $entity1 = new CompositeIdentEntity(10, 20, 'Foo');
         $entity2 = new CompositeIdentEntity(30, 40, 'Bar');

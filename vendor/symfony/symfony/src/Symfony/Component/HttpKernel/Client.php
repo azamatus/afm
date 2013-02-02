@@ -179,11 +179,6 @@ EOF;
             $headers['Set-Cookie'] = $cookies;
         }
 
-        // this is needed to support StreamedResponse
-        ob_start();
-        $response->sendContent();
-        $content = ob_get_clean();
-
-        return new DomResponse($content, $response->getStatusCode(), $headers);
+        return new DomResponse($response->getContent(), $response->getStatusCode(), $headers);
     }
 }

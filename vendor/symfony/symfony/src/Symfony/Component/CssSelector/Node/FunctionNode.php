@@ -209,6 +209,7 @@ class FunctionNode implements NodeInterface
         $xpath->addCondition(sprintf('contains(string(.), %s)', XPathExpr::xpathLiteral($expr)));
 
         // FIXME: Currently case insensitive matching doesn't seem to be happening
+
         return $xpath;
     }
 
@@ -263,6 +264,7 @@ class FunctionNode implements NodeInterface
 
         if (false === strpos($s, 'n')) {
             // Just a b
+
             return array(0, intval((string) $s));
         }
 

@@ -163,7 +163,7 @@ class RoutingTest extends \PHPUnit_Framework_TestCase
 
     public function getNonStringValues()
     {
-        return array(array(null), array(false), array(true), array(new \stdClass()), array(array('foo', 'bar')), array(array(array())));
+        return array(array(null), array(false), array(true), array(new \stdClass()), array(array('foo', 'bar')));
     }
 
     private function getServiceContainer(RouteCollection $routes)

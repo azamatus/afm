@@ -11,13 +11,13 @@
 
 namespace Symfony\Component\Process\Tests;
 
-use Symfony\Component\Process\Process;
-
 /**
  * @author Robert Schönthal <seroscho@googlemail.com>
  */
 abstract class AbstractProcessTest extends \PHPUnit_Framework_TestCase
 {
+    protected abstract function getProcess($commandline, $cwd = null, array $env = null, $stdin = null, $timeout = 60, array $options = array());
+
     /**
      * @expectedException \InvalidArgumentException
      */
@@ -74,29 +74,6 @@ abstract class AbstractProcessTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame($expected, $p->getOutput());
         $this->assertSame($expected, $p->getErrorOutput());
-    }
-
-    public function chainedCommandsOutputProvider()
-    {
-        return array(
-            array("1\n1\n", ';', '1'),
-            array("2\n2\n", '&&', '2'),
-        );
-    }
-
-    /**
-     *
-     * @dataProvider chainedCommandsOutputProvider
-     */
-    public function testChainedCommandsOutput($expected, $operator, $input)
-    {
-        if (defined('PHP_WINDOWS_VERSION_BUILD')) {
-            $this->markTestSkipped('Does it work on windows ?');
-        }
-
-        $process = $this->getProcess(sprintf('echo %s %s echo %s', $input, $operator, $input));
-        $process->run();
-        $this->assertEquals($expected, $process->getOutput());
     }
 
     public function testCallbackIsExecutedForOutput()
@@ -233,14 +210,11 @@ abstract class AbstractProcessTest extends \PHPUnit_Framework_TestCase
             $this->markTestSkipped('Windows does not support POSIX signals');
         }
 
-        // SIGTERM is only defined if pcntl extension is present
-        $termSignal = defined('SIGTERM') ? SIGTERM : 15;
 
         $process = $this->getProcess('php -r "while (true) {}"');
         $process->start();
         $process->stop();
-
-        $this->assertEquals($termSignal, $process->getTermSignal());
+        $this->assertEquals(SIGTERM, $process->getTermSignal());
     }
 
     public function testPhpDeadlock()
@@ -300,16 +274,4 @@ abstract class AbstractProcessTest extends \PHPUnit_Framework_TestCase
 
         return $defaults;
     }
-
-    /**
-     * @param string  $commandline
-     * @param null    $cwd
-     * @param array   $env
-     * @param null    $stdin
-     * @param integer $timeout
-     * @param array   $options
-     *
-     * @return Process
-     */
-    abstract protected function getProcess($commandline, $cwd = null, array $env = null, $stdin = null, $timeout = 60, array $options = array());
 }

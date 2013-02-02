@@ -25,7 +25,7 @@
         <div class="center">
             <div class="header_line">
                 {% block mainMenu %}
-                    {#{{ knp_menu_render('main',{template : '::main_menu.html.twig'}) }}#}
+                    {{ knp_menu_render('main',{template : '::main_menu.html.twig'}) }}
                 {% endblock %}
                 <div class="search">
                     <form action="" name="forma">
@@ -36,7 +36,7 @@
                 <div>
                     <a class="vhod" href="/">Вход</a>
                 </div>
-                <a href="{{ path('fos_user_registration_register') }}">
+                <a href="/">
                     <div class="button f12">
                         Зарегистрироваться
                     </div>

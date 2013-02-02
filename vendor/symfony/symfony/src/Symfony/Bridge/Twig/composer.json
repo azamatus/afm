@@ -39,5 +39,10 @@
         "psr-0": { "Symfony\\Bridge\\Twig": "" }
     },
     "target-dir": "Symfony/Bridge/Twig",
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.1-dev"
+        }
+    }
 }

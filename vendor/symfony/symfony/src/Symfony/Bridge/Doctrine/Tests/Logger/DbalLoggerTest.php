@@ -11,6 +11,7 @@
 
 namespace Symfony\Bridge\Doctrine\Tests\Logger;
 
+
 class DbalLoggerTest extends \PHPUnit_Framework_TestCase
 {
     /**

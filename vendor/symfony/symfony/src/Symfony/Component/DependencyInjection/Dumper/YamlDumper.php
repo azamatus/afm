@@ -12,6 +12,7 @@
 namespace Symfony\Component\DependencyInjection\Dumper;
 
 use Symfony\Component\Yaml\Dumper as YmlDumper;
+use Symfony\Component\Yaml\Yaml;
 use Symfony\Component\DependencyInjection\Alias;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\Definition;
@@ -184,7 +185,11 @@ class YamlDumper extends Dumper
             return '';
         }
 
-        $parameters = $this->prepareParameters($this->container->getParameterBag()->all(), $this->container->isFrozen());
+        if ($this->container->isFrozen()) {
+            $parameters = $this->prepareParameters($this->container->getParameterBag()->all());
+        } else {
+            $parameters = $this->container->getParameterBag()->all();
+        }
 
         return $this->dumper->dump(array('parameters' => $parameters), 2);
     }
@@ -254,12 +259,12 @@ class YamlDumper extends Dumper
      *
      * @return array
      */
-    private function prepareParameters($parameters, $escape = true)
+    private function prepareParameters($parameters)
     {
         $filtered = array();
         foreach ($parameters as $key => $value) {
             if (is_array($value)) {
-                $value = $this->prepareParameters($value, $escape);
+                $value = $this->prepareParameters($value);
             } elseif ($value instanceof Reference) {
                 $value = '@'.$value;
             }
@@ -267,7 +272,7 @@ class YamlDumper extends Dumper
             $filtered[$key] = $value;
         }
 
-        return $escape ? $this->escape($filtered) : $filtered;
+        return $this->escape($filtered);
     }
 
     /**

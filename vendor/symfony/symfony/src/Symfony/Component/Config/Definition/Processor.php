@@ -89,14 +89,14 @@ class Processor
      *
      * Here is an example.
      *
-     * The configuration in XML:
+     * The configuration is XML:
      *
-     * <twig:extension>twig.extension.foo</twig:extension>
-     * <twig:extension>twig.extension.bar</twig:extension>
+     * <twig:extension id="twig.extension.foo" />
+     * <twig:extension id="twig.extension.bar" />
      *
      * And the same configuration in YAML:
      *
-     * extensions: ['twig.extension.foo', 'twig.extension.bar']
+     * twig.extensions: ['twig.extension.foo', 'twig.extension.bar']
      *
      * @param array  $config A config array
      * @param string $key    The key to normalize

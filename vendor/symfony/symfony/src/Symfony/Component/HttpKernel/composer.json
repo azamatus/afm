@@ -42,5 +42,10 @@
         "psr-0": { "Symfony\\Component\\HttpKernel": "" }
     },
     "target-dir": "Symfony/Component/HttpKernel",
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.1-dev"
+        }
+    }
 }

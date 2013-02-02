@@ -15,8 +15,6 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Config\ConfigCache;
 use Symfony\Component\HttpKernel\Log\LoggerInterface;
 use Symfony\Component\Routing\Generator\ConfigurableRequirementsInterface;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Component\Routing\Matcher\UrlMatcherInterface;
 
 /**
  * The Router class is an example of the integration of all pieces of the
@@ -152,12 +150,8 @@ class Router implements RouterInterface
     {
         $this->context = $context;
 
-        if (null !== $this->matcher) {
-            $this->getMatcher()->setContext($context);
-        }
-        if (null !== $this->generator) {
-            $this->getGenerator()->setContext($context);
-        }
+        $this->getMatcher()->setContext($context);
+        $this->getGenerator()->setContext($context);
     }
 
     /**

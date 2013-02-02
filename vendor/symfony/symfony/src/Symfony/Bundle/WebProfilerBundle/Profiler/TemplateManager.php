@@ -33,7 +33,7 @@ class TemplateManager
      * Constructor.
      *
      * @param Profiler          $profiler
-     * @param EngineInterface   $templating
+     * @param TwigEngine        $templating
      * @param \Twig_Environment $twig
      * @param array             $templates
      */

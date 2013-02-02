@@ -157,7 +157,7 @@ class Command
      * @param InputInterface  $input  An InputInterface instance
      * @param OutputInterface $output An OutputInterface instance
      *
-     * @return null|integer null or 0 if everything went fine, or an error code
+     * @return integer 0 if everything went fine, or an error code
      *
      * @throws \LogicException When this abstract method is not implemented
      * @see    setCode()
@@ -233,12 +233,10 @@ class Command
         $input->validate();
 
         if ($this->code) {
-            $statusCode = call_user_func($this->code, $input, $output);
-        } else {
-            $statusCode = $this->execute($input, $output);
+            return call_user_func($this->code, $input, $output);
         }
 
-        return is_numeric($statusCode) ? $statusCode : 0;
+        return $this->execute($input, $output);
     }
 
     /**

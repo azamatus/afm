@@ -15,14 +15,20 @@ use Symfony\Component\Process\Process;
 
 class SimpleProcessTest extends AbstractProcessTest
 {
-    private $enabledSigchild = false;
 
-    public function setUp()
+    protected function skipIfPHPSigchild()
     {
         ob_start();
         phpinfo(INFO_GENERAL);
 
-        $this->enabledSigchild = false !== strpos(ob_get_clean(), '--enable-sigchild');
+        if (false !== strpos(ob_get_clean(), '--enable-sigchild')) {
+            $this->markTestSkipped('Your PHP has been compiled with --enable-sigchild, this test can not be executed');
+        }
+    }
+
+    protected function getProcess($commandline, $cwd = null, array $env = null, $stdin = null, $timeout = 60, array $options = array())
+    {
+        return new Process($commandline, $cwd, $env, $stdin, $timeout, $options);
     }
 
     public function testGetExitCode()
@@ -77,20 +83,5 @@ class SimpleProcessTest extends AbstractProcessTest
     {
         $this->skipIfPHPSigchild();
         parent::testIsNotSuccessful();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function getProcess($commandline, $cwd = null, array $env = null, $stdin = null, $timeout = 60, array $options = array())
-    {
-        return new Process($commandline, $cwd, $env, $stdin, $timeout, $options);
-    }
-
-    private function skipIfPHPSigchild()
-    {
-        if ($this->enabledSigchild) {
-            $this->markTestSkipped('Your PHP has been compiled with --enable-sigchild, this test can not be executed');
-        }
     }
 }

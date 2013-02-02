@@ -84,8 +84,6 @@ EOF
 
         if (!$matches) {
             $output->writeln('<fg=red>None of the routes matches</>');
-
-            return 1;
         }
     }
 }

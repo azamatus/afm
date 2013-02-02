@@ -11,6 +11,7 @@
 
 namespace Symfony\Component\HttpKernel\DataCollector;
 
+use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\HeaderBag;
 use Symfony\Component\HttpFoundation\Request;
@@ -50,7 +51,14 @@ class RequestDataCollector extends DataCollector implements EventSubscriberInter
 
         $attributes = array();
         foreach ($request->attributes->all() as $key => $value) {
-            $attributes[$key] = $this->varToString($value);
+            if (is_object($value)) {
+                $attributes[$key] = sprintf('Object(%s)', get_class($value));
+                if (is_callable(array($value, '__toString'))) {
+                    $attributes[$key] .= sprintf(' = %s', (string) $value);
+                }
+            } else {
+                $attributes[$key] = $value;
+            }
         }
 
         $content = null;

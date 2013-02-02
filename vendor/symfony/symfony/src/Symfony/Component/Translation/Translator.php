@@ -73,8 +73,6 @@ class Translator implements TranslatorInterface
     public function addResource($format, $resource, $locale, $domain = 'messages')
     {
         $this->resources[$locale][] = array($format, $resource, $domain);
-
-        unset($this->catalogues[$locale]);
     }
 
     /**

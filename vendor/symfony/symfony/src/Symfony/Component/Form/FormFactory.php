@@ -11,7 +11,10 @@
 
 namespace Symfony\Component\Form;
 
+use Symfony\Component\Form\Exception\FormException;
 use Symfony\Component\Form\Exception\UnexpectedTypeException;
+use Symfony\Component\Form\Exception\TypeDefinitionException;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class FormFactory implements FormFactoryInterface
 {
@@ -92,10 +95,7 @@ class FormFactory implements FormFactoryInterface
      */
     public function createBuilderForProperty($class, $property, $data = null, array $options = array(), FormBuilderInterface $parent = null)
     {
-        if (null === $guesser = $this->registry->getTypeGuesser()) {
-            return $this->createNamedBuilder($property, 'text', $data, $options, $parent);
-        }
-
+        $guesser = $this->registry->getTypeGuesser();
         $typeGuess = $guesser->guessType($class, $property);
         $maxLengthGuess = $guesser->guessMaxLength($class, $property);
         // Keep $minLengthGuess for BC until Symfony 2.3
