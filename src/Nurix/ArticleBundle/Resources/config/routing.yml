@@ -1,7 +1,9 @@
 article_all_news:
     pattern:  /news/{type}
-    defaults: { _controller: ArticleBundle:News:allNews,type:'all'}
+    defaults: { _controller: ArticleBundle:Article:list, type: 'local' }
 
 article_show_article:
-    pattern:  /show/{id}
-    defaults: { _controller: ArticleBundle:News:showArticle}
+    pattern:  /news/show/{id}
+    defaults: { _controller: ArticleBundle:Article:show }
+    requirements:
+        id: \d+

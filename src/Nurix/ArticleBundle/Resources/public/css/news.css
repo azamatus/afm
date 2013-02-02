@@ -1,9 +1,7 @@
 /* Новости*/
 .news_item{
     width: 690px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 20px;
+    margin: 0 10px 50px 10px;
     overflow: auto;
 }
 .news_image{
@@ -13,31 +11,35 @@
 .news_content{
     overflow: auto;
 }
-.news_title{
-
-    font-family: Arial;
+.news_title a, .article-title{
     font-size: 30pt;
     font-style: italic;
     color: #666666;
     margin-bottom: 10px;
 }
+.news_title a:hover{
+    color: #ca5f00;
+}
 .news_short_description{
-    font-family: Arial;
     font-style: normal;
     font-size: 12pt;
     color: #666666;
-    margin-bottom: 20px;
+    margin: 20px 0;
 	word-wrap: break-word;
 
 }
-.news_date{
-    font-family: Arial;
-    font-size: 11pt;
+.news_bottom_lbl{
     color: #999999;
     margin-right: 30px;
+    padding-left: 16px;
+    background: url('../img/news/spr_news.png') no-repeat 0 0;
 }
-.news_comment{
-    margin-right: 30px;
+.btm_date{
+    background: none;
+    padding: 0;
+}
+.btm_viewed{
+    background-position: 0 -14px;
 }
 /* End: Новости*/
 
@@ -61,3 +63,5 @@
     padding-top: 50px;
 }
 /* End: Интересное меню*/
+
+/* страница новости */
