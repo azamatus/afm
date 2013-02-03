@@ -402,3 +402,23 @@ ul.otherLinks li a
 {
     display: block;
 }
+
+.button_buy
+{
+    background: url("../img/btn-buy.png") repeat-x 0 0;
+    border: 1px solid #BDBDBD;
+    border-radius: 4px 4px 4px 4px;
+    color: #999 !important;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0 1px 1px #B7B7B7;
+}
+.button_buy:hover
+{
+    border: 1px solid #fdad01;
+    color: #000 !important;
+    background: url("../img/btn-buy-hover.png") repeat-x 0 0;
+}
