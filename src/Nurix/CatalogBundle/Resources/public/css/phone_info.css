@@ -1,0 +1,120 @@
+.product
+{
+    margin-top: 70px;
+    margin-left: 30px;
+    color: #999;
+}
+
+.product_image
+{
+    float:left;
+    margin-right: 10px;
+}
+.product_name
+{
+    color: #000;
+    font-weight: bold;
+    font-size: 24px;
+}
+.product_base_info
+{
+    float: left;
+}
+.charType
+{
+    width: 128px;
+}
+.charValue
+{
+    width: 79px;
+}
+.chars tr td
+{
+    padding-top: 10px;
+}
+.chars
+{
+    margin-top: 8px;
+
+ }
+.product_box
+{
+    margin-left: 25px;
+    width: 210px;
+    height: 138px;
+    float: left;
+    border: 1px solid #999999;
+    border-radius: 5px;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    -o-border-radius:5px;
+
+}
+.product_price
+{
+    padding-top: 20px;
+    color: #000000;
+    font-size: 30px;
+    font-weight: bold;
+    padding-left: 60px;
+}
+.product_price_som
+{
+    font-size: 18px;
+    padding-left: 60px;
+}
+.product_amount
+{
+    margin-top: 9px;
+    padding-left: 60px;
+}
+.product_amount .word_col
+{
+    margin-top: 9px;
+}
+.product_amount .box
+{
+    float: left;
+    height: 28px;
+    width: 34px;
+    color: #999;
+    border: 1px solid #999999;
+    border-radius: 5px;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    -o-border-radius:5px;
+    margin-left: 7px;
+    text-align:  center;
+}
+.product_amount .box:focus
+{
+    outline: none;
+}
+.product_amount .amount
+{
+    padding-top: 1px;
+    padding-left: 12px;
+}
+.product_amount .znak
+{
+   cursor: pointer;
+ text-align: center;
+}
+.product_amount .addrem
+{
+    float: left;
+    padding-left: 5px;
+}
+.product_hr
+{
+    padding-bottom: 1px;
+    width: 450px;
+    background-color: #ebebef;
+    border: none;
+    margin-top: 12px;
+    margin-bottom: 10px;
+}
+.product_description
+{
+    width: 450px;
+}
