@@ -19,6 +19,6 @@ class ProductController extends Controller
             ->findBy(array("goodId"=>$id));
 
         return $this->render('CatalogBundle:Content:product_info.html.twig', array('product' => $entity, 'char'=>$char));
-
     }
+
 }

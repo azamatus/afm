@@ -1,0 +1,18 @@
+{% block stylesheets %}
+    <link href="{{ asset('bundles/catalog/css/rcarousel_catalog.css') }} " type="text/css" rel="stylesheet"/>
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset("bundles/catalog/js/slider_catalog.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("bundles/nurix/js/jquery.ui.core.min.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("bundles/nurix/js/jquery.ui.widget.min.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("bundles/nurix/js/jquery.ui.rcarousel.min.js") }}"></script>
+{% endblock %}
+<div>
+    <div id="carousel_catalog">
+        {% for product in products %}
+            {% include  "CatalogBundle:Content:item.html.twig" with {'product':product} %}
+        {% endfor %}
+    </div>
+    <a href="#" id="slider-carousel-next"></a>
+    <a href="#" id="slider-carousel-prev"></a>
+</div>
