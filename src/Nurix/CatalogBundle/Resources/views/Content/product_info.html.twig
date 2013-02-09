@@ -116,7 +116,7 @@
         <div>
             <div>
                 <div id="carousel_catalog">
-                    {% for product in products %}
+                    {% for product in product %}
                         {% include  "CatalogBundle:Content:item.html.twig" with {'product':product}%}
                     {% endfor %}
                 </div>
