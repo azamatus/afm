@@ -2,5 +2,6 @@
 vendor/
 app/cache/*
 app/logs/*
+app/bootstrap.php.cache
 web/bundles/
 app/config/parameters.yml
