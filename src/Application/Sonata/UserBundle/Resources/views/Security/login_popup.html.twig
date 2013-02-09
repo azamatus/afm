@@ -1,0 +1,21 @@
+{% block fos_user_content %}
+    <form action="{{ path("fos_user_security_check") }}" method="post">
+
+        <input type="hidden" name="_csrf_token" value="{% render('ApplicationSonataUserBundle:Security:getToken') %}"/>
+        <div class="reg_login_username">
+            <label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
+            <input type="text" id="username" name="_username" required="required"/>
+        </div>
+        <div class="reg_login_password">
+            <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+            <input type="password" id="password" name="_password" required="required"/>
+        </div>
+        <div class="reg_login_remember">
+            <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
+            <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+        </div>
+
+        <input type="submit" id="_submit" name="_submit" class="button_buy"
+               value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
+    </form>
+{% endblock fos_user_content %}
