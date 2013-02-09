@@ -3,8 +3,9 @@ namespace Nurix\NurixBundle\Menu;
 
 use Knp\Menu\FactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\DependencyInjection\ContainerAware;
 
-class MenuBuilder
+class MenuBuilder extends ContainerAware
 {
     private $factory;
 
@@ -30,29 +31,6 @@ class MenuBuilder
         $menu->addChild('contacts', array('route' => 'nurix_default', 'routeParameters' => array('name' => 'Nurlan'),'label'=>'Контакты'));
         $menu->addChild('sitemap', array('route' => 'nurix_default', 'routeParameters' => array('name' => 'Nurlan'),'label'=>'Карта сайта'));
         $menu->setChildrenAttribute('class','main_menu');
-        return $menu;
-    }
-
-    /**
-     * создает боковое меню каталога
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @return mixed
-     */
-
-    public function createCatalogSideMenu(Request $request)
-    {
-
-        $menu = $this->factory->createItem('catalog_sidebar');
-        $menu->setChildrenAttribute('class','side_menu');
-        $menu->addChild('Catalog', array('route' => 'nurix_default', 'routeParameters' => array('name' => 'Nurlan'),'label'=>'Каталог'))
-            ->setAttribute('class','catalog_menu')
-            ->setLinkAttribute('class','f20');
-        $menu->addChild('audio', array('route' => 'nurix_default', 'routeParameters' => array('name' => 'Nurlan'),'label'=>'Аудиотехника'));
-        $menu->addChild('video', array('route' => 'nurix_homepage','label'=>'Видеотехника'));
-        $menu->addChild('comp', array('route' => 'nurix_default', 'routeParameters' => array('name' => 'Nurlan'),'label'=>'Компьютеры'))
-            ->addChild('comp_1', array('route' => 'nurix_default', 'routeParameters' => array('name' => 'Nurlan'),'label'=>'Комплектующие'));
-        $menu->addChild('mobile', array('route' => 'nurix_default', 'routeParameters' => array('name' => 'Nurlan'),'label'=>'Сотовые телефоны'));
-
         return $menu;
     }
 

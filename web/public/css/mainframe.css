@@ -353,7 +353,8 @@ div.search
 }
 
 .side_menu li.current_ancestor ul,
-.side_menu li.current ul
+.side_menu li.current ul,
+.side_menu li ul
 {
     display: block;
 }
@@ -365,6 +366,7 @@ div.search
 {
     display: none;
 }
+
 footer
 {
 	margin-top: 60px;
