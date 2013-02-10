@@ -10,7 +10,7 @@
     {% block javascripts %}
         <script type="text/javascript" src="{{ asset("public/js/facebook.js") }}"></script>
         <script type="text/javascript" src="{{ asset("public/js/jquery-1.9.0.min.js") }}"></script>
-        <script type="text/javascript"  src="{{  asset("public/js/html5placeholder.jquery.js")}}"></script>
+        <script type="text/javascript" src="{{ asset("public/js/html5placeholder.jquery.js") }}"></script>
         <script type="text/javascript"
                 src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/en_US"></script>
         <script type="text/javascript">FB.init("");</script>
@@ -37,9 +37,9 @@
                     <a class="vhod" href="/">Вход</a>
                 </div>
                 <div>
-                        <a href="/" class="button f12">
+                    <a href="/" class="button f12">
                         Зарегистрироваться
-                        </a>
+                    </a>
                 </div>
 
             </div>
@@ -47,37 +47,38 @@
                 <div id="logo">
                     <a href="{{ path("nurix_homepage") }}"><img src="{{ asset('public/img/logo.png') }}" alt="header"/></a>
                 </div>
-            <div id="contacts">
-                <span class="gray_color f14">+996</span>
-                <span class="f18">555</span>
-                <span class="f24">414</span>
-                <span class="f24">125</span><br>
-                <span class="gray_color f14">+996</span>
-                <span class="f18">707</span>
-                <span class="f24">414</span>
-                <span class="f24">125</span>
+                <div id="contacts">
+                    <span class="gray_color f14">+996</span>
+                    <span class="f18">555</span>
+                    <span class="f24">414</span>
+                    <span class="f24">125</span><br>
+                    <span class="gray_color f14">+996</span>
+                    <span class="f18">707</span>
+                    <span class="f24">414</span>
+                    <span class="f24">125</span>
+                </div>
+                <div align="left" id="times">
+                    <span class="gray_color">Время работы:</span><br>
+                    <span class="gray_color">c</span>
+                    <span class="gray_color f20">9:00</span>
+                    <span class="gray_color">до</span>
+                    <span class="gray_color f20">18:00</span><br>
+                    <img class="otstup" src="{{ asset('public/img/days.png') }}" alt="header"/>
+                </div>
+                <div class="korzina" align="left">
+                    <div class="brown_color">
+                        <img src="{{ asset('public/img/korzinka.png') }}" alt="header">Ваша корзина:<br></div>
+                    <div class="otstup">5 товаров</div>
+                    <div class="otstup">на сумму 45000 сомов</div>
+                </div>
             </div>
-            <div align="left" id="times">
-                <span class="gray_color">Время работы:</span><br>
-                <span class="gray_color">c</span>
-                <span class="gray_color f20">9:00</span>
-                <span class="gray_color">до</span>
-                <span class="gray_color f20">18:00</span><br>
-                <img class="otstup" src="{{ asset('public/img/days.png') }}" alt="header"/>
-            </div>
-            <div class="korzina" align="left">
-                <div class="brown_color">
-                    <img src="{{ asset('public/img/korzinka.png') }}" alt="header">Ваша корзина:<br></div>
-                <div class="otstup">5 товаров</div>
-                <div class="otstup">на сумму 45000 сомов</div>
-            </div>
- </div>
-            <div class="clearbox"></div
+            <hr class="main_hr">
         </div>
         {% block slider %}
         {% endblock %}
     </header>
-    <hr class="main_hr">
+
+
     <div class="clearbox"></div>
     <div class="middle center">
         <div class="leftColumn">
@@ -135,10 +136,10 @@
                             <a href="">подробнее о магазине...</a>
                         </div>
 
-                    <div class="f12 white_color">
-                        © Nurix.kg, 2011 - {{ "now"|date("Y") }}
-                    </div>
+                        <div class="f12 white_color">
+                            © Nurix.kg, 2011 - {{ "now"|date("Y") }}
                         </div>
+                    </div>
 
 
                     <div class="footerColumn">

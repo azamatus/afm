@@ -11,7 +11,7 @@ jQuery(function($)
         {
             visible: 3,
             step: 3,
-            speed: 2000,
+            speed: 500,
             navigation: {
                 prev: "#slider-carousel-prev",
                 next: "#slider-carousel-next"

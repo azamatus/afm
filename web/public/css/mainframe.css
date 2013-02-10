@@ -112,7 +112,7 @@ hr
 }
 .content
 {
-    padding-left: 15px;
+    padding-left: 30px;
     overflow: hidden;
 }
 .feedbacks
@@ -413,7 +413,9 @@ table
 .main_hr
 {
     padding-bottom: 1px;
-    width: 930px;
+    width: 895px;
     background-color: #ebebef;
     border: none;
+    margin-right: 40px;
+    margin-bottom: 30px;
 }
