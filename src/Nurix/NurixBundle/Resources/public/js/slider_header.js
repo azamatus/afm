@@ -4,10 +4,10 @@ jQuery(function($)
         {
             visible: 1,
             step: 1,
-            speed: 2000,
+            speed: 500,
             auto:
             {
-                enabled: true,
+                enabled: false,
                 interval: 2000
             },
             width: 700,
@@ -59,7 +59,7 @@ jQuery(function($)
             .addClass( "on" )
             .addClass("bullet2");
             //.css("background-image", "url('page-on.png')" );
-    };
+    }
 
 
 

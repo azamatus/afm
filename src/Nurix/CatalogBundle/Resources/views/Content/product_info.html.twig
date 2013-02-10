@@ -2,14 +2,27 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript" src="{{ asset("bundles/catalog/js/addRem.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("bundles/catalog/js/product_slider.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("bundles/catalog/js/tabs.js") }}"></script>
 {% endblock %}
 {% block stylesheets %}
     {{ parent() }}
     <link href="{{ asset('bundles/catalog/css/phone_info.css') }} " type="text/css" rel="stylesheet"/>
+    <link href="{{ asset('bundles/catalog/css/product_slider.css') }} " type="text/css" rel="stylesheet"/>
+    <link href="{{ asset("bundles/catalog/css/tabs.css") }}" type="text/css" media="screen" rel="stylesheet"/>
 {% endblock %}
 {% block body %}
     <div class="product">
-        <div class="product_image"><img src="{{ asset('public/img/phones/'~product.imagePath) }}" alt="Catalog"></div>
+        <div class="slide_center">
+            <div id="my-folio-of-works" class="svwp">
+                <ul>
+                    <li><img src="{{ asset("public/img/phones/Htc_Incredible_S_1.png") }}" alt="catalog"/></li>
+                    <li><img src="{{ asset("public/img/phones/Htc_Incredible_S_2.png") }}" alt="catalog"/></li>
+                    <li><img src="{{ asset("public/img/phones/Htc_Incredible_S_3.png") }}" alt="catalog"/></li>
+                </ul>
+            </div>
+        </div>
+
         <div class="float_left">
             <div class="product_name">{{ product.name }}</div>
             <div class="product_base_info">
@@ -35,19 +48,85 @@
                 </div>
             </div>
             <div class="clearbox"></div>
-            <hr class="product_hr">
 
-                <div>
-                    Описание:
-                </div>
-                <div class="product_description">
-                    {{ product.fullDesctiption }}
-                </div>
+            <hr class="product_hr1">
 
 
-
+            <div>
+                Описание:
+            </div>
+            <div class="product_description">
+                {{ product.fullDesctiption }}
+            </div>
         </div>
+        <div class="clearbox"></div>
+        <hr class="product_hr2">
+        <div id="tabs_container">
+            <div>
+                <ul class="menu">
+                    <li id="characteristic" class="active">Характеристики</li>
+                    <li id="review">Обзор</li>
+                    <li id="pfeedbacks">Отзывы</li>
+                    <li id="video">Видео</li>
+                </ul>
+                <span class="clear"></span>
 
-
+                <div class="tabs_content characteristic">
+                    <h1>Latest News</h1>
+                    <ul>
+                        <li>Boobles: First theme on Themeforest released!</li>
+                        <li> Cokidoo becomes official</li>
+                        <li> plusmusica.com private beta invitations</li>
+                        <li> yensdesign.com 2.0 launched!</li>
+                        <ul>
+                </div>
+                <div class="tabs_content review">
+                    <h1>Latest Tutorials</h1>
+                    <ul>
+                        <li> Top 10 free fonts for professional design</li>
+                        <li> Create an amazing music player using mouse gestures & hotkeys</li>
+                        <li> Boobles: First theme on Themeforest released!</li>
+                        <li> Creating AJAX websites based on anchor navigation</li>
+                        <li> Fast Tip: Create your personal blog to promote your self</li>
+                        <li>How to make a brilliant mysql forum database from scratch</li>
+                        <ul>
+                </div>
+                <div class="tabs_content pfeedbacks">
+                    <h1>You may visit</h1>
+                    <ul>
+                        <li><a href="http://www.plusmusica.com">www.plusmusica.com</a> - Online jukebox!</li>
+                        <li><a href="http://www.cokidoo.com">www.cokidoo.com</a> - Awesome startup! :)</li>
+                        <li><a href="http://www.cokidoo.com">www.pixelartgames.com</a> - Do you want pixel art games? ;)
+                        </li>
+                        <li><a href="http://www.dmsconsulting.es">www.dmsconsulting.es</a> - Great guys</li>
+                        <ul>
+                </div>
+                <div class="tabs_content video">
+                    <h1>Video</h1>
+                    <ul>
+                        <li>Home Video</li>
+                        <ul>
+                </div>
+            </div>
+        </div>
+        <hr class="product_hr2">
+        <div class="product_same">
+            {% render "CatalogBundle:Product:getSame" %}
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(window).bind("load", function () {
+            $("div#my-folio-of-works").slideViewerPro({
+                thumbs:3,
+                autoslide:false,
+                galBorderWidth:0,
+                thumbsBorderOpacity:0,
+                buttonsWidth:0,
+                thumbsActiveBorderOpacity:0.8,
+                thumbsActiveBorderColor:"none",
+                thumbsPercentReduction:30
+            });
+        });
+    </script>
     </div>
 {% endblock %}

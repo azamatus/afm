@@ -19,6 +19,15 @@ class ProductController extends Controller
             ->findBy(array("goodId"=>$id));
 
         return $this->render('CatalogBundle:Content:product_info.html.twig', array('product' => $entity, 'char'=>$char));
-
     }
+    public function getSameAction()
+    {
+        $same = $this ->getDoctrine()
+            ->getRepository('CatalogBundle:Goods')
+            ->findAll();
+
+        return $this->render('CatalogBundle:Content:showCatalogSlider.html.twig', array('products' => $same,'title' => "Похожие позиции"));
+    }
+
+
 }

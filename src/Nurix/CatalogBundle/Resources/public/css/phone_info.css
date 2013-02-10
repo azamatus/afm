@@ -1,7 +1,6 @@
 .product
 {
-    margin-top: 70px;
-    margin-left: 30px;
+    margin-top: 50px;
     color: #999;
 }
 
@@ -105,7 +104,7 @@
     float: left;
     padding-left: 5px;
 }
-.product_hr
+.product_hr1
 {
     padding-bottom: 1px;
     width: 450px;
@@ -114,7 +113,22 @@
     margin-top: 12px;
     margin-bottom: 10px;
 }
+.product_hr2
+{
+    padding-bottom: 1px;
+    width: 690px;
+    background-color: #ebebef;
+    border: none;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
 .product_description
 {
     width: 450px;
+    word-wrap: break-word;
+}
+.product_same
+{
+    color: #000;
+
 }
