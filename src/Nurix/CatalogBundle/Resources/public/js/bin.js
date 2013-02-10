@@ -1,18 +1,16 @@
-$(function(){
-    $('.button_buy').click(function(){
-        alert($(this).getAttribute("product"));
+$(function () {
+    $('.button_buy').click(function () {
+        var product_id = $(this).attr("product");
+        var path = $(this).children("a:first").attr("href");
         $.ajax({
-                url : "path.php",
-                data: { id: product_id },
-                success: function( data)
-                {
-                    if(data.error){
-                        alert('ERROR');
-                    }
-                    else{
-                        alert(data.title + 'was added!!!');
-                    }
-                }
-            });
+            url:path,
+            data:{ id:product_id },
+            error:function (data) {
+                alert('ERROR1');
+            },
+            success:function (data) {
+                alert(data.title + ' was added!!!');
+            }
+        });
     });
 });

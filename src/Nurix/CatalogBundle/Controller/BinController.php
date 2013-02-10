@@ -11,7 +11,7 @@ class BinController extends Controller
 {
     public function binAction()
     {
-
+        return $this->render('CatalogBundle:Content:itemInBin.html.twig', array());
     }
 
     public function addAjaxBinAction($id)
@@ -22,22 +22,29 @@ class BinController extends Controller
                 ->getRepository("CatalogBundle:Goods")
                 ->find($id);
 
-            $request = $this->get('request');
+            $request = $this->getRequest();
 
-            $cookieGoods = $request->cookies->get('cookieGoods');
+
            if ($product){
-                $products = array_merge($cookieGoods,array($product));
-                $cookie = new Cookie('cookieGoods',$products , time() + 3600);
-                $response = new Response();
-                $response->headers->setCookie($cookie);
+               $goods=$request->cookies->get("cookieGoods");
+               if (!$goods[$id]||empty($goods[$id]))
+                   $goods[$id] = 0;
+               $goods[$id]++;
+               $response = new Response(json_encode(array(
+                   'error' => false,
+                   'title' => $product->getName()
+               )));
 
-                return JsonResponse::create(array('title'=>$products[0]->getName()));
+               $cookie = new Cookie("cookieGoods[$id]",$goods[$id], time() + 3600);
+               $response->headers->setCookie($cookie);
+               $response->headers->set('Content-Type', 'application/json');
+               return $response;
             }
             else{
 
                 return JsonResponse::create(array('error'=>true, 'message'=>'Что то не то'));
             }
         }
-        return new \Symfony\Component\HttpFoundation\Response();
+        return new Response();
     }
 }

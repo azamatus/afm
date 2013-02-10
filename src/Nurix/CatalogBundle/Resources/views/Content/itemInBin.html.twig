@@ -1,0 +1,114 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/catalog/css/bin.css') }} " type="text/css" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+    {#<div class="bin_oneItem">#}
+
+    {#<div class="bin_itemPic">#}
+    {#picture#}
+    {#</div>#}
+
+    {#<div class="bin_aboutItem">#}
+
+    {#<a id="name" class="size16px black txt_weight" href="/">Product</a>#}
+    {#<div class="gray">smartphone</div>#}
+    {#<a href="" class="orange">подробная информация <img src="{{ asset('bundles/catalog/phones/strelka.png') }}"></a>#}
+
+    {#</div>#}
+
+    {#<div class="bin_itemPrice">#}
+    {#<div class="size16px">123 000 сом</div>#}
+    {#<div class="gray">$ 340</div>#}
+    {#</div>#}
+
+    {#<div class="bin_itemCount">#}
+    {#<span class="itemCounter itemAdd">&nbsp;</span>#}
+    {#<input class="itemVvod" type="text" placeholder="1"/>#}
+    {#<span class="itemCounter itemSub">&nbsp;</span>#}
+    {#</div>#}
+    {#</div>#}
+
+    <div>
+        <h1>Корзина:</h1>
+
+        {#{% if products %}#}
+        <table class="bin-table">
+            <tr>
+                <th>Товар:</th>
+                <th>Цена:</th>
+                <th>Кол-во:</th>
+                <th>Итого:</th>
+            </tr>
+            {#{% for product in products %}#}
+            <tr>
+                <td>
+                    <div class="bin_itemPic">
+                        <img src="" alt="foto"/>
+                    </div>
+
+                    <div class="bin_aboutItem">
+                        <a class="name" href="/">HTC Evo 3D</a>
+
+                        <div class="from">smartphone from Sony</div>
+                        <a href="" style="color: #ca5f00;">подробная информация &rarr;</a>
+                    </div>
+                </td>
+                <td>
+                    <div class="bin_itemPrice">
+                        <span class="Som">
+                            12 000 сом
+                        </span>
+                        <span class="Dollar">
+                            $ 350
+                        </span>
+                    </div>
+                </td>
+                <td>
+                    <div class="bin_itemCount">
+                        <span class="itemCounter itemAdd">&nbsp;</span>
+                        <input class="itemVvod" type="text" value=""/>
+                        <span class="itemCounter itemSub">&nbsp;</span>
+                    </div>
+                </td>
+                <td>
+                    <div class="bin_itemPrice">
+                        <span class="Som">
+                            24 000 сом
+                        </span>
+                        <span class="Dollar">
+                            $ 700
+                        </span>
+                        <span class="bin-remove">&nbsp;</span>
+                    </div>
+                </td>
+            </tr>
+            {#{% endfor %}#}
+            <tr>
+                <td><span class="itog">Итого:</span></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <div class="bin_itemPrice">
+                        <span class="Som">
+                            24 000 сом
+                        </span>
+                        <span class="Dollar">
+                            $ 700
+                        </span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+
+            </tr>
+        </table>
+        {#{% else %}#}
+        {#<h3>Корзина пуста</h3>#}
+        {#{% endif %}#}
+    </div>
+
+{% endblock body %}

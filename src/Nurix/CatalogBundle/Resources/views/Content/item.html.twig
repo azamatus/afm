@@ -9,7 +9,11 @@
         <div>
             <div class="gray float_left margin_top10px">Цена:</div>
             <div class="size16px price float_left">{{ product.price }}</div>
-            <a href="/"><div class="button_buy">Купить</div></a>
+            <div class="button_buy" product="{{ product.id }}">
+                <a href="{{ path('nurix_bin_ajax_add_item',{'id':product.id}) }}" onclick="return false;">
+                    Купить
+                </a>
+            </div>
         </div>
     </div>
 </div>

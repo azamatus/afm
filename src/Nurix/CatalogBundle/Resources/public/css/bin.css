@@ -1,0 +1,128 @@
+.bin_oneItem {
+    width: 690px;
+    height: 130px;
+    border-style: solid;
+    margin-top: 10px;
+}
+
+.bin_itemPic {
+    border-style: ridge;
+    float: left;
+    height: 110px;
+    width: 110px;
+}
+
+.bin_aboutItem {
+    float: left;
+    margin-left: 10px;
+    margin-top: 25px;
+}
+
+.bin_aboutItem .name {
+    font-size: 16px;
+    text-decoration: none;
+    border-bottom: 1px dashed;
+}
+
+.bin_aboutItem .from {
+    color: #666666;
+    margin: 10px 0 13px 0;
+}
+
+.bin_aboutItem .name:hover {
+    border-bottom: 1px solid;
+}
+
+.bin_itemPrice{
+    position: relative;
+    margin-top: 25px;
+}
+
+.bin-remove {
+    background: url("../img/remove-icon.png") no-repeat scroll 0 0 transparent;
+    cursor: pointer;
+    height: 5px;
+    position: absolute;
+    right: 0;
+    top: 8px;
+    width: 5px;
+}
+
+.bin_itemPrice .Som{
+    font-size: 16px;
+    display: block;
+}
+
+.bin_itemPrice .Dollar{
+    color: #666666;
+    margin-top: 10px;
+    display: block;
+}
+
+.bin_itemCount{
+    margin-top: 25px;
+}
+
+.itemCounter {
+    background: url('../img/plus-minus.png') no-repeat;
+    display: block;
+}
+
+.itemAdd {
+    background-position: 0 -2px;
+    float: left;
+    height: 23px;
+    width: 23px;
+    cursor: pointer;
+}
+
+.itemVvod {
+    border: 1px solid #CFCFCF;
+    border-radius: 5px 5px 5px 5px;
+    float: left;
+    height: 22px;
+    padding: 2px 3px;
+    text-align: center;
+    width: 32px;
+    margin: -3px 4px;
+}
+
+.itemSub {
+    background-position: 0 -28px;
+    float: left;
+    height: 23px;
+    width: 23px;
+    cursor: pointer ;
+}
+
+table.bin-table tr th {
+    color: #999999;
+    text-align: left;
+    padding-bottom: 5px;
+}
+
+table.bin-table{
+    border-collapse: collapse;
+}
+table.bin-table tr{
+    border-bottom: 1px solid #e7e7e7;
+}
+
+table.bin-table tr td, table.bin-table tr th {
+    vertical-align: top;
+    width: 120px;
+}
+
+table.bin-table tr td:first-child, table.bin-table tr th:first-child {
+    width: 320px;
+}
+
+table.bin-table tr td:last-child, table.bin-table tr th:last-child {
+    width: 130px;
+}
+.itog{
+    color: #666666;
+}
+.bin-itog .itog{
+    float: left;
+}

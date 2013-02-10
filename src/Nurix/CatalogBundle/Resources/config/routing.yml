@@ -13,3 +13,11 @@ nurix_goods_get_provider:
 nurix_goods_get_item:
     pattern: /catalog/provider/good/{gid}
     defaults: { _controller: CatalogBundle:Catalog:getItem }
+
+nurix_bin_ajax_add_item:
+    pattern: /bin/add/ajax/{id}
+    defaults: { _controller: CatalogBundle:Bin:addAjaxBin }
+
+nurix_bin_item:
+    pattern: /bin
+    defaults: { _controller: CatalogBundle:Bin:bin }
