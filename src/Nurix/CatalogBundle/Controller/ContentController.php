@@ -44,16 +44,7 @@ class ContentController extends Controller
     }
 
 
-    public function getCatalogByProviderAction($pid){
-        $provider = $this->getDoctrine()
-            ->getRepository('CatalogBundle:Goods')
-            ->findByProviderid($pid);
-
-        return $this->render('CatalogBundle:Content:getcatalog.html.twig',array('catalog'=>$provider));
-    }
-
-
-    public  function  getItemAction($gid){
+        public  function  getItemAction($gid){
         $item = $this->getDoctrine()
             ->getRepository('CatalogBundle:Goods')
             ->find($gid);

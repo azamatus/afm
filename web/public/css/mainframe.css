@@ -3,6 +3,10 @@
     font-family: Arial;
     font-size: 12px;
 }
+.float_left
+{
+    float: left;
+}
 .font
 {
 
@@ -500,4 +504,15 @@ ul.otherLinks li a
     border: 1px solid #fdad01;
     color: #000 !important;
     background: url("../img/btn-buy-hover.png") repeat-x 0 0;
+}
+table
+{
+    border-spacing: 0;
+}
+.main_hr
+{
+    padding-bottom: 1px;
+    width: 930px;
+    background-color: #ebebef;
+    border: none;
 }

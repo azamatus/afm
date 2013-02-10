@@ -1,0 +1,53 @@
+{% extends '::base.html.twig' %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset("bundles/catalog/js/addRem.js") }}"></script>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/catalog/css/phone_info.css') }} " type="text/css" rel="stylesheet"/>
+{% endblock %}
+{% block body %}
+    <div class="product">
+        <div class="product_image"><img src="{{ asset('public/img/phones/'~product.imagePath) }}" alt="Catalog"></div>
+        <div class="float_left">
+            <div class="product_name">{{ product.name }}</div>
+            <div class="product_base_info">
+                <table class="chars">
+                    {% for type in char %}
+                        <tr>
+                            <td class="charType">{{ type.getCTypeId.name }}</td>
+                            <td class="charValue">{{ type.value }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="product_box">
+                <div class="product_price">${{ product.price| number_format(1) }}</div>
+                <div class="product_price_som">{{ product.getPriceSom }} сом</div>
+                <div class="product_amount">
+                    <div class="float_left word_col">кол-во:</div>
+                    <div><input type="text" class="box" value="1" id="amount"/></div>
+                    <div class="addrem" onmousedown="return false">
+                        <div class="znak" id="add">+</div>
+                        <div class="znak" id="rem">-</div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearbox"></div>
+            <hr class="product_hr">
+
+                <div>
+                    Описание:
+                </div>
+                <div class="product_description">
+                    {{ product.fullDesctiption }}
+                </div>
+
+
+
+        </div>
+
+
+    </div>
+{% endblock %}

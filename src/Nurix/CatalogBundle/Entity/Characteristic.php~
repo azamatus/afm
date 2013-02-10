@@ -1,0 +1,56 @@
+<?php
+/**
+ * Created by JetBrains PhpStorm.
+ * User: Admin
+ * Date: 02.02.13
+ * Time: 14:22
+ * To change this template use File | Settings | File Templates.
+ */
+namespace Nurix\CatalogBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Nurix\CatalogBundle\Entity\Catalog
+ *
+ * @ORM\Table(name="Characteristic")
+ * @ORM\Entity
+ */
+
+class Characteristic
+{
+    /**
+     * @var integer $id
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    protected $id;
+    /**
+     * @var integer $cTypeId
+     *
+     * @ORM\ManyToOne(targetEntity="CharacteristicType")
+     * @ORM\JoinColumns({
+     *@ORM\JoinColumn(name="cTypeId", referencedColumnName="id")
+     * })
+
+     */
+    protected $cTypeId;
+
+    /**
+     * @var integer $goodId
+     * @ORM\ManyToOne(targetEntity="Goods")
+     * @ORM\JoinColumns({
+     *@ORM\JoinColumn(name="goodId", referencedColumnName="id")
+     * })
+     */
+    protected $goodId;
+
+    /**
+     * @var string $value
+     *
+     * @ORM\Column(name="value", type="string", length=100, nullable=true)
+     */
+    protected $value;
+}
