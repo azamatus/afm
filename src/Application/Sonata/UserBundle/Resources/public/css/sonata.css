@@ -1,0 +1,41 @@
+.registration_label {
+    font-family: Arial;
+    color: #999999;
+    font-size: 12px;
+    margin-top: 20px
+}
+
+.registration_input input {
+    width: 260px;
+    border: 1px solid #C4C4C4;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 2px 4px #E1E1E1 inset;
+    width: 260px;
+    height: 20px;
+    padding: 2px 5px;
+}
+.registration_submit {
+    margin-top: 20px;
+}
+.error,.fos_user_registration_register li {
+    float: none;
+    color: #ff9393;
+    border-color: #ff9393 !important;
+    padding-left: .5em;
+    vertical-align: top;
+    font-family: Arial;
+    font-size: 11px;
+}
+
+/*validation*/
+.pw-very-weak {
+    border: 1px solid #ff9393 !important;
+}
+
+.pw-strong {
+    border: 1px solid #ff8400 !important;
+}
+.pw-very-strong {
+    border: 1px solid #a4df33 !important;
+}
+/*END: validation*/

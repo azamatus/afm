@@ -1,33 +1,38 @@
-<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+
+<h1>Регистрация</h1>
+<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register" id="registration">
 
     {{ form_errors(form) }}
 
     <div>
-        {{ form_label(form.username, 'Имя пользователя') }}
+        <div class="registration_label">{{ form_label(form.username, 'Имя:') }}</div>
         {{ form_errors(form.username) }}
-        {{ form_widget(form.username) }}
+        <div class="registration_input">{{ form_widget(form.username) }}</div>
     </div>
 
     <div>
-        {{ form_label(form.email, 'Email') }}
+        <div class="registration_label">{{ form_label(form.email, 'E-mail') }}</div>
         {{ form_errors(form.email) }}
-        {{ form_widget(form.email) }}
+        <div class="registration_input">{{ form_widget(form.email) }}</div>
+
     </div>
 
     <div>
-    {{ form_label(form.plainPassword.first, 'Пароль') }}
+        <div class="registration_label">{{ form_label(form.plainPassword.first, 'Пароль:') }}</div>
     {{ form_errors(form.plainPassword.first) }}
-    {{ form_widget(form.plainPassword.first) }}
+        <div class="registration_input">{{ form_widget(form.plainPassword.first) }}</div>
     </div>
 
     <div>
-    {{ form_label(form.plainPassword.second, 'Подтверждение пароля') }}
+        <div class="registration_label">{{ form_label(form.plainPassword.second, 'Повтор пароля:') }}</div>
     {{ form_errors(form.plainPassword.second) }}
-    {{ form_widget(form.plainPassword.second) }}
+        <div class="registration_input">
+            {{ form_widget(form.plainPassword.second) }}
+        </div>
     </div>
 
     {{ form_rest(form) }}
-    <div>
-        <input type="submit" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" />
+    <div class="registration_submit">
+        <input type="submit" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" class="button_buy" />
     </div>
 </form>
