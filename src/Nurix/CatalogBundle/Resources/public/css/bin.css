@@ -59,6 +59,18 @@
     display: block;
 }
 
+.bin_itemTotalPrice .Som{
+    font-size: 16px;
+    display: block;
+    margin-top: 10px;
+}
+
+.bin_itemTotalPrice .Dollar{
+    color: #666666;
+    display: block;
+    margin: 10px 0;
+}
+
 .bin_itemCount{
     margin-top: 25px;
 }
@@ -122,7 +134,27 @@ table.bin-table tr td:last-child, table.bin-table tr th:last-child {
 }
 .itog{
     color: #666666;
+    margin-top: 10px;
 }
-.bin-itog .itog{
+
+.continue-buy-button{
+    margin-top: 12px;
     float: left;
+    background-image: url("../img/continue-button.png");
+    background-repeat: no-repeat;
+    height: 34px;
+    width: 160px;
+    text-align: center;
+    padding-top: 8px;
+}
+
+.zakaz-button{
+    margin-top: 12px;
+    float: left;
+    background-image: url("../img/zakaz-button.png");
+    background-repeat: no-repeat;
+    height: 34px;
+    width: 130px;
+    text-align: center;
+    padding-top: 8px;
 }

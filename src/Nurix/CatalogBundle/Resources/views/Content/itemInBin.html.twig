@@ -6,34 +6,9 @@
 {% endblock %}
 
 {% block body %}
-    {#<div class="bin_oneItem">#}
-
-    {#<div class="bin_itemPic">#}
-    {#picture#}
-    {#</div>#}
-
-    {#<div class="bin_aboutItem">#}
-
-    {#<a id="name" class="size16px black txt_weight" href="/">Product</a>#}
-    {#<div class="gray">smartphone</div>#}
-    {#<a href="" class="orange">подробная информация <img src="{{ asset('bundles/catalog/phones/strelka.png') }}"></a>#}
-
-    {#</div>#}
-
-    {#<div class="bin_itemPrice">#}
-    {#<div class="size16px">123 000 сом</div>#}
-    {#<div class="gray">$ 340</div>#}
-    {#</div>#}
-
-    {#<div class="bin_itemCount">#}
-    {#<span class="itemCounter itemAdd">&nbsp;</span>#}
-    {#<input class="itemVvod" type="text" placeholder="1"/>#}
-    {#<span class="itemCounter itemSub">&nbsp;</span>#}
-    {#</div>#}
-    {#</div>#}
 
     <div>
-        <h1>Корзина:</h1>
+        <h2>Корзина:</h2>
 
         {#{% if products %}#}
         <table class="bin-table">
@@ -88,11 +63,13 @@
             </tr>
             {#{% endfor %}#}
             <tr>
-                <td><span class="itog">Итого:</span></td>
+                <td>
+                    <div class="itog">Итого:</div>
+                </td>
                 <td></td>
                 <td></td>
                 <td>
-                    <div class="bin_itemPrice">
+                    <div class="bin_itemTotalPrice">
                         <span class="Som">
                             24 000 сом
                         </span>
@@ -103,7 +80,18 @@
                 </td>
             </tr>
             <tr>
-
+                <td>
+                    <div class="continue-buy-button">
+                        <a href="" onclick="return false;">Продолжить покупки</a>
+                    </div>
+                </td>
+                <td></td>
+                <td></td>
+                <td>
+                    <div class="zakaz-button">
+                        <a href="" onclick="return false;">Оформить заказ</a>
+                    </div>
+                </td>
             </tr>
         </table>
         {#{% else %}#}
