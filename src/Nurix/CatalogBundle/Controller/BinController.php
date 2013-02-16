@@ -11,7 +11,16 @@ class BinController extends Controller
 {
     public function binAction()
     {
-        return $this->render('CatalogBundle:Content:itemInBin.html.twig', array());
+        $request = $this->getRequest();
+        $goodsIds = $request->cookies->get("cookieGoods");
+
+        $repository = $this->getDoctrine()->getRepository("CatalogBundle:Goods");
+        $goods = $repository->getGoodsByIds($goodsIds);
+
+        var_dump($goods);
+        die;
+
+        return $this->render('CatalogBundle:Content:itemInBin.html.twig', array('goods'=>$goods));
     }
 
     public function addAjaxBinAction($id)
@@ -23,7 +32,6 @@ class BinController extends Controller
                 ->find($id);
 
             $request = $this->getRequest();
-
 
            if ($product){
                $goods=$request->cookies->get("cookieGoods");
@@ -41,7 +49,6 @@ class BinController extends Controller
                return $response;
             }
             else{
-
                 return JsonResponse::create(array('error'=>true, 'message'=>'Что то не то'));
             }
         }

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Nurix\CatalogBundle\Entity\Goods
  *
  * @ORM\Table(name="goods")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Nurix\CatalogBundle\Entity\GoodsRepository")
  */
 class Goods
 {
