@@ -245,14 +245,10 @@ div.search
     float: right;
     margin-right: 53px;
 }
-#registration_form {
-
-}
-
 .ui-dialog {
     border-radius: 4px;
     background-color: #fec001;
-    padding: 30px;
+    padding: 40px;
 }
 
 .ui-dialog-titlebar-close {
