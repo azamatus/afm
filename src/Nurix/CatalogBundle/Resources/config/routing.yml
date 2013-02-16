@@ -6,10 +6,10 @@ nurix_goods_get_catalog:
     pattern:  /catalog/{cid}
     defaults: { _controller: CatalogBundle:Content:getCatalog }
 
-nurix_goods_get_provider:
-    pattern:  /catalog/provider/{pid}
-    defaults: { _controller: CatalogBundle:Catalog:getCatalogByProvider }
-
 nurix_goods_get_item:
     pattern: /catalog/provider/good/{gid}
     defaults: { _controller: CatalogBundle:Catalog:getItem }
+
+nurix_goods_get_info:
+    pattern: /catalog/product/{id}
+    defaults: { _controller: CatalogBundle:Product:getInfo}

@@ -3,6 +3,10 @@
     font-family: Arial;
     font-size: 12px;
 }
+.float_left
+{
+    float: left;
+}
 .font
 {
 
@@ -108,7 +112,7 @@ hr
 }
 .content
 {
-    padding-left: 15px;
+    padding-left: 30px;
     overflow: hidden;
 }
 .feedbacks
@@ -353,7 +357,8 @@ div.search
 }
 
 .side_menu li.current_ancestor ul,
-.side_menu li.current ul
+.side_menu li.current ul,
+.side_menu li ul
 {
     display: block;
 }

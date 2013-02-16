@@ -98,16 +98,17 @@
     </div>
     {% block slider %}
     {% endblock %}
+    <hr class="main_hr">
 </header>
 <div class="clearbox"></div>
 <div class="middle center">
     <div class="leftColumn">
         {% block catalog_menu %}
-            {{ knp_menu_render('catalog_sidebar') }}
+            {{ knp_menu_render('catalog_sidebar', {'currentClass': 'current'}) }}
         {% endblock %}
         <div class="interesting">
             {% block side_menu %}
-                {{ knp_menu_render('info_sidebar') }}
+                {{ knp_menu_render('info_sidebar', {'currentClass': 'current'}) }}
             {% endblock %}
         </div>
         <div class="feedbacks">
