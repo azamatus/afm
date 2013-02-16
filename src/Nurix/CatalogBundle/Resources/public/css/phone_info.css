@@ -130,5 +130,26 @@
 .product_same
 {
     color: #000;
-
 }
+.tabs_ico
+{
+    background: url("../phones/phone_cart_icons.png") no-repeat;
+    padding-left: 15px;
+}
+.tabs_char
+{
+    background-position: 8% 103%;
+}
+.tabs_obzor
+{
+    background-position: 15% 29%;
+}
+.tabs_feedbacks
+{
+    background-position: 11% -7%;
+}
+.tabs_video
+{
+    background-position: 13% 65%;
+}
+
