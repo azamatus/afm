@@ -17,13 +17,14 @@ class ContentController extends Controller
     public function showSliderProductListAction()
     {
         $products = $this->getDoctrine()->getRepository('CatalogBundle:Goods')->findAll();
-        return $this->render('CatalogBundle:Content:showCatalogSlider.html.twig', array('products' => $products));
+        return $this->render('CatalogBundle:Content:showCatalogSlider.html.twig', array('products' => $products,'title' => "Топ продаж"));
     }
 
 
     public function catalogAction()
     {
-        $catalogs = $this->get('catalog.model')->getAll(array('active'=>1, 'parent'=>1));
+        $catalogs = $this->getDoctrine()->getManager()
+            ->getRepository('CatalogBundle:Catalog')->getAll(array('active'=>1, 'parent'=>1));
 
         return $this->render('CatalogBundle:Content:catalog.html.twig',array('catalogs'=>$catalogs));
     }
@@ -43,16 +44,7 @@ class ContentController extends Controller
     }
 
 
-    public function getCatalogByProviderAction($pid){
-        $provider = $this->getDoctrine()
-            ->getRepository('CatalogBundle:Goods')
-            ->findByProviderid($pid);
-
-        return $this->render('CatalogBundle:Content:getcatalog.html.twig',array('catalog'=>$provider));
-    }
-
-
-    public  function  getItemAction($gid){
+        public  function  getItemAction($gid){
         $item = $this->getDoctrine()
             ->getRepository('CatalogBundle:Goods')
             ->find($gid);

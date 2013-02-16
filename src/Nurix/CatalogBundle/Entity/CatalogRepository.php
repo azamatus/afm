@@ -19,4 +19,20 @@ class CatalogRepository extends EntityRepository
             ->getResult();
     }
 
+
+    public function getAll($rules = array()){
+        $catalogs = $this->createQueryBuilder('c');
+
+        if (!empty($rules['active']))
+        {
+            $catalogs->where('c.active = :a')
+                ->setParameter('a', $rules['active']);
+        }
+        if (!empty($rules['parent'])){
+            $catalogs->andWhere('c.parent = :a')
+                ->setParameter('a', $rules['parent']);
+        }
+
+        return $catalogs->getQuery()->getResult();
+    }
 }

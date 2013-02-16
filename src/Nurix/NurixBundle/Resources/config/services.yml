@@ -15,15 +15,6 @@ services:
         tags:
             - { name: knp_menu.menu, alias: main } # The alias is what is used to retrieve the menu
 
-    nurix.menu.catalog_sidebar:
-        class: Knp\Menu\MenuItem
-        factory_service: nurix.menu_builder
-        factory_method: createCatalogSideMenu
-        arguments: ["@request"]
-        scope: request
-        tags:
-            - { name: knp_menu.menu, alias: catalog_sidebar } # Named "sidebar" this time
-
     nurix.menu.info_sidebar:
             class: Knp\Menu\MenuItem
             factory_service: nurix.menu_builder
@@ -32,3 +23,8 @@ services:
             scope: request
             tags:
                 - { name: knp_menu.menu, alias: info_sidebar } # Named "sidebar" this time
+
+    nurix.twig.nurix_extension:
+        class: Nurix\NurixBundle\Twig\DateExtension
+        tags:
+            - { name: twig.extension }

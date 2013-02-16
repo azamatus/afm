@@ -3,6 +3,10 @@
     font-family: Arial;
     font-size: 12px;
 }
+.float_left
+{
+    float: left;
+}
 .font
 {
 
@@ -108,7 +112,7 @@ hr
 }
 .content
 {
-    padding-left: 15px;
+    padding-left: 30px;
     overflow: hidden;
 }
 .feedbacks
@@ -191,20 +195,96 @@ div.search
     margin-left: 50px;
     margin-top: 6px;
 }
-.vhod
-{
-    margin-top: 5px;
+
+.vhod_div {
+    float: left;
+    min-width: 100px;
     margin-left: 55px;
+}
+
+.vhod_div > div:first-child {
+    float: left;
+    margin-top: 2px;
+}
+
+.vhod_div > div:last-child {
+    float: right;
+}
+
+#vhod_message {
+    border: none;
+    margin-top: 5px;
+    text-decoration: none;
+    float: left;
+    margin-left: 5px !important;
+}
+
+.vhod {
+    border: none;
+    margin-top: 5px;
+    margin-left: 5px;
     text-decoration: none;
     border-bottom: 1px dashed;
     float: left;
+    cursor: pointer;
 }
-.vhod:hover
-{
-    border-bottom:1px solid;
+
+.vhod:hover {
+    border-bottom: 1px solid;
 }
-.button
+.reg_login_password{
+    margin-top: 20px;
+}
+.reg_login_password > input{
+    margin-left: 64px;
+}
+.reg_login_remember {
+    margin: 10px 0 10px 125px;
+
+}
+.reg_login_remember #remember_me{
+    height: 0;
+}
+#_submit{
+    float: right;
+    margin-right: 53px;
+}
+#registration_form {
+
+}
+
+.ui-dialog {
+    border-radius: 4px;
+    background-color: #fec001;
+    padding: 30px;
+}
+
+.ui-dialog-titlebar-close {
+    height: 16px;
+    position: absolute;
+    right: 0;
+    top: 2px;
+    background: url("../img/close_icon.png") no-repeat;
+}
+.ui-icon-closethick
 {
+    height: 16px !important;
+    opacity: 0;
+}
+.ui-dialog-title{
+    font-size: 16px;
+}
+.ui-dialog-titlebar{
+    position: absolute; right: 0px; width: 185px; top: 5px;
+}
+.login_form{
+    float: left;
+    margin: 10px;
+}
+.submit{
+    float: right;
+}
+.button {
     background-image: url("../img/button2.png");
     background-repeat: no-repeat;
     float: left;
@@ -213,8 +293,8 @@ div.search
     margin-left: 20px;
     width: 150px;
 }
-.button:hover
-{
+
+.button:hover {
     background-image: url("../img/button.png");
     background-repeat: no-repeat;
     float: left;
@@ -275,8 +355,10 @@ div.search
     color: #ca4400;
     text-decoration: none;
 }
+
 .side_menu li.current_ancestor ul,
-.side_menu li.current ul
+.side_menu li.current ul,
+.side_menu li ul
 {
     display: block;
 }
@@ -288,6 +370,7 @@ div.search
 {
     display: none;
 }
+
 footer
 {
 	margin-top: 60px;
@@ -401,4 +484,37 @@ ul.otherLinks li a
 .display_block
 {
     display: block;
+}
+
+.button_buy
+{
+    background: url("../img/btn-buy.png") repeat-x 0 0;
+    border: 1px solid #BDBDBD;
+    border-radius: 4px 4px 4px 4px;
+    color: #999 !important;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0 1px 1px #B7B7B7;
+}
+.button_buy:hover
+{
+    border: 1px solid #fdad01;
+    color: #000 !important;
+    background: url("../img/btn-buy-hover.png") repeat-x 0 0;
+}
+table
+{
+    border-spacing: 0;
+}
+.main_hr
+{
+    padding-bottom: 1px;
+    width: 895px;
+    background-color: #ebebef;
+    border: none;
+    margin-right: 40px;
+    margin-bottom: 30px;
 }

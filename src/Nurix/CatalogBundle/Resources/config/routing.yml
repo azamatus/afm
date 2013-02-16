@@ -21,3 +21,7 @@ nurix_bin_ajax_add_item:
 nurix_bin_item:
     pattern: /bin
     defaults: { _controller: CatalogBundle:Bin:bin }
+
+nurix_goods_get_info:
+    pattern: /catalog/product/{id}
+    defaults: { _controller: CatalogBundle:Product:getInfo}
