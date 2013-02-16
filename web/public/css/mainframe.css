@@ -68,11 +68,6 @@ header
     background: url("../img/header.png") repeat-x;
     text-align: center;
 }
-hr
-{
-  width: 950px;
-}
-
 .center
 {
     width: 930px;
@@ -484,7 +479,6 @@ ul.otherLinks li a
 {
     display: block;
 }
-
 .button_buy
 {
     background: url("../img/btn-buy.png") repeat-x 0 -4px;
@@ -503,4 +497,16 @@ ul.otherLinks li a
     border: 1px solid #fdad01;
     color: #000 !important;
     background: url("../img/btn-buy-hover.png") repeat-x 0 -4px;
+}
+hr
+{
+    background-color: #ebebef;
+    border: none;
+    margin-bottom: 30px;
+    margin-left: 5px;
+    height: 1px;
+}
+.main_hr
+{
+     width: 890px;
 }
