@@ -36,8 +36,8 @@
                 </table>
             </div>
             <div class="product_box">
-                <div class="product_price">${{ product.price| number_format(1) }}</div>
-                <div class="product_price_som">{{ product.getPriceSom }} сом</div>
+                <div class="product_price">{{ product.price| price('USD') }}</div>
+                <div class="product_price_som">{{ product.price| price('SOM') }}</div>
                 <div class="product_amount">
                     <div class="float_left word_col">кол-во:</div>
                     <div><input type="text" class="box" value="1" id="amount"/></div>
