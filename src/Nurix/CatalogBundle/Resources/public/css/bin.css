@@ -1,5 +1,4 @@
 .bin_itemPic {
-    border-style: ridge;
     float: left;
     height: 110px;
     width: 110px;
@@ -126,6 +125,10 @@ table.bin-table tr td:first-child, table.bin-table tr th:first-child {
 table.bin-table tr td:last-child, table.bin-table tr th:last-child {
     width: 130px;
 }
+
+table.bin-table tr:last-child{
+    border-bottom: none;
+}
 .itog{
     color: #666666;
     margin-top: 10px;
@@ -139,7 +142,8 @@ table.bin-table tr td:last-child, table.bin-table tr th:last-child {
     height: 34px;
     width: 160px;
     text-align: center;
-    padding-top: 8px;
+    cursor: pointer;
+    border: none;
 }
 
 .zakaz-button{
@@ -150,5 +154,6 @@ table.bin-table tr td:last-child, table.bin-table tr th:last-child {
     height: 34px;
     width: 130px;
     text-align: center;
-    padding-top: 8px;
+    cursor: pointer;
+    border: none;
 }

@@ -1,20 +1,18 @@
-<div>
+<div style="width: 710px;">
     <div class="phones float_left">
-        <div><a id="name" class="size16px" href="/">{{ product.name }}</a></div>
+        <div><a id="name" class="size16px" href="{{ path('nurix_goods_get_info', {'id': product.id}) }}">{{ product.name }}</a></div>
         <div class="gray margin_top10px ">{{ product.shortDescription }}</div>
         <div class="clearbox"></div>
         <div>
-            <img src="{{ asset('public/img/phones/'~product.imagePath) }}" alt="Catalog">
+            <a href="{{ path('nurix_goods_get_info', {'id': product.id} ) }}""><img src="{{ asset('public/img/phones/'~product.imagePath) }}" alt="Catalog"></a>
         </div>
         <div>
             <div class="gray float_left margin_top10px">Цена:</div>
             <div class="size16px price float_left">{{ product.price }}</div>
             <div class="clear"></div>
-            <div class="button_buy" product="{{ product.id }}">
-                <a href="{{ path('nurix_bin_ajax_add_item',{'id':product.id}) }}" onclick="return false;" class="button_buy">
+                <a  product="{{ product.id }}" href="{{ path('nurix_bin_ajax_add_item',{'id':product.id}) }}" onclick="return false;" class="button_buy">
                     Купить
                 </a>
-            </div>
         </div>
     </div>
 </div>

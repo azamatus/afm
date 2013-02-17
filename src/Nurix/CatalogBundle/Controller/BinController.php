@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 
 class BinController extends Controller
 {
@@ -13,14 +14,16 @@ class BinController extends Controller
     {
         $request = $this->getRequest();
         $goodsIds = $request->cookies->get("cookieGoods");
+        $goods = null;
+        if (!empty($goodsIds)){
+            $repository = $this->getDoctrine()->getRepository("CatalogBundle:Goods");
+            $goods = $repository->getGoodsByIds($goodsIds);
+        }
 
-        $repository = $this->getDoctrine()->getRepository("CatalogBundle:Goods");
-        $goods = $repository->getGoodsByIds($goodsIds);
-
-        var_dump($goods);
-        die;
-
-        return $this->render('CatalogBundle:Content:itemInBin.html.twig', array('goods'=>$goods));
+        return $this->render('CatalogBundle:Bin:itemInBin.html.twig', array(
+            'goods'=>$goods,
+            'goodIds'=>$goodsIds
+        ));
     }
 
     public function addAjaxBinAction($id)
@@ -35,7 +38,7 @@ class BinController extends Controller
 
            if ($product){
                $goods=$request->cookies->get("cookieGoods");
-               if (!$goods[$id]||empty($goods[$id]))
+               if (!isset($goods[$id]) || empty($goods[$id]))
                    $goods[$id] = 0;
                $goods[$id]++;
                $response = new Response(json_encode(array(
@@ -54,4 +57,20 @@ class BinController extends Controller
         }
         return new Response();
     }
+    public function binFormAction(Request $request){
+        if($request->isMethod('POST')){
+            $data = $request->request->get('bin');
+            $goods = $request->cookies->get("cookieGoods");
+            var_dump($goods);
+            die;
+            foreach( $data as $value ){
+                if($value == 1);
+                }
+            }
+            if($request->request->get('bin-btn') == 'Оформить заказ'){
+                return $this->redirect($this->generateUrl(''));
+            }elseif($request->request->get('bin-btn') == 'Продолжить покупки'){
+                return $this->redirect($this->generateUrl(''));
+            }
+        }
 }
