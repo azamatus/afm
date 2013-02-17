@@ -17,12 +17,12 @@ class ExchangeExtension extends \Twig_Extension
         );
     }
 
-    public function priceFilter($number,$exchange, $decimals = 0, $decPoint = '.')
+    public function priceFilter($number,$exchange='USD', $decimals = 2, $decPoint = '.')
     {
         if($exchange == 'USD')
         {
             $price = number_format($number, $decimals, $decPoint,'');
-            $price = '$' . $price;
+            $price = '$'.$price;
         }
         elseif ($exchange == 'SOM')
         {
