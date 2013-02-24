@@ -18,7 +18,7 @@ class ProductController extends Controller
             ->getRepository("CatalogBundle:Characteristic")
             ->findBy(array("goodId"=>$id));
 
-        return $this->render('CatalogBundle:Content:product_info.html.twig', array('product' => $entity, 'char'=>$char));
+        return $this->render('CatalogBundle:Product:product_info.html.twig', array('product' => $entity, 'char'=>$char));
     }
     public function getSameAction()
     {
@@ -28,6 +28,4 @@ class ProductController extends Controller
 
         return $this->render('CatalogBundle:Content:showCatalogSlider.html.twig', array('products' => $same,'title' => "Похожие позиции"));
     }
-
-
 }
