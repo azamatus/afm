@@ -1,21 +1,21 @@
 {% block fos_user_content %}
-    <form action="{{ path("fos_user_security_check") }}" method="post">
+    <form action="{{ path("fos_user_security_check") }}" method="post" id="form_popup">
 
         <input type="hidden" name="_csrf_token" value="{% render('ApplicationSonataUserBundle:Security:getToken') %}"/>
-        <div class="reg_login_username">
-            <label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
-            <input type="text" id="username" name="_username" required="required"/>
+        <div class="registration_input">
+            <label for="username" class="registration_label">Ваш логин:</label><br/>
+            <input type="text" id="username" name="_username" required="required" placeholder="Введите Ваш логин"/>
         </div>
-        <div class="reg_login_password">
-            <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
-            <input type="password" id="password" name="_password" required="required"/>
-        </div>
-        <div class="reg_login_remember">
-            <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
-            <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+        <div class="registration_input">
+            <label for="password" class="registration_label">Пароль:</label><br/>
+            <input type="password" id="password" name="_password" required="required" class="registration_input" placeholder="Введите пароль"/>
         </div>
 
-        <input type="submit" id="_submit" name="_submit" class="button_buy"
-               value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
+        <input type="submit" id="_submit" name="_submit" class="button_buy" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
+        <hr/>
+        <div>
+            <div class="forgot_password"><a href="{{ path('fos_user_resetting_request') }}">Забыли пароль</a></div>
+            <div class="register"><a href="{{ path('fos_user_registration_register') }}">Регистрация</a></div>
+        </div>
     </form>
 {% endblock fos_user_content %}

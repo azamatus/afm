@@ -1,6 +1,12 @@
 $(document).ready(function(){
     $('#register_button_id').click(function(){
-        $('#registration_form').dialog();
+        $('#registration_form').dialog(
+            {
+                closeText: "",
+                minHeight: 300,
+                minWidth: 450
+            }
+        );
     });
     $("#registration").validate({
         rules: {
