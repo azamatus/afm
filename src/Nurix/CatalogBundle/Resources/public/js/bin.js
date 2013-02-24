@@ -47,6 +47,10 @@ $(function () {
         Tdol.html(dol * amount);
     }
 
+    $(".bin-remove-item").click(function(){
+        var id = $(this).parents('tr').empty();
+    });
+
     $('.itemVvod').bind("change blur", function(){
         var val = $(this).val();
         val = val.replace(/[^\d]/gi, '');
