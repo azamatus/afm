@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block javascripts %}
+    <script type="text/javascript"  src="{{ asset("bundles/catalog/js/jquery.cookie.js")}}"></script>
     {{ parent() }}
 {% endblock %}
 
@@ -25,7 +26,7 @@
                     </tr>
                     {% for good in goods %}
                         {% set totalPrice = good.price %}
-                        <tr>
+                        <tr id="{{ good.id }}">
                             <td>
                                 <img src="{{ asset('public/img/phones/'~good.imagePath) }}" class="bin_itemPic"/>
 
@@ -44,17 +45,17 @@
                             </td>
                             <td>
                                 <div class="bin_itemCount">
-                                    <span class="itemCounter itemAdd">&nbsp;</span>
+                                    <span class="itemCounter itemAdd"  onmousedown="return false">&nbsp;</span>
                                     <input class="itemVvod" type="text" id="{{ good.id }}" value="{{ attribute(goodIds,good.id) }}"
                                            name="bin[{{ good.id }}]"/>
-                                    <span class="itemCounter itemSub">&nbsp;</span>
+                                    <span class="itemCounter itemSub"  onmousedown="return false">&nbsp;</span>
                                 </div>
                             </td>
                             <td>
                                 <div class="bin_itemPrice" id="goodTotal_{{ good.id }}">
                                     <span class="Som">24 000 сом</span>
                                     <span class="Dollar">$ {{ good.price * attribute(goodIds,good.id) }}</span>
-                                    <span class="bin-remove">&nbsp;</span>
+                                    <span class="bin-remove bin-remove-item">&nbsp;</span>
                                 </div>
                             </td>
                         </tr>
