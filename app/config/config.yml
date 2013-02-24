@@ -99,3 +99,6 @@ fos_user:
     registration:
         confirmation:
             enabled:    true
+    from_email:
+        address:        nursultan2010@gmail.com
+        sender_name:    Acme Demo App

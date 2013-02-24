@@ -227,54 +227,7 @@ div.search
 .vhod:hover {
     border-bottom: 1px solid;
 }
-.reg_login_password{
-    margin-top: 20px;
-}
-.reg_login_password > input{
-    margin-left: 64px;
-}
-.reg_login_remember {
-    margin: 10px 0 10px 125px;
 
-}
-.reg_login_remember #remember_me{
-    height: 0;
-}
-#_submit{
-    float: right;
-    margin-right: 53px;
-}
-.ui-dialog {
-    border-radius: 4px;
-    background-color: #fec001;
-    padding: 40px;
-}
-
-.ui-dialog-titlebar-close {
-    height: 16px;
-    position: absolute;
-    right: 0;
-    top: 2px;
-    background: url("../img/close_icon.png") no-repeat;
-}
-.ui-icon-closethick
-{
-    height: 16px !important;
-    opacity: 0;
-}
-.ui-dialog-title{
-    font-size: 16px;
-}
-.ui-dialog-titlebar{
-    position: absolute; right: 0px; width: 185px; top: 5px;
-}
-.login_form{
-    float: left;
-    margin: 10px;
-}
-.submit{
-    float: right;
-}
 .button {
     background-image: url("../img/button2.png");
     background-repeat: no-repeat;
