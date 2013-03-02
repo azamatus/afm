@@ -1,0 +1,49 @@
+/* Новости*/
+.sonata-blog-post-information{
+    margin-bottom: 40px;
+}
+.sonata-blog-post-title a{
+    font-size: 30pt;
+    font-style: italic;
+    color: #666666;
+    margin-bottom: 10px;
+}
+.sonata-blog-post-info > img{
+    float: left;
+    margin: 0 10px 10px 0;
+}
+.sonata-blog-post-date-container{
+    margin-bottom: 5px;
+}
+.sonata-blog-post-tag-container{
+    margin: 10px 0;
+}
+.sonata-blog-comment-container  h3{
+    font-size: 18px;
+    color: #010101;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+.sonata-blog-comment{
+    margin-bottom: 10px;
+}
+.sonata-blog-comment-name > a {
+    font-weight: bold;
+}
+.sonata-blog-post-hr{
+    margin: 30px 0 !important;
+}
+.sonata-blog-post-lbl{
+    color: #999999;
+    margin-right: 30px;
+    padding-left: 16px;
+    background: url('../img/spr_news.png') no-repeat 0 0;
+}
+.btm_date{
+    background: none;
+    padding: 0;
+}
+.btm_viewed{
+    background-position: 0 -14px;
+}
+/* End: Новости*/

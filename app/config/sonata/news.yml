@@ -7,8 +7,8 @@ sonata_news:
 
     comment:
         notification:
-            emails:   [email@example.org, email2@example.org]
-            from:     no-reply@sonata-project.org
+            emails:   [info@nurix.kg]
+            from:     info@nurix.kg
             template: 'SonataNewsBundle:Mail:comment_notification.txt.twig'
 
 doctrine:
