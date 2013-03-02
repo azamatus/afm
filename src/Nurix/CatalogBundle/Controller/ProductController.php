@@ -14,9 +14,10 @@ class ProductController extends Controller
             ->getRepository('CatalogBundle:Goods')
             ->find($id);
 
-        $char=$this->getDoctrine()
-            ->getRepository("CatalogBundle:Characteristic")
-            ->findBy(array("goodId"=>$id));
+        $repository= $this->getDoctrine()
+            ->getRepository("CatalogBundle:Characteristic");
+
+        $char = $repository->getGoodCharacteristic($id);
 
         return $this->render('CatalogBundle:Product:product_info.html.twig', array('product' => $entity, 'char'=>$char));
     }
