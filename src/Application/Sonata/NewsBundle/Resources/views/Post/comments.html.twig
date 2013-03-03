@@ -12,16 +12,16 @@
 #}
 
 <div class="sonata-blog-comment-container">
-    <h3>{{ 'title_comments'|trans({}, 'SonataNewsBundle') }}</h3>
+    <h3>{{ 'title_comments'|trans({}, 'SonataNewsBundle') }}:</h3>
 
     <div class="sonata-blog-comment-list">
         {% for comment in pager.results %}
             <div class="sonata-blog-comment">
                 <div class="sonata-blog-comment-name">
-                    <a href="{{ comment.url }}" target="new" rel="nofollow">{{ comment.name }}</a>
+                    <a href="{{ comment.url }}" target="new" rel="nofollow">{{ comment.name }},</a>
                 </div>
                 <div class="sonata-blog-comment-date">
-                    {{ comment.createdAt | format_date }}
+                    <span class="sonata-blog-post-lbl btm_date">{{ comment.createdAt | proDate }}</span>
                 </div>
                 <div class="sonata-blog-comment-message">
                     {{ comment.message }}

@@ -45,7 +45,7 @@
         <hr class="sonata-blog-post-hr">
 
         <div class="sonata-blog-post-bottom-info">
-            <span class="sonata-blog-post-lbl btm_comment">Комментарии </span>
+            <span class="sonata-blog-post-lbl btm_comment">Комментарии ({{ post.commentsCount }})</span>
             <span class="sonata-blog-post-lbl btm_viewed">Просмотров </span>
         </div>
         <div class="clearbox"></div>
@@ -54,7 +54,7 @@
 
     {% render 'SonataNewsBundle:Post:comments' with {'postId': post.id} %}
 
-    {% if post.iscommentable %}
+    {% if post.iscommentable and app.user %}
         {% render 'SonataNewsBundle:Post:addCommentForm' with {
             'postId': post.id,
             'form': form
