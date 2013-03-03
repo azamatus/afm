@@ -19,8 +19,6 @@ class GoodsRepository extends EntityRepository
         $qb = $repository->createQueryBuilder('r');
         $query = $qb->add('where', $qb->expr()->in('r.id', array_keys($goodsIds)))
                 ->getQuery();
-//        var_dump($query->getResult());
-//        die;
         return $query->getResult();
     }
 }

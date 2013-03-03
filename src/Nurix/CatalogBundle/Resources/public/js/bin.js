@@ -9,7 +9,8 @@ $(function () {
                 alert('ERROR');
             },
             success:function (data) {
-                alert(data.title + ' добавлен в корзину');
+//                alert(data.title + ' добавлен в корзину');
+                $('#tovar-added').empty().html(data).dialog();
             }
         });
     });
