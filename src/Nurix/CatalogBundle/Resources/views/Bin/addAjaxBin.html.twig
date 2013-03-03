@@ -1,3 +1,8 @@
+{% block stylesheets %}
+    <link href="{{ asset('bundles/catalog/css/bin-popup.css') }} " type="text/css" rel="stylesheet"/>
+{% endblock %}
+
 <div>
-    <h1>{{ tovar.name }}</h1>
+    <div class="tovar-name">{{ tovar.name }}</div>
+    <img src="{{ asset('public/img/phones/'~tovar.imagePath) }}" class="image"/>
 </div>
