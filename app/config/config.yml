@@ -96,3 +96,9 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Application\Sonata\UserBundle\Entity\User
+    registration:
+        confirmation:
+            enabled:    true
+    from_email:
+        address:        nursultan2010@gmail.com
+        sender_name:    Acme Demo App

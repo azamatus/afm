@@ -39,8 +39,9 @@
 .product_box
 {
     margin-left: 25px;
-    width: 210px;
+    width: 150px;
     height: 138px;
+    padding-left: 60px;
     float: left;
     border: 1px solid #999999;
     border-radius: 5px;
@@ -51,21 +52,22 @@
 }
 .product_price
 {
-    padding-top: 20px;
+    padding-top: 15px;
     color: #000000;
     font-size: 30px;
     font-weight: bold;
-    padding-left: 60px;
+
 }
 .product_price_som
 {
     font-size: 18px;
-    padding-left: 60px;
+    margin-bottom: -5px;
+
 }
 .product_amount
 {
     margin-top: 9px;
-    padding-left: 60px;
+
 }
 .product_amount .word_col
 {
@@ -83,6 +85,7 @@
     -moz-border-radius:5px;
     -o-border-radius:5px;
     margin-left: 7px;
+    margin-bottom: 9px;
     text-align:  center;
 }
 .product_amount .box:focus
@@ -97,7 +100,8 @@
 .product_amount .znak
 {
    cursor: pointer;
- text-align: center;
+   text-align: center;
+    display: block;
 }
 .product_amount .addrem
 {
@@ -106,21 +110,11 @@
 }
 .product_hr1
 {
-    padding-bottom: 1px;
     width: 450px;
-    background-color: #ebebef;
-    border: none;
-    margin-top: 12px;
-    margin-bottom: 10px;
 }
 .product_hr2
 {
-    padding-bottom: 1px;
     width: 690px;
-    background-color: #ebebef;
-    border: none;
-    margin-top: 20px;
-    margin-bottom: 10px;
 }
 .product_description
 {
@@ -130,5 +124,42 @@
 .product_same
 {
     color: #000;
-
+}
+.tabs_ico
+{
+    background: url("../phones/phone_cart_icons.png") no-repeat;
+    padding-left: 15px;
+}
+.tabs_char
+{
+    background-position: 8% 103%;
+}
+.tabs_obzor
+{
+    background-position: 17% 29%;
+}
+.tabs_feedbacks
+{
+    background-position: 11% -7%;
+}
+.tabs_video
+{
+    background-position: 13% 65%;
+}
+.button_buy_bin
+{
+    background: url("../phones/product_button_bin_buy.png") repeat-x;
+    float: left;
+    font-size: 18px;
+    padding-top: 8px;
+    margin-left: -18px;
+    color: #000;
+    text-align: center;
+    width: 130px;
+    height: 29px;
+    border: 1px solid #fead01;
+    border-radius: 5px;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    -o-border-radius:5px;
 }

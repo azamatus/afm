@@ -36,15 +36,16 @@
                 </table>
             </div>
             <div class="product_box">
-                <div class="product_price">${{ product.price| number_format(1) }}</div>
-                <div class="product_price_som">{{ product.getPriceSom }} сом</div>
+                <div class="product_price">{{ product.price| price('USD') }}</div>
+                <div class="product_price_som">{{ product.price| price('SOM') }}</div>
                 <div class="product_amount">
                     <div class="float_left word_col">кол-во:</div>
                     <div><input type="text" class="box" value="1" id="amount"/></div>
-                    <div class="addrem" onmousedown="return false">
-                        <div class="znak" id="add">+</div>
-                        <div class="znak" id="rem">-</div>
+                    <div class="addrem">
+                        <span class="znak" id="add">+</span>
+                        <span class="znak" id="rem">-</span>
                     </div>
+                <a href="/" class="button_buy_bin">В корзину</a>
                 </div>
             </div>
             <div class="clearbox"></div>
@@ -64,10 +65,10 @@
         <div id="tabs_container">
             <div>
                 <ul class="menu">
-                    <li id="characteristic" class="active">Характеристики</li>
-                    <li id="review">Обзор</li>
-                    <li id="pfeedbacks">Отзывы</li>
-                    <li id="video">Видео</li>
+                    <li id="characteristic" class="active tabs_ico tabs_char">Характеристики</li>
+                    <li id="review" class="tabs_ico tabs_obzor">Обзор</li>
+                    <li id="pfeedbacks" class="tabs_ico tabs_feedbacks">Отзывы</li>
+                    <li id="video" class="tabs_ico tabs_video">Видео</li>
                 </ul>
                 <span class="clear"></span>
 

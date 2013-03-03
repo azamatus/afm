@@ -18,3 +18,8 @@ services:
             scope: request
             tags:
                 - { name: knp_menu.menu, alias: catalog_sidebar } # Named "sidebar" this time
+
+    catalog.twig.exchange_extension:
+            class: Nurix\CatalogBundle\Twig\ExchangeExtension
+            tags:
+                - { name: twig.extension }

@@ -86,11 +86,6 @@ header
     background: url("../img/header.png") repeat-x;
     text-align: center;
 }
-hr
-{
-  width: 950px;
-}
-
 .center
 {
     width: 930px;
@@ -250,58 +245,7 @@ div.search
 .vhod:hover {
     border-bottom: 1px solid;
 }
-.reg_login_password{
-    margin-top: 20px;
-}
-.reg_login_password > input{
-    margin-left: 64px;
-}
-.reg_login_remember {
-    margin: 10px 0 10px 125px;
 
-}
-.reg_login_remember #remember_me{
-    height: 0;
-}
-#_submit{
-    float: right;
-    margin-right: 53px;
-}
-#registration_form {
-
-}
-
-.ui-dialog {
-    border-radius: 4px;
-    background-color: #fec001;
-    padding: 30px;
-}
-
-.ui-dialog-titlebar-close {
-    height: 16px;
-    position: absolute;
-    right: 0;
-    top: 2px;
-    background: url("../img/close_icon.png") no-repeat;
-}
-.ui-icon-closethick
-{
-    height: 16px !important;
-    opacity: 0;
-}
-.ui-dialog-title{
-    font-size: 16px;
-}
-.ui-dialog-titlebar{
-    position: absolute; right: 0px; width: 185px; top: 5px;
-}
-.login_form{
-    float: left;
-    margin: 10px;
-}
-.submit{
-    float: right;
-}
 .button {
     background-image: url("../img/button2.png");
     background-repeat: no-repeat;
@@ -388,7 +332,6 @@ div.search
 {
     display: none;
 }
-
 footer
 {
 	margin-top: 60px;
@@ -503,13 +446,12 @@ ul.otherLinks li a
 {
     display: block;
 }
-
 .button_buy
 {
-    background: url("../img/btn-buy.png") repeat-x 0 0;
+    background: url("../img/btn-buy.png") repeat-x 0 -4px;
     border: 1px solid #BDBDBD;
     border-radius: 4px 4px 4px 4px;
-    color: #999 !important;
+    color: #666 !important;
     cursor: pointer;
     display: inline-block;
     padding: 5px 15px;
@@ -521,18 +463,17 @@ ul.otherLinks li a
 {
     border: 1px solid #fdad01;
     color: #000 !important;
-    background: url("../img/btn-buy-hover.png") repeat-x 0 0;
+    background: url("../img/btn-buy-hover.png") repeat-x 0 -4px;
 }
-table
+hr
 {
-    border-spacing: 0;
+    background-color: #ebebef;
+    border: none;
+    margin-bottom: 30px;
+    margin-left: 5px;
+    height: 1px;
 }
 .main_hr
 {
-    padding-bottom: 1px;
-    width: 895px;
-    background-color: #ebebef;
-    border: none;
-    margin-right: 40px;
-    margin-bottom: 30px;
+     width: 890px;
 }

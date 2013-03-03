@@ -167,16 +167,7 @@ class Goods
     {
         return $this->price;
     }
-    /**
-     * Get price
-     *
-     * @return float
-     */
-    public function getPriceSom()
-    {
-        //TODO: исправить 47 на получение значения из базы
-        return $this->price*47;
-    }
+
 
     /**
      * Set imagePath
