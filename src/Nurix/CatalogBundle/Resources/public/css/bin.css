@@ -9,6 +9,8 @@
     float: left;
     margin-left: 10px;
     margin-top: 35px;
+    width: 190px;
+    word-wrap: break-word;
 }
 
 .bin_aboutItem .name {
