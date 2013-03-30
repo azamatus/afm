@@ -1,46 +1,51 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: Admin
- * Date: 02.02.13
- * Time: 13:55
- * To change this template use File | Settings | File Templates.
- */
+
 namespace Nurix\CatalogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Nurix\CatalogBundle\Entity\Catalog
+ * CharacteristicType
  *
- * @ORM\Table(name="CharacteristicType")
+ * @ORM\Table(name="characteristic_type")
  * @ORM\Entity
-  */
-
+ */
 class CharacteristicType
 {
     /**
-     * @var integer $id
+     * @var integer
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    protected $id;
+    private $id;
 
     /**
-     * @var string $name
+     * @var string
      *
      * @ORM\Column(name="name", type="string", length=100, nullable=false)
      */
-    protected $name;
+    private $name;
 
     /**
-     * @var string $list
+     * @var string
      *
      * @ORM\Column(name="list", type="string", length=100, nullable=true)
      */
-    protected $list;
+    private $list;
+
+    /**
+     * @var \Nurix\CatalogBundle\Entity\CharacteristicSection
+     *
+     * @ORM\ManyToOne(targetEntity="Nurix\CatalogBundle\Entity\CharacteristicSection")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="section", referencedColumnName="id")
+     * })
+     */
+    private $section;
+
+
 
     /**
      * Get id
@@ -96,5 +101,28 @@ class CharacteristicType
     public function getList()
     {
         return $this->list;
+    }
+
+    /**
+     * Set section
+     *
+     * @param \Nurix\CatalogBundle\Entity\CharacteristicSection $section
+     * @return CharacteristicType
+     */
+    public function setSection(\Nurix\CatalogBundle\Entity\CharacteristicSection $section = null)
+    {
+        $this->section = $section;
+    
+        return $this;
+    }
+
+    /**
+     * Get section
+     *
+     * @return \Nurix\CatalogBundle\Entity\CharacteristicSection 
+     */
+    public function getSection()
+    {
+        return $this->section;
     }
 }

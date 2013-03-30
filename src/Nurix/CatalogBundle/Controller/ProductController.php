@@ -14,11 +14,12 @@ class ProductController extends Controller
             ->getRepository('CatalogBundle:Goods')
             ->find($id);
 
-        $char=$this->getDoctrine()
-            ->getRepository("CatalogBundle:Characteristic")
-            ->findBy(array("goodId"=>$id));
+        $repository= $this->getDoctrine()
+            ->getRepository("CatalogBundle:Characteristic");
 
-        return $this->render('CatalogBundle:Content:product_info.html.twig', array('product' => $entity, 'char'=>$char));
+        $char = $repository->getGoodCharacteristic($id);
+
+        return $this->render('CatalogBundle:Product:product_info.html.twig', array('product' => $entity, 'char'=>$char));
     }
     public function getSameAction()
     {
@@ -28,6 +29,4 @@ class ProductController extends Controller
 
         return $this->render('CatalogBundle:Content:showCatalogSlider.html.twig', array('products' => $same,'title' => "Похожие позиции"));
     }
-
-
 }

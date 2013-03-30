@@ -15,6 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="Characteristic")
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Nurix\CatalogBundle\Entity\CharacteristicRepository")
  */
 
 class Characteristic

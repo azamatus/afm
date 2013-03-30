@@ -41,7 +41,7 @@
                 <div class="product_amount">
                     <div class="float_left word_col">кол-во:</div>
                     <div><input type="text" class="box" value="1" id="amount"/></div>
-                    <div class="addrem">
+                    <div class="addrem" onmousedown="return false">
                         <span class="znak" id="add">+</span>
                         <span class="znak" id="rem">-</span>
                     </div>
@@ -73,13 +73,9 @@
                 <span class="clear"></span>
 
                 <div class="tabs_content characteristic">
-                    <h1>Latest News</h1>
-                    <ul>
-                        <li>Boobles: First theme on Themeforest released!</li>
-                        <li> Cokidoo becomes official</li>
-                        <li> plusmusica.com private beta invitations</li>
-                        <li> yensdesign.com 2.0 launched!</li>
-                        <ul>
+
+                    {% include  "CatalogBundle:Product:characteristic.html.twig" %}
+
                 </div>
                 <div class="tabs_content review">
                     <h1>Latest Tutorials</h1>
