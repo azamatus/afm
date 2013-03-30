@@ -28,10 +28,11 @@
     width: 79px;
     color: #666;
 }
-.chars tr td
+.table_otsup
 {
-    padding-top: 10px;
+    padding: 10px 0px;
 }
+
 .chars
 {
     margin-top: 8px;
@@ -171,5 +172,10 @@
     font-style: italic;
     font-size: 18px;
     color: #000;
-    margin: 10px 0px 15px -10px;
+    margin: 10px 0px 10px 0px;
+}
+.video_desc
+{
+    display: block;
+    margin-bottom: 10px;
 }

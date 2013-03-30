@@ -26,12 +26,16 @@
         <div class="float_left">
             <div class="product_name">{{ product.name }}</div>
             <div class="product_base_info">
-                <table class="chars">
+                <table  class="chars">
                     {% for type in char %}
                         <tr>
-                            <td class="charType">{{ type.getCTypeId.name }}</td>
+                            <td class="charType">{{ type.getCTypeId.name }}:</td>
                             <td class="charValue">{{ type.value }}</td>
                         </tr>
+                        {% if loop.index == 3 %}
+                            <tr><td class="table_otsup"></td></tr>
+                        {% endif %}
+
                     {% endfor %}
                 </table>
             </div>
@@ -45,7 +49,7 @@
                         <span class="znak" id="add">+</span>
                         <span class="znak" id="rem">-</span>
                     </div>
-                <a href="/" class="button_buy_bin">В корзину</a>
+                    <a href="/" class="button_buy_bin">В корзину</a>
                 </div>
             </div>
             <div class="clearbox"></div>
@@ -99,10 +103,11 @@
                         <ul>
                 </div>
                 <div class="tabs_content video">
-                    <h1>Video</h1>
-                    <ul>
-                        <li>Home Video</li>
-                        <ul>
+                    {%  if product.videosId is defined  %}
+                    {% include  "CatalogBundle:Product:video.html.twig" %}
+                    {% else %}
+                        Пока видео еще нет
+                    {% endif %}
                 </div>
             </div>
         </div>

@@ -66,6 +66,21 @@ class Goods
     private $catalog;
 
 
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Videos", mappedBy="good", cascade={"persist", "remove" }, orphanRemoval=true)
+     */
+    protected $videos;
+
+
+
+    public function getVideos(){
+
+        return $this->videos;
+    }
+
+
 
     /**
      * Get id
