@@ -38,6 +38,7 @@ class AppKernel extends Kernel
             new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
+            new Sunra\PhpSimple\HtmlDomParser(),
 
         );
 
