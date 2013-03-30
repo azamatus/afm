@@ -16,6 +16,7 @@
         <h2>Корзина:</h2>
 
         {% if goods %}
+            {% set totalPrice = 0%}
             <form method="post" action="{{ path("nurix_bin_bin_form") }}">
                 <table class="bin-table">
                     <tr>
@@ -25,7 +26,8 @@
                         <th>Итого:</th>
                     </tr>
                     {% for good in goods %}
-                        {% set totalPrice = good.price %}
+                        {% set count = attribute(goodCount,good.id) %}
+                        {% set totalPrice = totalPrice + good.price * attribute(goodCount,good.id)  %}
                         <tr id="{{ good.id }}">
                             <td>
                                 <img src="{{ asset('public/img/phones/'~good.imagePath) }}" class="bin_itemPic"/>
@@ -39,28 +41,28 @@
                             </td>
                             <td>
                                 <div class="bin_itemPrice" id="price_{{ good.id }}">
-                                    <span class="Som">12 000</span>
-                                    <span class="Dollar">$ {{ good.price }}</span>
+                                    <span class="Som"><span class="value">{{ good.price * 48 }}</span> сом</span>
+                                    <span class="Dollar">$<span class="value">{{ good.price }}</span></span>
                                 </div>
                             </td>
                             <td>
                                 <div class="bin_itemCount">
                                     <span class="itemCounter itemAdd"  onmousedown="return false">&nbsp;</span>
-                                    <input class="itemVvod" type="text" id="{{ good.id }}" value="{{ attribute(goodIds,good.id) }}"
+                                    <input class="itemVvod" type="text" id="{{ good.id }}" value="{{ count }}"
                                            name="bin[{{ good.id }}]"/>
                                     <span class="itemCounter itemSub"  onmousedown="return false">&nbsp;</span>
                                 </div>
                             </td>
                             <td>
                                 <div class="bin_itemPrice" id="goodTotal_{{ good.id }}">
-                                    <span class="Som">24 000 сом</span>
-                                    <span class="Dollar">$ {{ good.price * attribute(goodIds,good.id) }}</span>
+                                    <span class="Som">{{ (good.price * count)|price('SOM')  }}</span>
+                                    <span class="Dollar">{{ (good.price * count)|price('USD') }}</span>
                                     <span class="bin-remove bin-remove-item">&nbsp;</span>
                                 </div>
                             </td>
                         </tr>
                     {% endfor %}
-                    <tr>
+                    <tr class="stop-count">
                         <td>
                             <div class="itog">Итого:</div>
                         </td>
@@ -68,8 +70,8 @@
                         <td></td>
                         <td>
                             <div class="bin_itemTotalPrice">
-                                <span class="Som">24 000 сом</span>
-                                <span class="Dollar">$ 700</span>
+                                <span class="Som">{{ totalPrice|price('SOM') }}</span>
+                                <span class="Dollar">{{ totalPrice|price('USD') }}</span>
                             </div>
                         </td>
                     </tr>
