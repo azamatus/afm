@@ -29,6 +29,11 @@ class Post extends BasePost
     protected $id;
 
     /**
+     * @var boolean $local
+     */
+    protected $local;
+
+    /**
      * Get id
      *
      * @return integer $id
@@ -36,5 +41,41 @@ class Post extends BasePost
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set local
+     *
+     * @param boolean $local
+     */
+    public function setLocal($local){
+        $this->local = $local;
+    }
+
+    /**
+     * Get local
+     *
+     * @return boolean $local
+     */
+    public function getLocal(){
+        return $this->local;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     */
+    public function setImage($image){
+        $this->image = $image;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string $image
+     */
+    public function getImage(){
+        return $this->image;
     }
 }

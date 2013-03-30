@@ -58,6 +58,10 @@
                 <source>form.label_enabled</source>
                 <target>Активен</target>
             </trans-unit>
+            <trans-unit id="form_label_local">
+                <source>form.label_local</source>
+                <target>Локальный</target>
+            </trans-unit>
             <trans-unit id="form_label_author">
                 <source>form.label_author</source>
                 <target>Автор</target>

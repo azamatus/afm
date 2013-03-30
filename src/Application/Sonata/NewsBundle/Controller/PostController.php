@@ -10,14 +10,11 @@
 
 namespace Application\Sonata\NewsBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 use Sonata\NewsBundle\Model\PostInterface;
 use Sonata\NewsBundle\Model\CommentInterface;
-use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Sonata\NewsBundle\Controller\PostController as BaseController;
 

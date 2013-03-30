@@ -16,7 +16,7 @@
     <div class="sonata-blog-post-information">
 
         <div class="sonata-blog-post-info">
-            <img src="{{ asset('public/img/news/apple.png') }}"/>
+            {% thumbnail post, 'small' %}
 
             <div class="sonata-blog-post-date-container">
                 <span class="sonata-blog-post-lbl btm_date">{{ post.publicationDateStart | proDate}}</span>

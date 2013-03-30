@@ -16,7 +16,7 @@
         <div class="sonata-blog-post-information">
 
             <div class="sonata-blog-post-info">
-                <img src="{{ asset('public/img/news/apple.png') }}"/>
+                {% thumbnail post, 'small' %}
 
                 <h1 class="sonata-blog-post-title">
                     <a href="{{ url('sonata_news_view', { 'permalink': sonata_news_permalink(post) }) }}">{{ post.title }}</a>
