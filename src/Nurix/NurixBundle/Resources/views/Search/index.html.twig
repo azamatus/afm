@@ -1,0 +1,6 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+    {% render "CatalogBundle:Search:index" with {'searchText':searchText} %}
+    <div class="clearbox"></div>
+    {#{% render  "ArticleBundle:Search:index" with {'searchText':searchText}%}#}
+{% endblock %}
