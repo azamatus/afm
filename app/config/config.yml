@@ -3,6 +3,7 @@ imports:
     - { resource: security.yml }
     - { resource: sonata/media.yml }
     - { resource: sonata/news.yml }
+    - { resource: @CatalogBundle/Resources/config/admin.xml }
 
 framework:
     trusted_proxies: ~
