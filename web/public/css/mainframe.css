@@ -3,6 +3,24 @@
     font-family: Arial;
     font-size: 12px;
 }
+h1 {
+    font-size: 26px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 20px;
+}
+h4 {
+    font-size: 18px;
+}
+h5 {
+    font-size: 16px;
+}
+h6 {
+    font-size: 16px;
+}
 .float_left
 {
     float: left;
@@ -227,54 +245,7 @@ div.search
 .vhod:hover {
     border-bottom: 1px solid;
 }
-.reg_login_password{
-    margin-top: 20px;
-}
-.reg_login_password > input{
-    margin-left: 64px;
-}
-.reg_login_remember {
-    margin: 10px 0 10px 125px;
 
-}
-.reg_login_remember #remember_me{
-    height: 0;
-}
-#_submit{
-    float: right;
-    margin-right: 53px;
-}
-.ui-dialog {
-    border-radius: 4px;
-    background-color: #fec001;
-    padding: 40px;
-}
-
-.ui-dialog-titlebar-close {
-    height: 16px;
-    position: absolute;
-    right: 0;
-    top: 2px;
-    background: url("../img/close_icon.png") no-repeat;
-}
-.ui-icon-closethick
-{
-    height: 16px !important;
-    opacity: 0;
-}
-.ui-dialog-title{
-    font-size: 16px;
-}
-.ui-dialog-titlebar{
-    position: absolute; right: 0px; width: 185px; top: 5px;
-}
-.login_form{
-    float: left;
-    margin: 10px;
-}
-.submit{
-    float: right;
-}
 .button {
     background-image: url("../img/button2.png");
     background-repeat: no-repeat;
@@ -475,7 +446,7 @@ ul.otherLinks li a
 {
     display: block;
 }
-.button_buy
+.button_buy, .button_register
 {
     background: url("../img/btn-buy.png") repeat-x 0 -4px;
     border: 1px solid #BDBDBD;
@@ -488,11 +459,30 @@ ul.otherLinks li a
     text-decoration: none;
     text-shadow: 0 1px 1px #B7B7B7;
 }
-.button_buy:hover
+.button_buy:hover, .button_register:hover
 {
     border: 1px solid #fdad01;
     color: #000 !important;
     background: url("../img/btn-buy-hover.png") repeat-x 0 -4px;
+}
+.button_buy-trn
+{
+    background: url("../img/btn-buy-hover.png") repeat-x 0 -4px;
+    border: 1px solid #fdad01;
+    color: #000 !important;
+    border-radius: 4px 4px 4px 4px;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0 1px 1px #B7B7B7;
+}
+.button_buy-trn:hover
+{
+    border: 1px solid #BDBDBD;
+    color: #666 !important;
+    background: url("../img/btn-buy.png") repeat-x 0 -4px;
 }
 hr
 {

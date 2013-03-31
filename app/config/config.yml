@@ -1,6 +1,8 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: sonata/media.yml }
+    - { resource: sonata/news.yml }
 
 framework:
     trusted_proxies: ~
@@ -52,6 +54,12 @@ doctrine:
     orm:
         auto_generate_proxy_classes: %kernel.debug%
         auto_mapping: true
+        mappings:
+            ApplicationSonataMediaBundle: ~
+
+#        dbal:
+#            types:
+#                json: Sonata\Doctrine\Types\JsonType
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -99,3 +107,6 @@ fos_user:
     registration:
         confirmation:
             enabled:    true
+    from_email:
+        address:        nursultan2010@gmail.com
+        sender_name:    Acme Demo App

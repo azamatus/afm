@@ -1,0 +1,59 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+{{ parent() }}
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/applicationsonatanews/css/s-article.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<h2 class="sonata-blog-post-h2">Новости</h2>
+
+<div class="sonata-blog-post-list">
+    {% for post in pager.getResults() %}
+    <div class="sonata-blog-post-container">
+
+        <div class="sonata-blog-post-information">
+
+            <div class="sonata-blog-post-info">
+                {% thumbnail post, 'small' %}
+
+                <h1 class="sonata-blog-post-title">
+                    <a href="{{ url('sonata_news_view', { 'permalink': sonata_news_permalink(post) }) }}">{{ post.title }}</a>
+                </h1>
+
+                <div class="sonata-blog-post-content">
+                    {{ post.abstract|raw }}
+                </div>
+
+                <div class="sonata-blog-post-tag-container">
+                    <div class="sonata-blog-post-tag-title">
+                        {{ 'published_under'|transchoice(post.tags|length, {}, 'SonataNewsBundle') }}
+                    </div>
+                    <div class="sonata-blog-post-tag-list">
+                        {% for tag in post.tags%}
+                        <a href="{{ url('sonata_news_tag', {'tag': tag.slug} ) }}">{{ tag.name }}</a>
+                        {% if not loop.last%}, {%endif%}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="sonata-blog-post-bottom-info">
+                    <span class="sonata-blog-post-lbl btm_date">{{ post.publicationDateStart | proDate}}</span>
+                    <span class="sonata-blog-post-lbl btm_comment">Комментарии ({{ post.commentsCount }})</span>
+                    <span class="sonata-blog-post-lbl btm_viewed">Просмотров </span>
+                </div>
+                <div class="clearbox"></div>
+            </div>
+
+            <div class="clearbox"></div>
+
+        </div>
+
+    </div>
+    {% else %}
+    {{ 'no_post_found'|trans({}, 'SonataNewsBundle') }}
+    {% endfor %}
+</div>
+
+{% endblock %}

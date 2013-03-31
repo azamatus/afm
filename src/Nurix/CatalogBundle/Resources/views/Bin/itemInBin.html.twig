@@ -1,0 +1,93 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/catalog/css/bin.css') }} " type="text/css" rel="stylesheet"/>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript"  src="{{ asset("bundles/catalog/js/jquery.cookie.js")}}"></script>
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <div>
+        <h2>Корзина:</h2>
+
+        {% if goods %}
+            <form method="post" action="{{ path("nurix_bin_bin_form") }}">
+                <table class="bin-table">
+                    <tr>
+                        <th>Товар:</th>
+                        <th>Цена:</th>
+                        <th>Кол-во:</th>
+                        <th>Итого:</th>
+                    </tr>
+                    {% for good in goods %}
+                        {% set totalPrice = good.price %}
+                        <tr id="{{ good.id }}">
+                            <td>
+                                <img src="{{ asset('public/img/phones/'~good.imagePath) }}" class="bin_itemPic"/>
+
+                                <div class="bin_aboutItem">
+                                    <a class="name" href="/">{{ good.name }}</a>
+
+                                    <div class="from">{{ good.shortDescription }}</div>
+                                    <a href="" style="color: #ca5f00;">подробная информация &rarr;</a>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="bin_itemPrice" id="price_{{ good.id }}">
+                                    <span class="Som">12 000</span>
+                                    <span class="Dollar">$ {{ good.price }}</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="bin_itemCount">
+                                    <span class="itemCounter itemAdd"  onmousedown="return false">&nbsp;</span>
+                                    <input class="itemVvod" type="text" id="{{ good.id }}" value="{{ attribute(goodIds,good.id) }}"
+                                           name="bin[{{ good.id }}]"/>
+                                    <span class="itemCounter itemSub"  onmousedown="return false">&nbsp;</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="bin_itemPrice" id="goodTotal_{{ good.id }}">
+                                    <span class="Som">24 000 сом</span>
+                                    <span class="Dollar">$ {{ good.price * attribute(goodIds,good.id) }}</span>
+                                    <span class="bin-remove bin-remove-item">&nbsp;</span>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <td>
+                            <div class="itog">Итого:</div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <div class="bin_itemTotalPrice">
+                                <span class="Som">24 000 сом</span>
+                                <span class="Dollar">$ 700</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class="continue-buy-button" type="submit" value="Продолжить покупки" name="bin-btn">
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <input class="zakaz-button" type="submit" value="Оформить заказ" name="bin-btn">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        {% else %}
+            <h3>Корзина пуста</h3>
+        {% endif %}
+    </div>
+
+{% endblock body %}

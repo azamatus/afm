@@ -1,8 +1,23 @@
+/*validation*/
+.pw-very-weak {
+    border: 1px solid #ff9393 !important;
+}
+
+.pw-strong {
+    border: 1px solid #ff8400 !important;
+}
+.pw-very-strong {
+    border: 1px solid #a4df33 !important;
+}
+/*END: validation*/
+
+/*popup*/
 .registration_label {
     font-family: Arial;
     color: #999999;
     font-size: 12px;
-    margin-top: 20px
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .registration_input input {
@@ -26,16 +41,23 @@
     font-family: Arial;
     font-size: 11px;
 }
-
-/*validation*/
-.pw-very-weak {
-    border: 1px solid #ff9393 !important;
+#form_popup input{
+    width: 350px;
+    margin-top: 10px;
+    margin-bottom: 25px;
 }
-
-.pw-strong {
-    border: 1px solid #ff8400 !important;
+#form_popup .button_register{
+    width: 130px;
 }
-.pw-very-strong {
-    border: 1px solid #a4df33 !important;
+#form_popup hr{
+    color: #999999;
 }
-/*END: validation*/
+#form_popup .forgot_password a, #form_popup .register a{
+    float: left;
+    margin-top: -10px;
+    color: #ca5f00 !important;
+}
+#form_popup .register{
+    float: right;
+}
+/*END popup*/

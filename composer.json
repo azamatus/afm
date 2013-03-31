@@ -28,7 +28,10 @@
         "sonata-project/doctrine-orm-admin-bundle": "dev-master",
         "friendsofsymfony/user-bundle" : "dev-master",
         "knplabs/knp-menu-bundle": "1.1.*",
-        "avalanche123/imagine-bundle": "v2.1"
+        "avalanche123/imagine-bundle": "v2.1",
+        "sonata-project/markitup-bundle": "dev-master",
+        "egeloen/ckeditor-bundle": "2.*",
+        "sonata-project/news-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
