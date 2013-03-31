@@ -27,7 +27,7 @@
             <div class="product_name">{{ product.name }}</div>
             <div class="product_base_info">
                 <table  class="chars">
-                    {% for type in char %}
+                    {% for type in mainchar %}
                         <tr>
                             <td class="charType">{{ type.getCTypeId.name }}:</td>
                             <td class="charValue">{{ type.value }}</td>
@@ -108,6 +108,9 @@
                     {% else %}
                         Пока видео еще нет
                     {% endif %}
+                    \
+
+
                 </div>
             </div>
         </div>
