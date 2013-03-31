@@ -6,9 +6,10 @@ nurix:
     resource: "@NurixBundle/Resources/config/routing.yml"
     prefix:   /
 
-article:
-    resource: "@ArticleBundle/Resources/config/routing.yml"
-    prefix:   /
+#article:
+#    resource: "@ArticleBundle/Resources/config/routing.yml"
+#    prefix:   /
+
 # Internal routing configuration to handle ESI
 #_internal:
 #    resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
@@ -46,3 +47,15 @@ _sonata_admin:
 soanata_user:
     resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
     prefix: /admin
+
+gallery:
+    resource: '@SonataMediaBundle/Resources/config/routing/gallery.xml'
+    prefix: /media/gallery
+
+media:
+    resource: '@SonataMediaBundle/Resources/config/routing/media.xml'
+    prefix: /media
+
+news:
+    resource: '@SonataNewsBundle/Resources/config/routing/news.xml'
+    prefix: /news

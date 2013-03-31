@@ -1,0 +1,68 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+{{ parent() }}
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/applicationsonatanews/css/s-article.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="sonata-blog-post-container">
+
+    <h1 class="sonata-blog-post-title">
+        <a href="{{ url('sonata_news_view', { 'permalink': sonata_news_permalink(post) }) }}">{{ post.title }}</a>
+        {#<span class="sonata-blog-post-author">{{ 'archive_author'|trans({'%author%': post.author }, 'SonataNewsBundle') }}</span>#}
+    </h1>
+
+    <div class="sonata-blog-post-information">
+
+        <div class="sonata-blog-post-info">
+            {% thumbnail post, 'small' %}
+
+            <div class="sonata-blog-post-date-container">
+                <span class="sonata-blog-post-lbl btm_date">{{ post.publicationDateStart | proDate}}</span>
+            </div>
+
+            <div class="sonata-blog-post-content">
+                {{ post.content|raw }}
+            </div>
+        </div>
+
+        <div class="clearbox"></div>
+
+        <div class="sonata-blog-post-tag-container">
+            <div class="sonata-blog-post-tag-title">
+                {{ 'published_under'|transchoice(post.tags|length, {}, 'SonataNewsBundle') }}
+            </div>
+            <div class="sonata-blog-post-tag-list">
+                {% for tag in post.tags%}
+                <a href="{{ url('sonata_news_tag', {'tag': tag.slug} ) }}">{{ tag.name }}</a>
+                {% if not loop.last%}, {%endif%}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="clearbox"></div>
+
+        <hr class="sonata-blog-post-hr">
+
+        <div class="sonata-blog-post-bottom-info">
+            <span class="sonata-blog-post-lbl btm_comment">Комментарии ({{ post.commentsCount }})</span>
+            <span class="sonata-blog-post-lbl btm_viewed">Просмотров </span>
+        </div>
+        <div class="clearbox"></div>
+
+    </div>
+
+    {% render 'SonataNewsBundle:Post:comments' with {'postId': post.id} %}
+
+    {% if post.iscommentable and app.user %}
+        {% render 'SonataNewsBundle:Post:addCommentForm' with {
+            'postId': post.id,
+            'form': form
+        } %}
+    {% else %}
+        <div>
+            {{ 'message_comments_are_closed'|trans({}, 'SonataNewsBundle') }}
+        </div>
+    {% endif %}
+</div>
+{% endblock body %}
