@@ -27,16 +27,21 @@
             <div class="product_name">{{ product.name }}</div>
             <div class="product_base_info">
                 <table  class="chars">
+                    {% if mainchar %}
                     {% for type in mainchar %}
                         <tr>
                             <td class="charType">{{ type.getCTypeId.name }}:</td>
                             <td class="charValue">{{ type.value }}</td>
                         </tr>
+
                         {% if loop.index == 3 %}
                             <tr><td class="table_otsup"></td></tr>
                         {% endif %}
 
                     {% endfor %}
+                    {% else %}
+                      Характеристики еще не введены
+                    {% endif %}
                 </table>
             </div>
             <div class="product_box">
