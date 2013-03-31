@@ -40,7 +40,7 @@
 
                     {% endfor %}
                     {% else %}
-                      Характеристики еще не введены
+                      <h3>Характеристики еще не введены</h3>
                     {% endif %}
                 </table>
             </div>
@@ -61,11 +61,10 @@
 
             <hr class="product_hr1">
 
-
-            <div>
-                Описание:
-            </div>
             <div class="product_description">
+                <div style="color: #999;">
+                    Описание:
+                </div>
                 {{ product.fullDesctiption }}
             </div>
         </div>
@@ -108,14 +107,11 @@
                         <ul>
                 </div>
                 <div class="tabs_content video">
-                    {%  if product.videosId is defined  %}
+                    {%  if product.videos | length > 0 %}
                     {% include  "CatalogBundle:Product:video.html.twig" %}
                     {% else %}
-                        Пока видео еще нет
+                        <h1>Пока видео еще нет</h1>
                     {% endif %}
-                    \
-
-
                 </div>
             </div>
         </div>
