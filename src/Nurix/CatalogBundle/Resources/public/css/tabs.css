@@ -1,8 +1,8 @@
 #tabs_container{
-    margin-top: 15px;
+    min-height: 150px;
 }
 #tabs_container ul.menu{
-    width: 100%;
+    width: 96%;
     border-bottom: 1px solid #d0ccc9;
     display: inline-block;
     list-style: none;

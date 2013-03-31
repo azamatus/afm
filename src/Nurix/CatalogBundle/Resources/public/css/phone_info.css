@@ -3,7 +3,6 @@
     margin-top: 50px;
     color: #999;
 }
-
 .product_image
 {
     float:left;
@@ -18,6 +17,7 @@
 .product_base_info
 {
     float: left;
+    width: 210px;
 }
 .charType
 {
@@ -114,17 +114,19 @@
 }
 .product_hr1
 {
-    width: 450px;
+    width: 443px;
 }
 .product_hr2
 {
-    width: 690px;
+    width: 655px;
 }
 .product_description
 {
+    margin: -15px 3px;
     width: 450px;
     word-wrap: break-word;
     color: #666;
+    min-height: 50px;
 
 }
 .product_same

@@ -23,6 +23,8 @@ class ProductController extends Controller
 
         $char = $repository->getGoodCharacteristic($id);
 
+
+
         return $this->render('CatalogBundle:Product:product_info.html.twig', array('product' => $entity, 'char'=>$char, 'mainchar' => $mainchar));
     }
     public function getSameAction()
