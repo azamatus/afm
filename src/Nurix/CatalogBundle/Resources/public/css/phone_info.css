@@ -26,14 +26,18 @@
 .charValue
 {
     width: 79px;
+    color: #666;
 }
-.chars tr td
+.table_otsup
 {
-    padding-top: 10px;
+    padding: 10px 0px;
 }
+
 .chars
 {
     margin-top: 8px;
+    width: 230px;
+    height: 175px;
 
  }
 .product_box
@@ -120,6 +124,8 @@
 {
     width: 450px;
     word-wrap: break-word;
+    color: #666;
+
 }
 .product_same
 {
@@ -152,7 +158,7 @@
     float: left;
     font-size: 18px;
     padding-top: 8px;
-    margin-left: -18px;
+    margin-left: -20px;
     color: #000;
     text-align: center;
     width: 130px;
@@ -162,4 +168,16 @@
     -webkit-border-radius:5px;
     -moz-border-radius:5px;
     -o-border-radius:5px;
+}
+.char_title
+{
+    font-style: italic;
+    font-size: 18px;
+    color: #000;
+    margin: 10px 0px 10px 0px;
+}
+.video_desc
+{
+    display: block;
+    margin-bottom: 10px;
 }

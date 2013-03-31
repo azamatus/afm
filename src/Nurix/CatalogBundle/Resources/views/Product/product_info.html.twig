@@ -26,13 +26,22 @@
         <div class="float_left">
             <div class="product_name">{{ product.name }}</div>
             <div class="product_base_info">
-                <table class="chars">
-                    {% for type in char %}
+                <table  class="chars">
+                    {% if mainchar %}
+                    {% for type in mainchar %}
                         <tr>
-                            <td class="charType">{{ type.getCTypeId.name }}</td>
+                            <td class="charType">{{ type.getCTypeId.name }}:</td>
                             <td class="charValue">{{ type.value }}</td>
                         </tr>
+
+                        {% if loop.index == 3 %}
+                            <tr><td class="table_otsup"></td></tr>
+                        {% endif %}
+
                     {% endfor %}
+                    {% else %}
+                      Характеристики еще не введены
+                    {% endif %}
                 </table>
             </div>
             <div class="product_box">
@@ -41,11 +50,11 @@
                 <div class="product_amount">
                     <div class="float_left word_col">кол-во:</div>
                     <div><input type="text" class="box" value="1" id="amount"/></div>
-                    <div class="addrem">
+                    <div class="addrem" onmousedown="return false">
                         <span class="znak" id="add">+</span>
                         <span class="znak" id="rem">-</span>
                     </div>
-                <a href="/" class="button_buy_bin">В корзину</a>
+                    <a href="/" class="button_buy_bin">В корзину</a>
                 </div>
             </div>
             <div class="clearbox"></div>
@@ -73,13 +82,9 @@
                 <span class="clear"></span>
 
                 <div class="tabs_content characteristic">
-                    <h1>Latest News</h1>
-                    <ul>
-                        <li>Boobles: First theme on Themeforest released!</li>
-                        <li> Cokidoo becomes official</li>
-                        <li> plusmusica.com private beta invitations</li>
-                        <li> yensdesign.com 2.0 launched!</li>
-                        <ul>
+
+                    {% include  "CatalogBundle:Product:characteristic.html.twig" %}
+
                 </div>
                 <div class="tabs_content review">
                     <h1>Latest Tutorials</h1>
@@ -103,10 +108,14 @@
                         <ul>
                 </div>
                 <div class="tabs_content video">
-                    <h1>Video</h1>
-                    <ul>
-                        <li>Home Video</li>
-                        <ul>
+                    {%  if product.videosId is defined  %}
+                    {% include  "CatalogBundle:Product:video.html.twig" %}
+                    {% else %}
+                        Пока видео еще нет
+                    {% endif %}
+                    \
+
+
                 </div>
             </div>
         </div>

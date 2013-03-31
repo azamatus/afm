@@ -17,7 +17,7 @@ class ExchangeExtension extends \Twig_Extension
         );
     }
 
-    public function priceFilter($number,$exchange='USD', $decimals = 2, $decPoint = '.')
+    public function priceFilter($number,$exchange='USD', $decimals = 1, $decPoint = '.')
     {
         if($exchange == 'USD')
         {
