@@ -145,4 +145,34 @@ class Catalog
     {
         return $this->cname;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->children = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add children
+     *
+     * @param \Nurix\CatalogBundle\Entity\Catalog $children
+     * @return Catalog
+     */
+    public function addChildren(\Nurix\CatalogBundle\Entity\Catalog $children)
+    {
+        $this->children[] = $children;
+    
+        return $this;
+    }
+
+    /**
+     * Remove children
+     *
+     * @param \Nurix\CatalogBundle\Entity\Catalog $children
+     */
+    public function removeChildren(\Nurix\CatalogBundle\Entity\Catalog $children)
+    {
+        $this->children->removeElement($children);
+    }
 }

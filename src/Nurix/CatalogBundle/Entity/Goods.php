@@ -56,6 +56,20 @@ class Goods
     private $imagePath;
 
     /**
+     * @var boolean $active
+     *
+     * @ORM\Column(name="active", type="boolean", nullable=true)
+     */
+    private $active;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="amount", type="integer", nullable=true)
+     */
+    private $amount;
+
+    /**
      * @var Catalog
      *
      * @ORM\ManyToOne(targetEntity="Catalog")
@@ -213,5 +227,51 @@ class Goods
     public function getCatalog()
     {
         return $this->catalog;
+    }
+
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     * @return Goods
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+    
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean 
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Set amount
+     *
+     * @param integer $amount
+     * @return Goods
+     */
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
+    
+        return $this;
+    }
+
+    /**
+     * Get amount
+     *
+     * @return integer 
+     */
+    public function getAmount()
+    {
+        return $this->amount;
     }
 }

@@ -75,29 +75,6 @@ class Article
     }
 
     /**
-     * Set description
-     *
-     * @param string $description
-     * @return Article
-     */
-    public function setdescription($description)
-    {
-        $this->description = $description;
-    
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string 
-     */
-    public function getdescription()
-    {
-        return $this->description;
-    }
-
-    /**
      * Set title
      *
      * @param string $title
@@ -210,5 +187,28 @@ class Article
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Article
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }
