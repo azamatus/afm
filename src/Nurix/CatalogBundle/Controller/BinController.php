@@ -22,7 +22,7 @@ class BinController extends Controller
 
         return $this->render('CatalogBundle:Bin:itemInBin.html.twig', array(
             'goods' => $goods,
-            'goodIds' => $goodsIds
+            'goodCount' => $goodsIds
         ));
     }
 

@@ -1,0 +1,21 @@
+<div style="margin-left : -4px;">
+    <table>
+        {% set lastSection=-1 %}
+        {% for title in char %}
+            {% if title.getCTypeId.getSection.id !=lastSection %}
+                {% set lastSection=title.getCTypeId.getSection.id %}
+                <tr>
+                    <td colspan="2">
+                        <div class="char_title">
+                            {{ title.getCTypeId.getSection.Sectionvalue }}
+                        </div>
+                    </td>
+                </tr>
+            {% endif %}
+            <tr>
+                <td class="charType">  {{ title.getCTypeId.name }}:</td>
+                <td class="charValue"> {{ title.value }}  </td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>

@@ -1,100 +1,49 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: Admin
- * Date: 02.02.13
- * Time: 13:55
- * To change this template use File | Settings | File Templates.
- */
+
 namespace Nurix\CatalogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Nurix\CatalogBundle\Entity\Catalog
+ * CharacteristicType
  *
- * @ORM\Table(name="CharacteristicType")
+ * @ORM\Table(name="characteristic_type")
  * @ORM\Entity
-  */
-
+ */
 class CharacteristicType
 {
     /**
-     * @var integer $id
+     * @var integer
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    protected $id;
+    private $id;
 
     /**
-     * @var string $name
+     * @var string
      *
      * @ORM\Column(name="name", type="string", length=100, nullable=false)
      */
-    protected $name;
+    private $name;
 
     /**
-     * @var string $list
+     * @var string
      *
      * @ORM\Column(name="list", type="string", length=100, nullable=true)
      */
-    protected $list;
+    private $list;
 
     /**
-     * Get id
+     * @var \CharacteristicSection
      *
-     * @return integer 
+     * @ORM\ManyToOne(targetEntity="CharacteristicSection")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Section", referencedColumnName="id")
+     * })
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $section;
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return CharacteristicType
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    
-        return $this;
-    }
 
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set list
-     *
-     * @param string $list
-     * @return CharacteristicType
-     */
-    public function setList($list)
-    {
-        $this->list = $list;
-    
-        return $this;
-    }
-
-    /**
-     * Get list
-     *
-     * @return string 
-     */
-    public function getList()
-    {
-        return $this->list;
-    }
 }

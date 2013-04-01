@@ -11,10 +11,11 @@ namespace Nurix\CatalogBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Nurix\CatalogBundle\Entity\Catalog
+ * Nurix\CatalogBundle\Entity\Characteristic
  *
- * @ORM\Table(name="Characteristic")
+ * @ORM\Table(name="characteristic")
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Nurix\CatalogBundle\Entity\CharacteristicRepository")
  */
 
 class Characteristic

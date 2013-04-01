@@ -47,6 +47,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
             new Application\Sonata\NewsBundle\ApplicationSonataNewsBundle(),
+            new Sunra\PhpSimple\HtmlDomParser(),
 
         );
 
