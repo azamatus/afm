@@ -11,10 +11,11 @@ namespace Nurix\CatalogBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Nurix\CatalogBundle\Entity\Catalog
+ * Nurix\CatalogBundle\Entity\Characteristic
  *
- * @ORM\Table(name="Characteristic")
+ * @ORM\Table(name="characteristic")
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Nurix\CatalogBundle\Entity\CharacteristicRepository")
  */
 
 class Characteristic
@@ -53,4 +54,83 @@ class Characteristic
      * @ORM\Column(name="value", type="string", length=100, nullable=true)
      */
     protected $value;
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set value
+     *
+     * @param string $value
+     * @return Characteristic
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+    
+        return $this;
+    }
+
+    /**
+     * Get value
+     *
+     * @return string 
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    /**
+     * Set cTypeId
+     *
+     * @param Nurix\CatalogBundle\Entity\CharacteristicType $cTypeId
+     * @return Characteristic
+     */
+    public function setCTypeId(\Nurix\CatalogBundle\Entity\CharacteristicType $cTypeId = null)
+    {
+        $this->cTypeId = $cTypeId;
+    
+        return $this;
+    }
+
+    /**
+     * Get cTypeId
+     *
+     * @return Nurix\CatalogBundle\Entity\CharacteristicType 
+     */
+    public function getCTypeId()
+    {
+        return $this->cTypeId;
+    }
+
+    /**
+     * Set goodId
+     *
+     * @param Nurix\CatalogBundle\Entity\Goods $goodId
+     * @return Characteristic
+     */
+    public function setGoodId(\Nurix\CatalogBundle\Entity\Goods $goodId = null)
+    {
+        $this->goodId = $goodId;
+    
+        return $this;
+    }
+
+    /**
+     * Get goodId
+     *
+     * @return Nurix\CatalogBundle\Entity\Goods 
+     */
+    public function getGoodId()
+    {
+        return $this->goodId;
+    }
 }

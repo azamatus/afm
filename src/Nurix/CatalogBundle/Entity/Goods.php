@@ -49,9 +49,19 @@ class Goods
     private $price;
 
     /**
-     * @var string $imagePath
+     * @var integer $image_id
      *
-     * @ORM\Column(name="image_path", type="string", length=50, nullable=false)
+     * @ORM\Column(name="image_id", type="integer", nullable=true)
+     */
+    private $image_id;
+
+    /**
+     * @var Media
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="image_id", referencedColumnName="id")
+     * })
      */
     private $imagePath;
 
@@ -288,5 +298,58 @@ class Goods
     public function getAmount()
     {
         return $this->amount;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->videos = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Set image_id
+     *
+     * @param integer $imageId
+     * @return Goods
+     */
+    public function setImageId($imageId)
+    {
+        $this->image_id = $imageId;
+    
+        return $this;
+    }
+
+    /**
+     * Get image_id
+     *
+     * @return integer 
+     */
+    public function getImageId()
+    {
+        return $this->image_id;
+    }
+
+    /**
+     * Add videos
+     *
+     * @param \Nurix\CatalogBundle\Entity\Videos $videos
+     * @return Goods
+     */
+    public function addVideo(\Nurix\CatalogBundle\Entity\Videos $videos)
+    {
+        $this->videos[] = $videos;
+    
+        return $this;
+    }
+
+    /**
+     * Remove videos
+     *
+     * @param \Nurix\CatalogBundle\Entity\Videos $videos
+     */
+    public function removeVideo(\Nurix\CatalogBundle\Entity\Videos $videos)
+    {
+        $this->videos->removeElement($videos);
     }
 }

@@ -42,7 +42,8 @@ class GoodsAdmin extends Admin {
                 ->add('short_description','textarea',array('label'=>'Краткое описание'))
                 ->add('full_desctiption','textarea',array('label'=>'Полное описание'))
                 ->add('price',null,array('label'=>'Цена'))
-                ->add('image_path','text',array('label'=>'Картинка'))
+                /*->add('image_path','text',array('label'=>'Картинка'))*/
+                ->add('imagePath', 'sonata_type_model_list', array(), array('link_parameters' => array('context' => 'news')))
                 ->add('active',null,array('label'=>'Активный'))
                 ->add('amount',null,array('label'=>'Количество'));
     }
