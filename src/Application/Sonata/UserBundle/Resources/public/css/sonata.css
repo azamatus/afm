@@ -61,3 +61,12 @@
     float: right;
 }
 /*END popup*/
+
+/*START login form*/
+.login_form{
+    width: 270px;
+}
+.registration_remember_me{
+    margin-top: 15px;
+}
+/*END login form*/
