@@ -69,4 +69,8 @@
 .registration_remember_me{
     margin-top: 15px;
 }
+.registration_remember_me > input {
+    margin: 0 3px 1px 0;
+    vertical-align: bottom;
+}
 /*END login form*/
