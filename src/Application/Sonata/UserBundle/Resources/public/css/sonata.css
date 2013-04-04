@@ -69,7 +69,7 @@
 .registration_remember_me{
     margin-top: 15px;
 }
-.registration_remember_me > input {
+.registration_remember_me input[type=checkbox] {
     margin: 0 3px 1px 0;
     vertical-align: bottom;
 }
