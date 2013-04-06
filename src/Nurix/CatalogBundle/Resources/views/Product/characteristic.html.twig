@@ -1,10 +1,10 @@
 <div style="margin-left : -4px;">
-    <table>
+    <table >
         {% set lastSection=-1 %}
         {% for title in char %}
             {% if title.getCTypeId.getSection.id !=lastSection %}
                 {% set lastSection=title.getCTypeId.getSection.id %}
-                <tr>
+                <tr valign = "baseline">
                     <td colspan="2">
                         <div class="char_title">
                             {{ title.getCTypeId.getSection.Sectionvalue }}

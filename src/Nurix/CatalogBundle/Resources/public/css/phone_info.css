@@ -54,7 +54,7 @@
     -o-border-radius:5px;
 
 }
-.product_price
+.product_price, .product_price > span
 {
     padding-top: 15px;
     color: #000000;
@@ -177,6 +177,7 @@
     font-size: 18px;
     color: #000;
     margin: 10px 0px 10px 0px;
+    width: 265px;
 }
 .video_desc
 {
