@@ -9,7 +9,13 @@ $(function () {
                 alert('ERROR');
             },
             success:function (data) {
-                alert(data.title + ' добавлен в корзину');
+                $('#tovar-added').empty().html(data).dialog(
+                    {
+                        closeText: "",
+                        minHeight: 300,
+                        minWidth: 450
+                    }
+                );
             }
         });
     });
@@ -36,19 +42,36 @@ $(function () {
     function goodTotal($input, amount){
         var price = $('#price_' + $input.attr('id')),
             goodTotal = $('#goodTotal_' + $input.attr('id'));
-        var Tsom = goodTotal.find('.Som'),
-            Tdol = goodTotal.find('.Dollar');
-        var som = price.find('.Som').html(),
-            dol = price.find('.Dollar').html();
+        var Tsom = goodTotal.find('.Som > .value'),
+            Tdol = goodTotal.find('.Dollar > .value');
+        var som = price.find('.Som > .value').html(),
+            dol = price.find('.Dollar > .value').html();
         som = parseFloat(som.replace(/[^\d]/gi, ''));
         dol = parseFloat(dol.replace(/[^\d]/gi, ''));
 
         Tsom.html(som * amount);
         Tdol.html(dol * amount);
+        calculate();
+    }
+
+    function calculate() {
+        var sumSom = 0;
+        var sumUSD = 0;
+        $('.bin-table').find('tr[id]').each(function (i, el) {
+            var value = $(this).children('td:last').find('.Som > .value').html();
+            sumSom += parseFloat(value);
+            value = $(this).children('td:last').find('.Dollar > .value').html();
+            sumUSD += parseFloat(value);
+        });
+        $('.bin_itemTotalPrice .Som > .value').html(sumSom.toString());
+        $('.bin_itemTotalPrice .Dollar > .value').html(sumUSD.toString());
     }
 
     $(".bin-remove-item").click(function(){
-        var id = $(this).parents('tr').empty();
+        var tr = $(this).parents('tr');
+        id = tr.attr('id');
+        tr.parent().removeChild(tr);
+        calculate();
     });
 
     $('.itemVvod').bind("change blur", function(){

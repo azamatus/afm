@@ -46,7 +46,7 @@
     margin-top: 10px;
     margin-bottom: 25px;
 }
-#form_popup .button_buy{
+#form_popup .button_register{
     width: 130px;
 }
 #form_popup hr{
@@ -61,3 +61,16 @@
     float: right;
 }
 /*END popup*/
+
+/*START login form*/
+.login_form{
+    width: 270px;
+}
+.registration_remember_me{
+    margin-top: 15px;
+}
+.registration_remember_me input[type=checkbox] {
+    margin: 0 3px 1px 0;
+    vertical-align: bottom;
+}
+/*END login form*/

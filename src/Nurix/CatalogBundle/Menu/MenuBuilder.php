@@ -37,14 +37,15 @@ class MenuBuilder extends ContainerAware
             ->setExtra('currentClass','active');
 
 
-        $catalog = $cm->getAll(array('active'=>1, 'parent'=>1));
+        $catalog = $cm->getAll(array('active'=>1, 'parent'=>null));
 
         foreach ($catalog as $category)
         {
             $cat=$menu->addChild($category->getCname(),array('route'=>'nurix_goods_get_catalog','routeParameters'=>array('cid'=>$category->getId())))->setDisplayChildren(true);
             foreach ($category->getChildren() as $child)
             {
-                $cat->addChild($child->getCname(),array('route'=>'nurix_goods_get_catalog','routeParameters'=>array('cid'=>$child->getId())));
+                if ($child->getActive())
+                    $cat->addChild($child->getCname(),array('route'=>'nurix_goods_get_catalog','routeParameters'=>array('cid'=>$child->getId())));
             }
         }
         return $menu;

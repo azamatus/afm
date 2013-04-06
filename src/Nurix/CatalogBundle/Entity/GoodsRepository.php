@@ -19,8 +19,20 @@ class GoodsRepository extends EntityRepository
         $qb = $repository->createQueryBuilder('r');
         $query = $qb->add('where', $qb->expr()->in('r.id', array_keys($goodsIds)))
                 ->getQuery();
-//        var_dump($query->getResult());
-//        die;
         return $query->getResult();
+    }
+
+    public function searchGoods($searchText)
+    {
+        $query =  $this->createQueryBuilder('g')
+            ->leftJoin('Nurix\CatalogBundle\Entity\Characteristic', 'c', 'WITH', 'c.goodId = g.id')
+            ->orWhere("g.name like :search")
+            ->orWhere('g.shortDescription like :search')
+            ->orWhere('g.fullDesctiption like :search')
+            ->orWhere('c.value like :search')
+            ->setParameter('search','%'.$searchText.'%');
+
+        return $query->getQuery()->getResult();
+
     }
 }

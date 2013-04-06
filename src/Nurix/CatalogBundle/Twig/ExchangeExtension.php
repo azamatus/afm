@@ -13,22 +13,24 @@ class ExchangeExtension extends \Twig_Extension
     public function getFilters()
     {
         return array(
-            'price' => new \Twig_Filter_Method($this, 'priceFilter'),
+            'price' => new \Twig_Filter_Method($this, 'priceFilter',array(
+                'is_safe' => array('html')
+            )),
         );
     }
 
-    public function priceFilter($number,$exchange='USD', $decimals = 2, $decPoint = '.')
+    public function priceFilter($number,$exchange='USD', $decimals = 1, $decPoint = '.')
     {
         if($exchange == 'USD')
         {
             $price = number_format($number, $decimals, $decPoint,'');
-            $price = '$'.$price;
+            $price = '$'.'<span class="value">'.$price.'</span>';
         }
         elseif ($exchange == 'SOM')
         {
             // TODO Надо исправить, чтобы брать из базы
             $price = number_format($number*47.8, $decimals, $decPoint,'');
-            $price = $price.' сом';
+            $price = '<span class="value">'.$price.'</span>'.' сом';
         }
         else
         {

@@ -1,0 +1,16 @@
+{% block stylesheets %}
+    <link href="{{ asset('bundles/catalog/css/bin.css') }} " type="text/css" rel="stylesheet"
+          xmlns="http://www.w3.org/1999/html"/>
+{% endblock %}
+
+<div>
+    <img src="{{ asset('public/img/phones/'~tovar.imagePath) }}" class="popup_image"/>
+
+    <div class="popup_aboutItem">
+        <a class="name" href="/">{{ tovar.name }}</a>
+        <div class="from">{{ tovar.shortDescription }}</div>
+
+        <span class="price"><span class="from">цена: </span>{{ tovar.price|price('SOM') }}</span>
+        <a href="{{ path('nurix_bin_item') }}"><span class="bin-link"><img src="{{ asset('public/img/korzinka.png') }}">перейти в корзину</span></a>
+    </div>
+</div>

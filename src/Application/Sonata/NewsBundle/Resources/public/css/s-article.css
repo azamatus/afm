@@ -1,0 +1,76 @@
+/* Новости*/
+
+.sonata-blog-post-h2{
+    font-size: 24px;
+}
+.sonata-blog-post-list .sonata-blog-post-container .sonata-blog-post-information
+.sonata-blog-post-info .sonata-blog-post-content{
+    margin-bottom: 20px;
+}
+
+.sonata-blog-post-information{
+    margin-bottom: 40px;
+}
+.sonata-blog-post-title a{
+    font-size: 30px;
+    font-style: italic;
+    color: #666666;
+    margin-bottom: 10px;
+}
+.sonata-blog-post-info > img{
+    float: left;
+    margin: 0 10px 10px 0;
+}
+.sonata-blog-post-date-container{
+    margin-bottom: 5px;
+}
+.sonata-blog-post-tag-container{
+    margin: 10px 0;
+}
+.sonata-blog-post-container{
+    margin-bottom: 50px;
+}
+.sonata-blog-post-container h3{
+    font-size: 18px;
+    color: #010101;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+.sonata-blog-comment{
+    margin-bottom: 20px;
+}
+.sonata-blog-comment .sonata-blog-comment-name{
+    float: left;
+    margin-right: 10px;
+}
+.sonata-blog-comment-tarea{
+    margin-bottom: 20px;
+}
+.sonata-blog-comment-tarea textarea{
+    border: 1px solid #CFCFCF;
+    border-radius: 5px 5px 5px 5px;
+    height: 170px;
+    resize: none;
+    width: 440px;
+    padding: 5px;
+}
+.sonata-blog-comment-name > a {
+    font-weight: bold;
+}
+.sonata-blog-post-hr{
+    margin: 30px 0 !important;
+}
+.sonata-blog-post-lbl{
+    color: #999999;
+    margin-right: 30px;
+    padding-left: 16px;
+    background: url('../img/spr_news.png') no-repeat 0 0;
+}
+.btm_date{
+    background: none;
+    padding: 0;
+}
+.btm_viewed{
+    background-position: 0 -14px;
+}
+/* End: Новости*/

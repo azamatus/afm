@@ -3,26 +3,34 @@
     <div class="login_form">
         {% block fos_user_content %}
             {% if error %}
-                <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
+                <div class="error">{{ error|trans({}, 'FOSUserBundle') }}</div>
             {% endif %}
             <form action="{{ path("fos_user_security_check") }}" method="post">
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
 
-                <div class="reg_login_username">
-                    <label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
+                <div class="registration_label">
+                    <label for="username" >{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
+                </div>
+                <div class="registration_input">
                     <input type="text" id="username" name="_username" required="required"/>
                 </div>
-                <div class="reg_login_password">
+
+                <div class="registration_label">
                     <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+                </div>
+                <div class="registration_input">
                     <input type="password" id="password" name="_password" required="required"/>
                 </div>
-                <div class="reg_login_remember">
-                    <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
-                    <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+
+                <div class="registration_remember_me">
+                    <label for="remember_me" class="registration_label">
+                        <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
+                        {{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+                </div>
+                <div class="registration_submit">
+                    <input class ="button_register" type="submit" class="submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}"/>
                 </div>
 
-                <input type="submit" class="submit" name="_submit"
-                       value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}"/>
             </form>
         {% endblock fos_user_content %}
     </div>

@@ -47,22 +47,22 @@ class MenuBuilder extends ContainerAware
         $menu->addChild('Interesting',array('label'=>'Интересное'))
             ->setAttribute('class','catalog_menu')
             ->setLabelAttribute('class','f20');
-        $menu->addChild('Наши новости',array('route'=>'article_all_news','routeParameters'=>array('type'=>'local')));
-        $menu->addChild('Мировые новости',array('route'=>'article_all_news','routeParameters'=>array('type'=>'global')));
+        $menu->addChild('Наши новости',array('route'=>'sonata_news_home'));
+        $menu->addChild('Мировые новости',array('route'=>'sonata_news_home'));
 
-        $menu->addChild('О магазине',array('route'=>'article_all_news'));
+        $menu->addChild('О магазине',array('route'=>'sonata_news_home'));
 
-        $menu->addChild('Контакты',array('route'=>'article_all_news'));
+        $menu->addChild('Контакты',array('route'=>'sonata_news_home'));
 
-        $menu->addChild('Условия доставки',array('route'=>'article_all_news'));
+        $menu->addChild('Условия доставки',array('route'=>'sonata_news_home'));
 
-        $menu->addChild('Способы оплаты',array('route'=>'article_all_news'));
+        $menu->addChild('Способы оплаты',array('route'=>'sonata_news_home'));
 
-        $menu->addChild('Справка',array('route'=>'article_all_news'));
+        $menu->addChild('Справка',array('route'=>'sonata_news_home'));
 
-        $menu->addChild('Отзывы',array('route'=>'article_all_news'));
+        $menu->addChild('Отзывы',array('route'=>'sonata_news_home'));
 
-        $menu->addChild('Оптовым покупателям',array('route'=>'article_all_news'));
+        $menu->addChild('Оптовым покупателям',array('route'=>'sonata_news_home'));
 
         return $menu;
     }
