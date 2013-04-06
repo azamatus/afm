@@ -1,5 +1,4 @@
 $(function () {
-
     function refreshWidget() {
         var widget_path = base_url+"bin/widget";
         $.ajax({
