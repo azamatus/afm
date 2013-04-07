@@ -58,7 +58,7 @@ class Goods
     /**
      * @var Media
      *
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Gallery")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="image_id", referencedColumnName="id")
      * })
@@ -97,15 +97,23 @@ class Goods
      */
     protected $videos;
 
-
-
-    public function getVideos(){
-
-        return $this->videos;
+    /**
+     * @var Media
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Gallery")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="youtube_id", referencedColumnName="id")
+     * })
+     */
+    private $youtube;
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->videos = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
-
-
+    
     /**
      * Get id
      *
@@ -138,6 +146,7 @@ class Goods
     {
         return $this->name;
     }
+
     /**
      * Set shortDescription
      *
@@ -207,51 +216,27 @@ class Goods
         return $this->price;
     }
 
-
     /**
-     * Set imagePath
+     * Set image_id
      *
-     * @param string $imagePath
+     * @param integer $imageId
      * @return Goods
      */
-    public function setImagePath($imagePath)
+    public function setImageId($imageId)
     {
-        $this->imagePath = $imagePath;
+        $this->image_id = $imageId;
     
         return $this;
     }
 
     /**
-     * Get imagePath
+     * Get image_id
      *
-     * @return string 
+     * @return integer 
      */
-    public function getImagePath()
+    public function getImageId()
     {
-        return $this->imagePath;
-    }
-
-    /**
-     * Set catalog
-     *
-     * @param Nurix\CatalogBundle\Entity\Catalog $catalog
-     * @return Goods
-     */
-    public function setCatalog(\Nurix\CatalogBundle\Entity\Catalog $catalog = null)
-    {
-        $this->catalog = $catalog;
-    
-        return $this;
-    }
-
-    /**
-     * Get catalog
-     *
-     * @return Nurix\CatalogBundle\Entity\Catalog
-     */
-    public function getCatalog()
-    {
-        return $this->catalog;
+        return $this->image_id;
     }
 
     /**
@@ -299,35 +284,51 @@ class Goods
     {
         return $this->amount;
     }
+
     /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->videos = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    
-    /**
-     * Set image_id
+     * Set imagePath
      *
-     * @param integer $imageId
+     * @param \Application\Sonata\MediaBundle\Entity\Gallery $imagePath
      * @return Goods
      */
-    public function setImageId($imageId)
+    public function setImagePath(\Application\Sonata\MediaBundle\Entity\Gallery $imagePath = null)
     {
-        $this->image_id = $imageId;
+        $this->imagePath = $imagePath;
     
         return $this;
     }
 
     /**
-     * Get image_id
+     * Get imagePath
      *
-     * @return integer 
+     * @return \Application\Sonata\MediaBundle\Entity\Gallery 
      */
-    public function getImageId()
+    public function getImagePath()
     {
-        return $this->image_id;
+        return $this->imagePath;
+    }
+
+    /**
+     * Set catalog
+     *
+     * @param \Nurix\CatalogBundle\Entity\Catalog $catalog
+     * @return Goods
+     */
+    public function setCatalog(\Nurix\CatalogBundle\Entity\Catalog $catalog = null)
+    {
+        $this->catalog = $catalog;
+    
+        return $this;
+    }
+
+    /**
+     * Get catalog
+     *
+     * @return \Nurix\CatalogBundle\Entity\Catalog 
+     */
+    public function getCatalog()
+    {
+        return $this->catalog;
     }
 
     /**
@@ -351,5 +352,38 @@ class Goods
     public function removeVideo(\Nurix\CatalogBundle\Entity\Videos $videos)
     {
         $this->videos->removeElement($videos);
+    }
+
+    /**
+     * Get videos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVideos()
+    {
+        return $this->videos;
+    }
+
+    /**
+     * Set youtube
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Gallery $youtube
+     * @return Goods
+     */
+    public function setYoutube(\Application\Sonata\MediaBundle\Entity\Gallery $youtube = null)
+    {
+        $this->youtube = $youtube;
+    
+        return $this;
+    }
+
+    /**
+     * Get youtube
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Gallery 
+     */
+    public function getYoutube()
+    {
+        return $this->youtube;
     }
 }

@@ -20,14 +20,14 @@ sonata_media:
             formats:
                 small: { width: 190 , quality: 95}
                 big:   { width: 500 , quality: 90}
-
         goods:
-                    providers:
-                        - sonata.media.provider.image
+            providers:
+                - sonata.media.provider.image
+                - sonata.media.provider.youtube
 
-                    formats:
-                        small: { width: 190 , quality: 95}
-                        big:   { width: 500 , quality: 90}
+            formats:
+                small: { width: 190 , quality: 95}
+                big:   { width: 500 , quality: 90}
     cdn:
         server:
             path: /nurix/web/uploads/media # http://media.sonata-project.org/
