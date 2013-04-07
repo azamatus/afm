@@ -56,6 +56,16 @@ class Characteristic
     protected $value;
 
     /**
+     * @var Goods
+     *
+     * @ORM\ManyToOne(targetEntity="Goods", inversedBy="characteristic")
+     * @ORM\JoinColumns({
+     *@ORM\JoinColumn(name="goodId", referencedColumnName="id")
+     * })
+     */
+    protected $good;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -132,5 +142,33 @@ class Characteristic
     public function getGoodId()
     {
         return $this->goodId;
+    }
+
+    /**
+     * Set good
+     *
+     * @param \Nurix\CatalogBundle\Entity\Goods $good
+     * @return Characteristic
+     */
+    public function setGood(\Nurix\CatalogBundle\Entity\Goods $good = null)
+    {
+        $this->good = $good;
+    
+        return $this;
+    }
+
+    /**
+     * Get good
+     *
+     * @return \Nurix\CatalogBundle\Entity\Goods 
+     */
+    public function getGood()
+    {
+        return $this->good;
+    }
+
+    public function __toString()
+    {
+        return $this->getCTypeId()->getName(). " ==> ".$this->getValue();
     }
 }

@@ -89,6 +89,13 @@ class Goods
      */
     private $catalog;
 
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Characteristic", mappedBy="good", cascade={"persist", "remove" }, orphanRemoval=true)
+     */
+    protected $characteristic;
+
 
     /**
      * @var ArrayCollection
@@ -112,6 +119,7 @@ class Goods
     public function __construct()
     {
         $this->videos = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->characteristic = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -385,5 +393,38 @@ class Goods
     public function getYoutube()
     {
         return $this->youtube;
+    }
+
+    /**
+     * Add characteristic
+     *
+     * @param \Nurix\CatalogBundle\Entity\Characteristic $characteristic
+     * @return Goods
+     */
+    public function addCharacteristic(\Nurix\CatalogBundle\Entity\Characteristic $characteristic)
+    {
+        $this->characteristic[] = $characteristic;
+    
+        return $this;
+    }
+
+    /**
+     * Remove characteristic
+     *
+     * @param \Nurix\CatalogBundle\Entity\Characteristic $characteristic
+     */
+    public function removeCharacteristic(\Nurix\CatalogBundle\Entity\Characteristic $characteristic)
+    {
+        $this->characteristic->removeElement($characteristic);
+    }
+
+    /**
+     * Get characteristic
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCharacteristic()
+    {
+        return $this->characteristic;
     }
 }

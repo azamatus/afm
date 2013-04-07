@@ -20,14 +20,15 @@ class GoodsAdmin extends Admin {
         $showmapper
                 ->add('id',null,array('label'=>'ID'))
                 ->add('name',null,array('label'=>'Название'))
-                ->add('catalog','sonata_type_collection',array('Каталог'))
+                ->add('catalog','sonata_type_collection',array('label'=>'Каталог'))
                 ->add('short_description',null,array('label'=>'Краткое описание'))
                 ->add('full_desctiption',null,array('label'=>'Полное описание'))
                 ->add('price',null,array('label'=>'Цена'))
                 ->add('imagePath','sonata_media_type',array('label'=>'Галерея','provider'=>'sonata.media.provider.image','context'=>'goods'))
                 ->add('youtube','sonata_media_type',array('label'=>'Youtube','provider'=>'sonata.media.provider.youtube','context'=>'youtube'))
-                ->add('active',null,array('label'=>'Активный'))
-                ->add('amount',null,array('label'=>'Количество'));
+                ->add('active',null,array('label'=>'Активен'))
+                ->add('amount',null,array('label'=>'Количество'))
+                ->add('characteristic',null,array('label'=>'Характеристика'));
     }
 
     protected function configureFormFields(FormMapper $formmapper)
@@ -45,7 +46,7 @@ class GoodsAdmin extends Admin {
                 ->add('price',null,array('label'=>'Цена'))
                 ->add('imagePath', 'sonata_type_model_list', array('required'=>false,'label'=>'Галерея'), array('link_parameters' => array('context' => 'goods')))
                 ->add('youtube','sonata_type_model_list',array('required'=>false,'label'=>'Youtube'), array('link_parameters'=>array('context'=>'youtube')))
-                ->add('active',null,array('label'=>'Активный'))
+                ->add('active',null,array('label'=>'Активен'))
                 ->add('amount',null,array('label'=>'Количество'));
     }
 
@@ -56,7 +57,7 @@ class GoodsAdmin extends Admin {
                 ->addIdentifier('name',null,array('label'=>'Название'))
                 ->add('catalog','sonata_type_model',array('label'=>'Подкатегория'))
                 ->add('price',null,array('label'=>'Цена'))
-                ->add('active',null,array('label'=>'Активный'))
+                ->add('active',null,array('label'=>'Активен'))
                 ->add('amount',null,array('label'=>'Количество'));
     }
 }

@@ -22,21 +22,20 @@ class CatalogAdmin extends Admin{
         $showMapper
                 ->add('id',null,array('label'=>'ID'))
                 ->add('cname',null,array('label'=>'Заголовок'))
-                ->add('active',null,array('label'=>'Активный'))
-                ->add('parent','entity');
+                ->add('active',null,array('label'=>'Активен'))
+                ->add('parent','entity',array('label'=>'Парент'));
     }
 
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
                 ->add('cname',null,array('label'=>'Заголовок'))
-                ->add('active',null,array('label'=>'Активный','required'=>false))
-                ->add('parent','entity', array(
+                ->add('active',null,array('label'=>'Активен','required'=>false))
+                ->add('parent','entity', array('label'=>'Парент',
                 'class' => 'CatalogBundle:Catalog','required'=>false,
                 'query_builder' => function(EntityRepository $er) {
                     return $er->createQueryBuilder('p')
-                        ->where('p.parent is null')
-                        /*->setParameter('id', null)*/;
+                        ->where('p.parent is null');
                 },
             ));
     }
@@ -44,9 +43,9 @@ class CatalogAdmin extends Admin{
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-                ->addIdentifier('id')
+                ->addIdentifier('id',null,array('label'=>'ID'))
                 ->addIdentifier('cname',null,array('label'=>'Заголовок'))
-                ->add('active','checkbox',array('label'=>'Активный','required'=>false))
+                ->add('active','checkbox',array('label'=>'Активен'))
                 ->add('parent','sonata_type_model',array('label'=>'Парент'));
     }
 
@@ -54,6 +53,6 @@ class CatalogAdmin extends Admin{
     {
         $datagridMapper
                 ->add('cname',null,array('label'=>'Заголовок'))
-                ->add('parent',null);
+                ->add('parent',null,array('label'=>'Парент'));
     }
 }
