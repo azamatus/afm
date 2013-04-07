@@ -25,7 +25,7 @@ class GoodsAdmin extends Admin {
                 ->add('full_desctiption',null,array('label'=>'Полное описание'))
                 ->add('price',null,array('label'=>'Цена'))
                 ->add('imagePath','sonata_media_type',array('label'=>'Галерея','provider'=>'sonata.media.provider.image','context'=>'goods'))
-                ->add('youtube','sonata_media_type',array('label'=>'Youtube','provider'=>'sonata.media.provider.youtube','context'=>'goods'))
+                ->add('youtube','sonata_media_type',array('label'=>'Youtube','provider'=>'sonata.media.provider.youtube','context'=>'youtube'))
                 ->add('active',null,array('label'=>'Активный'))
                 ->add('amount',null,array('label'=>'Количество'));
     }
@@ -43,8 +43,8 @@ class GoodsAdmin extends Admin {
                 ->add('short_description','textarea',array('label'=>'Краткое описание'))
                 ->add('full_desctiption','textarea',array('label'=>'Полное описание'))
                 ->add('price',null,array('label'=>'Цена'))
-                ->add('imagePath', 'sonata_type_model_list', array('label'=>'Галерея'), array('link_parameters' => array('context' => 'goods')))
-                ->add('youtube','sonata_type_model_list',array('label'=>'Youtube'), array('link_parameters'=>array('context'=>'goods')))
+                ->add('imagePath', 'sonata_type_model_list', array('required'=>false,'label'=>'Галерея'), array('link_parameters' => array('context' => 'goods')))
+                ->add('youtube','sonata_type_model_list',array('required'=>false,'label'=>'Youtube'), array('link_parameters'=>array('context'=>'youtube')))
                 ->add('active',null,array('label'=>'Активный'))
                 ->add('amount',null,array('label'=>'Количество'));
     }

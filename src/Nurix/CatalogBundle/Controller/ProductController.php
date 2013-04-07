@@ -13,6 +13,7 @@ class ProductController extends Controller
         $entity = $this->getDoctrine()
             ->getRepository('CatalogBundle:Goods')
             ->find($id);
+        $gallery = $entity->getYoutube();
 
         $mainchar = $this -> getDoctrine()
             ->getRepository("CatalogBundle:Characteristic")
@@ -25,7 +26,7 @@ class ProductController extends Controller
 
 
 
-        return $this->render('CatalogBundle:Product:product_info.html.twig', array('product' => $entity, 'char'=>$char, 'mainchar' => $mainchar));
+        return $this->render('CatalogBundle:Product:product_info.html.twig', array('product' => $entity, 'char'=>$char, 'mainchar' => $mainchar,'gallery'=>$gallery));
     }
     public function getSameAction()
     {

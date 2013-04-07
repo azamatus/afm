@@ -22,12 +22,18 @@ sonata_media:
                 big:   { width: 500 , quality: 90}
         goods:
             providers:
-                - sonata.media.provider.image
                 - sonata.media.provider.youtube
 
             formats:
                 small: { width: 190 , quality: 95}
                 big:   { width: 500 , quality: 90}
+        youtube:
+            providers:
+                - sonata.media.provider.youtube
+
+            formats:
+                small: { width: 190 , quality: 95}
+                big:   { width: 560 , quality: 315}
     cdn:
         server:
             path: /nurix/web/uploads/media # http://media.sonata-project.org/

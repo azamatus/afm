@@ -1,7 +1,17 @@
 <div>
-    {% for video in product.videos %}
-    <div class="char_title">{{ video.title }}</div>
-    <span class="video_desc">{{ video.description }}</span>
-    <div><iframe width="560" height="315" src="http://www.youtube.com/embed/{{ video.videoId }}" frameborder="0" allowfullscreen></iframe></div>
+    {% for galleryHasMedia in gallery.GalleryHasMedias %}
+    <div class="char_title">{{ galleryHasMedia.media.name }}</div>
+    <span class="video_desc">{{ galleryHasMedia.media.description }}</span>
+    <div>
+        <object width="560" height="315">
+            <param name="movie" value="http://www.youtube.com/v/{{ galleryHasMedia.media.providerreference }}"></param>
+            {#<param name="allowFullScreen" value="true"></param>#}
+            {#<param name="allowscriptaccess" value="{{ options.allowScriptAccess }}"></param>#}
+            <embed
+                    src="http://www.youtube.com/v/{{ galleryHasMedia.media.providerreference }}"
+                    type="application/x-shockwave-flash" width="560" height="315">
+            </embed>
+        </object>
+    </div>
     {% endfor %}
 </div>

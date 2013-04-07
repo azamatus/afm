@@ -98,7 +98,7 @@ class Goods
     protected $videos;
 
     /**
-     * @var Media
+     * @var Gallery
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Gallery")
      * @ORM\JoinColumns({
@@ -373,7 +373,7 @@ class Goods
     public function setYoutube(\Application\Sonata\MediaBundle\Entity\Gallery $youtube = null)
     {
         $this->youtube = $youtube;
-    
+
         return $this;
     }
 
