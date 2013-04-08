@@ -4,7 +4,7 @@
 {% endblock %}
 
 <div>
-    <img src="{{ asset('public/img/phones/'~tovar.imagePath) }}" class="popup_image"/>
+    <a href="{{ path('nurix_goods_get_info', {'id': tovar.id} ) }}"><img src="{{ asset('public/img/phones/'~tovar.imagePath) }}" class="popup_image"/></a>
 
     <div class="popup_aboutItem">
         <a class="name" href="{{ path('nurix_goods_get_info', {'id': tovar.id} ) }}">{{ tovar.name }}</a>
