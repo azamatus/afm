@@ -16,9 +16,9 @@
         <div class="slide_center">
             <div id="my-folio-of-works" class="svwp">
                 <ul>
-                    <li><img src="{{ asset("public/img/phones/Htc_Incredible_S_1.png") }}" alt="catalog"/></li>
-                    <li><img src="{{ asset("public/img/phones/Htc_Incredible_S_2.png") }}" alt="catalog"/></li>
-                    <li><img src="{{ asset("public/img/phones/Htc_Incredible_S_3.png") }}" alt="catalog"/></li>
+                    {% for galleryHasMedia in product.imagePath.GalleryHasMedias %}
+                                <li>{% thumbnail galleryHasMedia.media, product.imagePath.defaultFormat %}</li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>
@@ -107,7 +107,7 @@
                         <ul>
                 </div>
                 <div class="tabs_content video">
-                    {%  if gallery | length > 0 %}
+                    {%  if product.youtube | length > 0 %}
                     {% include  "CatalogBundle:Product:video.html.twig" %}
                     {% else %}
                         <h1>Пока видео еще нет</h1>

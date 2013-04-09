@@ -56,7 +56,7 @@ class Goods
     private $image_id;
 
     /**
-     * @var Media
+     * @var Gallery
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Gallery")
      * @ORM\JoinColumns({

@@ -22,7 +22,7 @@ sonata_media:
                 big:   { width: 500 , quality: 90}
         goods:
             providers:
-                - sonata.media.provider.youtube
+                - sonata.media.provider.image
 
             formats:
                 small: { width: 190 , quality: 95}
