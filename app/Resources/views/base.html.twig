@@ -8,7 +8,9 @@
         <link type="text/css" rel="stylesheet" href="{{ asset("bundles/applicationsonatauser/css/sonata.css") }}"/>
         <link type="text/css" rel="stylesheet" href="{{ asset("public/css/jquery-ui.css") }}"/>
     {% endblock %}
-
+    <script type="text/javascript" language="javascript">
+        var base_url = "{{ path('nurix_homepage') }}";
+    </script>
     {% block javascripts %}
         <script type="text/javascript" src="{{ asset("public/js/facebook.js") }}"></script>
         <script type="text/javascript" src="{{ asset("public/js/jquery-1.9.0.min.js") }}"></script>
@@ -20,7 +22,7 @@
         <script type="text/javascript"
                 src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/en_US"></script>
         <script type="text/javascript">FB.init("");</script>
-        <script type="text/javascript"  src="{{  asset("bundles/catalog/js/bin.js")}}"></script>
+        <script type="text/javascript" src="{{ asset("bundles/catalog/js/bin.js") }}"></script>
     {% endblock %}
 
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
@@ -35,7 +37,7 @@
                 {{ knp_menu_render('main',{template : '::main_menu.html.twig'}) }}
             {% endblock %}
             <div class="search">
-                {%  render 'NurixBundle:Search:ShowForm'  %}
+                {% render 'NurixBundle:Search:ShowForm' %}
             </div>
             <div class="vhod_div">
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -51,9 +53,9 @@
                     </div>
 
                 {% else %}
-                {% if app.request.attributes.get('_route') != 'fos_user_security_login' %}
-                    <a class="vhod" id="register_button_id">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-                {% endif %}
+                    {% if app.request.attributes.get('_route') != 'fos_user_security_login' %}
+                        <a class="vhod" id="register_button_id">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                    {% endif %}
 
                     <a href="{{ path('fos_user_registration_register') }}">
                         <div class="button f12" id="">
@@ -99,11 +101,8 @@
                 <span class="gray_color f20">18:00</span><br>
                 <img class="otstup" src="{{ asset('public/img/days.png') }}" alt="header"/>
             </div>
-            <div class="korzina" align="left">
-                <div class="brown_color"><a href="{{ path('nurix_bin_item') }}">
-                    <img src="{{ asset('public/img/korzinka.png') }}" alt="header">Ваша корзина:</a><br></div>
-                <div class="otstup">5 товаров</div>
-                <div class="otstup">на сумму 45000 сомов</div>
+            <div class="korzina" id="bin_widget" align="left">
+                {% render 'CatalogBundle:Bin:mainBin' %}
             </div>
         </div>
         <div class="clearbox"></div

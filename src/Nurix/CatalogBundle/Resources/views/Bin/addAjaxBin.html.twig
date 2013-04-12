@@ -4,10 +4,10 @@
 {% endblock %}
 
 <div>
-    <img src="{{ asset('public/img/phones/'~tovar.imagePath) }}" class="popup_image"/>
+    <a href="{{ path('nurix_goods_get_info', {'id': tovar.id} ) }}"><img src="{{ asset('public/img/phones/'~tovar.imagePath) }}" class="popup_image"/></a>
 
     <div class="popup_aboutItem">
-        <a class="name" href="/">{{ tovar.name }}</a>
+        <a class="name" href="{{ path('nurix_goods_get_info', {'id': tovar.id} ) }}">{{ tovar.name }}</a>
         <div class="from">{{ tovar.shortDescription }}</div>
 
         <span class="price"><span class="from">цена: </span>{{ tovar.price|price('SOM') }}</span>

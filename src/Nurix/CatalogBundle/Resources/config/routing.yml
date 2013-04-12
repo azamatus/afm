@@ -29,3 +29,7 @@ nurix_bin_bin_form:
 nurix_goods_get_info:
     pattern: /catalog/product/{id}
     defaults: { _controller: CatalogBundle:Product:getInfo}
+
+nurix_bin_main_widget:
+    pattern: /bin/widget
+    defaults: { _controller: CatalogBundle:Bin:mainBin }
