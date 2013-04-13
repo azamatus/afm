@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
     <meta charset="UTF-8"/>
     <title>{% block title %}Nurix.kg{% endblock %}</title>
@@ -17,9 +18,6 @@
         <script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
         <script type="text/javascript" src="{{ asset("bundles/applicationsonatauser/js/registration.js") }}"></script>
         <script type="text/javascript" src="{{ asset("public/js/jquery.pwstrength.js") }}"></script>
-        <script type="text/javascript"
-                src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/en_US"></script>
-        <script type="text/javascript">FB.init("");</script>
         <script type="text/javascript"  src="{{  asset("bundles/catalog/js/bin.js")}}"></script>
     {% endblock %}
 
@@ -124,14 +122,13 @@
                 {{ knp_menu_render('info_sidebar', {'currentClass': 'current'}) }}
             {% endblock %}
         </div>
-        <div class="feedbacks">
-            feedbacks
-        </div>
+        {% block feedbacks %}
+        {% endblock %}{# TODO:сделать виджет фидбека#}
         <div class="facebook_page">
             {% block facebook_page %}
                 <fb:fan profile_id="128170930622470" stream="0" connections="6" width="210px" height="306px"
                         header="0" logobar="0"
-                        css="http://mobile-shop-nurix.googlecode.com/files/facebook.css?v=4"></fb:fan>
+                        css="http://diplom.sytes.net/nurix/web/public/facebook.css?v=5"></fb:fan>
             {% endblock %}
         </div>
 
