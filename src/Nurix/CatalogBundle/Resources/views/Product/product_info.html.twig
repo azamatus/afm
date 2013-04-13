@@ -3,6 +3,7 @@
     {{ parent() }}
     <script type="text/javascript" src="{{ asset("bundles/catalog/js/addRem.js") }}"></script>
     <script type="text/javascript" src="{{ asset("bundles/catalog/js/product_slider.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("bundles/catalog/js/product_slider_pictures.js") }}"></script>
     <script type="text/javascript" src="{{ asset("bundles/catalog/js/tabs.js") }}"></script>
 {% endblock %}
 {% block stylesheets %}
@@ -16,9 +17,9 @@
         <div class="slide_center">
             <div id="my-folio-of-works" class="svwp">
                 <ul>
-                    <li><img src="{{ asset("public/img/phones/Htc_Incredible_S_1.png") }}" alt="catalog"/></li>
-                    <li><img src="{{ asset("public/img/phones/Htc_Incredible_S_2.png") }}" alt="catalog"/></li>
-                    <li><img src="{{ asset("public/img/phones/Htc_Incredible_S_3.png") }}" alt="catalog"/></li>
+                    {% for galleryHasMedia in product.imagePath.GalleryHasMedias %}
+                                <li>{% thumbnail galleryHasMedia.media, product.imagePath.defaultFormat %}</li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>
@@ -86,10 +87,8 @@
                     {% else %}
                         <h3>Характеристики еще не введены</h3>
                     {% endif %}
-
-
-
                 </div>
+
                 <div class="tabs_content review">
                     <h1>Latest Tutorials</h1>
                     <ul>
@@ -101,6 +100,7 @@
                         <li>How to make a brilliant mysql forum database from scratch</li>
                         <ul>
                 </div>
+
                 <div class="tabs_content pfeedbacks">
                     <h1>You may visit</h1>
                     <ul>
@@ -111,34 +111,20 @@
                         <li><a href="http://www.dmsconsulting.es">www.dmsconsulting.es</a> - Great guys</li>
                         <ul>
                 </div>
-                <div class="tabs_content video">
-                    {%  if product.videos | length > 0 %}
 
+                <div class="tabs_content video">
+                    {%  if product.youtube | length > 0 %}
                     {% include  "CatalogBundle:Product:video.html.twig" %}
                     {% else %}
                         <h1>Пока видео еще нет</h1>
                     {% endif %}
                 </div>
+
             </div>
         </div>
         <hr class="product_hr2">
         <div class="product_same">
             {% render "CatalogBundle:Product:getSame" %}
         </div>
-    </div>
-    <script type="text/javascript">
-        $(window).bind("load", function () {
-            $("div#my-folio-of-works").slideViewerPro({
-                thumbs:3,
-                autoslide:false,
-                galBorderWidth:0,
-                thumbsBorderOpacity:0,
-                buttonsWidth:0,
-                thumbsActiveBorderOpacity:0.8,
-                thumbsActiveBorderColor:"none",
-                thumbsPercentReduction:30
-            });
-        });
-    </script>
     </div>
 {% endblock %}

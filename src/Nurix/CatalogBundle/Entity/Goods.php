@@ -49,11 +49,35 @@ class Goods
     private $price;
 
     /**
-     * @var string $imagePath
+     * @var integer $image_id
      *
-     * @ORM\Column(name="image_path", type="string", length=50, nullable=false)
+     * @ORM\Column(name="image_id", type="integer", nullable=true)
+     */
+    private $image_id;
+
+    /**
+     * @var Gallery
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Gallery")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="image_id", referencedColumnName="id")
+     * })
      */
     private $imagePath;
+
+    /**
+     * @var boolean $active
+     *
+     * @ORM\Column(name="active", type="boolean", nullable=true)
+     */
+    private $active;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="amount", type="integer", nullable=true)
+     */
+    private $amount;
 
     /**
      * @var Catalog
@@ -65,6 +89,13 @@ class Goods
      */
     private $catalog;
 
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Characteristic", mappedBy="good", cascade={"persist", "remove" }, orphanRemoval=true)
+     */
+    protected $characteristic;
+
 
     /**
      * @var ArrayCollection
@@ -73,15 +104,24 @@ class Goods
      */
     protected $videos;
 
-
-
-    public function getVideos(){
-
-        return $this->videos;
+    /**
+     * @var Gallery
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Gallery")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="youtube_id", referencedColumnName="id")
+     * })
+     */
+    private $youtube;
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->videos = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->characteristic = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
-
-
+    
     /**
      * Get id
      *
@@ -114,6 +154,7 @@ class Goods
     {
         return $this->name;
     }
+
     /**
      * Set shortDescription
      *
@@ -183,14 +224,82 @@ class Goods
         return $this->price;
     }
 
+    /**
+     * Set image_id
+     *
+     * @param integer $imageId
+     * @return Goods
+     */
+    public function setImageId($imageId)
+    {
+        $this->image_id = $imageId;
+    
+        return $this;
+    }
+
+    /**
+     * Get image_id
+     *
+     * @return integer 
+     */
+    public function getImageId()
+    {
+        return $this->image_id;
+    }
+
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     * @return Goods
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+    
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean 
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Set amount
+     *
+     * @param integer $amount
+     * @return Goods
+     */
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
+    
+        return $this;
+    }
+
+    /**
+     * Get amount
+     *
+     * @return integer 
+     */
+    public function getAmount()
+    {
+        return $this->amount;
+    }
 
     /**
      * Set imagePath
      *
-     * @param string $imagePath
+     * @param \Application\Sonata\MediaBundle\Entity\Gallery $imagePath
      * @return Goods
      */
-    public function setImagePath($imagePath)
+    public function setImagePath(\Application\Sonata\MediaBundle\Entity\Gallery $imagePath = null)
     {
         $this->imagePath = $imagePath;
     
@@ -200,7 +309,7 @@ class Goods
     /**
      * Get imagePath
      *
-     * @return string 
+     * @return \Application\Sonata\MediaBundle\Entity\Gallery 
      */
     public function getImagePath()
     {
@@ -210,7 +319,7 @@ class Goods
     /**
      * Set catalog
      *
-     * @param Nurix\CatalogBundle\Entity\Catalog $catalog
+     * @param \Nurix\CatalogBundle\Entity\Catalog $catalog
      * @return Goods
      */
     public function setCatalog(\Nurix\CatalogBundle\Entity\Catalog $catalog = null)
@@ -223,10 +332,99 @@ class Goods
     /**
      * Get catalog
      *
-     * @return Nurix\CatalogBundle\Entity\Catalog
+     * @return \Nurix\CatalogBundle\Entity\Catalog 
      */
     public function getCatalog()
     {
         return $this->catalog;
+    }
+
+    /**
+     * Add videos
+     *
+     * @param \Nurix\CatalogBundle\Entity\Videos $videos
+     * @return Goods
+     */
+    public function addVideo(\Nurix\CatalogBundle\Entity\Videos $videos)
+    {
+        $this->videos[] = $videos;
+    
+        return $this;
+    }
+
+    /**
+     * Remove videos
+     *
+     * @param \Nurix\CatalogBundle\Entity\Videos $videos
+     */
+    public function removeVideo(\Nurix\CatalogBundle\Entity\Videos $videos)
+    {
+        $this->videos->removeElement($videos);
+    }
+
+    /**
+     * Get videos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVideos()
+    {
+        return $this->videos;
+    }
+
+    /**
+     * Set youtube
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Gallery $youtube
+     * @return Goods
+     */
+    public function setYoutube(\Application\Sonata\MediaBundle\Entity\Gallery $youtube = null)
+    {
+        $this->youtube = $youtube;
+
+        return $this;
+    }
+
+    /**
+     * Get youtube
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Gallery 
+     */
+    public function getYoutube()
+    {
+        return $this->youtube;
+    }
+
+    /**
+     * Add characteristic
+     *
+     * @param \Nurix\CatalogBundle\Entity\Characteristic $characteristic
+     * @return Goods
+     */
+    public function addCharacteristic(\Nurix\CatalogBundle\Entity\Characteristic $characteristic)
+    {
+        $this->characteristic[] = $characteristic;
+    
+        return $this;
+    }
+
+    /**
+     * Remove characteristic
+     *
+     * @param \Nurix\CatalogBundle\Entity\Characteristic $characteristic
+     */
+    public function removeCharacteristic(\Nurix\CatalogBundle\Entity\Characteristic $characteristic)
+    {
+        $this->characteristic->removeElement($characteristic);
+    }
+
+    /**
+     * Get characteristic
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCharacteristic()
+    {
+        return $this->characteristic;
     }
 }
