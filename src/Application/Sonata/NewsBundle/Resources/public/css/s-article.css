@@ -17,7 +17,7 @@
     color: #666666;
     margin-bottom: 10px;
 }
-.sonata-blog-post-info > img{
+.sonata-blog-post-info .sonata-blog-post-info-a-img{
     float: left;
     margin: 0 10px 10px 0;
 }

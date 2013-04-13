@@ -16,7 +16,7 @@
         <div class="sonata-blog-post-information">
 
             <div class="sonata-blog-post-info">
-                {% thumbnail post, 'small' %}
+                <a class="sonata-blog-post-info-a-img" href="{{ url('sonata_news_view', { 'permalink': sonata_news_permalink(post) }) }}">{% thumbnail post, 'small' %}</a>
 
                 <h1 class="sonata-blog-post-title">
                     <a href="{{ url('sonata_news_view', { 'permalink': sonata_news_permalink(post) }) }}">{{ post.title }}</a>
@@ -54,6 +54,32 @@
     {% else %}
     {{ 'no_post_found'|trans({}, 'SonataNewsBundle') }}
     {% endfor %}
+    {% if pager.haveToPaginate() %}
+        {% if pager.page != 1  %}
+            <a href="{{ path('sonata_news_archive') }}" title="{{ 'link_first_pager'|trans({}, 'SonataAdminBundle') }}">&laquo;</a>
+        {% endif %}
+
+        {% if pager.page != pager.previouspage %}
+            <a href="{{ path('sonata_news_archive', { 'page' : pager.previouspage }) }}" title="{{ 'link_previous_pager'|trans({}, 'SonataAdminBundle') }}">&lsaquo;</a>
+        {% endif %}
+
+        {# Set the number of pages to display in the pager #}
+        {% for page in pager.getLinks() %}
+            {% if page == pager.page %}
+                <a href="">{{ page }}</a>
+            {% else %}
+                <a href="">{{ page }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if pager.page != pager.nextpage %}
+            <a href="{{ path('sonata_news_archive', { 'page' : pager.nextpage }) }}" title="{{ 'link_next_pager'|trans({}, 'SonataAdminBundle') }}">&rsaquo;</a>
+        {% endif %}
+
+        {% if pager.page != pager.lastpage  %}
+            <a href="{{ path('sonata_news_archive', { 'page' : pager.lastpage }) }}" title="{{ 'link_last_pager'|trans({}, 'SonataAdminBundle') }}">&raquo;</a>
+        {% endif %}
+    {% endif %}
 </div>
 
 {% endblock %}
