@@ -23,3 +23,8 @@ services:
             class: Nurix\CatalogBundle\Twig\ExchangeExtension
             tags:
                 - { name: twig.extension }
+
+    catalog.twig.count_extension:
+            class: Nurix\CatalogBundle\Twig\CountExtension
+            tags:
+                - { name: twig.extension }
