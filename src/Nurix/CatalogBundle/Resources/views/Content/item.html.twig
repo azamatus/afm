@@ -5,8 +5,10 @@
         <div class="clearbox"></div>
         <div>
             <a href="{{ path('nurix_goods_get_info', {'id': product.id} ) }}"">
-            {% set media = product.imagePath.GalleryHasMedias|first %}
-            {% thumbnail media.media, product.imagePath.defaultFormat %}
+            {% if product.imagePath %}
+                {% set media = product.imagePath.GalleryHasMedias|first %}
+                {% thumbnail media.media, product.imagePath.defaultFormat %}
+            {% endif %}
         </div>
         <div>
             <div class="gray float_left margin_top10px">Цена:</div>
