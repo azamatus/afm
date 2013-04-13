@@ -3,6 +3,7 @@
     {{ parent() }}
     <script type="text/javascript" src="{{ asset("bundles/catalog/js/addRem.js") }}"></script>
     <script type="text/javascript" src="{{ asset("bundles/catalog/js/product_slider.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("bundles/catalog/js/product_slider_pictures.js") }}"></script>
     <script type="text/javascript" src="{{ asset("bundles/catalog/js/tabs.js") }}"></script>
 {% endblock %}
 {% block stylesheets %}
@@ -125,20 +126,5 @@
         <div class="product_same">
             {% render "CatalogBundle:Product:getSame" %}
         </div>
-    </div>
-    <script type="text/javascript">
-        $(window).bind("load", function () {
-            $("div#my-folio-of-works").slideViewerPro({
-                thumbs:3,
-                autoslide:false,
-                galBorderWidth:0,
-                thumbsBorderOpacity:0,
-                buttonsWidth:0,
-                thumbsActiveBorderOpacity:0.8,
-                thumbsActiveBorderColor:"none",
-                thumbsPercentReduction:30
-            });
-        });
-    </script>
     </div>
 {% endblock %}
