@@ -33,10 +33,10 @@
                                 <img src="{{ asset('public/img/phones/'~good.imagePath) }}" class="bin_itemPic"/>
 
                                 <div class="bin_aboutItem">
-                                    <a class="name" href="/">{{ good.name }}</a>
+                                    <a class="name" href="{{ path('nurix_goods_get_info', {'id': good.id} ) }}">{{ good.name }}</a>
 
                                     <div class="from">{{ good.shortDescription }}</div>
-                                    <a href="" style="color: #ca5f00;">подробная информация &rarr;</a>
+                                    <a href="{{ path('nurix_goods_get_info', {'id': good.id} ) }}" style="color: #ca5f00;">подробная информация &rarr;</a>
                                 </div>
                             </td>
                             <td>

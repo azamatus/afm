@@ -162,6 +162,9 @@ class PostController extends BaseController
             ;
         }
 
+        $post->setViews($post->getViews() + 1);
+        $this->getPostManager()->save($post);
+
         return $this->render('SonataNewsBundle:Post:view.html.twig', array(
             'post' => $post,
             'form' => false,

@@ -1,0 +1,27 @@
+<div class="brown_color"><a href="{{ path('nurix_bin_item') }}">
+    <img src="{{ asset('public/img/korzinka.png') }}" alt="header">Ваша корзина:</a>
+</div>
+
+{% if count %}
+
+    {% set mod = count % 10 %}
+    {% set sap = 'товаров' %}
+
+    {% if (mod == 1) and (count != 11) %}
+        {% set sap = 'товар' %}
+    {% endif %}
+
+    {% if (mod > 1 ) and (mod < 5) %}
+        {% set sap = 'товара' %}
+    {% endif %}
+
+    {% if (count > 10) and (count < 15) %}
+        {% set sap = 'товаров' %}
+    {% endif %}
+
+    <div class="otstup">{{ count }} {{ sap }}</div>
+    <div class="otstup">на сумму {{ sum|price('SOM') }}</div>
+
+{% else %}
+    <h5>Корзина пуста</h5>
+{% endif %}
