@@ -81,8 +81,13 @@
                 <span class="clear"></span>
 
                 <div class="tabs_content characteristic">
+                    {%  if mainchar %}
+                        {% include  "CatalogBundle:Product:characteristic.html.twig" %}
+                    {% else %}
+                        <h3>Характеристики еще не введены</h3>
+                    {% endif %}
 
-                    {% include  "CatalogBundle:Product:characteristic.html.twig" %}
+
 
                 </div>
                 <div class="tabs_content review">
@@ -108,6 +113,7 @@
                 </div>
                 <div class="tabs_content video">
                     {%  if product.videos | length > 0 %}
+
                     {% include  "CatalogBundle:Product:video.html.twig" %}
                     {% else %}
                         <h1>Пока видео еще нет</h1>

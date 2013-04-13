@@ -34,6 +34,11 @@ class Post extends BasePost
     protected $local;
 
     /**
+     * @var integer $views
+     */
+    protected $views;
+
+    /**
      * Get id
      *
      * @return integer $id
@@ -59,6 +64,24 @@ class Post extends BasePost
      */
     public function getLocal(){
         return $this->local;
+    }
+
+    /**
+     * Set views
+     *
+     * @param integer $views
+     */
+    public function setViews($views){
+        $this->views = $views;
+    }
+
+    /**
+     * Get views
+     *
+     * @return integer $views
+     */
+    public function getViews(){
+        return $this->views;
     }
 
     /**

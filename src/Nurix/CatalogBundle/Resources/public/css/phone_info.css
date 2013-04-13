@@ -54,7 +54,7 @@
     -o-border-radius:5px;
 
 }
-.product_price
+.product_price, .product_price > span.value
 {
     padding-top: 15px;
     color: #000000;
@@ -62,7 +62,7 @@
     font-weight: bold;
 
 }
-.product_price_som
+.product_price_som, .product_price_som > span.value
 {
     font-size: 18px;
     margin-bottom: -5px;

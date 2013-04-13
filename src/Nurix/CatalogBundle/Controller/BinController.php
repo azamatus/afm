@@ -92,4 +92,25 @@ class BinController extends Controller
             return $response;
         }
     }
+
+    public function mainBinAction(){
+        $request = $this->getRequest();
+        $goodsIds = $request->cookies->get("cookieGoods");
+        $goods = null;
+        if (!empty($goodsIds)) {
+            $repository = $this->getDoctrine()->getRepository("CatalogBundle:Goods");
+            $goods = $repository->getGoodsByIds($goodsIds);
+        }
+        $sum=0;
+        $kol=0;
+        if($goods){
+            foreach($goods as $good)
+            {
+                $k=$goodsIds[$good->getId()];
+                $kol+=$k;
+                $sum+=($good->getPrice()*$k);
+            }
+        }
+        return $this->render('CatalogBundle:Bin:mainBin.html.twig',array('count'=>$kol,'sum'=>$sum));
+    }
 }
