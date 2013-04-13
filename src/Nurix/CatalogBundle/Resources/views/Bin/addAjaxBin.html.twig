@@ -4,8 +4,8 @@
 {% endblock %}
 
 <div>
-    <img src="{{ asset('public/img/phones/'~tovar.imagePath) }}" class="popup_image"/>
-
+    {% set media = tovar.imagePath.GalleryHasMedias|first %}
+    {% thumbnail media.media, 'big' with {'class': 'popup_image'} %}
     <div class="popup_aboutItem">
         <a class="name" href="/">{{ tovar.name }}</a>
         <div class="from">{{ tovar.shortDescription }}</div>

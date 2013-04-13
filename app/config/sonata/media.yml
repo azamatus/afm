@@ -25,8 +25,8 @@ sonata_media:
                 - sonata.media.provider.image
 
             formats:
-                small: { width: 190 , quality: 95}
-                big:   { width: 500 , quality: 90}
+                small: { width: 110 , quality: 95}
+                big:   { width: 210 , quality: 90}
         youtube:
             providers:
                 - sonata.media.provider.youtube
