@@ -5,5 +5,6 @@ app/logs/*
 app/bootstrap.php.cache
 app/config/parameters.yml
 web/bundles/
+web/uploads/
 app/config/parameters.yml
 *~
