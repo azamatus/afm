@@ -8,7 +8,7 @@
         </div>
         <div>
             <div class="gray float_left margin_top10px">Цена:</div>
-            <div class="size16px price float_left">{{ product.price }}</div>
+            <div class="size16px price float_left">{{ product.price | price('USD') }}</div>
             <div class="clear"></div>
             <div style="float: right;">
                 <a  product="{{ product.id }}" href="{{ path('nurix_bin_ajax_add_item',{'id':product.id}) }}" onclick="return false;" class="button_buy">

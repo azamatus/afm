@@ -17,6 +17,7 @@
             <generator strategy="AUTO"/>
         </id>
         <field name="local" type="boolean" column="local" default="false" />
+        <field name="views" type="integer" column="views" default="0" />
 
     </entity>
 </doctrine-mapping>

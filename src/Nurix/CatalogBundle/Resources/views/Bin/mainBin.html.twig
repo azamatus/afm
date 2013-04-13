@@ -1,0 +1,12 @@
+<div class="brown_color"><a href="{{ path('nurix_bin_item') }}">
+    <img src="{{ asset('public/img/korzinka.png') }}" alt="header">Ваша корзина:</a>
+</div>
+
+{% if count %}
+
+    <div class="otstup">{{ count|count('товар','товара','товаров')}}</div>
+    <div class="otstup">на сумму {{ sum|price('SOM') }}</div>
+
+{% else %}
+    <h5>Корзина пуста</h5>
+{% endif %}

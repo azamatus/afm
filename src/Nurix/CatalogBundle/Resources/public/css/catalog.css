@@ -3,7 +3,7 @@
     font-family: Arial;
 }
 
-.size16px
+.size16px, .size16px > span.value
 {
     font-size: 16px;
 }

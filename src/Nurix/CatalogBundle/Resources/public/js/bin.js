@@ -1,4 +1,17 @@
 $(function () {
+    function refreshWidget() {
+        var widget_path = base_url+"bin/widget";
+        $.ajax({
+            url:widget_path,
+            error:function (data) {
+                alert('ERROR');
+            },
+            success:function (data) {
+                $("#bin_widget").html(data);
+            }
+        });
+    }
+
     $('.button_buy').click(function () {
         var product_id = $(this).attr("product");
         var path = $(this).attr("href");
@@ -10,12 +23,13 @@ $(function () {
             },
             success:function (data) {
                 $('#tovar-added').empty().html(data).dialog(
-                    {
-                        closeText: "",
-                        minHeight: 300,
-                        minWidth: 450
-                    }
-                );
+                        {
+                            closeText: "",
+                            minHeight: 300,
+                            minWidth: 450
+                        }
+                    );
+                refreshWidget();
             }
         });
     });

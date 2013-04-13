@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
     <meta charset="UTF-8"/>
     <title>{% block title %}Nurix.kg{% endblock %}</title>
@@ -8,7 +9,9 @@
         <link type="text/css" rel="stylesheet" href="{{ asset("bundles/applicationsonatauser/css/sonata.css") }}"/>
         <link type="text/css" rel="stylesheet" href="{{ asset("public/css/jquery-ui.css") }}"/>
     {% endblock %}
-
+    <script type="text/javascript" language="javascript">
+        var base_url = "{{ path('nurix_homepage') }}";
+    </script>
     {% block javascripts %}
         <script type="text/javascript" src="{{ asset("public/js/facebook.js") }}"></script>
         <script type="text/javascript" src="{{ asset("public/js/jquery-1.9.0.min.js") }}"></script>
@@ -17,9 +20,6 @@
         <script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
         <script type="text/javascript" src="{{ asset("bundles/applicationsonatauser/js/registration.js") }}"></script>
         <script type="text/javascript" src="{{ asset("public/js/jquery.pwstrength.js") }}"></script>
-        <script type="text/javascript"
-                src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/en_US"></script>
-        <script type="text/javascript">FB.init("");</script>
         <script type="text/javascript"  src="{{  asset("bundles/catalog/js/bin.js")}}"></script>
     {% endblock %}
 

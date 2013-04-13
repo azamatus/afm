@@ -143,6 +143,6 @@ class Catalog
 
     public function __toString()
     {
-        return $this->cname;
+        return $this->cname.'';
     }
 }
