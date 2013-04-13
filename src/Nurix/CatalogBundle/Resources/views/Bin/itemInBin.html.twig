@@ -30,8 +30,8 @@
                         {% set totalPrice = totalPrice + good.price * attribute(goodCount,good.id)  %}
                         <tr id="{{ good.id }}">
                             <td>
-                                <img src="{{ asset('public/img/phones/'~good.imagePath) }}" class="bin_itemPic"/>
-
+                                {% set media = good.imagePath.GalleryHasMedias|first %}
+                                    {% thumbnail media.media, 'small' with {'class': 'bin_itemPic'} %}
                                 <div class="bin_aboutItem">
                                     <a class="name" href="{{ path('nurix_goods_get_info', {'id': good.id} ) }}">{{ good.name }}</a>
 

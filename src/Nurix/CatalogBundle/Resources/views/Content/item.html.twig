@@ -4,7 +4,9 @@
         <div class="gray margin_top10px ">{{ product.shortDescription }}</div>
         <div class="clearbox"></div>
         <div>
-            <a href="{{ path('nurix_goods_get_info', {'id': product.id} ) }}""><img src="{{ asset('public/img/phones/'~product.imagePath) }}" alt="Catalog"></a>
+            <a href="{{ path('nurix_goods_get_info', {'id': product.id} ) }}"">
+            {% set media = product.imagePath.GalleryHasMedias|first %}
+            {% thumbnail media.media, product.imagePath.defaultFormat %}
         </div>
         <div>
             <div class="gray float_left margin_top10px">Цена:</div>
