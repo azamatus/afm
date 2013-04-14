@@ -4,8 +4,8 @@
 {% endblock %}
 
 <div>
-    {% set media = tovar.imagePath.GalleryHasMedias|first %}
-    <a href="{{ path('nurix_goods_get_info', {'id': tovar.id} ) }}">{% thumbnail media.media, 'big' with {'class': 'popup_image'} %}</a>
+
+    <a href="{{ path('nurix_goods_get_info', {'id': tovar.id} ) }}">{{  tovar.imagePath|galleryThumb(asset('bundles/catalog/img/noImage/good_big.jpg'),'big',{'class':'popup_image'})  }}</a>
     
     <div class="popup_aboutItem">
         <a class="name" href="/">{{ tovar.name }}</a>
