@@ -47,8 +47,8 @@ class MenuBuilder extends ContainerAware
         $menu->addChild('Interesting',array('label'=>'Интересное'))
             ->setAttribute('class','catalog_menu')
             ->setLabelAttribute('class','f20');
-        $menu->addChild('Наши новости',array('route'=>'sonata_news_home'));
-        $menu->addChild('Мировые новости',array('route'=>'sonata_news_home'));
+        $menu->addChild('Наши новости',array('route'=>'sonata_news_local_inter', 'routeParameters'=>array('type'=>'local')));
+        $menu->addChild('Мировые новости',array('route'=>'sonata_news_local_inter', 'routeParameters'=>array('type'=>'international')));
 
         $menu->addChild('О магазине',array('route'=>'sonata_news_home'));
 
