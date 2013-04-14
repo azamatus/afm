@@ -11,5 +11,15 @@
                 <argument>SonataAdminBundle</argument>
             </call>
         </service>
+
+        <service id="sonata.admin.goods" class="Nurix\CatalogBundle\Admin\GoodsAdmin">
+            <tag name="sonata.admin" manager_type="orm" group="Товары" label="Товары"/>
+            <argument />
+            <argument>Nurix\CatalogBundle\Entity\Goods</argument>
+            <argument>SonataAdminBundle:CRUD</argument>
+            <call method="setTranslationDomain">
+                <argument>SonataAdminBundle</argument>
+            </call>
+        </service>
     </services>
 </container>

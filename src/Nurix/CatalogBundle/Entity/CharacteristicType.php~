@@ -36,14 +36,93 @@ class CharacteristicType
     private $list;
 
     /**
-     * @var \CharacteristicSection
+     * @var \Nurix\CatalogBundle\Entity\CharacteristicSection
      *
-     * @ORM\ManyToOne(targetEntity="CharacteristicSection")
+     * @ORM\ManyToOne(targetEntity="Nurix\CatalogBundle\Entity\CharacteristicSection")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Section", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="section", referencedColumnName="id")
      * })
      */
     private $section;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return CharacteristicType
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set list
+     *
+     * @param string $list
+     * @return CharacteristicType
+     */
+    public function setList($list)
+    {
+        $this->list = $list;
+    
+        return $this;
+    }
+
+    /**
+     * Get list
+     *
+     * @return string 
+     */
+    public function getList()
+    {
+        return $this->list;
+    }
+
+    /**
+     * Set section
+     *
+     * @param \Nurix\CatalogBundle\Entity\CharacteristicSection $section
+     * @return CharacteristicType
+     */
+    public function setSection(\Nurix\CatalogBundle\Entity\CharacteristicSection $section = null)
+    {
+        $this->section = $section;
+    
+        return $this;
+    }
+
+    /**
+     * Get section
+     *
+     * @return \Nurix\CatalogBundle\Entity\CharacteristicSection 
+     */
+    public function getSection()
+    {
+        return $this->section;
+    }
 }
