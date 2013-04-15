@@ -15,6 +15,7 @@
 {% block body %}
     <div class="product">
         <div class="slide_center">
+            {% if product.imagePath  %}
             <div id="my-folio-of-works" class="svwp">
                 <ul>
                     {% for galleryHasMedia in product.imagePath.GalleryHasMedias %}
@@ -22,6 +23,10 @@
                     {% endfor %}
                 </ul>
             </div>
+
+            {% else %}
+                {{ product.imagePath|galleryThumb(asset('bundles/catalog/img/noImage/good_big.jpg'),'big') }}
+            {% endif %}
         </div>
 
         <div class="float_left">
