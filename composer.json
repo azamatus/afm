@@ -32,7 +32,8 @@
         "sonata-project/markitup-bundle": "dev-master",
         "egeloen/ckeditor-bundle": "2.*",
         "sonata-project/news-bundle": "2.1.*",
-        "bupychuk/php-simple-html-dom-parser": "dev-master"
+        "bupychuk/php-simple-html-dom-parser": "dev-master",
+        "liuggio/ExcelBundle": "1.0.4"
     },
     "scripts": {
         "post-install-cmd": [
