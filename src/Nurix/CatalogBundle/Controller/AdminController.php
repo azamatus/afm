@@ -23,40 +23,41 @@ use Nurix\CatalogBundle\Entity\CharacteristicType;
 use Sunra\PhpSimple\HtmlDomParser;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdminController extends CoreController{
+class AdminController extends CoreController
+{
 
-    public function indexAction(Request $request){
+    public function indexAction(Request $request)
+    {
 
         $form = $this->createForm(new ExcelType());
 
-        if($request->isMethod('POST')){
+        if ($request->isMethod('POST')) {
             $form->bind($request);
 
-            if($form->isValid()){
+            if ($form->isValid()) {
                 $file = $form['file']->getData();
-                $extension='undefined';
+                $extension = 'undefined';
                 $original_file = $file->getClientOriginalName();
 
-                if(stripos($original_file,'xlsx')){
+                if (stripos($original_file, 'xlsx')) {
                     $extension = 'xlsx';
-                }elseif(stripos($original_file,'xls')){
+                } elseif (stripos($original_file, 'xls')) {
                     $extension = 'xls';
                 }
 
-                if( $extension >='xls' ){
-                    $dir = $this->get('kernel')->getRootDir(). '/../web/price';
+                if ($extension >= 'xls') {
+                    $dir = $this->get('kernel')->getRootDir() . '/../web/price';
 
                     $filename = sha1(uniqid(mt_rand(), true));
-                    $filename= $filename.'.'.$extension;
-                    $file->move($dir,$filename);
-                    $excel_file = new File($dir .'/'.  $filename);
+                    $filename = $filename . '.' . $extension;
+                    $file->move($dir, $filename);
+                    $excel_file = new File($dir . '/' . $filename);
 
                     $this->parseExcel($excel_file);
 
-                    $this->get('session')->getFlashBag()->add('notice','Успех');
-                }
-                else{
-                    $this->get('session')->getFlashBag()->add('notice','Неверный формат');
+                    $this->get('session')->getFlashBag()->add('notice', 'Успех');
+                } else {
+                    $this->get('session')->getFlashBag()->add('notice', 'Неверный формат');
                 }
 
                 $this->redirect($this->generateUrl('nurix_admin_index'));
@@ -64,79 +65,87 @@ class AdminController extends CoreController{
             }
         }
         return $this->render('CatalogBundle:Admin:index.html.twig',
-            array('form'=>$form->createView(),
-                'base_template'=>$this->getBaseTemplate(),
-                'block'=>$this->container->getParameter('sonata.admin.configuration.dashboard_blocks')
+            array('form' => $form->createView(),
+                'base_template' => $this->getBaseTemplate(),
+                'block' => $this->container->getParameter('sonata.admin.configuration.dashboard_blocks')
             ));
     }
 
-    public function parseExcel( File $file){
+    public function parseExcel(File $file)
+    {
 
         $exelObj = $this->get('xls.load_xls2007')->load($file);
-        $sheetData = $exelObj->getActiveSheet()->toArray(null,true,true,true);
-        $tmp=0;
+        $sheetData = $exelObj->getActiveSheet()->toArray(null, true, true, true);
+        $tmp = 0;
 
-        // Get sub catalogs.
-        $catalogEM = $this->getDoctrine()->getRepository('CatalogBundle:Catalog');
-        $catalogs = $catalogEM->findAll();
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $catalogs = $entityManager->getRepository('CatalogBundle:Catalog')->findAll();
         $goods_alias = array();
-        foreach($catalogs as $catalog){
-                $goods_alias[$catalog->getId()]  = explode(',',$catalog->getGoodsAlias());
-            }
-        foreach($sheetData as $array){
+
+        foreach ($catalogs as $catalog) {
+            $goods_alias[$catalog->getId()] = explode(',', $catalog->getGoodsAlias());
+        }
+
+        foreach ($sheetData as $sheetRow) {
 
             $tmp++;
-            if($tmp==1) continue;
-            $article = $array['A']?$array['A']:'No Article';
-            $model = $array['B']?$array['B']:null;
-            $last_update =new DateTime(date('Y-m-d',strtotime($array['I'])));
-            $price = (integer)$array['L'];
-            $yandex = $array['Q'];
+            if ($tmp == 1) continue;
+            $article = $sheetRow['A'] ? $sheetRow['A'] : null;
+            $model = $sheetRow['B'] ? $sheetRow['B'] : null;
+            $last_update = new DateTime(date('Y-m-d', strtotime($sheetRow['I'])));
+            $price = (integer)$sheetRow['L'];
+            $urlYandex = $sheetRow['Q'];
             $subcatalog = null;
 
-            if(!empty($model)){
-                foreach ($goods_alias as $catalog_id=> $aliases)
-                {
-                    foreach($aliases as $alias)
-                    {
-                        if(!empty($alias))
-                        if (strpos($model,$alias)!==false)
-                        {
-                            $catalogEM = $this->getDoctrine()->getRepository('CatalogBundle:Catalog');
-                            $subcatalog = $catalogEM->find($catalog_id);
-                            break;
-                        }
+            if (!empty($article)) {
+
+                foreach ($goods_alias as $catalog_id => $aliases) {
+                    foreach ($aliases as $alias) {
+                        if (!empty($alias))
+                            if (strpos($model, $alias) !== false) {
+                                $subcatalog = $entityManager->getRepository('CatalogBundle:Catalog')->find($catalog_id);
+                                break;
+                            }
                     }
                 }
-                    if ($subcatalog==null){
-                        throw new ParameterNotFoundException("Alias not found");
-                    }
-                $good = new Goods();
-                $good->setArticle($article);
-                $good->setModel($model);
-                $good->setName($model);
-                $good->setLastUpdate($last_update);
-                $good->setPrice($price);
-                $good->setCatalog($subcatalog);
-                $catalogEM = $this->getDoctrine()->getManager();
-                $catalogEM->persist($good);
-                $catalogEM->flush();
-
-                $catalog_id = $good->getId();
-
-                if($yandex) $this->parseYandex($yandex,$catalog_id);
+                if ($subcatalog == null) {
+                    throw new \Exception("Alias not found");
                 }
+
+                $good = $entityManager->getRepository('CatalogBundle:Goods')->findOneByArticle($article);
+                if ($good) {
+                    $good->setModel($model);
+                    $good->setName($model);
+                    $good->setLastUpdate($last_update);
+                    $good->setPrice($price);
+                    $good->setCatalog($subcatalog);
+                    $entityManager->flush();
+                } else {
+                    $good = new Goods();
+                    $good->setArticle($article);
+                    $good->setModel($model);
+                    $good->setName($model);
+                    $good->setLastUpdate($last_update);
+                    $good->setPrice($price);
+                    $good->setCatalog($subcatalog);
+
+                    $entityManager->persist($good);
+                        $entityManager->flush();
+                }
+
+                if ($urlYandex) $this->parseYandex($urlYandex, $good->getId());
+            }
         }
     }
 
     public function parseYandex($url, $goodid)
     {
         $good = $this->getDoctrine()->getRepository('CatalogBundle:Goods')->find($goodid);
-        if (!$good)
-        {
+        if (!$good) {
             Throw new EntityNotFoundException("good not found");
         }
-        $html =HtmlDomParser::file_get_html($url);
+        $html = HtmlDomParser::file_get_html($url);
         foreach ($html->find('table.l-page_layout_72-20 .b-properties') as $table) {
             $sid = 0;
             foreach ($table->find('tr') as $tr) {
@@ -144,34 +153,32 @@ class AdminController extends CoreController{
                 $html_span = HtmlDomParser::str_get_html($tr);
                 $section_type = $html_span->find('.b-properties__title', -1);
 
-                if($section_type!=null){
+                if ($section_type != null) {
                     $section_type = $section_type->plaintext;
                     $repository = $this->getDoctrine()->getRepository('CatalogBundle:CharacteristicSection');
-                    $characteristic_section =$repository->findOneBySectionvalue($section_type);
-                    if($characteristic_section){
+                    $characteristic_section = $repository->findOneBySectionvalue($section_type);
+                    if ($characteristic_section) {
                         $sid = $characteristic_section;
-                    }
-                    else{
+                    } else {
                         $section = new CharacteristicSection();
                         $section->setSectionvalue($section_type);
 
                         $em = $this->getDoctrine()->getManager();
                         $em->persist($section);
                         $em->flush();
-                        $sid =$section;
+                        $sid = $section;
                     }
-                }
-                else{
+                } else {
                     $char_type = $html_span->find('.b-properties__label-title', -1)->plaintext;
 
                     $char = $html_span->find('.b-properties__value', -1)->plaintext;
                     $repository = $this->getDoctrine()->getRepository('CatalogBundle:CharacteristicType');
-                    $type=$repository->findOneByName($char_type);
+                    $type = $repository->findOneByName($char_type);
 
-                    if($type){
+                    if ($type) {
                         $tid = $type;
 
-                    }else{
+                    } else {
                         $characteristic_type = new CharacteristicType();
                         $characteristic_type->setName($char_type);
                         $characteristic_type->setSection($sid);
@@ -179,7 +186,7 @@ class AdminController extends CoreController{
                         $em = $this->getDoctrine()->getManager();
                         $em->persist($characteristic_type);
                         $em->flush();
-                        $tid =$characteristic_type;
+                        $tid = $characteristic_type;
                     }
                     $characteristic = new Characteristic();
                     $characteristic->setValue($char);

@@ -35,9 +35,4 @@ class CatalogRepository extends EntityRepository
 
         return $catalogs->getQuery()->getResult();
     }
-
-    public function getSubCatalog(){
-        $subcatalog = $this->createQueryBuilder('s');
-        return $subcatalog->where('s.parent_id is not null')->getQuery()->getResult();
-    }
 }

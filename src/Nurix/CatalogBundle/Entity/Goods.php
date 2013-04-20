@@ -82,14 +82,14 @@ class Goods
     /**
      * @var string $article
      *
-     * @ORM\Column(name="article", type="text", nullable=true)
+     * @ORM\Column(name="article", type="string", length=50, nullable=false, unique=true)
      */
     private $article;
 
     /**
      * @var string $model
      *
-     * @ORM\Column(name="model", type="string", length=100, nullable=false)
+     * @ORM\Column(name="model", type="string", length=50, nullable=false)
      */
     private $model;
 
