@@ -48,7 +48,7 @@ class AppKernel extends Kernel
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
             new Application\Sonata\NewsBundle\ApplicationSonataNewsBundle(),
             new Sunra\PhpSimple\HtmlDomParser(),
-
+            new Nurix\SliderBundle\NurixSliderBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
