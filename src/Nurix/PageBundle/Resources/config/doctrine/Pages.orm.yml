@@ -1,0 +1,19 @@
+Nurix\PageBundle\Entity\Pages:
+    type: entity
+    table: pages
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: Id
+            generator:
+                strategy: IDENTITY
+        pages:
+            type: string
+            length: 50
+            fixed: false
+            nullable: true
+            column: Pages
+    lifecycleCallbacks: {  }
