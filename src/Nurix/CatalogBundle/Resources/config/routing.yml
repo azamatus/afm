@@ -33,3 +33,7 @@ nurix_goods_get_info:
 nurix_bin_main_widget:
     pattern: /bin/widget
     defaults: { _controller: CatalogBundle:Bin:mainBin }
+
+nurix_admin_index:
+    pattern: /admin/index
+    defaults: { _controller: CatalogBundle:Admin:index }

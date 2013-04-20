@@ -24,20 +24,20 @@ class Goods
     /**
      * @var string $name
      *
-     * @ORM\Column(name="name", type="string", length=50, nullable=false)
+     * @ORM\Column(name="name", type="string", length=50, nullable=true)
      */
     private $name;
     /**
      * @var string $shortDescription
      *
-     * @ORM\Column(name="short_description", type="text", nullable=false)
+     * @ORM\Column(name="short_description", type="text", nullable=true)
      */
     private $shortDescription;
 
     /**
      * @var string $fullDesctiption
      *
-     * @ORM\Column(name="full_desctiption", type="text", nullable=false)
+     * @ORM\Column(name="full_desctiption", type="text", nullable=true)
      */
     private $fullDesctiption;
 
@@ -78,6 +78,27 @@ class Goods
      * @ORM\Column(name="amount", type="integer", nullable=true)
      */
     private $amount;
+
+    /**
+     * @var string $article
+     *
+     * @ORM\Column(name="article", type="text", nullable=true)
+     */
+    private $article;
+
+    /**
+     * @var string $model
+     *
+     * @ORM\Column(name="model", type="string", length=100, nullable=false)
+     */
+    private $model;
+
+    /**
+     * @var \DateTime $last_update
+     *
+     * @ORM\Column(name="last_update", type="datetime", nullable=false)
+     */
+    private $last_update;
 
     /**
      * @var Catalog
@@ -426,5 +447,74 @@ class Goods
     public function getCharacteristic()
     {
         return $this->characteristic;
+    }
+
+    /**
+     * Set article
+     *
+     * @param string $article
+     * @return Goods
+     */
+    public function setArticle($article)
+    {
+        $this->article = $article;
+    
+        return $this;
+    }
+
+    /**
+     * Get article
+     *
+     * @return string 
+     */
+    public function getArticle()
+    {
+        return $this->article;
+    }
+
+    /**
+     * Set model
+     *
+     * @param string $model
+     * @return Goods
+     */
+    public function setModel($model)
+    {
+        $this->model = $model;
+    
+        return $this;
+    }
+
+    /**
+     * Get model
+     *
+     * @return string 
+     */
+    public function getModel()
+    {
+        return $this->model;
+    }
+
+    /**
+     * Set last_update
+     *
+     * @param \DateTime $lastUpdate
+     * @return Goods
+     */
+    public function setLastUpdate($lastUpdate)
+    {
+        $this->last_update = $lastUpdate;
+    
+        return $this;
+    }
+
+    /**
+     * Get last_update
+     *
+     * @return \DateTime 
+     */
+    public function getLastUpdate()
+    {
+        return $this->last_update;
     }
 }

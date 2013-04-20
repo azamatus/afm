@@ -33,34 +33,33 @@ class Characteristic
      *
      * @ORM\ManyToOne(targetEntity="CharacteristicType")
      * @ORM\JoinColumns({
-     *@ORM\JoinColumn(name="cTypeId", referencedColumnName="id")
+     *@ORM\JoinColumn(name="cTypeId", referencedColumnName="id", nullable=false)
      * })
 
      */
     protected $cTypeId;
 
-    /**
-     * @var integer $goodId
-     * @ORM\ManyToOne(targetEntity="Goods")
-     * @ORM\JoinColumns({
-     *@ORM\JoinColumn(name="goodId", referencedColumnName="id")
-     * })
-     */
-    protected $goodId;
 
     /**
      * @var string $value
      *
-     * @ORM\Column(name="value", type="string", length=100, nullable=true)
+     * @ORM\Column(name="value", type="string", length=255, nullable=true)
      */
     protected $value;
+
+    /**
+     * @var integer $goodId
+     *
+     * @ORM\Column(name="goodId", type="integer")
+     */
+    protected $goodId;
 
     /**
      * @var Goods
      *
      * @ORM\ManyToOne(targetEntity="Goods", inversedBy="characteristic")
      * @ORM\JoinColumns({
-     *@ORM\JoinColumn(name="goodId", referencedColumnName="id")
+     *@ORM\JoinColumn(name="goodId", referencedColumnName="id", nullable=false)
      * })
      */
     protected $good;
@@ -124,20 +123,20 @@ class Characteristic
     /**
      * Set goodId
      *
-     * @param Nurix\CatalogBundle\Entity\Goods $goodId
+     * @param integer $goodId
      * @return Characteristic
      */
-    public function setGoodId(\Nurix\CatalogBundle\Entity\Goods $goodId = null)
+    public function setGoodId($goodId)
     {
         $this->goodId = $goodId;
-    
+
         return $this;
     }
 
     /**
      * Get goodId
      *
-     * @return Nurix\CatalogBundle\Entity\Goods 
+     * @return integer
      */
     public function getGoodId()
     {

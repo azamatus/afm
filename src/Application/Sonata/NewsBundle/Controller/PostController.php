@@ -25,7 +25,30 @@ class PostController extends BaseController
      */
     public function homeAction()
     {
-        return $this->redirect($this->generateUrl('sonata_news_archive'));
+        return $this->redirect($this->generateUrl('sonata_news_local_inter'));
+    }
+
+    public function newsAction($type){
+
+        $criteria['local'] = $type == 'local' ? true : false;
+        $pager  = $this->getDoctrine()->getRepository("ApplicationSonataNewsBundle:Post")
+                    ->getNews($criteria, $this->getRequest()->get('page', 1));
+
+        $pager->setMaxPageLinks(10);
+
+        $parameters = array(
+            'pager' => $pager,
+            'blog'  => $this->get('sonata.news.blog'),
+            'tag'   => false
+        );
+
+        $response = $this->render(sprintf('SonataNewsBundle:Post:archive.%s.twig', $this->getRequest()->getRequestFormat()), $parameters);
+
+        if ('rss' === $this->getRequest()->getRequestFormat()) {
+            $response->headers->set('Content-Type', 'application/rss+xml');
+        }
+
+        return $response;
     }
 
     /**
@@ -39,6 +62,7 @@ class PostController extends BaseController
             $criteria,
             $this->getRequest()->get('page', 1)
         );
+        $pager->setMaxPageLinks(10);
 
         $parameters = array_merge(array(
             'pager' => $pager,
