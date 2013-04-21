@@ -94,6 +94,13 @@ class Goods
     private $last_update;
 
     /**
+     * @var string $review
+     *
+     * @ORM\Column(name="review", type="text", nullable=true)
+     */
+    private $review;
+
+    /**
      * @var Catalog
      *
      * @ORM\ManyToOne(targetEntity="Catalog")
@@ -445,5 +452,28 @@ class Goods
     public function getLastUpdate()
     {
         return $this->last_update;
+    }
+
+    /**
+     * Set review
+     *
+     * @param string $review
+     * @return Goods
+     */
+    public function setReview($review)
+    {
+        $this->review = $review;
+    
+        return $this;
+    }
+
+    /**
+     * Get review
+     *
+     * @return string 
+     */
+    public function getReview()
+    {
+        return $this->review;
     }
 }
