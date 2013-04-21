@@ -17,9 +17,9 @@
         <div class="slide_center">
             <div id="my-folio-of-works" class="svwp">
                 <ul>
-                        {#{% for galleryHasMedia in product.imagePath.GalleryHasMedias %}
+                        {% for galleryHasMedia in product.imagePath.GalleryHasMedias %}
                                     <li>{% thumbnail galleryHasMedia.media, product.imagePath.defaultFormat %}</li>
-                        {% endfor %}#}
+                        {% endfor %}
                 </ul>
             </div>
         </div>
