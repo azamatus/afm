@@ -41,13 +41,14 @@ class GoodsAdmin extends Admin {
                         return $er->createQueryBuilder('p')
                             ->where('p.parent is not null');},
                         ))
-                ->add('short_description','textarea',array('label'=>'Краткое описание'))
-                ->add('full_desctiption','textarea',array('label'=>'Полное описание'))
+                ->add('short_description','textarea',array('label'=>'Краткое описание','required'=>false))
+                ->add('full_desctiption','textarea',array('label'=>'Полное описание','required'=>false))
                 ->add('price',null,array('label'=>'Цена'))
                 ->add('imagePath', 'sonata_type_model_list', array('required'=>false,'label'=>'Галерея'), array('link_parameters' => array('context' => 'goods')))
                 ->add('youtube','sonata_type_model_list',array('required'=>false,'label'=>'Youtube'), array('link_parameters'=>array('context'=>'youtube')))
                 ->add('active',null,array('label'=>'Активен'))
-                ->add('amount',null,array('label'=>'Количество'));
+                ->add('amount',null,array('label'=>'Количество'))
+                ->add('review','ckeditor',array('label'=>'Обзор'));
     }
 
     protected function configureListFields(ListMapper $listmapper)

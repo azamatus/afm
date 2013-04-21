@@ -95,15 +95,11 @@
                 </div>
 
                 <div class="tabs_content review">
-                    <h1>Latest Tutorials</h1>
-                    <ul>
-                        <li> Top 10 free fonts for professional design</li>
-                        <li> Create an amazing music player using mouse gestures & hotkeys</li>
-                        <li> Boobles: First theme on Themeforest released!</li>
-                        <li> Creating AJAX websites based on anchor navigation</li>
-                        <li> Fast Tip: Create your personal blog to promote your self</li>
-                        <li>How to make a brilliant mysql forum database from scratch</li>
-                        <ul>
+                    {% if product.review %}
+                        {{ product.review|raw }}
+                    {% else %}
+                        <h3>Обзор</h3>
+                    {% endif %}
                 </div>
 
                 <div class="tabs_content pfeedbacks">
