@@ -6,18 +6,42 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Slider
+ *
+ * @ORM\Table(name="slider")
+ * @ORM\Entity
  */
 class Slider
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="ID", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @var string
+     * @var boolean
+     *
+     * @ORM\Column(name="active", type="boolean", nullable=false)
      */
-    private $slider;
+    private $active;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=120, nullable=false)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="content", type="text", nullable=false)
+     */
+    private $content;
+
 
 
     /**
@@ -31,25 +55,71 @@ class Slider
     }
 
     /**
-     * Set slider
+     * Set active
      *
-     * @param string $slider
+     * @param boolean $active
      * @return Slider
      */
-    public function setSlider($slider)
+    public function setActive($active)
     {
-        $this->slider = $slider;
+        $this->active = $active;
     
         return $this;
     }
 
     /**
-     * Get slider
+     * Get active
+     *
+     * @return boolean 
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return Slider
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    
+        return $this;
+    }
+
+    /**
+     * Get title
      *
      * @return string 
      */
-    public function getSlider()
+    public function getTitle()
     {
-        return $this->slider;
+        return $this->title;
+    }
+
+    /**
+     * Set content
+     *
+     * @param string $content
+     * @return Slider
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+    
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return string 
+     */
+    public function getContent()
+    {
+        return $this->content;
     }
 }

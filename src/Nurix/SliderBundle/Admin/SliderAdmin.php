@@ -2,9 +2,7 @@
 namespace Nurix\SliderBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
-use Sonata\AdminBundle\Admin\AdminInterface;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
@@ -14,7 +12,9 @@ class SliderAdmin extends Admin
     public function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('slider')
+            ->add('title')
+            ->add('active')
+            ->add('content')
         ;
     }
 
@@ -22,7 +22,9 @@ class SliderAdmin extends Admin
     {
         $formMapper
             ->with('General')
-            ->add('slider')
+            ->add('title')
+            ->add('active', null, array('required' => false))
+            ->add('content', 'ckeditor', array('attr' => array('class' => 'span10', 'rows' => 20)))
             ->end()
         ;
     }
@@ -30,14 +32,8 @@ class SliderAdmin extends Admin
     public function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('slider')
-        ;
-    }
-
-    public function configureDatagridFilters(DatagridMapper $datagridMapper)
-    {
-        $datagridMapper
-            ->add('slider')
+            ->addIdentifier('title')
+            ->add('active')
         ;
     }
 }

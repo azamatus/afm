@@ -10,10 +10,15 @@ Nurix\SliderBundle\Entity\Slider:
             column: ID
             generator:
                 strategy: IDENTITY
-        slider:
+        active:
+            type: boolean
+            nullable: false
+        title:
             type: string
-            length: 50
+            length: 120
             fixed: false
             nullable: false
-            column: Slider
+        content:
+            type: text
+            nullable: false
     lifecycleCallbacks: {  }
