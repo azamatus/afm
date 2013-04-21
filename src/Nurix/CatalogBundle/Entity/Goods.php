@@ -24,20 +24,20 @@ class Goods
     /**
      * @var string $name
      *
-     * @ORM\Column(name="name", type="string", length=50, nullable=false)
+     * @ORM\Column(name="name", type="string", length=50, nullable=true)
      */
     private $name;
     /**
      * @var string $shortDescription
      *
-     * @ORM\Column(name="short_description", type="text", nullable=false)
+     * @ORM\Column(name="short_description", type="text", nullable=true)
      */
     private $shortDescription;
 
     /**
      * @var string $fullDesctiption
      *
-     * @ORM\Column(name="full_desctiption", type="text", nullable=false)
+     * @ORM\Column(name="full_desctiption", type="text", nullable=true)
      */
     private $fullDesctiption;
 
@@ -80,6 +80,20 @@ class Goods
     private $amount;
 
     /**
+     * @var string $article
+     *
+     * @ORM\Column(name="article", type="string", length=50, nullable=false, unique=true)
+     */
+    private $article;
+
+    /**
+     * @var \DateTime $last_update
+     *
+     * @ORM\Column(name="last_update", type="datetime", nullable=false)
+     */
+    private $last_update;
+
+    /**
      * @var Catalog
      *
      * @ORM\ManyToOne(targetEntity="Catalog")
@@ -95,14 +109,6 @@ class Goods
      * @ORM\OneToMany(targetEntity="Characteristic", mappedBy="good", cascade={"persist", "remove" }, orphanRemoval=true)
      */
     protected $characteristic;
-
-
-    /**
-     * @var ArrayCollection
-     *
-     * @ORM\OneToMany(targetEntity="Videos", mappedBy="good", cascade={"persist", "remove" }, orphanRemoval=true)
-     */
-    protected $videos;
 
     /**
      * @var Gallery
@@ -340,39 +346,6 @@ class Goods
     }
 
     /**
-     * Add videos
-     *
-     * @param \Nurix\CatalogBundle\Entity\Videos $videos
-     * @return Goods
-     */
-    public function addVideo(\Nurix\CatalogBundle\Entity\Videos $videos)
-    {
-        $this->videos[] = $videos;
-    
-        return $this;
-    }
-
-    /**
-     * Remove videos
-     *
-     * @param \Nurix\CatalogBundle\Entity\Videos $videos
-     */
-    public function removeVideo(\Nurix\CatalogBundle\Entity\Videos $videos)
-    {
-        $this->videos->removeElement($videos);
-    }
-
-    /**
-     * Get videos
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getVideos()
-    {
-        return $this->videos;
-    }
-
-    /**
      * Set youtube
      *
      * @param \Application\Sonata\MediaBundle\Entity\Gallery $youtube
@@ -426,5 +399,51 @@ class Goods
     public function getCharacteristic()
     {
         return $this->characteristic;
+    }
+
+    /**
+     * Set article
+     *
+     * @param string $article
+     * @return Goods
+     */
+    public function setArticle($article)
+    {
+        $this->article = $article;
+    
+        return $this;
+    }
+
+    /**
+     * Get article
+     *
+     * @return string 
+     */
+    public function getArticle()
+    {
+        return $this->article;
+    }
+
+    /**
+     * Set last_update
+     *
+     * @param \DateTime $lastUpdate
+     * @return Goods
+     */
+    public function setLastUpdate($lastUpdate)
+    {
+        $this->last_update = $lastUpdate;
+    
+        return $this;
+    }
+
+    /**
+     * Get last_update
+     *
+     * @return \DateTime 
+     */
+    public function getLastUpdate()
+    {
+        return $this->last_update;
     }
 }

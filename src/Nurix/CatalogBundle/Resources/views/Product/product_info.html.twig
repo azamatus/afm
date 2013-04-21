@@ -18,9 +18,9 @@
             {% if product.imagePath  %}
             <div id="my-folio-of-works" class="svwp">
                 <ul>
-                    {% for galleryHasMedia in product.imagePath.GalleryHasMedias %}
-                                <li>{% thumbnail galleryHasMedia.media, product.imagePath.defaultFormat %}</li>
-                    {% endfor %}
+                        {% for galleryHasMedia in product.imagePath.GalleryHasMedias %}
+                                    <li>{% thumbnail galleryHasMedia.media, product.imagePath.defaultFormat %}</li>
+                        {% endfor %}
                 </ul>
             </div>
 

@@ -23,6 +23,7 @@ class CatalogAdmin extends Admin{
                 ->add('id',null,array('label'=>'ID'))
                 ->add('cname',null,array('label'=>'Заголовок'))
                 ->add('active',null,array('label'=>'Активен'))
+                ->add('goods_alias',null,array('label'=>'Alias'))
                 ->add('parent','entity',array('label'=>'Парент'));
     }
 
@@ -31,6 +32,7 @@ class CatalogAdmin extends Admin{
         $formMapper
                 ->add('cname',null,array('label'=>'Заголовок'))
                 ->add('active',null,array('label'=>'Активен','required'=>false))
+                ->add('goods_alias',null,array('label'=>'Alias'))
                 ->add('parent','entity', array('label'=>'Парент',
                 'class' => 'CatalogBundle:Catalog','required'=>false,
                 'query_builder' => function(EntityRepository $er) {

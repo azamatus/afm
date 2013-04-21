@@ -1,0 +1,24 @@
+{% extends 'SonataAdminBundle::standard_layout.html.twig' %}
+
+{% block breadcrumb %}
+    <li>
+        <a href="{{ url('sonata_admin_dashboard') }}">{% trans %}Dashboard{% endtrans %}</a>
+        <span class="divider"></span>
+    </li>
+    <li class="active">Excel парсер</li>
+{% endblock %}
+
+{% block content %}
+<h1>Excel парсер</h1>
+
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="label label-success">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+<form action="" method="POST" {{ form_enctype(form) }} >
+    {{ form_widget(form) }}
+    <input type="submit" class="btn" value="Загрузить файл"/>
+    </form>
+{% endblock %}
