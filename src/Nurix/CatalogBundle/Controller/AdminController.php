@@ -9,9 +9,11 @@
 namespace Nurix\CatalogBundle\Controller;
 
 use DateTime;
+use Nurix\CatalogBundle\Entity\Catalog;
 use Nurix\CatalogBundle\Entity\Goods;
 use Nurix\CatalogBundle\Form\Type\ExcelType;
 use Sonata\AdminBundle\Controller\CoreController;
+use Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityNotFoundException;
@@ -74,30 +76,56 @@ class AdminController extends CoreController{
         $sheetData = $exelObj->getActiveSheet()->toArray(null,true,true,true);
         $tmp=0;
 
+        // Get sub catalogs.
+        $catalogEM = $this->getDoctrine()->getRepository('CatalogBundle:Catalog');
+        $catalogs = $catalogEM->findAll();
+        $goods_alias = array();
+        foreach($catalogs as $catalog){
+                $goods_alias[$catalog->getId()]  = explode(',',$catalog->getGoodsAlias());
+            }
         foreach($sheetData as $array){
 
             $tmp++;
             if($tmp==1) continue;
             $article = $array['A']?$array['A']:'No Article';
-            $model = $array['B']?$array['B']:'No Model';
+            $model = $array['B']?$array['B']:null;
             $last_update =new DateTime(date('Y-m-d',strtotime($array['I'])));
             $price = (integer)$array['L'];
             $yandex = $array['Q'];
+            $subcatalog = null;
 
+            if(!empty($model)){
+                foreach ($goods_alias as $catalog_id=> $aliases)
+                {
+                    foreach($aliases as $alias)
+                    {
+                        if(!empty($alias))
+                        if (strpos($model,$alias)!==false)
+                        {
+                            $catalogEM = $this->getDoctrine()->getRepository('CatalogBundle:Catalog');
+                            $subcatalog = $catalogEM->find($catalog_id);
+                            break;
+                        }
+                    }
+                }
+                    if ($subcatalog==null){
+                        throw new ParameterNotFoundException("Alias not found");
+                    }
+                $good = new Goods();
+                $good->setArticle($article);
+                $good->setModel($model);
+                $good->setName($model);
+                $good->setLastUpdate($last_update);
+                $good->setPrice($price);
+                $good->setCatalog($subcatalog);
+                $catalogEM = $this->getDoctrine()->getManager();
+                $catalogEM->persist($good);
+                $catalogEM->flush();
 
-            $good = new Goods();
-            $good->setArticle($article);
-            $good->setModel($model);
-            $good->setName($model);
-            $good->setLastUpdate($last_update);
-            $good->setPrice($price);
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($good);
-            $em->flush();
+                $catalog_id = $good->getId();
 
-            $id = $good->getId();
-
-            if($yandex) $this->parseYandex($yandex,$id);
+                if($yandex) $this->parseYandex($yandex,$catalog_id);
+                }
         }
     }
 

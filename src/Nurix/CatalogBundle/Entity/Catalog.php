@@ -37,6 +37,20 @@ class Catalog
     private $active;
 
     /**
+     * @var string $goods_alias
+     *
+     * @ORM\Column(name="goods_alias", type="string", length=255, nullable=true);
+     */
+    private $goods_alias;
+
+    /**
+     * @var integer $parent_id
+     *
+     * @ORM\Column(name="parent_id", type="integer", nullable=true)
+     */
+    private $parent_id;
+
+    /**
      * @var Catalog
      *
      * @ORM\ManyToOne(targetEntity="Catalog")
@@ -174,5 +188,51 @@ class Catalog
     public function removeChildren(\Nurix\CatalogBundle\Entity\Catalog $children)
     {
         $this->children->removeElement($children);
+    }
+
+    /**
+     * Set parent_id
+     *
+     * @param integer $parentId
+     * @return Catalog
+     */
+    public function setParentId($parentId)
+    {
+        $this->parent_id = $parentId;
+    
+        return $this;
+    }
+
+    /**
+     * Get parent_id
+     *
+     * @return integer 
+     */
+    public function getParentId()
+    {
+        return $this->parent_id;
+    }
+
+    /**
+     * Set goods_alias
+     *
+     * @param string $goodsAlias
+     * @return Catalog
+     */
+    public function setGoodsAlias($goodsAlias)
+    {
+        $this->goods_alias = $goodsAlias;
+    
+        return $this;
+    }
+
+    /**
+     * Get goods_alias
+     *
+     * @return string 
+     */
+    public function getGoodsAlias()
+    {
+        return $this->goods_alias;
     }
 }
