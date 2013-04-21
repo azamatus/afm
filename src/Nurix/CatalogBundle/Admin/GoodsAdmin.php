@@ -60,4 +60,17 @@ class GoodsAdmin extends Admin {
                 ->add('active',null,array('label'=>'Активен'))
                 ->add('amount',null,array('label'=>'Количество'));
     }
+
+
+    public function getTemplate($name)
+    {
+        switch ($name) {
+            case 'list':
+                return 'CatalogBundle:Admin:goods_list.html.twig';
+                break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+    }
 }

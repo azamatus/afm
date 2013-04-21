@@ -87,13 +87,6 @@ class Goods
     private $article;
 
     /**
-     * @var string $model
-     *
-     * @ORM\Column(name="model", type="string", length=50, nullable=false)
-     */
-    private $model;
-
-    /**
      * @var \DateTime $last_update
      *
      * @ORM\Column(name="last_update", type="datetime", nullable=false)
@@ -116,14 +109,6 @@ class Goods
      * @ORM\OneToMany(targetEntity="Characteristic", mappedBy="good", cascade={"persist", "remove" }, orphanRemoval=true)
      */
     protected $characteristic;
-
-
-    /**
-     * @var ArrayCollection
-     *
-     * @ORM\OneToMany(targetEntity="Videos", mappedBy="good", cascade={"persist", "remove" }, orphanRemoval=true)
-     */
-    protected $videos;
 
     /**
      * @var Gallery
@@ -361,39 +346,6 @@ class Goods
     }
 
     /**
-     * Add videos
-     *
-     * @param \Nurix\CatalogBundle\Entity\Videos $videos
-     * @return Goods
-     */
-    public function addVideo(\Nurix\CatalogBundle\Entity\Videos $videos)
-    {
-        $this->videos[] = $videos;
-    
-        return $this;
-    }
-
-    /**
-     * Remove videos
-     *
-     * @param \Nurix\CatalogBundle\Entity\Videos $videos
-     */
-    public function removeVideo(\Nurix\CatalogBundle\Entity\Videos $videos)
-    {
-        $this->videos->removeElement($videos);
-    }
-
-    /**
-     * Get videos
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getVideos()
-    {
-        return $this->videos;
-    }
-
-    /**
      * Set youtube
      *
      * @param \Application\Sonata\MediaBundle\Entity\Gallery $youtube
@@ -470,29 +422,6 @@ class Goods
     public function getArticle()
     {
         return $this->article;
-    }
-
-    /**
-     * Set model
-     *
-     * @param string $model
-     * @return Goods
-     */
-    public function setModel($model)
-    {
-        $this->model = $model;
-    
-        return $this;
-    }
-
-    /**
-     * Get model
-     *
-     * @return string 
-     */
-    public function getModel()
-    {
-        return $this->model;
     }
 
     /**

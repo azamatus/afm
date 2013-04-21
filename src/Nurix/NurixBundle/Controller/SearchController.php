@@ -19,7 +19,6 @@ class SearchController extends Controller
     public function indexAction()
     {
 
-        //TODO: сделать получение из формы
         $form = $this->createForm(new SearchType());
         $request = $this->getRequest();
         if ($request->isMethod('POST')) {

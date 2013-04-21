@@ -9,11 +9,9 @@
 namespace Nurix\CatalogBundle\Controller;
 
 use DateTime;
-use Nurix\CatalogBundle\Entity\Catalog;
 use Nurix\CatalogBundle\Entity\Goods;
 use Nurix\CatalogBundle\Form\Type\ExcelType;
 use Sonata\AdminBundle\Controller\CoreController;
-use Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityNotFoundException;
@@ -26,7 +24,7 @@ use Symfony\Component\HttpFoundation\Response;
 class AdminController extends CoreController
 {
 
-    public function indexAction(Request $request)
+    public function excelAction(Request $request)
     {
 
         $form = $this->createForm(new ExcelType());
@@ -36,16 +34,10 @@ class AdminController extends CoreController
 
             if ($form->isValid()) {
                 $file = $form['file']->getData();
-                $extension = 'undefined';
+                $extension = null;
                 $original_file = $file->getClientOriginalName();
 
                 if (stripos($original_file, 'xlsx')) {
-                    $extension = 'xlsx';
-                } elseif (stripos($original_file, 'xls')) {
-                    $extension = 'xls';
-                }
-
-                if ($extension >= 'xls') {
                     $dir = $this->get('kernel')->getRootDir() . '/../web/price';
 
                     $filename = sha1(uniqid(mt_rand(), true));
@@ -53,35 +45,40 @@ class AdminController extends CoreController
                     $file->move($dir, $filename);
                     $excel_file = new File($dir . '/' . $filename);
 
-                    $this->parseExcel($excel_file);
-
-                    $this->get('session')->getFlashBag()->add('notice', 'Успех');
+                    $info = $this->parseExcel($excel_file);
+                    $added_message = 'Добавлено: ' .$info['added'];
+                    $updated_message = 'Обновлено: ' .$info['updated'];
+                    $this->get('session')->getFlashBag()->add('notice',$added_message );
+                    $this->get('session')->getFlashBag()->add('notice',$updated_message );
                 } else {
                     $this->get('session')->getFlashBag()->add('notice', 'Неверный формат');
                 }
 
-                $this->redirect($this->generateUrl('nurix_admin_index'));
+                $this->redirect($this->generateUrl('nurix_admin_parse_excel'));
 
             }
         }
-        return $this->render('CatalogBundle:Admin:index.html.twig',
+        return $this->render('CatalogBundle:Admin:excel.html.twig',
             array('form' => $form->createView(),
                 'base_template' => $this->getBaseTemplate(),
                 'block' => $this->container->getParameter('sonata.admin.configuration.dashboard_blocks')
             ));
     }
 
-    public function parseExcel(File $file)
+    public function parseExcel(File $file) //TODO: вынести в отдельный слой
     {
 
         $exelObj = $this->get('xls.load_xls2007')->load($file);
         $sheetData = $exelObj->getActiveSheet()->toArray(null, true, true, true);
-        $tmp = 0;
+        $index = 0;
 
         $entityManager = $this->getDoctrine()->getManager();
 
         $catalogs = $entityManager->getRepository('CatalogBundle:Catalog')->findAll();
         $goods_alias = array();
+
+        $added_goods = 0;
+        $updated_goods = 0;
 
         foreach ($catalogs as $catalog) {
             $goods_alias[$catalog->getId()] = explode(',', $catalog->getGoodsAlias());
@@ -89,57 +86,63 @@ class AdminController extends CoreController
 
         foreach ($sheetData as $sheetRow) {
 
-            $tmp++;
-            if ($tmp == 1) continue;
+            $index++;
+            if ($index == 1) continue;
             $article = $sheetRow['A'] ? $sheetRow['A'] : null;
-            $model = $sheetRow['B'] ? $sheetRow['B'] : null;
+            $name = $sheetRow['B'] ? $sheetRow['B'] : null;
             $last_update = new DateTime(date('Y-m-d', strtotime($sheetRow['I'])));
-            $price = (integer)$sheetRow['L'];
+            $price = (float)$sheetRow['L'];
             $urlYandex = $sheetRow['Q'];
             $subcatalog = null;
-
             if (!empty($article)) {
 
                 foreach ($goods_alias as $catalog_id => $aliases) {
                     foreach ($aliases as $alias) {
                         if (!empty($alias))
-                            if (strpos($model, $alias) !== false) {
+                            if (strpos($name, $alias) !== false) {
                                 $subcatalog = $entityManager->getRepository('CatalogBundle:Catalog')->find($catalog_id);
                                 break;
                             }
                     }
                 }
-                if ($subcatalog == null) {
-                    throw new \Exception("Alias not found");
-                }
 
                 $good = $entityManager->getRepository('CatalogBundle:Goods')->findOneByArticle($article);
                 if ($good) {
-                    $good->setModel($model);
-                    $good->setName($model);
+                    $updated_goods++;
+                    $good->setName($name);
                     $good->setLastUpdate($last_update);
                     $good->setPrice($price);
                     $good->setCatalog($subcatalog);
                     $entityManager->flush();
+
+
                 } else {
+                    $added_goods++;
                     $good = new Goods();
                     $good->setArticle($article);
-                    $good->setModel($model);
-                    $good->setName($model);
+                    $good->setName($name);
                     $good->setLastUpdate($last_update);
                     $good->setPrice($price);
                     $good->setCatalog($subcatalog);
 
                     $entityManager->persist($good);
-                        $entityManager->flush();
+                    $entityManager->flush();
+
+
                 }
 
-                if ($urlYandex) $this->parseYandex($urlYandex, $good->getId());
+                if ($urlYandex){
+                    $characters =$entityManager->getRepository('CatalogBundle:Characteristic')->findByGoodId($good->getId());
+                    if(!$characters){
+                        $this->parseYandex($urlYandex, $good->getId());
+                    }
+                }
             }
         }
+        return array('added'=>$added_goods,'updated'=>$updated_goods);
     }
 
-    public function parseYandex($url, $goodid)
+    public function parseYandex($url, $goodid) //TODO: вынести в отдельный слой
     {
         $good = $this->getDoctrine()->getRepository('CatalogBundle:Goods')->find($goodid);
         if (!$good) {
