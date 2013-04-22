@@ -13,27 +13,12 @@ sonata_media:
                 small: { width: 100 , quality: 70}
                 big:   { width: 500 , quality: 70}
                 news:  { width: 190 , quality: 70}
-        news:
-            providers:
-                - sonata.media.provider.image
-
-            formats:
-                small: { width: 190 , quality: 95}
-                big:   { width: 500 , quality: 90}
-        goods:
-            providers:
-                - sonata.media.provider.image
-
-            formats:
-                small: { width: 110 , quality: 95}
-                big:   { width: 210 , height: 174, quality: 90}
-        youtube:
-            providers:
-                - sonata.media.provider.youtube
-
-            formats:
-                small: { width: 190 , quality: 95}
-                big:   { width: 560 , quality: 315}
+                news_small: { width: 190 , quality: 95}
+                news_big:   { width: 500 , quality: 90}
+                goods_small: { width: 110 , quality: 95}
+                goods_big:   { width: 210 , height: 174, quality: 90}
+                youtube_small: { width: 190 , quality: 95}
+                youtube_big:   { width: 560 , quality: 315}
     cdn:
         server:
             path: /nurix/web/uploads/media # http://media.sonata-project.org/
