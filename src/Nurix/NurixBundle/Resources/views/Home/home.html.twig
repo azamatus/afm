@@ -3,20 +3,15 @@
     {{ parent() }}
     <link href="{{ asset('bundles/nurix/css/rcarousel.css') }} " type="text/css" rel="stylesheet"/>
 {% endblock %}
+
 {% block body %}
     {% render "CatalogBundle:Content:showSliderProductList" %}
     <div class="clearbox"></div>
     {% render  "CatalogBundle:Content:showRandomProductList" %}
 {% endblock %}
+
 {% block slider %}
-
- <div class="container center">
- <div id="carousel" class="center">
      {% render "NurixSliderBundle:Slider:getSlider" %}
- </div>
-        <div id="pages"></div>
- </div>
-
 {% endblock %}
 
 {% block javascripts %}
