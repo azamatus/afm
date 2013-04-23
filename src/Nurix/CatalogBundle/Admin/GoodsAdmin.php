@@ -24,8 +24,8 @@ class GoodsAdmin extends Admin {
                 ->add('short_description',null,array('label'=>'Краткое описание'))
                 ->add('full_desctiption',null,array('label'=>'Полное описание'))
                 ->add('price',null,array('label'=>'Цена'))
-                ->add('imagePath','sonata_media_type',array('label'=>'Галерея','provider'=>'sonata.media.provider.image','context'=>'goods'))
-                ->add('youtube','sonata_media_type',array('label'=>'Youtube','provider'=>'sonata.media.provider.youtube','context'=>'youtube'))
+                ->add('imagePath','sonata_media_type',array('label'=>'Галерея','provider'=>'sonata.media.provider.image','context'=>'default'))
+                ->add('youtube','sonata_media_type',array('label'=>'Youtube','provider'=>'sonata.media.provider.youtube','context'=>'default'))
                 ->add('active',null,array('label'=>'Активен'))
                 ->add('amount',null,array('label'=>'Количество'))
                 ->add('characteristic',null,array('label'=>'Характеристика'));
@@ -44,8 +44,8 @@ class GoodsAdmin extends Admin {
                 ->add('short_description','textarea',array('label'=>'Краткое описание','required'=>false))
                 ->add('full_desctiption','textarea',array('label'=>'Полное описание','required'=>false))
                 ->add('price',null,array('label'=>'Цена'))
-                ->add('imagePath', 'sonata_type_model_list', array('required'=>false,'label'=>'Галерея'), array('link_parameters' => array('context' => 'goods')))
-                ->add('youtube','sonata_type_model_list',array('required'=>false,'label'=>'Youtube'), array('link_parameters'=>array('context'=>'youtube')))
+                ->add('imagePath', 'sonata_type_model_list', array('required'=>false,'label'=>'Галерея'), array('link_parameters' => array('context' => 'default')))
+                ->add('youtube','sonata_type_model_list',array('required'=>false,'label'=>'Youtube'), array('link_parameters'=>array('context'=>'default')))
                 ->add('active',null,array('label'=>'Активен'))
                 ->add('amount',null,array('label'=>'Количество'))
                 ->add('review','ckeditor',array('label'=>'Обзор'));
