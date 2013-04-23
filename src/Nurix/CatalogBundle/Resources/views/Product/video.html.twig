@@ -1,15 +1,7 @@
 <div>
     {% for galleryHasMedia in product.youtube.GalleryHasMedias %}
-    <div class="char_title">{{ galleryHasMedia.media.name }}</div>
-    <span class="video_desc">{{ galleryHasMedia.media.description }}</span>
-    <div>
-        <object width="560" height="315">
-            <param name="movie" value="http://www.youtube.com/v/{{ galleryHasMedia.media.providerreference }}"/>
-            <embed
-                    src="http://www.youtube.com/v/{{ galleryHasMedia.media.providerreference }}"
-                    type="application/x-shockwave-flash" width="560" height="315">
-            </embed>
-        </object>
-    </div>
+        <div class="char_title">{{ galleryHasMedia.media.name }}</div>
+        <span class="video_desc">{{ galleryHasMedia.media.description }}</span>
+        <div>{% media galleryHasMedia.media, product.youtube.defaultFormat %}</div>
     {% endfor %}
 </div>
