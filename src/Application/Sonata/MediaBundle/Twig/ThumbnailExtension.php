@@ -28,12 +28,19 @@ class ThumbnailExtension extends MediaExtension
     }
 
 
+    /**
+     * @param Gallery $gallery
+     * @param string $noImagePath
+     * @param string $format
+     * @param array  $options
+     * @return mixed|string
+     */
     public function galleryThumbnailFilter($gallery,$noImagePath,$format='big',$options = array())
     {
         if ($gallery&&$gallery->getGalleryHasMedias()&&count($gallery->getGalleryHasMedias())>0)
         {
             $medias = $gallery->getGalleryHasMedias();
-            if ($medias[0])
+            if ($medias[0]->getMedia())
                 return $this->thumbnail($medias[0],$format,$options);
         }
 
