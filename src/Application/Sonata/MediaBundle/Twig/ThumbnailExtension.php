@@ -30,21 +30,19 @@ class ThumbnailExtension extends MediaExtension
 
     public function galleryThumbnailFilter($gallery,$noImagePath,$format='big',$options = array())
     {
-        if (!$gallery||!$gallery->getGalleryHasMedias()||count($gallery->getGalleryHasMedias())==0||!$gallery->getGalleryHasMedias()[0])
-        {
-            $provider = $this->getMediaService()
-                ->getProvider('sonata.media.provider.image');
-            $options = array_merge($options,array('src'=>$noImagePath));
-            return $this->render($provider->getTemplate('helper_thumbnail'), array(
-                'options'  => $options,
-            ));
-        }
-        else
+        if ($gallery&&$gallery->getGalleryHasMedias()&&count($gallery->getGalleryHasMedias())>0)
         {
             $medias = $gallery->getGalleryHasMedias();
-
-            return $this->thumbnail($medias[0],$format,$options);
+            if ($medias[0])
+                return $this->thumbnail($medias[0],$format,$options);
         }
+
+        $provider = $this->getMediaService()
+            ->getProvider('sonata.media.provider.image');
+        $options = array_merge($options,array('src'=>$noImagePath));
+        return $this->render($provider->getTemplate('helper_thumbnail'), array(
+            'options'  => $options,
+        ));
     }
 
     public function thumbnailFilter( $media,$noImagePath,$format='big',$options = array())
