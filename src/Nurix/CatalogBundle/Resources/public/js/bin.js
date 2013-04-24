@@ -12,7 +12,7 @@ $(function () {
         });
     }
 
-    $('.button_buy').click(function () {
+    $('.button_buy,.button_buy_bin').click(function () {
         var product_id = $(this).attr("product");
         var path = $(this).attr("href");
         $.ajax({
