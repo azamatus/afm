@@ -60,7 +60,10 @@
                         <span class="znak" id="add">+</span>
                         <span class="znak" id="rem">-</span>
                     </div>
-                    <a href="/" class="button_buy_bin">В корзину</a>
+                    <a product="{{ product.id }}" href="{{ path('nurix_bin_ajax_add_item',{'id':product.id}) }}"
+                       onclick="return false;" class="button_buy_bin">
+                        В корзину
+                    </a>
                 </div>
             </div>
             <div class="clearbox"></div>
@@ -114,7 +117,7 @@
                 </div>
 
                 <div class="tabs_content video">
-                    {%  if product.youtube | length > 0 %}
+                    {%  if product.youtube %}
                     {% include  "CatalogBundle:Product:video.html.twig" %}
                     {% else %}
                         <h1>Пока видео еще нет</h1>
