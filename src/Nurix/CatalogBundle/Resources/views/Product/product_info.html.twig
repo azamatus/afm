@@ -15,7 +15,7 @@
 {% block body %}
     <div class="product">
         <div class="slide_center">
-            {% if product.imagePath  %}
+            {% if product.imagePath|isHaveImage  %}
             <div id="my-folio-of-works" class="svwp">
                 <ul>
                         {% for galleryHasMedia in product.imagePath.GalleryHasMedias %}

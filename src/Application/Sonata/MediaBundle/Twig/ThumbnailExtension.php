@@ -24,6 +24,7 @@ class ThumbnailExtension extends MediaExtension
             'thumb' => new \Twig_Filter_Method($this, 'thumbnailFilter',array(
                 'is_safe' => array('html')
             )),
+            'isHaveImage' => new \Twig_Filter_Method($this, 'isGalleryWithImageFilter',array()),
         );
     }
 
@@ -37,11 +38,10 @@ class ThumbnailExtension extends MediaExtension
      */
     public function galleryThumbnailFilter($gallery,$noImagePath,$format='big',$options = array())
     {
-        if ($gallery&&$gallery->getGalleryHasMedias()&&count($gallery->getGalleryHasMedias())>0)
+        if ($this->isGalleryWithImageFilter($gallery))
         {
             $medias = $gallery->getGalleryHasMedias();
-            if ($medias[0]->getMedia())
-                return $this->thumbnail($medias[0],$format,$options);
+            return $this->thumbnail($medias[0],$format,$options);
         }
 
         $provider = $this->getMediaService()
@@ -50,6 +50,20 @@ class ThumbnailExtension extends MediaExtension
         return $this->render($provider->getTemplate('helper_thumbnail'), array(
             'options'  => $options,
         ));
+    }
+    /**
+     * @param Gallery $gallery
+     * @return boolean
+     */
+    public function isGalleryWithImageFilter($gallery)
+    {
+        if ($gallery&&$gallery->getGalleryHasMedias()&&count($gallery->getGalleryHasMedias())>0)
+        {
+            $medias = $gallery->getGalleryHasMedias();
+            if ($medias[0]->getMedia())
+                return true;
+        }
+        return false;
     }
 
     public function thumbnailFilter( $media,$noImagePath,$format='big',$options = array())
