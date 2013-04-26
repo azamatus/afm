@@ -66,7 +66,7 @@ class MenuBuilder extends ContainerAware
 
         $menu->addChild('Отзывы',array('route'=>'sonata_news_home'));
 
-        $menu->addChild('Оптовым покупателям',array('route'=>'sonata_news_home'));
+        $menu->addChild('Оптовым покупателям',array('route'=>'nurix_create_pages','routeParameters' => array('url' => 'optom')));
 
         return $menu;
     }

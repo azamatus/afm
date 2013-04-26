@@ -13,7 +13,7 @@ Nurix\PageBundle\Entity\Pages:
             type: string
             length: 200
             fixed: false
-            nullable: true
+            nullable: false
         title:
             type: string
             length: 100

@@ -10,12 +10,13 @@ class PageController extends Controller
     {
         $pages = $this->getDoctrine()
             ->getRepository('NurixPageBundle:Pages')
-            ->findBy(array("url"=>$url));
+            ->findOneBy(array("url"=>$url));
+
         if(!$pages){
-            throw new HttpNotFoundException("Page not found");
+            throw new \Exception("Page not found");
         }
         else
-        return $this->render('NurixPageBundle:Pages:pages.html.twig', array('pages' => $pages));
+        return $this->render('NurixPageBundle:Pages:pages.html.twig', array('page' => $pages));
 
 
 
