@@ -7,13 +7,19 @@ Nurix\PageBundle\Entity\Pages:
             type: integer
             unsigned: false
             nullable: false
-            column: Id
             generator:
                 strategy: IDENTITY
-        pages:
+        url:
             type: string
-            length: 50
+            length: 200
             fixed: false
             nullable: true
-            column: Pages
+        title:
+            type: string
+            length: 100
+            fixed: false
+            nullable: true
+        content:
+            type: text
+            nullable: true
     lifecycleCallbacks: {  }

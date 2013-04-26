@@ -15,15 +15,20 @@ class PageAdmin extends Admin
     public function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('pages')
+            ->add('id')
+            ->add('url')
+            ->add('title')
+            ->add('content')
         ;
     }
 
     public function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('General')
-            ->add('pages')
+            ->with('Страница')
+            ->add('url')
+            ->add('title')
+            ->add('content','ckeditor', array('attr' => array('class' => 'span10', 'rows' => 20)))
             ->end()
         ;
     }
@@ -31,14 +36,12 @@ class PageAdmin extends Admin
     public function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('pages')
+            ->addIdentifier('id')
+            ->addIdentifier('url')
+            ->add('title')
+            ->add('content')
         ;
     }
 
-    public function configureDatagridFilters(DatagridMapper $datagridMapper)
-    {
-        $datagridMapper
-            ->add('pages')
-        ;
-    }
+
 }

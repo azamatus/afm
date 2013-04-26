@@ -17,7 +17,17 @@ class Pages
     /**
      * @var string
      */
-    private $pages;
+    private $url;
+
+    /**
+     * @var string
+     */
+    private $title;
+
+    /**
+     * @var string
+     */
+    private $content;
 
 
     /**
@@ -31,25 +41,71 @@ class Pages
     }
 
     /**
-     * Set pages
+     * Set url
      *
-     * @param string $pages
+     * @param string $url
      * @return Pages
      */
-    public function setPages($pages)
+    public function setUrl($url)
     {
-        $this->pages = $pages;
+        $this->url = $url;
     
         return $this;
     }
 
     /**
-     * Get pages
+     * Get url
      *
      * @return string 
      */
-    public function getPages()
+    public function getUrl()
     {
-        return $this->pages;
+        return $this->url;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return Pages
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string 
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set content
+     *
+     * @param string $content
+     * @return Pages
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+    
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return string 
+     */
+    public function getContent()
+    {
+        return $this->content;
     }
 }

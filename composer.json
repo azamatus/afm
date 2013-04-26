@@ -33,6 +33,7 @@
         "egeloen/ckeditor-bundle": "2.*",
         "sonata-project/news-bundle": "2.1.*",
         "bupychuk/php-simple-html-dom-parser": "dev-master"
+
     },
     "scripts": {
         "post-install-cmd": [

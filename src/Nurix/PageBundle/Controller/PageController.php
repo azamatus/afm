@@ -6,8 +6,24 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class PageController extends Controller
 {
-    public function indexAction($name)
+    public function indexAction($url)
     {
-        return $this->render('NurixPageBundle:Page:index.html.twig', array('name' => $name));
+        $pages = $this->getDoctrine()
+            ->getRepository('NurixPageBundle:Pages')
+            ->findBy(array("url"=>$url));
+        if(!$pages){
+            throw new HttpNotFoundException("Page not found");
+        }
+        else
+        return $this->render('NurixPageBundle:Pages:pages.html.twig', array('pages' => $pages));
+
+
+
+
+
     }
+
+
+
+
 }
