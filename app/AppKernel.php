@@ -49,7 +49,7 @@ class AppKernel extends Kernel
             new Application\Sonata\NewsBundle\ApplicationSonataNewsBundle(),
             new Sunra\PhpSimple\HtmlDomParser(),
             new Liuggio\ExcelBundle\LiuggioExcelBundle(),
-
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Nurix\PageBundle\NurixPageBundle(),
         );
 

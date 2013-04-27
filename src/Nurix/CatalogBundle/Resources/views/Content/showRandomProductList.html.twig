@@ -2,10 +2,17 @@
     <link href="{{ asset('bundles/catalog/css/catalog.css') }} " type="text/css" rel="stylesheet"/>
 {% endblock %}
 <div>
-    <div class="clearbox"></div>
+
     <h1 class="left size24px">Весь каталог</h1>
-    {% for product in products  %}
-    {% include  "CatalogBundle:Content:item.html.twig" with {'product':product} %}
-    {% endfor %}
+
+        {% for product in pagination %}
+            {% include  "CatalogBundle:Content:item.html.twig" with {'product':product} %}
+        {% endfor %}
+    <div class="navigation">
+        {{ knp_pagination_render(pagination, 'CatalogBundle:Pagination:pagination.html.twig')  }}
+    </div>
 </div>
+
+
+
 

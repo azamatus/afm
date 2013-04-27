@@ -1,0 +1,5 @@
+{% if next is defined %}
+    <span class="next">
+            <a href="{{ path(route, query|merge({(pageParameterName): next})) }}">&gt;</a>
+        </span>
+{% endif %}

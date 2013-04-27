@@ -9,8 +9,19 @@ class ContentController extends Controller
 {
     public function showRandomProductListAction()
     {
-        $products = $this->getDoctrine()->getRepository('CatalogBundle:Goods')->findAll();
-        return $this->render('CatalogBundle:Content:showRandomProductList.html.twig', array('products' => $products));
+        $repository = $this->getDoctrine()
+            ->getRepository("CatalogBundle:Goods");
+
+        $paginate = $repository->paginateGoods();
+
+        $paginator = $this->get('knp_paginator');
+
+        $pagination = $paginator
+            ->paginate($paginate,
+            $this->get('request')->query->get('page',1),3);
+
+        return $this->render('CatalogBundle:Content:showRandomProductList.html.twig', array( 'pagination' => $pagination));
+
     }
 
 
@@ -41,14 +52,5 @@ class ContentController extends Controller
             $products = $catalog->getGoods($cid);
             return $this->render('CatalogBundle:Content:getcatalog.html.twig',array('products'=>$products));
 
-    }
-
-
-        public  function  getItemAction($gid){
-        $item = $this->getDoctrine()
-            ->getRepository('CatalogBundle:Goods')
-            ->find($gid);
-
-        return $this->render('CatalogBundle:Content:getitem.html.twig',array('item'=>$item));
     }
 }
