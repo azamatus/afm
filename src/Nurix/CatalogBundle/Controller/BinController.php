@@ -40,7 +40,12 @@ class BinController extends Controller
                 $goods = $request->cookies->get("cookieGoods");
                 if (!isset($goods[$id]) || empty($goods[$id]))
                     $goods[$id] = 0;
-                $goods[$id]++;
+                $amount = $request->query->get('amount', 1);
+                $productPage = $request->query->get('productPage');
+                if($productPage=="true")
+                    $goods[$id]=$amount;
+                else
+                    $goods[$id]++;
                 $response = new Response();
                 $cookie = new Cookie("cookieGoods[$id]", $goods[$id], time() + 3600);
                 $response->headers->setCookie($cookie);

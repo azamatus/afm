@@ -13,6 +13,11 @@ class ProductController extends Controller
         $entity = $this->getDoctrine()
             ->getRepository('CatalogBundle:Goods')
             ->find($id);
+        $goods = $this->getRequest()->cookies->get("cookieGoods");
+
+        $amount=1;
+        if (isset($goods[$id]))
+            $amount = $goods[$id];
 
         $mainchar = $this -> getDoctrine()
             ->getRepository("CatalogBundle:Characteristic")
@@ -25,7 +30,7 @@ class ProductController extends Controller
 
 
 
-        return $this->render('CatalogBundle:Product:product_info.html.twig', array('product' => $entity, 'char'=>$char, 'mainchar' => $mainchar));
+        return $this->render('CatalogBundle:Product:product_info.html.twig', array('product' => $entity, 'char'=>$char, 'mainchar' => $mainchar,'amount'=>$amount));
     }
     public function getSameAction()
     {

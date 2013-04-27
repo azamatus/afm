@@ -3,9 +3,6 @@ $(function () {
         var widget_path = base_url+"bin/widget";
         $.ajax({
             url:widget_path,
-            error:function (data) {
-                alert('ERROR');
-            },
             success:function (data) {
                 $("#bin_widget").html(data);
             }
@@ -13,14 +10,15 @@ $(function () {
     }
 
     $('.button_buy,.button_buy_bin').click(function () {
-        var product_id = $(this).attr("product");
         var path = $(this).attr("href");
+        var $amount = 1, productPage = false;
+        if ($(this).hasClass('button_buy_bin')){
+            $amount = parseInt($('#amount').val());
+            productPage = true;
+        }
         $.ajax({
             url:path,
-            data:{ id:product_id },
-            error:function (data) {
-                alert('ERROR');
-            },
+            data:{ amount : $amount, productPage : productPage  },
             success:function (data) {
                 $('#tovar-added').empty().html(data).dialog(
                         {
@@ -82,9 +80,7 @@ $(function () {
     }
 
     $(".bin-remove-item").click(function(){
-        var tr = $(this).parents('tr');
-        id = tr.attr('id');
-        tr.parent().removeChild(tr);
+        $("#"+$(this).data("id")).remove();
         calculate();
     });
 

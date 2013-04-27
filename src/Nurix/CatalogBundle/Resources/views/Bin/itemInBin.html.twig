@@ -58,7 +58,7 @@
                                 <div class="bin_itemPrice" id="goodTotal_{{ good.id }}">
                                     <span class="Som">{{ (good.price * count)|price('SOM')  }}</span>
                                     <span class="Dollar">{{ (good.price * count)|price('USD') }}</span>
-                                    <span class="bin-remove bin-remove-item">&nbsp;</span>
+                                    <span data-id={{ good.id }} class="bin-remove bin-remove-item">&nbsp;</span>
                                 </div>
                             </td>
                         </tr>
