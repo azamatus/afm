@@ -21,4 +21,9 @@ Nurix\SliderBundle\Entity\Slider:
         content:
             type: text
             nullable: false
+        sliderOrder:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: slider_order
     lifecycleCallbacks: {  }

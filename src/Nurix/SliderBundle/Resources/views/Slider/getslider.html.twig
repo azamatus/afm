@@ -1,7 +1,9 @@
 <div class="container center">
     <div id="carousel" class="center">
         {% for slider in sliders %}
-                {{ slider.content |raw}}
+         <div>
+            {{ slider.content|raw}}
+         </div>
         {% endfor %}
     </div>
     <div id="pages"></div>

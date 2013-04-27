@@ -14,6 +14,7 @@ class SliderAdmin extends Admin
         $showMapper
             ->add('title')
             ->add('active')
+            ->add('sliderOrder')
             ->add('content')
         ;
     }
@@ -23,6 +24,7 @@ class SliderAdmin extends Admin
         $formMapper
             ->with('General')
             ->add('title')
+            ->add('sliderOrder')
             ->add('active', null, array('required' => false))
             ->add('content', 'ckeditor', array('attr' => array('class' => 'span10', 'rows' => 20)))
             ->end()
@@ -33,7 +35,9 @@ class SliderAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('title')
-            ->add('active')
+            ->add('active', 'boolean', array('editable' => true))
+            ->add('sliderOrder')
         ;
     }
+
 }

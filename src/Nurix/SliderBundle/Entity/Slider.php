@@ -6,42 +6,33 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Slider
- *
- * @ORM\Table(name="slider")
- * @ORM\Entity
  */
 class Slider
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="ID", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var boolean
-     *
-     * @ORM\Column(name="active", type="boolean", nullable=false)
      */
     private $active;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="title", type="string", length=120, nullable=false)
      */
     private $title;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="content", type="text", nullable=false)
      */
     private $content;
 
+    /**
+     * @var integer
+     */
+    private $sliderOrder;
 
 
     /**
@@ -121,5 +112,28 @@ class Slider
     public function getContent()
     {
         return $this->content;
+    }
+
+    /**
+     * Set sliderOrder
+     *
+     * @param integer $sliderOrder
+     * @return Slider
+     */
+    public function setSliderOrder($sliderOrder)
+    {
+        $this->sliderOrder = $sliderOrder;
+    
+        return $this;
+    }
+
+    /**
+     * Get sliderOrder
+     *
+     * @return integer 
+     */
+    public function getSliderOrder()
+    {
+        return $this->sliderOrder;
     }
 }
