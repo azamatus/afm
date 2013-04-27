@@ -1,39 +1,41 @@
 nurix_goods_catalog:
-    pattern:  /catalog
+    pattern:  /catalog/
     defaults: { _controller: CatalogBundle:Catalog:catalog }
 
 nurix_goods_get_catalog:
-    pattern:  /catalog/{cid}
+    pattern:  /catalog/{cid}/
     defaults: { _controller: CatalogBundle:Content:getCatalog }
 
 nurix_goods_get_provider:
-    pattern:  /catalog/provider/{pid}
+    pattern:  /catalog/provider/{pid}/
     defaults: { _controller: CatalogBundle:Catalog:getCatalogByProvider }
 
 nurix_goods_get_item:
-    pattern: /catalog/provider/good/{gid}
+    pattern: /catalog/provider/good/{gid}/
     defaults: { _controller: CatalogBundle:Catalog:getItem }
 
 nurix_bin_ajax_add_item:
-    pattern: /bin/add/ajax/{id}
+    pattern: /bin/add/ajax/{id}/
     defaults: { _controller: CatalogBundle:Bin:addAjaxBin }
+    requirements:
+      id:  \d+
 
 nurix_bin_item:
     pattern: /bin/
     defaults: { _controller: CatalogBundle:Bin:bin }
 
 nurix_bin_bin_form:
-    pattern: /bin/bin-form
+    pattern: /bin/bin-form/
     defaults: { _controller: CatalogBundle:Bin:binForm }
 
 nurix_goods_get_info:
-    pattern: /catalog/product/{id}
+    pattern: /catalog/product/{id}/
     defaults: { _controller: CatalogBundle:Product:getInfo}
 
 nurix_bin_main_widget:
-    pattern: /bin/widget
+    pattern: /bin/widget/
     defaults: { _controller: CatalogBundle:Bin:mainBin }
 
 nurix_admin_parse_excel:
-    pattern: /admin/parse
+    pattern: /admin/parse/
     defaults: { _controller: CatalogBundle:Admin:excel }

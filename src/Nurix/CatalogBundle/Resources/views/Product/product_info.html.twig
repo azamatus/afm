@@ -55,12 +55,12 @@
                 <div class="product_price_som">{{ product.price| price('SOM') }}</div>
                 <div class="product_amount">
                     <div class="float_left word_col">кол-во:</div>
-                    <div><input type="text" class="box" value="1" id="amount"/></div>
+                    <div><input type="text" class="box" value="{{ amount }}" id="amount" /></div>
                     <div class="addrem" onmousedown="return false">
                         <span class="znak" id="add">+</span>
                         <span class="znak" id="rem">-</span>
                     </div>
-                    <a product="{{ product.id }}" href="{{ path('nurix_bin_ajax_add_item',{'id':product.id}) }}"
+                    <a data-id="{{ product.id }}" href="{{ path('nurix_bin_ajax_add_item',{'id':product.id}) }}"
                        onclick="return false;" class="button_buy_bin">
                         В корзину
                     </a>
