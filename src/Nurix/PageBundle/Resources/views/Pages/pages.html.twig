@@ -5,5 +5,5 @@
 {% endblock %}
 {% block body %}
         <h1 class="pages_center">{{ page.title }}</h1>
-        <div class="pages_center">{{ page.content }}</div>
+         {{ page.content|raw }}
 {% endblock %}
