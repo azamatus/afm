@@ -50,6 +50,7 @@ class AppKernel extends Kernel
             new Sunra\PhpSimple\HtmlDomParser(),
             new Liuggio\ExcelBundle\LiuggioExcelBundle(),
 
+            new Nurix\PageBundle\NurixPageBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -1,0 +1,7 @@
+parameters:
+#    nurix_page.example.class: Nurix\PageBundle\Example
+
+services:
+#    nurix_page.example:
+#        class: %nurix_page.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
