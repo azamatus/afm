@@ -28,7 +28,7 @@ class MenuBuilder extends ContainerAware
         $menu = $this->factory->createItem('main_menu');
 
         $menu->addChild('home', array('route' => 'nurix_homepage','label'=>'Главная'));
-        $menu->addChild('contacts', array('route' => 'nurix_default', 'routeParameters' => array('name' => 'Nurlan'),'label'=>'Контакты'));
+        $menu->addChild('contacts', array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => 'contact'),'label'=>'Контакты'));
         $menu->addChild('sitemap', array('route' => 'nurix_default', 'routeParameters' => array('name' => 'Nurlan'),'label'=>'Карта сайта'));
         $menu->setChildrenAttribute('class','main_menu');
         return $menu;
@@ -43,26 +43,30 @@ class MenuBuilder extends ContainerAware
     public function createInfoSideMenu(Request $request)
     {
         $menu = $this->factory->createItem('sidebar');
+
         $menu->setChildrenAttribute('class','side_menu');
+
         $menu->addChild('Interesting',array('label'=>'Интересное'))
             ->setAttribute('class','catalog_menu')
             ->setLabelAttribute('class','f20');
+
         $menu->addChild('Наши новости',array('route'=>'sonata_news_local_inter', 'routeParameters'=>array('type'=>'local')));
+
         $menu->addChild('Мировые новости',array('route'=>'sonata_news_local_inter', 'routeParameters'=>array('type'=>'international')));
 
-        $menu->addChild('О магазине',array('route'=>'sonata_news_home'));
+        $menu->addChild('О магазине',array('route'=>'nurix_create_pages', 'routeParameters' => array('url' => 'about')));
 
-        $menu->addChild('Контакты',array('route'=>'sonata_news_home'));
+        $menu->addChild('Контакты',array('route'=>'nurix_create_pages', 'routeParameters' => array('url' => 'contact')));
 
-        $menu->addChild('Условия доставки',array('route'=>'sonata_news_home'));
+        $menu->addChild('Условия доставки',array('route'=>'nurix_create_pages', 'routeParameters' => array('url' => 'conditions')));
 
-        $menu->addChild('Способы оплаты',array('route'=>'sonata_news_home'));
+        $menu->addChild('Способы оплаты',array('route'=>'nurix_create_pages', 'routeParameters' => array('url' => 'payment')));
 
-        $menu->addChild('Справка',array('route'=>'sonata_news_home'));
+        $menu->addChild('Справка',array('route'=>'nurix_create_pages','routeParameters' => array('url' => 'help')));
 
         $menu->addChild('Отзывы',array('route'=>'sonata_news_home'));
 
-        $menu->addChild('Оптовым покупателям',array('route'=>'sonata_news_home'));
+        $menu->addChild('Оптовым покупателям',array('route'=>'nurix_create_pages','routeParameters' => array('url' => 'optom')));
 
         return $menu;
     }
