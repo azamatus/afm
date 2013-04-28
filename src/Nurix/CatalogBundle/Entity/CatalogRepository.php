@@ -28,9 +28,15 @@ class CatalogRepository extends EntityRepository
             $catalogs->where('c.active = :a')
                 ->setParameter('a', $rules['active']);
         }
-        if (!empty($rules['parent'])){
+
+        if (isset($rules['parent'])){
             $catalogs->andWhere('c.parent = :a')
                 ->setParameter('a', $rules['parent']);
+        }
+        else if (array_key_exists('parent',$rules))
+        {
+
+            $catalogs->andWhere('c.parent is null');
         }
 
         return $catalogs->getQuery()->getResult();
