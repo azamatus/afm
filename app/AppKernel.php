@@ -51,6 +51,7 @@ class AppKernel extends Kernel
             new Liuggio\ExcelBundle\LiuggioExcelBundle(),
 
             new Nurix\PageBundle\NurixPageBundle(),
+            new Nurix\SliderBundle\NurixSliderBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

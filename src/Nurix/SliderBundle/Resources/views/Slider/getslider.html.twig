@@ -1,0 +1,10 @@
+<div class="container center">
+    <div id="carousel" class="center">
+        {% for slider in sliders %}
+         <div>
+            {{ slider.content|raw}}
+         </div>
+        {% endfor %}
+    </div>
+    <div id="pages"></div>
+</div>
