@@ -41,7 +41,7 @@ class ThumbnailExtension extends MediaExtension
         if ($this->isGalleryWithImageFilter($gallery))
         {
             $medias = $gallery->getGalleryHasMedias();
-            return $this->thumbnail($medias[0],$format,$options);
+            return $this->thumbnail($medias[0]->getMedia(),$format,$options);
         }
 
         $provider = $this->getMediaService()
