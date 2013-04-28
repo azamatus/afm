@@ -5,6 +5,7 @@ imports:
     - { resource: sonata/news.yml }
     - { resource: @CatalogBundle/Resources/config/admin.xml }
     - { resource: @NurixPageBundle/Resources/config/admin.xml }
+    - { resource: @NurixSliderBundle/Resources/config/admin.xml }
 
 framework:
     trusted_proxies: ~

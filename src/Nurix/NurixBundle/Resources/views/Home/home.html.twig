@@ -3,36 +3,15 @@
     {{ parent() }}
     <link href="{{ asset('bundles/nurix/css/rcarousel.css') }} " type="text/css" rel="stylesheet"/>
 {% endblock %}
+
 {% block body %}
     {% render "CatalogBundle:Content:showSliderProductList" %}
     <div class="clearbox"></div>
     {% render  "CatalogBundle:Content:showRandomProductList" %}
 {% endblock %}
+
 {% block slider %}
-
- <div class="container center">
- <div id="carousel" class="center">
-     <div>
-        <div class="slide_image">
-            <img src="{{ asset('public/img/slides/phone_slider.png') }}" alt="Catalog">
-        </div>
-        <div>
-            <p class="slide_text"><span class="phone_name">iPhone 4S</span><br /><br>Dual-core A5 чип<br> Новая 8 мгпикс. камера<br>iOS 5 и iCloud<br>и шикраный дизайн<br><br>
-                Это самый обаденный iPhone</p>
-        </div>
-         <a href="/">
-         <div class="slide_button">
-             <span class="slide_btext">Купить</span>
-         </div></a>
-     </div>
-        <img src="{{ asset('public/img/slides/2.jpg') }}" alt="Catalog">
-        <img src="{{ asset('public/img/slides/3.jpg') }}" alt="Catalog">
-        <img src="{{ asset('public/img/slides/4.jpg') }}" alt="Catalog">
-        <img src="{{ asset('public/img/slides/5.jpg') }}" alt="Catalog">
- </div>
-        <div id="pages"></div>
- </div>
-
+     {% render "NurixSliderBundle:Slider:getSlider" %}
 {% endblock %}
 
 {% block javascripts %}

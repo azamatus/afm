@@ -1,0 +1,7 @@
+parameters:
+#    nurix_slider.example.class: Nurix\SliderBundle\Example
+
+services:
+#    nurix_slider.example:
+#        class: %nurix_slider.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
