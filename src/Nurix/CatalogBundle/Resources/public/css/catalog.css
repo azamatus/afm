@@ -60,3 +60,8 @@
     height: 30px;
     overflow: hidden;
 }
+.product_img {
+    display: inline-block;
+    width: 210px;
+    height: 174px
+}
