@@ -113,6 +113,7 @@ class AdminController extends CoreController
                     $good->setLastUpdate($last_update);
                     $good->setPrice($price);
                     $good->setCatalog($subcatalog);
+                    $good->setActive(true);
                     $entityManager->flush();
 
 
@@ -121,6 +122,7 @@ class AdminController extends CoreController
                     $good = new Goods();
                     $good->setArticle($article);
                     $good->setName($name);
+                    $good->setActive(true);
                     $good->setLastUpdate($last_update);
                     $good->setPrice($price);
                     $good->setCatalog($subcatalog);
