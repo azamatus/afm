@@ -2,9 +2,9 @@
     <div class="phones float_left">
         <div><a id="name" class="size16px"
                 href="{{ path('nurix_goods_get_info', {'id': product.id}) }}">{{ product.name }}</a></div>
-        <div class="gray margin_top10px ">{{ product.shortDescription }}</div>
+        <div class="gray margin_top10px short_description">{{ product.shortDescription }}</div>
         <div class="clearbox"></div>
-        <div>
+        <div class="product_img">
             <a href="{{ path('nurix_goods_get_info', {'id': product.id} ) }}">
                 {{ product.imagePath|galleryThumb(asset('bundles/catalog/img/noImage/good_big.jpg'),'goods_big') }}
             </a>

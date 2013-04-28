@@ -30,7 +30,7 @@ class Goods
     /**
      * @var string $shortDescription
      *
-     * @ORM\Column(name="short_description", type="text", nullable=true)
+     * @ORM\Column(name="short_description", type="string", length=100, nullable=true)
      */
     private $shortDescription;
 
