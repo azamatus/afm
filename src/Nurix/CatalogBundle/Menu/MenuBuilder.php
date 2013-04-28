@@ -31,7 +31,7 @@ class MenuBuilder extends ContainerAware
         $menu = $this->factory->createItem('catalog_sidebar');
         $menu->setCurrentUri($request->getRequestUri());
         $menu->setChildrenAttribute('class','side_menu');
-        $menu->addChild('Catalog', array('route' => 'nurix_goods_get_catalog','routeParameters'=>array('cid'=>0),'label'=>'Каталог'))
+        $menu->addChild('Catalog', array('route' => 'nurix_goods_get_catalog','routeParameters'=>array('cid'=>null),'label'=>'Каталог'))
             ->setAttribute('class','catalog_menu')
             ->setLinkAttribute('class','f20')
             ->setExtra('currentClass','active');

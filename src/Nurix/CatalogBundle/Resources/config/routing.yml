@@ -25,3 +25,7 @@ nurix_bin_main_widget:
 nurix_admin_parse_excel:
     pattern: /admin/parse
     defaults: { _controller: CatalogBundle:Admin:excel }
+
+nurix_catalog_get_rndcatalog:
+    pattern: /catalog/rnd-catalog/
+    defaults: { _controller: CatalogBundle:Content:showRandomProductList }

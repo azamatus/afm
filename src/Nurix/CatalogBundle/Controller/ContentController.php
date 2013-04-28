@@ -20,7 +20,13 @@ class ContentController extends Controller
             ->paginate($paginate,
             $this->get('request')->query->get('page',1),3);
 
-        return $this->render('CatalogBundle:Content:showRandomProductList.html.twig', array( 'pagination' => $pagination));
+        $pagination->setUsedRoute('nurix_catalog_get_rndcatalog');
+
+        if ($this->getRequest()->isXmlHttpRequest()){
+            return $this->render('CatalogBundle:Content:getAjaxRandomProductList.html.twig', array( 'pagination' => $pagination));
+        }else{
+            return $this->render('CatalogBundle:Content:showRandomProductList.html.twig', array( 'pagination' => $pagination));
+        }
 
     }
 
@@ -43,14 +49,39 @@ class ContentController extends Controller
 
     public function getCatalogAction($cid)
     {
-        $catalog = $this->getDoctrine()->getManager()
-            ->getRepository('CatalogBundle:Catalog');
+        $repository = $this->getDoctrine()
+            ->getRepository("CatalogBundle:Catalog");
 
-        if (!$catalog){
+        if (!$repository){
             throw new \Exception("Ошибка");
         }
-            $products = $catalog->getGoods($cid);
-            return $this->render('CatalogBundle:Content:getcatalog.html.twig',array('products'=>$products));
 
+        $paginate = $repository->getGoods($cid);
+
+        $paginator = $this->get('knp_paginator');
+
+        $pagination = $paginator
+            ->paginate($paginate,
+            $this->get('request')->query->get('page',1),3);
+
+        $pagination->setUsedRoute('nurix_goods_get_catalog');
+
+        if ($this->getRequest()->isXmlHttpRequest()){
+            return $this->render('CatalogBundle:Content:getAjaxRandomProductList.html.twig', array( 'pagination' => $pagination));
+        }else{
+            return $this->render('CatalogBundle:Content:getcatalog.html.twig', array( 'pagination' => $pagination));
+        }
+        }
     }
-}
+//
+//        $catalog = $this->getDoctrine()->getManager()
+//            ->getRepository('CatalogBundle:Catalog');
+//
+//        if (!$catalog){
+//            throw new \Exception("Ошибка");
+//        }
+//            $products = $catalog->getGoods($cid);
+//            return $this->render('CatalogBundle:Content:getcatalog.html.twig',array('products'=>$products));
+//
+//    }
+//}

@@ -1,18 +1,22 @@
 {% block stylesheets %}
     <link href="{{ asset('bundles/catalog/css/catalog.css') }} " type="text/css" rel="stylesheet"/>
 {% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset("bundles/catalog/js/ajax_pagination.js") }}"></script>
+{% endblock %}
 <div>
 
     <h1 class="left size24px">Весь каталог</h1>
 
-        {% for product in pagination %}
-            {% include  "CatalogBundle:Content:item.html.twig" with {'product':product} %}
-        {% endfor %}
-    <div class="navigation">
-        {{ knp_pagination_render(pagination, 'CatalogBundle:Pagination:pagination.html.twig')  }}
+    <div id="all-catalog">
+        <div class="all-catalog-items">
+            {% for product in pagination %}
+                {% include  "CatalogBundle:Content:item.html.twig" with {'product':product} %}
+            {% endfor %}
+        </div>
+
+        <div class="navigation">
+            {{ knp_pagination_render(pagination,'CatalogBundle:Pagination:pagination.html.twig') }}
+        </div>
     </div>
 </div>
-
-
-
-
