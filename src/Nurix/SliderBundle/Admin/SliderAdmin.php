@@ -5,7 +5,7 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
-
+use Nurix\SliderBundle\Entity;
 
 class SliderAdmin extends Admin
 {
@@ -40,4 +40,11 @@ class SliderAdmin extends Admin
         ;
     }
 
+    public function preUpdate($object)
+    {
+        $repository = $this->getConfigurationPool()->getContainer()->get('doctrine')->getEntityManager()->getRepository("NurixSliderBundle:Slider");
+        $original = (object) $this->getModelManager()->getEntityManager($this->getClass())->getUnitOfWork()->getOriginalEntityData($object);
+        if ($original->sliderOrder!=$object->getSliderOrder())
+            $repository->updateOrders($object->getSliderOrder(),$object->getId());
+    }
 }

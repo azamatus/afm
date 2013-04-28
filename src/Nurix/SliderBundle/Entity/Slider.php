@@ -6,33 +6,49 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Slider
- */
+ *
+ * @ORM\Table(name="slider")
+ * @ORM\Entity(repositoryClass="Nurix\SliderBundle\Entity\SliderRepository")
+     */
 class Slider
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="ID", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var boolean
+     *
+     * @ORM\Column(name="active", type="boolean", nullable=false)
      */
     private $active;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=120, nullable=false)
      */
     private $title;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="content", type="text", nullable=false)
      */
     private $content;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="slider_order", type="integer", nullable=false)
      */
     private $sliderOrder;
+
 
 
     /**

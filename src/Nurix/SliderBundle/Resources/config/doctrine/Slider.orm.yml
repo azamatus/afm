@@ -1,6 +1,7 @@
 Nurix\SliderBundle\Entity\Slider:
     type: entity
     table: slider
+    repositoryClass: Nurix\SliderBundle\Entity\SliderRepository
     fields:
         id:
             id: true

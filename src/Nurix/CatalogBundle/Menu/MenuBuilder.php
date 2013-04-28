@@ -25,7 +25,7 @@ class MenuBuilder extends ContainerAware
      * @return mixed
      */
 
-    public function createCatalogSideMenu(Request $request, CatalogModel $cm)
+    public function createCatalogSideMenu(Request $request,$em)
     {
 
         $menu = $this->factory->createItem('catalog_sidebar');
@@ -36,6 +36,7 @@ class MenuBuilder extends ContainerAware
             ->setLinkAttribute('class','f20')
             ->setExtra('currentClass','active');
 
+        $cm = $em->getRepository("CatalogBundle:Catalog");
 
         $catalog = $cm->getAll(array('active'=>1, 'parent'=>null));
 
