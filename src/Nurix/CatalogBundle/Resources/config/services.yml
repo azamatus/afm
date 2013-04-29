@@ -24,3 +24,6 @@ services:
             class: Nurix\CatalogBundle\Twig\CountExtension
             tags:
                 - { name: twig.extension }
+    catalog.product.parser:
+        class: Nurix\CatalogBundle\Parser\Parser
+        arguments: [@doctrine,@xls.load_xls2007]

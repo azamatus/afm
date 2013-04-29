@@ -60,7 +60,7 @@ class Goods
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Gallery")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="image_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
      * })
      */
     private $imagePath;
@@ -99,13 +99,18 @@ class Goods
      * @ORM\Column(name="review", type="text", nullable=true)
      */
     private $review;
+    /**
+     * @var string $yandex_url;
+     * @ORM\Column(name="yandex_url", type="string", length=100, nullable=true)
+     */
+    private $yandex_url;
 
     /**
      * @var Catalog
      *
      * @ORM\ManyToOne(targetEntity="Catalog")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="catalog_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="catalog_id", referencedColumnName="id")
      * })
      */
     private $catalog;
@@ -122,10 +127,11 @@ class Goods
      *
      * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Gallery")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="youtube_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="youtube_id", referencedColumnName="id")
      * })
      */
     private $youtube;
+
     /**
      * Constructor
      */
@@ -134,11 +140,11 @@ class Goods
         $this->videos = new \Doctrine\Common\Collections\ArrayCollection();
         $this->characteristic = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -154,14 +160,14 @@ class Goods
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -177,14 +183,14 @@ class Goods
     public function setShortDescription($shortDescription)
     {
         $this->shortDescription = $shortDescription;
-    
+
         return $this;
     }
 
     /**
      * Get shortDescription
      *
-     * @return string 
+     * @return string
      */
     public function getShortDescription()
     {
@@ -200,14 +206,14 @@ class Goods
     public function setFullDesctiption($fullDesctiption)
     {
         $this->fullDesctiption = $fullDesctiption;
-    
+
         return $this;
     }
 
     /**
      * Get fullDesctiption
      *
-     * @return string 
+     * @return string
      */
     public function getFullDesctiption()
     {
@@ -223,14 +229,14 @@ class Goods
     public function setPrice($price)
     {
         $this->price = $price;
-    
+
         return $this;
     }
 
     /**
      * Get price
      *
-     * @return float 
+     * @return float
      */
     public function getPrice()
     {
@@ -246,14 +252,14 @@ class Goods
     public function setImageId($imageId)
     {
         $this->image_id = $imageId;
-    
+
         return $this;
     }
 
     /**
      * Get image_id
      *
-     * @return integer 
+     * @return integer
      */
     public function getImageId()
     {
@@ -269,14 +275,14 @@ class Goods
     public function setActive($active)
     {
         $this->active = $active;
-    
+
         return $this;
     }
 
     /**
      * Get active
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getActive()
     {
@@ -292,14 +298,14 @@ class Goods
     public function setAmount($amount)
     {
         $this->amount = $amount;
-    
+
         return $this;
     }
 
     /**
      * Get amount
      *
-     * @return integer 
+     * @return integer
      */
     public function getAmount()
     {
@@ -315,14 +321,14 @@ class Goods
     public function setImagePath(\Application\Sonata\MediaBundle\Entity\Gallery $imagePath = null)
     {
         $this->imagePath = $imagePath;
-    
+
         return $this;
     }
 
     /**
      * Get imagePath
      *
-     * @return \Application\Sonata\MediaBundle\Entity\Gallery 
+     * @return \Application\Sonata\MediaBundle\Entity\Gallery
      */
     public function getImagePath()
     {
@@ -338,14 +344,14 @@ class Goods
     public function setCatalog(\Nurix\CatalogBundle\Entity\Catalog $catalog = null)
     {
         $this->catalog = $catalog;
-    
+
         return $this;
     }
 
     /**
      * Get catalog
      *
-     * @return \Nurix\CatalogBundle\Entity\Catalog 
+     * @return \Nurix\CatalogBundle\Entity\Catalog
      */
     public function getCatalog()
     {
@@ -368,7 +374,7 @@ class Goods
     /**
      * Get youtube
      *
-     * @return \Application\Sonata\MediaBundle\Entity\Gallery 
+     * @return \Application\Sonata\MediaBundle\Entity\Gallery
      */
     public function getYoutube()
     {
@@ -384,7 +390,7 @@ class Goods
     public function addCharacteristic(\Nurix\CatalogBundle\Entity\Characteristic $characteristic)
     {
         $this->characteristic[] = $characteristic;
-    
+
         return $this;
     }
 
@@ -401,7 +407,7 @@ class Goods
     /**
      * Get characteristic
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getCharacteristic()
     {
@@ -417,14 +423,14 @@ class Goods
     public function setArticle($article)
     {
         $this->article = $article;
-    
+
         return $this;
     }
 
     /**
      * Get article
      *
-     * @return string 
+     * @return string
      */
     public function getArticle()
     {
@@ -440,14 +446,14 @@ class Goods
     public function setLastUpdate($lastUpdate)
     {
         $this->last_update = $lastUpdate;
-    
+
         return $this;
     }
 
     /**
      * Get last_update
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getLastUpdate()
     {
@@ -463,17 +469,40 @@ class Goods
     public function setReview($review)
     {
         $this->review = $review;
-    
+
         return $this;
     }
 
     /**
      * Get review
      *
-     * @return string 
+     * @return string
      */
     public function getReview()
     {
         return $this->review;
+    }
+
+    /**
+     * Set yandex_url
+     *
+     * @param string $yandexUrl
+     * @return Goods
+     */
+    public function setYandexUrl($yandexUrl)
+    {
+        $this->yandex_url = $yandexUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get yandex_url
+     *
+     * @return string
+     */
+    public function getYandexUrl()
+    {
+        return $this->yandex_url;
     }
 }
