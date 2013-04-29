@@ -21,6 +21,7 @@ class GoodsAdmin extends Admin
         $showmapper
             ->add('id', null, array('label' => 'ID'))
             ->add('name', null, array('label' => 'Название'))
+            ->add('article', null, array('label' => 'Артикул'))
             ->add('catalog', 'sonata_type_collection', array('label' => 'Каталог'))
             ->add('short_description', null, array('label' => 'Краткое описание'))
             ->add('full_desctiption', null, array('label' => 'Полное описание'))
@@ -29,13 +30,16 @@ class GoodsAdmin extends Admin
             ->add('youtube', 'sonata_media_type', array('label' => 'Youtube', 'provider' => 'sonata.media.provider.youtube', 'context' => 'default'))
             ->add('active', null, array('label' => 'Активен'))
             ->add('amount', null, array('label' => 'Количество'))
+            ->add('last_update','date',array('label'=>'Последнее обновление'))
             ->add('characteristic', null, array('label' => 'Характеристика'));
+
     }
 
     protected function configureFormFields(FormMapper $formmapper)
     {
         $formmapper
             ->add('name', null, array('label' => 'Название'))
+            ->add('article', null, array('label' => 'Артикул'))
             ->add('catalog', 'entity', array('label' => 'Подкатегория',
                 'class' => 'CatalogBundle:Catalog', 'required' => true,
                 'query_builder' => function (EntityRepository $er) {
@@ -51,6 +55,7 @@ class GoodsAdmin extends Admin
             ->add('active', null, array('label' => 'Активен'))
             ->add('amount', null, array('label' => 'Количество'))
             ->add('review', 'ckeditor', array('label' => 'Обзор'))
+            ->add('last_update','date',array('label'=>'Последнее обновление'))
             ->add('yandex_url', 'text', array('label' => 'Яндекс', 'required' => false));
     }
 
@@ -83,20 +88,24 @@ class GoodsAdmin extends Admin
 
         $url = $object->getYandexUrl();
         $id = $object->getId();
-        if (isset($url)) {
-            $entity_manager = $this
-                ->getConfigurationPool()->getContainer()->get('doctrine')->getEntityManager();
+        $container = $this->getConfigurationPool()->getContainer();
+        $yandex_info = $container->get('catalog.product.parser')->isValidYandexUrl($url);
+
+        if (isset($url) && $yandex_info['valid']) {
+            $entity_manager = $container->get('doctrine')->getEntityManager();
             $repository = $entity_manager->getRepository("CatalogBundle:Characteristic");
-            $characteristics = $repository->findByGoodId($object->getId());
-            foreach ($characteristics as $characteristic) {
-                $entity_manager->remove($characteristic);
-                $entity_manager->flush();
-            }
+            $repository->deleteByGoodId($id);
+
             $this->getConfigurationPool()
                 ->getContainer()
                 ->get('catalog.product.parser')
                 ->parseYandex($url, $id);
         }
     }
+    public function postPersist($object)
+    {
+        $this->preUpdate($object);
+    }
+
 
 }

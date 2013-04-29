@@ -25,5 +25,12 @@ class CharacteristicRepository extends EntityRepository
 
         return $char;
     }
+    public function deleteByGoodId($goodid){
+
+        return $this->createQueryBuilder('ch')
+            ->delete()
+            ->where('ch.goodId = :id')
+            ->setParameter('id',$goodid)->getQuery()->getResult();
+    }
 }
 
