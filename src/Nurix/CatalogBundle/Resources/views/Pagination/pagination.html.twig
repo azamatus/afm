@@ -1,0 +1,5 @@
+{% if next is defined %}
+    <div class="next">
+            <a id="showMoreRnd" class="button_else" href="{{ path(route, query|merge({(pageParameterName): next})) }}">Показать еще</a>
+    </div>
+{% endif %}

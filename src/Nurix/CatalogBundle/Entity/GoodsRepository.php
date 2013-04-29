@@ -35,4 +35,13 @@ class GoodsRepository extends EntityRepository
         return $query->getQuery()->getResult();
 
     }
+    public function paginateGoods()
+    {
+        $query = $this ->createQueryBuilder('q')
+            ->where('q.active = 1')
+            ->orderBy('q.id','DESC');
+
+        return $query;
+    }
+
 }
