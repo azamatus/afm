@@ -53,36 +53,3 @@
     height: 18px;
     float: left;
 }
-.slide_image
-{
-    float: left;
-}
-.slide_text
-{
-    float: left;
-    margin-left: 30px;
-    text-align: left;
-    font-size: 18px;
-    margin-top: -10px;
-}
-.phone_name
-{
-    font-size: 60px;
-    font-weight:bold;
-}
-.slide_button
-{
-    background-image: url("../images/slider/slide_button.png");
-    background-repeat: no-repeat;
-    height: 40px;
-    width: 135px;
-    padding-top: 9px;
-    float: left;
-    margin-left: 30px;
-    margin-top: 15px;
-}
-.slide_btext
-{
-    font-size: 18px;
-
-}

@@ -33,7 +33,7 @@ class CatalogAdmin extends Admin{
                 ->add('cname',null,array('label'=>'Заголовок'))
                 ->add('active',null,array('label'=>'Активен','required'=>false))
                 ->add('goods_alias',null,array('label'=>'Alias'))
-                ->add('parent','entity', array('label'=>'Парент',
+                ->add('parent','entity', array('label'=>'Родитель',
                 'class' => 'CatalogBundle:Catalog','required'=>false,
                 'query_builder' => function(EntityRepository $er) {
                     return $er->createQueryBuilder('p')
@@ -47,14 +47,14 @@ class CatalogAdmin extends Admin{
         $listMapper
                 ->addIdentifier('id',null,array('label'=>'ID'))
                 ->addIdentifier('cname',null,array('label'=>'Заголовок'))
-                ->add('active','checkbox',array('label'=>'Активен'))
-                ->add('parent','sonata_type_model',array('label'=>'Парент'));
+                ->add('active','boolean',array('editable' => true,'label'=>'Активен'))
+                ->add('parent','sonata_type_model',array('label'=>'Родитель'));
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
                 ->add('cname',null,array('label'=>'Заголовок'))
-                ->add('parent',null,array('label'=>'Парент'));
+                ->add('parent',null,array('label'=>'Родитель'));
     }
 }

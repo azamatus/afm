@@ -35,7 +35,3 @@ nurix_goods_get_info:
 nurix_bin_main_widget:
     pattern: /bin/widget/
     defaults: { _controller: CatalogBundle:Bin:mainBin }
-
-nurix_admin_parse_excel:
-    pattern: /admin/parse/
-    defaults: { _controller: CatalogBundle:Admin:excel }

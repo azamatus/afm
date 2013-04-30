@@ -9,8 +9,10 @@
 namespace Nurix\CatalogBundle\Admin;
 use Doctrine\ORM\EntityRepository;
 use Sonata\AdminBundle\Admin\Admin;
+use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
 
 class GoodsAdmin extends Admin
@@ -22,7 +24,7 @@ class GoodsAdmin extends Admin
             ->add('id', null, array('label' => 'ID'))
             ->add('name', null, array('label' => 'Название'))
             ->add('article', null, array('label' => 'Артикул'))
-            ->add('catalog', 'sonata_type_collection', array('label' => 'Каталог'))
+            ->add('catalog', 'sonata_type_collection', array('label' => 'Подкатегория'))
             ->add('short_description', null, array('label' => 'Краткое описание'))
             ->add('full_desctiption', null, array('label' => 'Полное описание'))
             ->add('price', null, array('label' => 'Цена'))
@@ -62,12 +64,20 @@ class GoodsAdmin extends Admin
     protected function configureListFields(ListMapper $listmapper)
     {
         $listmapper
-            ->add('id', null, array('label' => 'ID'))
+            ->addIdentifier('id', null, array('label' => 'ID'))
             ->addIdentifier('name', null, array('label' => 'Название'))
-            ->add('catalog', 'sonata_type_model', array('label' => 'Подкатегория'))
-            ->add('price', null, array('label' => 'Цена'))
-            ->add('active', null, array('label' => 'Активен'))
+            ->add('catalog', 'sonata_type_model', array('editable' => true,'label' => 'Подкатегория'))
+            ->add('price', 'decimal', array('editable' => true,'label' => 'Цена'))
+            ->add('active', 'boolean', array('editable' => true,'label' => 'Активен'))
             ->add('amount', null, array('label' => 'Количество'));
+    }
+
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
+        $datagridMapper
+            ->add('name', null, array('label' => 'Название'))
+            ->add('catalog', null, array('label' => 'Подкатегория'), null, array('expanded' => false,'multiple'=>true))
+            ->add('price',null,array('label'=>'Цена'));
     }
 
 
@@ -107,5 +117,9 @@ class GoodsAdmin extends Admin
         $this->preUpdate($object);
     }
 
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->add('excel');
+    }
 
 }

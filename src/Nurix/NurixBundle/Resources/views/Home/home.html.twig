@@ -1,8 +1,4 @@
 {% extends '::base.html.twig' %}
-{% block stylesheets %}
-    {{ parent() }}
-    <link href="{{ asset('bundles/nurix/css/rcarousel.css') }} " type="text/css" rel="stylesheet"/>
-{% endblock %}
 
 {% block body %}
     {% render "CatalogBundle:Content:showSliderProductList" %}
@@ -16,7 +12,6 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script type="text/javascript" src="{{ asset("bundles/nurix/js/slider_header.js") }}"></script>
     <script type="text/javascript" src="{{ asset("bundles/nurix/js/jquery.ui.core.min.js") }}"></script>
     <script type="text/javascript" src="{{ asset("bundles/nurix/js/jquery.ui.widget.min.js") }}"></script>
     <script type="text/javascript" src="{{ asset("bundles/nurix/js/jquery.ui.rcarousel.min.js") }}"></script>
