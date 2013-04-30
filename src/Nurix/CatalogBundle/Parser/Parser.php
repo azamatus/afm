@@ -13,6 +13,7 @@ use Doctrine\ORM\EntityNotFoundException;
 use Nurix\CatalogBundle\Entity\Characteristic;
 use Nurix\CatalogBundle\Entity\CharacteristicSection;
 use Nurix\CatalogBundle\Entity\CharacteristicType;
+use Symfony\Component\Form\Exception\NotValidException;
 use Symfony\Component\HttpFoundation\File\File;
 use Sunra\PhpSimple\HtmlDomParser;
 
@@ -177,10 +178,12 @@ class Parser
 
     public function isValidYandexUrl($url){
         $pattern = '/^http:\/\/market\.yandex.ru\/model(-spec)?\.xml\?modelid=([0-9]+)&hid=([0-9]+)$/';
-        $valid = false;
         if(preg_match($pattern,$url,$matches)){
             $url = 'http://market.yandex.ru/model-spec.xml?modelid='. $matches[2].'&hid='.$matches[3];
             $valid= true;
+        }
+        else{
+            throw new NotValidException("Ссылка на Яндекс.Маркет введен неправильно.");
         }
         return array('valid'=>$valid,'url'=>$url);
 
