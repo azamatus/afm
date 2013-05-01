@@ -7,6 +7,7 @@ use Nurix\CatalogBundle\Entity;
 
 class ContentController extends Controller
 {
+    var $limitPerPage = 12;
     public function showRandomProductListAction()
     {
         $repository = $this->getDoctrine()
@@ -18,7 +19,8 @@ class ContentController extends Controller
 
         $pagination = $paginator
             ->paginate($paginate,
-            $this->get('request')->query->get('page',1),3);
+            $this->get('request')->query->get('page',1),
+                $this->limitPerPage);
 
         $pagination->setUsedRoute('nurix_catalog_get_rndcatalog');
 
@@ -62,7 +64,8 @@ class ContentController extends Controller
 
         $pagination = $paginator
             ->paginate($paginate,
-            $this->get('request')->query->get('page',1),3);
+            $this->get('request')->query->get('page',1),
+                $this->limitPerPage);
 
         $pagination->setUsedRoute('nurix_goods_get_catalog');
 
