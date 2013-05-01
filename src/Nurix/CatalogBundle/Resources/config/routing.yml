@@ -1,5 +1,5 @@
 nurix_goods_get_catalog:
-    pattern:  /catalog/{cid}/
+    pattern:  /catalog/{cid}
     defaults: { _controller: CatalogBundle:Content:getCatalog,cid:null }
     requirements:
       сid:  \d+
