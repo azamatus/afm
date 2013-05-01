@@ -7,10 +7,29 @@ use Nurix\CatalogBundle\Entity;
 
 class ContentController extends Controller
 {
+    var $limitPerPage = 12;
     public function showRandomProductListAction()
     {
-        $products = $this->getDoctrine()->getRepository('CatalogBundle:Goods')->findAll();
-        return $this->render('CatalogBundle:Content:showRandomProductList.html.twig', array('products' => $products));
+        $repository = $this->getDoctrine()
+            ->getRepository("CatalogBundle:Goods");
+
+        $paginate = $repository->paginateGoods();
+
+        $paginator = $this->get('knp_paginator');
+
+        $pagination = $paginator
+            ->paginate($paginate,
+            $this->get('request')->query->get('page',1),
+                $this->limitPerPage);
+
+        $pagination->setUsedRoute('nurix_catalog_get_rndcatalog');
+
+        if ($this->getRequest()->isXmlHttpRequest()){
+            return $this->render('CatalogBundle:Content:getAjaxRandomProductList.html.twig', array( 'pagination' => $pagination));
+        }else{
+            return $this->render('CatalogBundle:Content:showRandomProductList.html.twig', array( 'pagination' => $pagination));
+        }
+
     }
 
 
@@ -32,23 +51,28 @@ class ContentController extends Controller
 
     public function getCatalogAction($cid)
     {
-        $catalog = $this->getDoctrine()->getManager()
-            ->getRepository('CatalogBundle:Catalog');
+        $repository = $this->getDoctrine()
+            ->getRepository("CatalogBundle:Catalog");
 
-        if (!$catalog){
+        if (!$repository){
             throw new \Exception("Ошибка");
         }
-            $products = $catalog->getGoods($cid);
-            return $this->render('CatalogBundle:Content:getcatalog.html.twig',array('products'=>$products));
 
+        $paginate = $repository->getGoods($cid);
+
+        $paginator = $this->get('knp_paginator');
+
+        $pagination = $paginator
+            ->paginate($paginate,
+            $this->get('request')->query->get('page',1),
+                $this->limitPerPage);
+
+        $pagination->setUsedRoute('nurix_goods_get_catalog');
+
+        if ($this->getRequest()->isXmlHttpRequest()){
+            return $this->render('CatalogBundle:Content:getAjaxRandomProductList.html.twig', array('pagination' => $pagination));
+        } else{
+            return $this->render('CatalogBundle:Content:getcatalog.html.twig', array('pagination' => $pagination));
+        }
+        }
     }
-
-
-        public  function  getItemAction($gid){
-        $item = $this->getDoctrine()
-            ->getRepository('CatalogBundle:Goods')
-            ->find($gid);
-
-        return $this->render('CatalogBundle:Content:getitem.html.twig',array('item'=>$item));
-    }
-}
