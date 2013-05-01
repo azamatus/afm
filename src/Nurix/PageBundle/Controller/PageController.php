@@ -3,7 +3,6 @@
 namespace Nurix\PageBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 class PageController extends Controller
 {
     public function indexAction($url)
@@ -13,7 +12,7 @@ class PageController extends Controller
             ->findOneBy(array("url"=>$url));
 
         if(!$pages){
-            throw new \Exception("Page not found");
+            throw $this->createNotFoundException('Page not found 404');
         }
         else
         return $this->render('NurixPageBundle:Pages:pages.html.twig', array('page' => $pages));
