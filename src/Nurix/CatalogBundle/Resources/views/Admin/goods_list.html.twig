@@ -1,7 +1,10 @@
 {% extends 'SonataAdminBundle:CRUD:list.html.twig' %}
 {% block actions %}
     <div class="sonata-actions">
-                <a href="{{ url('nurix_admin_parse_excel') }}" class="btn">Загрузить с файла</a>
+        <a href="{{ admin.generateUrl('excel') }}" class="btn">
+            <i class="icon-hdd"></i>
+            Импортировать из файла
+        </a>
         {% include 'SonataAdminBundle:Core:create_button.html.twig' %}
     </div>
 {% endblock %}

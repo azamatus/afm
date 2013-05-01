@@ -103,6 +103,8 @@ sonata_admin:
         show:    SonataAdminBundle:CRUD:show.html.twig
         edit:    SonataAdminBundle:CRUD:edit.html.twig
 
+        list_block: ::block_admin_list.html.twig
+
 fos_user:
     db_driver: orm
     firewall_name: main
