@@ -11,7 +11,7 @@
         <a class="name" href="{{ path('nurix_goods_get_info', {'id': tovar.id} ) }}">{{ tovar.name }}</a>
         <div class="from">{{ tovar.shortDescription }}</div>
 
-        <span class="price"><span class="from">цена: </span>{{ tovar.price|price('SOM') }}</span>
+        <span class="price"><span class="from">цена: </span>{{ tovar.price|price('USD')}} ({{ tovar.price|price('SOM')  }})</span>
         <a href="{{ path('nurix_bin_item') }}"><span class="bin-link"><img src="{{ asset('public/img/korzinka.png') }}">перейти в корзину</span></a>
     </div>
 </div>
