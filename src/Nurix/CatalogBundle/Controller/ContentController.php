@@ -67,21 +67,9 @@ class ContentController extends Controller
         $pagination->setUsedRoute('nurix_goods_get_catalog');
 
         if ($this->getRequest()->isXmlHttpRequest()){
-            return $this->render('CatalogBundle:Content:getAjaxRandomProductList.html.twig', array( 'pagination' => $pagination));
-        }else{
-            return $this->render('CatalogBundle:Content:getcatalog.html.twig', array( 'pagination' => $pagination));
+            return $this->render('CatalogBundle:Content:getAjaxRandomProductList.html.twig', array('pagination' => $pagination));
+        } else{
+            return $this->render('CatalogBundle:Content:getcatalog.html.twig', array('pagination' => $pagination));
         }
         }
     }
-//
-//        $catalog = $this->getDoctrine()->getManager()
-//            ->getRepository('CatalogBundle:Catalog');
-//
-//        if (!$catalog){
-//            throw new \Exception("Ошибка");
-//        }
-//            $products = $catalog->getGoods($cid);
-//            return $this->render('CatalogBundle:Content:getcatalog.html.twig',array('products'=>$products));
-//
-//    }
-//}
