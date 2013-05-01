@@ -1,6 +1,12 @@
 nurix_goods_get_catalog:
     pattern:  /catalog/{cid}/
     defaults: { _controller: CatalogBundle:Content:getCatalog,cid:null }
+    requirements:
+      сid:  \d+
+
+nurix_catalog_get_rndcatalog:
+    pattern: /goods/rnd-catalog/
+    defaults: { _controller: CatalogBundle:Content:showRandomProductList }
 
 nurix_bin_ajax_add_item:
     pattern: /bin/add/ajax/{id}/
@@ -27,7 +33,3 @@ nurix_bin_main_widget:
 nurix_admin_parse_excel:
     pattern: /admin/parse/
     defaults: { _controller: CatalogBundle:Admin:excel }
-
-nurix_catalog_get_rndcatalog:
-    pattern: /catalog/rnd-catalog/
-    defaults: { _controller: CatalogBundle:Content:showRandomProductList }
