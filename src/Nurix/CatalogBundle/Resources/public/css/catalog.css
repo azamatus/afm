@@ -11,7 +11,8 @@
 {
     text-align: left;
     height: 308px;
-    margin-right: 25px;
+    width: 210px;
+    margin-right: 20px;
     margin-bottom: 15px;
 }
 .catalog_title
@@ -53,6 +54,24 @@
 {
    padding-top: 7px;
    padding-left: 5px;
+}
+.button_else
+{
+    background: url("../img/button_else.png") repeat-x;
+    border: 1px solid #fead01;
+    border-radius: 5px;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    -o-border-radius:5px;
+    height: 22px;
+    padding-top: 8px;
+    text-align: center;
+    width: 216px;
+    clear: both;
+    display: block;
+    margin:10px auto;
+
+}
 }
 .short_description
 {

@@ -14,9 +14,18 @@ class CatalogRepository extends EntityRepository
 {
     public function getGoods($cid)
     {
-        return $this->getEntityManager()
-            ->createQuery("SELECT g FROM CatalogBundle:Goods g where g.catalog in (select c.id from CatalogBundle:Catalog c where c.id = $cid or c.parent = $cid )")
-            ->getResult();
+        if (!$cid){
+            $query=$this->getEntityManager()
+                ->createQuery("SELECT g FROM CatalogBundle:Goods g where g.active = 1")
+                ->getResult();
+            return $query;
+    }
+        else{
+            $query = $this->getEntityManager()
+                ->createQuery("SELECT g FROM CatalogBundle:Goods g where g.active = 1 and g.catalog in (select c.id from CatalogBundle:Catalog c where c.id = $cid or c.parent = $cid)")
+                ->getResult();
+            return $query;
+        }
     }
 
 

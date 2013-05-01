@@ -1,18 +1,6 @@
-nurix_goods_catalog:
-    pattern:  /catalog/
-    defaults: { _controller: CatalogBundle:Catalog:catalog }
-
 nurix_goods_get_catalog:
     pattern:  /catalog/{cid}/
-    defaults: { _controller: CatalogBundle:Content:getCatalog }
-
-nurix_goods_get_provider:
-    pattern:  /catalog/provider/{pid}/
-    defaults: { _controller: CatalogBundle:Catalog:getCatalogByProvider }
-
-nurix_goods_get_item:
-    pattern: /catalog/provider/good/{gid}/
-    defaults: { _controller: CatalogBundle:Catalog:getItem }
+    defaults: { _controller: CatalogBundle:Content:getCatalog,cid:null }
 
 nurix_bin_ajax_add_item:
     pattern: /bin/add/ajax/{id}/
@@ -39,3 +27,7 @@ nurix_bin_main_widget:
 nurix_admin_parse_excel:
     pattern: /admin/parse/
     defaults: { _controller: CatalogBundle:Admin:excel }
+
+nurix_catalog_get_rndcatalog:
+    pattern: /catalog/rnd-catalog/
+    defaults: { _controller: CatalogBundle:Content:showRandomProductList }

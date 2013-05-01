@@ -159,12 +159,12 @@
     background: url("../phones/product_button_bin_buy.png") repeat-x;
     float: left;
     font-size: 18px;
-    padding-top: 8px;
+    padding-top: 7px;
     margin-left: -20px;
     color: #000;
     text-align: center;
     width: 130px;
-    height: 29px;
+    height: 28px;
     border: 1px solid #fead01;
     border-radius: 5px;
     -webkit-border-radius:5px;

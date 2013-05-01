@@ -13,6 +13,9 @@ if (!function_exists('intl_get_error_code')) {
 $loader->add('Knp\Bundle', __DIR__.'/../vendor/bundles');
 $loader->add('Knp\Menu'  , __DIR__.'/../vendor/KnpMenu/src');
 
+$loader->add('Knp\\Component', __DIR__.'/../vendor/knp-components/src');
+$loader->add('Knp\\Bundle', __DIR__.'/../vendor/bundles');
+
 AnnotationRegistry::registerLoader(array($loader, 'loadClass'));
 
 return $loader;
