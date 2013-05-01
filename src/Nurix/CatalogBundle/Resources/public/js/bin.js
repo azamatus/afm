@@ -9,7 +9,7 @@ $(function () {
         });
     }
 
-    $('.button_buy,.button_buy_bin').click(function () {
+    $(document).on('click','.button_buy,.button_buy_bin',function () {
         var path = $(this).attr("href");
         var $amount = 1, productPage = false;
         if ($(this).hasClass('button_buy_bin')){
