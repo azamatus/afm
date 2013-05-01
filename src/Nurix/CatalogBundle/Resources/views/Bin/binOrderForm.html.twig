@@ -1,0 +1,14 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    {% if app.session.hasFlash('notice') %}
+    <div class="flash-notice">
+        {{ app.session.flash('notice') }}
+    </div>
+    {% endif %}
+
+    <form action="{{ path("nurix_bin_order_form") }}" method="post">
+        {{ form_widget(form) }}
+        <input type="submit" value="Сохранить">
+    </form>
+{% endblock body %}

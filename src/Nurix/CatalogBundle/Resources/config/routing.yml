@@ -14,24 +14,10 @@ nurix_goods_get_item:
     pattern: /catalog/provider/good/{gid}/
     defaults: { _controller: CatalogBundle:Catalog:getItem }
 
-nurix_bin_ajax_add_item:
-    pattern: /bin/add/ajax/{id}/
-    defaults: { _controller: CatalogBundle:Bin:addAjaxBin }
-    requirements:
-      id:  \d+
-
-nurix_bin_item:
-    pattern: /bin/
-    defaults: { _controller: CatalogBundle:Bin:bin }
-
-nurix_bin_bin_form:
-    pattern: /bin/bin-form/
-    defaults: { _controller: CatalogBundle:Bin:binForm }
-
 nurix_goods_get_info:
     pattern: /catalog/product/{id}/
     defaults: { _controller: CatalogBundle:Product:getInfo}
 
-nurix_bin_main_widget:
-    pattern: /bin/widget/
-    defaults: { _controller: CatalogBundle:Bin:mainBin }
+nurix_bin:
+    resource: "@CatalogBundle/Resources/config/routing/bin.yml"
+    prefix:   /bin

@@ -1,0 +1,21 @@
+nurix_bin_ajax_add_item:
+    pattern: /add/ajax/{id}/
+    defaults: { _controller: CatalogBundle:Bin:addAjaxBin }
+    requirements:
+      id:  \d+
+
+nurix_bin_item:
+    pattern: /
+    defaults: { _controller: CatalogBundle:Bin:bin }
+
+nurix_bin_bin_form:
+    pattern: /bin-form/
+    defaults: { _controller: CatalogBundle:Bin:binForm }
+
+nurix_bin_main_widget:
+    pattern: /widget/
+    defaults: { _controller: CatalogBundle:Bin:mainBin }
+
+nurix_bin_order_form:
+    pattern: /order/
+    defaults: { _controller: CatalogBundle:Bin:binOrderForm }
