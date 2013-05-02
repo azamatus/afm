@@ -1,0 +1,6 @@
+Nurix\CatalogBundle\Entity\Goods:
+    properties:
+        yandex_url:
+            - Regex:
+                pattern: /^http:\/\/market\.yandex.ru\/model(-spec)?\.xml\?modelid=([0-9]+)&hid=([0-9]+)$/
+                message: Ссылка на Яндекс.Маркет введен неправильно.
