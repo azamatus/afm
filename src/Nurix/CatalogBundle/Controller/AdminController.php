@@ -49,7 +49,7 @@ class AdminController extends CRUDController
                     $this->get('session')->getFlashBag()->add('notice', 'Неверный формат');
                 }
 
-                $this->redirect($this->generateUrl('nurix_admin_parse_excel'));
+                $this->redirect($this->container->get('sonata.admin.goods')->generateUrl('excel'));
 
             }
         }
