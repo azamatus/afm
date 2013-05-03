@@ -2,6 +2,9 @@
 
 namespace Nurix\CatalogBundle\Controller;
 
+use Nurix\CatalogBundle\Entity\BinClients;
+use Nurix\CatalogBundle\Entity\BinOrders;
+use Nurix\CatalogBundle\Form\Type\BinClientsFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Cookie;
@@ -88,7 +91,7 @@ class BinController extends Controller
             }
         }
         if ($request->request->get('bin-btn') == 'Оформить заказ') {
-            $response->setTargetUrl($this->generateUrl('nurix_homepage'));
+            $response->setTargetUrl($this->generateUrl('nurix_bin_order_form'));
             return $response;
 
         } elseif ($request->request->get('bin-btn') == 'Продолжить покупки') {
@@ -117,5 +120,51 @@ class BinController extends Controller
             }
         }
         return $this->render('CatalogBundle:Bin:mainBin.html.twig',array('count'=>$kol,'sum'=>$sum));
+    }
+
+    public function binOrderFormAction(Request $request){
+        $goodsIds = $request->cookies->get("cookieGoods");
+        if (empty($goodsIds)) {
+            return $this->redirect($this->generateUrl("nurix_bin_item"));
+        }
+
+        $binClients = new BinClients();
+        $binClients->setDeliveryTime(new \DateTime());
+        $user = $this->getUser();
+        if (!is_null($user)){
+            $binClients->setUser($user);
+            $binClients->setFio($user->getFirstName() . ' ' . $user->getLastname());
+            $binClients->setEmail($user->getEmail());
+        }
+        $form = $this->createForm(new BinClientsFormType(), $binClients);
+
+        if ($request->isMethod("POST")){
+            $form->bindRequest($request);
+            if ($form->isValid()){
+                $em = $this->getDoctrine()->getEntityManager();
+                $binClients->setDateOrder(new \DateTime());
+                $em->persist($binClients);
+                $em->flush();
+
+                $repository = $this->getDoctrine()->getRepository("CatalogBundle:Goods");
+                $goods = $repository->getGoodsByIds($goodsIds);
+                if (!empty($goods)){
+                    foreach ($goods as $good){
+                        $binOrders = new BinOrders();
+                        $binOrders->setBinClient($binClients);
+                        $binOrders->setGood($good);
+                        $binOrders->setAmount($goodsIds[$good->getId()]);
+                        $binOrders->setCoast($good->getPrice());
+                        $em->persist($binOrders);
+                    }
+                    $em->flush();
+                }
+
+                $this->get('session')->setFlash('notice', 'Ваш заказ принят');
+            }
+        }
+        return $this->render("CatalogBundle:Bin:binOrderForm.html.twig", array(
+            "form"  => $form->createView()
+        ));
     }
 }
