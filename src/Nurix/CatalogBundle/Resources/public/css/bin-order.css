@@ -1,0 +1,20 @@
+form#order-form label {
+    display: block;
+    float: left;
+    width: 150px;
+}
+form#order-form input[type="text"] {
+    border: 1px solid #C4C4C4;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 2px 4px #E1E1E1 inset;
+    height: 20px;
+    padding: 2px 5px;
+    width: 260px;
+}
+form#order-form > div{
+    margin: 10px 0;
+}
+form#order-form #bin_clients_delivery_time #bin_clients_delivery_time_date {
+    float: left;
+    margin-right: 30px;
+}

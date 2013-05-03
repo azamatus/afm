@@ -157,6 +157,8 @@ class BinController extends Controller
                         $em->persist($binOrders);
                     }
                     $em->flush();
+                    $response = new Response();
+                    $response->headers->clearCookie('cookieGoods');
                 }
 
                 $this->get('session')->setFlash('notice', 'Ваш заказ принят');

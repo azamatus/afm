@@ -11,7 +11,7 @@ class BinClientsFormType extends AbstractType {
         $builder->add('fio','text',array('label'=>'ФИО', 'required'=>true));
         $builder->add('phone','text',array('label'=>'Номер телефона', 'required'=>true));
         $builder->add('email','email',array('label'=>'email', 'required'=>true));
-        $builder->add('delivery','checkbox',array('label'=>'Доставить?', 'required'=>true));
+        $builder->add('delivery','checkbox',array('label'=>'Доставить?', 'required'=>false));
         $builder->add('address','text',array('label'=>'Адрес', 'required'=>false));
         $builder->add('delivery_time', 'datetime', array(
             'input'  => 'datetime',
