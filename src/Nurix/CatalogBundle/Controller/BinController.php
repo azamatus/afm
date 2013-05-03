@@ -154,11 +154,10 @@ class BinController extends Controller
                         $binOrders->setBinClient($binClients);
                         $binOrders->setGood($good);
                         $binOrders->setAmount($goodsIds[$good->getId()]);
+                        $binOrders->setCoast($good->getPrice());
                         $em->persist($binOrders);
                     }
                     $em->flush();
-                    $response = new Response();
-                    $response->headers->clearCookie('cookieGoods');
                 }
 
                 $this->get('session')->setFlash('notice', 'Ваш заказ принят');

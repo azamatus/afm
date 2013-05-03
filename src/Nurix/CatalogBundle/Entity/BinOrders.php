@@ -29,6 +29,13 @@ class BinOrders
     private $amount;
 
     /**
+     * @var float
+     *
+     * @ORM\Column(name="coast", type="float", nullable=false)
+     */
+    private $coast;
+
+    /**
      * @var \BinClients
      *
      * @ORM\ManyToOne(targetEntity="BinClients")
@@ -81,6 +88,29 @@ class BinOrders
     public function getAmount()
     {
         return $this->amount;
+    }
+
+    /**
+     * Set coast
+     *
+     * @param float $coast
+     * @return BinOrders
+     */
+    public function setCoast($coast)
+    {
+        $this->coast = $coast;
+    
+        return $this;
+    }
+
+    /**
+     * Get coast
+     *
+     * @return float 
+     */
+    public function getCoast()
+    {
+        return $this->coast;
     }
 
     /**
