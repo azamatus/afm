@@ -19,3 +19,11 @@ nurix_bin_main_widget:
 nurix_bin_order_form:
     pattern: /order/
     defaults: { _controller: CatalogBundle:Bin:binOrderForm }
+
+nurix_bin_delete_good:
+    pattern: /delete/{id}/
+    defaults: { _controller: CatalogBundle:Bin:remAjaxBin }
+    requirements:
+      id:  \d+
+    options:
+      expose: true

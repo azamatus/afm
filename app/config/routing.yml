@@ -63,3 +63,6 @@ media:
 news:
     resource: '@ApplicationSonataNewsBundle/Resources/config/routing/news.xml'
     prefix: /news
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
