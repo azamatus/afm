@@ -2,6 +2,7 @@
 
 namespace Nurix\CatalogBundle\Controller;
 
+use Application\Sonata\UserBundle\Entity\User;
 use Nurix\CatalogBundle\Entity\BinClients;
 use Nurix\CatalogBundle\Entity\BinOrders;
 use Nurix\CatalogBundle\Form\Type\BinClientsFormType;
@@ -89,15 +90,14 @@ class BinController extends Controller
                     }
                 }
             }
-        }
         if ($request->request->get('bin-btn') == 'Оформить заказ') {
             $response->setTargetUrl($this->generateUrl('nurix_bin_order_form'));
             return $response;
 
         } elseif ($request->request->get('bin-btn') == 'Продолжить покупки') {
-
             $response->setTargetUrl($this->generateUrl('nurix_homepage'));
             return $response;
+        }
         }
     }
 
@@ -130,11 +130,15 @@ class BinController extends Controller
 
         $binClients = new BinClients();
         $binClients->setDeliveryTime(new \DateTime());
+        /** @var $user User */
         $user = $this->getUser();
         if (!is_null($user)){
             $binClients->setUser($user);
-            $binClients->setFio($user->getFirstName() . ' ' . $user->getLastname());
+            $binClients->setFio($user->getFullname());
             $binClients->setEmail($user->getEmail());
+            $binClients->setPhone($user->getPhone());
+            $binClients->setAddress($user->getAddress());
+
         }
         $form = $this->createForm(new BinClientsFormType(), $binClients);
 

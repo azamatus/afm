@@ -29,6 +29,11 @@ class User extends BaseUser
     protected $id;
 
     /**
+     * @var string $id
+     */
+    protected $address;
+
+    /**
      * Get id
      *
      * @return integer $id
@@ -36,5 +41,23 @@ class User extends BaseUser
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get address
+     *
+     * @return string $address
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param string $address
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
     }
 }

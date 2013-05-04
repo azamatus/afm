@@ -5,7 +5,7 @@
     {{ form_errors(form) }}
 
     <div>
-        <div class="registration_label">{{ form_label(form.username, 'Имя:') }}</div>
+        <div class="registration_label">{{ form_label(form.username, 'Логин:') }}</div>
         {{ form_errors(form.username) }}
         <div class="registration_input">{{ form_widget(form.username) }}</div>
     </div>
@@ -29,6 +29,32 @@
         <div class="registration_input">
             {{ form_widget(form.plainPassword.second) }}
         </div>
+    </div>
+
+    <div>
+        <div class="registration_label">{{ form_label(form.firstname, 'Имя:') }}</div>
+        {{ form_errors(form.firstname) }}
+        <div class="registration_input">{{ form_widget(form.firstname) }}</div>
+    </div>
+
+
+    <div>
+        <div class="registration_label">{{ form_label(form.lastname, 'Фамилия:') }}</div>
+        {{ form_errors(form.lastname) }}
+        <div class="registration_input">{{ form_widget(form.lastname) }}</div>
+    </div>
+
+    <div>
+        <div class="registration_label">{{ form_label(form.phone, 'Номер телефона:') }}</div>
+        {{ form_errors(form.phone) }}
+        <div class="registration_input">{{ form_widget(form.phone) }}</div>
+    </div>
+
+
+    <div>
+        <div class="registration_label">{{ form_label(form.address, 'Домашний адрес:') }}</div>
+        {{ form_errors(form.address) }}
+        <div class="registration_input">{{ form_widget(form.address) }}</div>
     </div>
 
     {{ form_rest(form) }}
