@@ -72,7 +72,7 @@ class PostAdmin extends Admin
                     'source' => 'rawContent',
                     'target' => 'content'
                 ))
-                ->add('rawContent', 'ckeditor', array('attr' => array('class' => 'span10', 'rows' => 20)))
+                ->add('rawContent', 'ckeditor', array('attr' => array('class' => 'span10', 'rows' => 20), 'config_name' => 'my_config'))
             ->end()
             ->with('Tags')
                 ->add('tags', 'sonata_type_model', array(

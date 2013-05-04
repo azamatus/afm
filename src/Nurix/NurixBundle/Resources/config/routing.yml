@@ -11,3 +11,6 @@ nurix_search:
     defaults: { _controller: NurixBundle:Search:index }
     requirements:
         _method:  POST
+nurix_ck_upload:
+    pattern:  /cke/upload/
+    defaults: { _controller: NurixBundle:Default:uploadFile }
