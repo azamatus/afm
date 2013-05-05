@@ -12,6 +12,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class BinClients
 {
+
+	const STATUS_DISABLED = false;
+	const STATUS_ACTIVE = true;
     /**
      * @var integer
      *
@@ -68,7 +71,7 @@ class BinClients
      *
      * @ORM\Column(name="active", type="boolean", nullable=true)
      */
-    private $active;
+    private $active = self::STATUS_ACTIVE;
 
     /**
      * @var \DateTime
