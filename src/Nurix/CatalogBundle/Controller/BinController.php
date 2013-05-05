@@ -103,7 +103,8 @@ class BinController extends Controller
         return $response;
     }
 
-    public function mainBinAction(){
+    public function mainBinAction()
+	{
         /* @var GoodsRepository $repository */
         /* @var Goods $good */
         $request = $this->getRequest();
@@ -126,7 +127,8 @@ class BinController extends Controller
         return $this->render('CatalogBundle:Bin:mainBin.html.twig',array('count'=>$kol,'sum'=>$sum));
     }
 
-    public function binOrderFormAction(Request $request){
+    public function binOrderFormAction(Request $request)
+	{
         /* @var User $user */
         /* @var GoodsRepository $repository */
         /* @var Goods $good */
