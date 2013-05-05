@@ -49,8 +49,8 @@ class BinController extends Controller
                     $goods[$id] = 0;
                 $amount = $request->query->get('amount', 1);
                 $productPage = $request->query->get('productPage');
-                if($productPage=="true")
-                    $goods[$id]=$amount;
+                if ($productPage == "true")
+                    $goods[$id] = $amount;
                 else
                     $goods[$id]++;
                 $response = new Response();
@@ -68,6 +68,21 @@ class BinController extends Controller
             }
         }
         return new Response();
+    }
+
+    public function remAjaxBinAction($id)
+    {
+        if ($this->getRequest()->isXmlHttpRequest()) {
+            $request = $this->getRequest();
+
+            $response = new Response();
+            $cookie = new Cookie("cookieGoods[$id]", null, 9999);
+            $response->headers->setCookie($cookie);
+            $response->send();
+
+            return new JsonResponse(array());
+        }
+        return $this->redirect($this->generateUrl("nurix_homepage"));
     }
 
     public function binFormAction(Request $request)
@@ -114,17 +129,16 @@ class BinController extends Controller
             $repository = $this->getDoctrine()->getRepository("CatalogBundle:Goods");
             $goods = $repository->getGoodsByIds($goodsIds);
         }
-        $sum=0;
-        $kol=0;
-        if($goods){
-            foreach($goods as $good)
-            {
-                $k=$goodsIds[$good->getId()];
-                $kol+=$k;
-                $sum+=($good->getPrice()*$k);
+        $sum = 0;
+        $kol = 0;
+        if ($goods) {
+            foreach ($goods as $good) {
+                $k = $goodsIds[$good->getId()];
+                $kol += $k;
+                $sum += ($good->getPrice() * $k);
             }
         }
-        return $this->render('CatalogBundle:Bin:mainBin.html.twig',array('count'=>$kol,'sum'=>$sum));
+        return $this->render('CatalogBundle:Bin:mainBin.html.twig', array('count' => $kol, 'sum' => $sum));
     }
 
     public function binOrderFormAction(Request $request)
@@ -140,7 +154,7 @@ class BinController extends Controller
         $binClients = new BinClients();
         $binClients->setDeliveryTime(new \DateTime());
         $user = $this->getUser();
-        if (!is_null($user)){
+        if (!is_null($user)) {
             $binClients->setUser($user);
             $binClients->setFio($user->getFullname());
             $binClients->setEmail($user->getEmail());
@@ -176,7 +190,7 @@ class BinController extends Controller
             }
         }
         return $this->render("CatalogBundle:Bin:binOrderForm.html.twig", array(
-            "form"  => $form->createView()
+            "form" => $form->createView()
         ));
     }
 

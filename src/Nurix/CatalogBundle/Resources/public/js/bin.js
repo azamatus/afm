@@ -80,8 +80,22 @@ $(function () {
     }
 
     $(".bin-remove-item").click(function(){
-        $("#"+$(this).data("id")).remove();
-        calculate();
+        if (confirm("Вы действительно хотите удалить товар?")){
+            var id = $(this).data('id'),
+                url = Routing.generate("nurix_bin_delete_good", { "id" : id });
+            $.ajax({
+                url:url,
+                error:function(){
+                    alert('error');
+                },
+                success:function (data) {
+                    $("#"+id).remove();
+                    calculate();
+                    refreshWidget();
+                }
+            });
+        }
+        return false;
     });
 
     $('.itemVvod').bind("change blur", function(){

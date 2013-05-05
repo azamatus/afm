@@ -21,6 +21,17 @@
         <script type="text/javascript" src="{{ asset("bundles/applicationsonatauser/js/registration.js") }}"></script>
         <script type="text/javascript" src="{{ asset("public/js/jquery.pwstrength.js") }}"></script>
         <script type="text/javascript"  src="{{  asset("bundles/catalog/js/bin.js")}}"></script>
+        <script>
+            // Jira Issue Collector
+            jQuery.ajax({
+                url: "https://strokit.atlassian.net/s/en_US-38181l-1988229788/6080/26/1.4.0-m2/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector-embededjs/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector-embededjs.js?collectorId=c5b78c87",
+                type: "get",
+                cache: true,
+                dataType: "script"
+            });
+        </script>
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
     {% endblock %}
 
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
@@ -91,7 +102,7 @@
                 <span class="f24">414</span>
                 <span class="f24">125</span>
             </div>
-            <div align="left" id="times">
+            <div id="times">
                 <span class="gray_color">Время работы:</span><br>
                 <span class="gray_color">c</span>
                 <span class="gray_color f20">9:00</span>
@@ -99,7 +110,7 @@
                 <span class="gray_color f20">18:00</span><br>
                 <img class="otstup" src="{{ asset('public/img/days.png') }}" alt="header"/>
             </div>
-            <div class="korzina" id="bin_widget" align="left">
+            <div class="korzina" id="bin_widget">
                 {% render 'CatalogBundle:Bin:mainBin' %}
             </div>
         </div>
