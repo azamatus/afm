@@ -84,7 +84,7 @@ ul
 header
 {
     background: url("../img/header.png") repeat-x;
-    text-align: center;
+    /*text-align: center;*/
 }
 .center
 {
@@ -254,16 +254,11 @@ div.search
     margin-top: -2px;
     margin-left: 20px;
     width: 150px;
+	text-align: center;
 }
 
 .button:hover {
     background-image: url("../img/button.png");
-    background-repeat: no-repeat;
-    float: left;
-    padding: 7px;
-    margin-top: -2px;
-    margin-left: 20px;
-    width: 150px;
 }
 .brown_color
 {
