@@ -9,8 +9,8 @@ use Nurix\CatalogBundle\Entity\Goods;
 use Nurix\CatalogBundle\Entity\GoodsRepository;
 use Nurix\CatalogBundle\Form\Type\BinClientsFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Cookie;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -72,10 +72,10 @@ class BinController extends Controller
 
     public function binFormAction(Request $request)
     {
+        $response = new RedirectResponse($this->generateUrl('nurix_bin_item'));
         if ($request->isMethod('POST')) {
             $data = $request->request->get('bin');
             $goods = $request->cookies->get("cookieGoods");
-            $response = new \Symfony\Component\HttpFoundation\RedirectResponse($this->generateUrl('nurix_bin_item'));
             if (!empty($goods)) {
                 foreach ($goods as $key => $value) {
                     if (!isset($data[$key])) {
@@ -93,15 +93,14 @@ class BinController extends Controller
                     }
                 }
             }
-        if ($request->request->get('bin-btn') == 'Оформить заказ') {
-            $response->setTargetUrl($this->generateUrl('nurix_bin_order_form'));
-            return $response;
-
-        } elseif ($request->request->get('bin-btn') == 'Продолжить покупки') {
-            $response->setTargetUrl($this->generateUrl('nurix_homepage'));
-            return $response;
+            if ($request->request->get('bin-btn') == 'Оформить заказ') {
+                $response->setTargetUrl($this->generateUrl('nurix_bin_order_form'));
+            }
+            elseif ($request->request->get('bin-btn') == 'Продолжить покупки') {
+                $response->setTargetUrl($this->generateUrl('nurix_homepage'));
+			}
         }
-        }
+        return $response;
     }
 
     public function mainBinAction(){
@@ -128,7 +127,7 @@ class BinController extends Controller
     }
 
     public function binOrderFormAction(Request $request){
-        /* @var $user User */
+        /* @var User $user */
         /* @var GoodsRepository $repository */
         /* @var Goods $good */
         $goodsIds = $request->cookies->get("cookieGoods");
