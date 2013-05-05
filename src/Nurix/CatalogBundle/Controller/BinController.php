@@ -2,12 +2,15 @@
 
 namespace Nurix\CatalogBundle\Controller;
 
+use Application\Sonata\UserBundle\Entity\User;
 use Nurix\CatalogBundle\Entity\BinClients;
 use Nurix\CatalogBundle\Entity\BinOrders;
+use Nurix\CatalogBundle\Entity\Goods;
+use Nurix\CatalogBundle\Entity\GoodsRepository;
 use Nurix\CatalogBundle\Form\Type\BinClientsFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Cookie;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -15,6 +18,7 @@ class BinController extends Controller
 {
     public function binAction()
     {
+        /* @var GoodsRepository $repository */
         $request = $this->getRequest();
         $goodsIds = $request->cookies->get("cookieGoods");
         $goods = null;
@@ -83,10 +87,10 @@ class BinController extends Controller
 
     public function binFormAction(Request $request)
     {
+        $response = new RedirectResponse($this->generateUrl('nurix_bin_item'));
         if ($request->isMethod('POST')) {
             $data = $request->request->get('bin');
             $goods = $request->cookies->get("cookieGoods");
-            $response = new \Symfony\Component\HttpFoundation\RedirectResponse($this->generateUrl('nurix_bin_item'));
             if (!empty($goods)) {
                 foreach ($goods as $key => $value) {
                     if (!isset($data[$key])) {
@@ -104,20 +108,20 @@ class BinController extends Controller
                     }
                 }
             }
+            if ($request->request->get('bin-btn') == 'Оформить заказ') {
+                $response->setTargetUrl($this->generateUrl('nurix_bin_order_form'));
+            }
+            elseif ($request->request->get('bin-btn') == 'Продолжить покупки') {
+                $response->setTargetUrl($this->generateUrl('nurix_homepage'));
+			}
         }
-        if ($request->request->get('bin-btn') == 'Оформить заказ') {
-            $response->setTargetUrl($this->generateUrl('nurix_bin_order_form'));
-            return $response;
-
-        } elseif ($request->request->get('bin-btn') == 'Продолжить покупки') {
-
-            $response->setTargetUrl($this->generateUrl('nurix_homepage'));
-            return $response;
-        }
+        return $response;
     }
 
     public function mainBinAction()
-    {
+	{
+        /* @var GoodsRepository $repository */
+        /* @var Goods $good */
         $request = $this->getRequest();
         $goodsIds = $request->cookies->get("cookieGoods");
         $goods = null;
@@ -138,7 +142,10 @@ class BinController extends Controller
     }
 
     public function binOrderFormAction(Request $request)
-    {
+	{
+        /* @var User $user */
+        /* @var GoodsRepository $repository */
+        /* @var Goods $good */
         $goodsIds = $request->cookies->get("cookieGoods");
         if (empty($goodsIds)) {
             return $this->redirect($this->generateUrl("nurix_bin_item"));
@@ -149,23 +156,26 @@ class BinController extends Controller
         $user = $this->getUser();
         if (!is_null($user)) {
             $binClients->setUser($user);
-            $binClients->setFio($user->getFirstName() . ' ' . $user->getLastname());
+            $binClients->setFio($user->getFullname());
             $binClients->setEmail($user->getEmail());
+            $binClients->setPhone($user->getPhone());
+            $binClients->setAddress($user->getAddress());
+
         }
         $form = $this->createForm(new BinClientsFormType(), $binClients);
 
-        if ($request->isMethod("POST")) {
-            $form->bindRequest($request);
-            if ($form->isValid()) {
-                $em = $this->getDoctrine()->getEntityManager();
+        if ($request->isMethod("POST")){
+            $form->bind($request);
+            if ($form->isValid()){
+                $em = $this->getDoctrine()->getManager();
                 $binClients->setDateOrder(new \DateTime());
                 $em->persist($binClients);
                 $em->flush();
 
                 $repository = $this->getDoctrine()->getRepository("CatalogBundle:Goods");
                 $goods = $repository->getGoodsByIds($goodsIds);
-                if (!empty($goods)) {
-                    foreach ($goods as $good) {
+                if (!empty($goods)){
+                    foreach ($goods as $good){
                         $binOrders = new BinOrders();
                         $binOrders->setBinClient($binClients);
                         $binOrders->setGood($good);
@@ -175,12 +185,20 @@ class BinController extends Controller
                     }
                     $em->flush();
                 }
-
+                $this->ClearCookies($goodsIds);
                 $this->get('session')->setFlash('notice', 'Ваш заказ принят');
             }
         }
         return $this->render("CatalogBundle:Bin:binOrderForm.html.twig", array(
             "form" => $form->createView()
         ));
+    }
+
+    private function ClearCookies($goodsIds)
+    {
+        $response = new Response();
+        foreach ($goodsIds as $key=>$value)
+            $response->headers->clearCookie("cookieGoods[$key]");
+        $response->send();
     }
 }
