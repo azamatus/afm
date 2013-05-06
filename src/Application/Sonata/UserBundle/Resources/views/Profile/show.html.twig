@@ -1,0 +1,49 @@
+{#
+
+This file is part of the Sonata package.
+
+(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+{% extends "FOSUserBundle::layout.html.twig" %}
+{% block fos_user_content %}
+    <div class="sonata-user-show">
+
+        <h1 style="text-align: center">Профиль пользователя</h1>
+
+        <h3>{{ app.user.fullname }}</h3>
+        <table class="profile">
+            <tr>
+                <td class="label"> Имя:</td>
+                <td class="value"> {{ app.user.firstname }}  </td>
+            </tr>
+            <tr>
+                <td class="label"> Фамилия:</td>
+                <td class="value"> {{ app.user.lastname }}  </td>
+            </tr>
+            <tr>
+                <td class="label"> E-mail:</td>
+                <td class="value"> {{ app.user.email }}  </td>
+            </tr>
+            <tr>
+                <td class="label"> Телефон:</td>
+                <td class="value"> {{ app.user.phone }}  </td>
+            </tr>
+            <tr>
+                <td class="label"> Адрес:</td>
+                <td class="value"> {{ app.user.address }}  </td>
+            </tr>
+        </table>
+        <ul>
+            <li>
+                <a href="{{ path('sonata_user_profile_edit') }}">{{ "link_edit_profile" | trans({}, 'SonataUserBundle') }}</a>
+            </li>
+            <li>
+                <a href="{{ path('sonata_user_profile_edit_authentication') }}">{{ "link_edit_authentication" | trans({}, 'SonataUserBundle') }}</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

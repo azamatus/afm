@@ -74,3 +74,25 @@
     vertical-align: bottom;
 }
 /*END login form*/
+
+/* PROFILE PAGE*/
+.profile tr
+{
+	height: 30px;
+}
+
+.profile td.label
+{
+	font-family: Arial,serif;
+	color: #999999;
+	font-size: 14px;
+	width: 150px;
+}
+
+.profile td.value
+{
+	font-family: Arial,serif;
+	color: #666;
+	font-size: 14px;
+}
+/* END PROFILE PAGE */
