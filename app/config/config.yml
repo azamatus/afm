@@ -131,3 +131,4 @@ ivory_ck_editor:
     configs:
         my_config:
             filebrowserUploadRoute: "nurix_ck_upload"
+            filebrowserUploadUrl: ""
