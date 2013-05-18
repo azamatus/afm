@@ -19,7 +19,7 @@
             <div id="my-folio-of-works" class="svwp">
                 <ul>
                         {% for galleryHasMedia in product.imagePath.GalleryHasMedias %}
-                                    <li>{% thumbnail galleryHasMedia.media, product.imagePath.defaultFormat %}</li>
+                                    <li>{% thumbnail galleryHasMedia.media, 'goods_big' %}</li>
                         {% endfor %}
                 </ul>
             </div>

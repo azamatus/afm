@@ -10,10 +10,8 @@ sonata_media:
                 - sonata.media.provider.file
 
             formats:
-                goods_small: { width: 110 , quality: 95}
-                goods_big:   { width: 210 , height: 174, quality: 90}
-                youtube_small: { width: 190 , quality: 95}
-                youtube_big:   { width: 560 , quality: 315}
+                goods_big:   { width: 210 , height: 210, quality: 90}
+                youtube_big:   { width: 560 , width: 315}
         news:
             providers:
                 - sonata.media.provider.image
@@ -29,3 +27,6 @@ sonata_media:
         local:
             directory:  %kernel.root_dir%/../web/uploads/media
             create:     true
+    providers:
+        image:
+            resizer:    sonata.media.resizer.square # sonata.media.resizer.simple
