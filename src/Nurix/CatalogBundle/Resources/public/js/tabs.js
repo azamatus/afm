@@ -6,7 +6,7 @@
 /***************************/
 
 $(document).ready(function(){
-	$(".menu > li").click(function(e){
+    	$(".menu > li").click(function(e){
 		switch(e.target.id){
 			case "characteristic":
 				//change status & style menu
