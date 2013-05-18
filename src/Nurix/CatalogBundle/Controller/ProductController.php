@@ -3,6 +3,7 @@
 namespace Nurix\CatalogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Nurix\CatalogBundle\Entity\Goods;
 use Nurix\CatalogBundle\Entity;
 use Doctrine\ORM\QueryBuilder;
 
@@ -32,11 +33,11 @@ class ProductController extends Controller
 
         return $this->render('CatalogBundle:Product:product_info.html.twig', array('product' => $entity, 'char'=>$char, 'mainchar' => $mainchar,'amount'=>$amount));
     }
-    public function getSameAction()
+    public function getSameAction(Goods $product)
     {
         $same = $this ->getDoctrine()
             ->getRepository('CatalogBundle:Goods')
-            ->findAll();
+            ->getSamePositionsForGood($product);
 
         return $this->render('CatalogBundle:Content:showCatalogSlider.html.twig', array('products' => $same,'title' => "Похожие позиции"));
     }
