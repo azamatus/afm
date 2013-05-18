@@ -118,7 +118,7 @@
 
                 <div class="tabs_content video">
                     {%  if product.youtube %}
-                    {% include  "CatalogBundle:Product:video.html.twig" %}
+                        {% include  "CatalogBundle:Product:video.html.twig" %}
                     {% else %}
                         <h1>Пока видео еще нет</h1>
                     {% endif %}
@@ -128,7 +128,7 @@
         </div>
         <hr class="product_hr2">
         <div class="product_same">
-            {% render "CatalogBundle:Product:getSame" %}
+            {% render "CatalogBundle:Product:getSame" with {'product':product} %}
         </div>
     </div>
 {% endblock %}
