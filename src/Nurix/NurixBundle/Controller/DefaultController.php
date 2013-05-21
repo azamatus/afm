@@ -19,12 +19,13 @@ class DefaultController extends Controller
                 $file = $request->files->get('upload');
                 $extension = $file->guessExtension();
             if(in_array($extension,array('jpg','jpeg','png'))){
+                    $baseurl = $request->getBasePath();
                     $dir = $this->get('kernel')->getRootDir() . '/../web/upload/ckimages';
                     $filename = sha1(uniqid(mt_rand(), true));
                     $filename = $filename . '.' . $extension;
                     $file->move($dir, $filename);
 
-                    $result = $this->SendCKEditorResults(0,$request->query->get('CKEditorFuncNum'),"/nurix/web/upload/ckimages/".$filename,$filename);
+                    $result = $this->SendCKEditorResults(0,$request->query->get('CKEditorFuncNum'),$baseurl."/upload/ckimages/".$filename,$filename);
 
                     return new Response($result);
                 }
