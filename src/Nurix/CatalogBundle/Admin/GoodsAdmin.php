@@ -56,7 +56,7 @@ class GoodsAdmin extends Admin
             ->add('youtube', 'sonata_type_model_list', array('required' => false, 'label' => 'Youtube'), array('link_parameters' => array('context' => 'default')))
             ->add('active', null, array('label' => 'Активен'))
             ->add('amount', null, array('label' => 'Количество'))
-            ->add('review', 'ckeditor', array('label' => 'Обзор'))
+            ->add('review', 'ckeditor', array('label' => 'Обзор','config_name' => 'my_config'))
             ->add('last_update','date',array('label'=>'Последнее обновление'))
             ->add('yandex_url', 'text', array('label' => 'Яндекс', 'required' => false));
     }

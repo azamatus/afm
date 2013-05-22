@@ -23,15 +23,16 @@ class DefaultController extends Controller
                     $dir = $this->get('kernel')->getRootDir() . '/../web/upload/ckimages';
                     $filename = sha1(uniqid(mt_rand(), true));
                     $filename = $filename . '.' . $extension;
+                    $fileurl = $baseurl."/upload/ckimages/".$filename;
                     $file->move($dir, $filename);
 
-                    $result = $this->SendCKEditorResults(0,$request->query->get('CKEditorFuncNum'),$baseurl."/upload/ckimages/".$filename,$filename);
+                    $result = $this->GetCKEditorResult(0,$request->query->get('CKEditorFuncNum'),$fileurl,$filename);
 
                     return new Response($result);
                 }
         }
     }
-    function SendCKEditorResults ($errorNumber, $CKECallback, $fileUrl, $fileName, $customMsg ='')
+    function GetCKEditorResult ($errorNumber, $CKECallback, $fileUrl, $fileName, $customMsg ='')
     {
         $result ="";
         // Minified version of the document.domain automatic fix script (#1919).
