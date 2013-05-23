@@ -26,7 +26,7 @@ class SliderAdmin extends Admin
             ->add('title')
             ->add('sliderOrder')
             ->add('active', null, array('required' => false))
-            ->add('content', 'ckeditor', array('attr' => array('class' => 'span10', 'rows' => 20),'config'=>array('width'=>'700px','height'=>'345px','resize_enabled'=>false,'resize_maxHeight' => '345px','resize_minHeight' => '345px')))
+            ->add('content', 'ckeditor', array('attr' => array('class' => 'span10', 'rows' => 20),'config'=>array('width'=>'700px','height'=>'345px','resize_enabled'=>false,'resize_maxHeight' => '345px','resize_minHeight' => '345px'),  'config_name' => 'my_config'))
             ->end()
         ;
     }

@@ -28,7 +28,7 @@ class PageAdmin extends Admin
             ->with('Страница')
             ->add('url')
             ->add('title')
-            ->add('content','ckeditor', array('attr' => array('class' => 'span10', 'rows' => 20)))
+            ->add('content', 'ckeditor', array('attr' => array('class' => 'span10', 'rows' => 20), 'config_name' => 'my_config'))
             ->end()
         ;
     }

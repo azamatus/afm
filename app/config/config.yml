@@ -128,3 +128,11 @@ knp_paginator:
     template:
         pagination: KnpPaginatorBundle:Pagination:sliding.html.twig     # sliding pagination controls template
         sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # sort link template
+
+ivory_ck_editor:
+    configs:
+        my_config:
+            filebrowserUploadRoute: "nurix_ck_upload"
+
+
+
