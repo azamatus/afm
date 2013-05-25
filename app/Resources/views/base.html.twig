@@ -49,7 +49,7 @@
                 {%  render 'NurixBundle:Search:ShowForm'  %}
             </div>
             <div class="vhod_div">
-                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {% if app.user and is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 
                     <div id="vhod_message">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
                         |
