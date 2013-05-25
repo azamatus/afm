@@ -57,20 +57,22 @@
 }
 .button_else
 {
-    background: url("../img/button_else.png") repeat-x;
-    border: 1px solid #fead01;
-    border-radius: 5px;
-    -webkit-border-radius:5px;
-    -moz-border-radius:5px;
-    -o-border-radius:5px;
-    height: 22px;
-    padding-top: 8px;
-    text-align: center;
-    width: 216px;
-    clear: both;
-    display: block;
-    margin:10px auto;
 
+    text-align: center;
+}
+#showMoreRnd
+{
+    margin-top: 20px;
+    width: 180px;
+    height: 18px;
+}
+.strelka_vniz
+{
+    background: url("../img/strelka_vniz.png") no-repeat;
+    display: inline-block;
+    margin: -2px 9px;
+    height: 10px;
+    width: 3px;
 }
 .short_description
 {
