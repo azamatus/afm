@@ -25,6 +25,10 @@ h6 {
 {
     float: left;
 }
+.float_right
+{
+	float: right;
+}
 .font
 {
 
@@ -446,7 +450,7 @@ ul.otherLinks li a
 {
     display: block;
 }
-.button_buy, .button_register, .link-btn
+.button_buy, input.submit_button, .link-btn
 {
     background: url("../img/btn-buy.png") repeat-x 0 -4px;
     border: 1px solid #BDBDBD;
@@ -459,7 +463,7 @@ ul.otherLinks li a
     text-decoration: none;
     text-shadow: 0 1px 1px #B7B7B7;
 }
-.button_buy:hover, .button_register:hover, .link-btn:hover
+.button_buy:hover, .submit_button:hover, .link-btn:hover
 {
     border: 1px solid #fdad01;
     color: #000 !important;

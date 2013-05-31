@@ -42,8 +42,9 @@
 }
 #pages
 {
-    display: inline-block;
-    margin: 0 auto;
+	float: right;
+	right: 50%;
+	position: relative;
 }
 .bullet2
 {

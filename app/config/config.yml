@@ -115,8 +115,8 @@ fos_user:
         confirmation:
             enabled:    true
     from_email:
-        address:        nursultan2010@gmail.com
-        sender_name:    Acme Demo App
+        address:        nurixkg@gmail.com
+        sender_name:    NuriX Mobile
 
 knp_paginator:
     page_range: 5                      # default page range used in pagination control
