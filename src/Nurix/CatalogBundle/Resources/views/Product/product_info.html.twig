@@ -36,8 +36,8 @@
                     {% if mainchar %}
                     {% for type in mainchar %}
                         <tr>
-                            <td class="charType">{{ type.getCTypeId.name }}:</td>
-                            <td class="charValue">{{ type.value }}</td>
+                            <td class="mainCharType">{{ type.getCTypeId.name }}:</td>
+                            <td class="mainCharValue">{{ type.value }}</td>
                         </tr>
 
                         {% if loop.index == 3 %}

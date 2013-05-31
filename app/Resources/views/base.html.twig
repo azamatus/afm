@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <title>{% block title %}Nurix.kg{% endblock %}</title>
     {% block stylesheets %}
-        <link href="{{ asset('public/css/mainframe.css') }} " type="text/css" rel="stylesheet"/>
+        <link type="text/css" rel="stylesheet" href="{{ asset('public/css/mainframe.css') }}"/>
         <link type="text/css" rel="stylesheet" href="{{ asset("public/css/facebook.css") }}"/>
         <link type="text/css" rel="stylesheet" href="{{ asset("bundles/applicationsonatauser/css/sonata.css") }}"/>
         <link type="text/css" rel="stylesheet" href="{{ asset("public/css/jquery-ui.css") }}"/>
@@ -17,7 +17,7 @@
         <script type="text/javascript" src="{{ asset("public/js/jquery-1.9.0.min.js") }}"></script>
         <script type="text/javascript" src="{{ asset("public/js/html5placeholder.jquery.js") }}"></script>
         <script type="text/javascript" src="{{ asset("public/js/jquery-ui.min.js") }}"></script>
-        <script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
+        <script type="text/javascript" src="{{ asset("public/js/jquery.validate.js") }}"></script>
         <script type="text/javascript" src="{{ asset("bundles/applicationsonatauser/js/registration.js") }}"></script>
         <script type="text/javascript" src="{{ asset("public/js/jquery.pwstrength.js") }}"></script>
         <script type="text/javascript"  src="{{  asset("bundles/catalog/js/bin.js")}}"></script>
@@ -51,7 +51,10 @@
             <div class="vhod_div">
                 {% if app.user and is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 
-                    <div id="vhod_message">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
+                    <div id="vhod_message">
+                        <a href="{{ path('sonata_user_profile_show') }}">
+                            {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
+                        </a>
                         |
                     </div>
 

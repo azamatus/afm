@@ -1,0 +1,47 @@
+{#
+
+This file is part of the Sonata package.
+
+(c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+{% extends "FOSUserBundle::layout.html.twig" %}
+{% block fos_user_content %}
+    <div class="sonata-user-show">
+
+        <h2 class="pages_center">{{ "title_user_account" | trans({}, 'SonataUserBundle')}}</h2>
+
+        <h3>{{ app.user.fullname }}</h3>
+        <table class="profile">
+            <tr>
+                <td class="label"> {{ 'form.label_firstname' | trans({}, 'SonataUserBundle') }}:</td>
+                <td class="value"> {{ app.user.firstname }}  </td>
+            </tr>
+            <tr>
+                <td class="label"> {{ 'form.label_lastname' | trans({}, 'SonataUserBundle') }}:</td>
+                <td class="value"> {{ app.user.lastname }}  </td>
+            </tr>
+            <tr>
+                <td class="label"> {{ 'form.label_email' | trans({}, 'SonataUserBundle') }}:</td>
+                <td class="value"> {{ app.user.email }}  </td>
+            </tr>
+            <tr>
+                <td class="label"> {{ 'form.label_phone' | trans({}, 'SonataUserBundle') }}:</td>
+                <td class="value"> {{ app.user.phone }}  </td>
+            </tr>
+            <tr>
+                <td class="label"> {{ 'form.label_address' | trans({}, 'SonataUserBundle') }}:</td>
+                <td class="value"> {{ app.user.address }}  </td>
+            </tr>
+        </table>
+        <div>
+            <a class="button_buy-trn" href="{{ path('sonata_user_profile_edit') }}">{{ "link_edit_profile" | trans({}, 'SonataUserBundle') }}</a>
+
+            <a class="button_buy-trn float_right" href="{{ path('fos_user_change_password') }}">{{ "change_password.submit" | trans({}, 'FOSUserBundle') }}</a>
+        </div>
+
+    </div>
+{% endblock %}

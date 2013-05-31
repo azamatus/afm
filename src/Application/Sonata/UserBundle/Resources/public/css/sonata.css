@@ -12,22 +12,27 @@
 /*END: validation*/
 
 /*popup*/
-.registration_label {
-    font-family: Arial;
+.registration_label, .control-group label {
+    font-family: Arial,sans-serif;
     color: #999999;
     font-size: 12px;
     margin-top: 20px;
     margin-bottom: 10px;
 }
 
-.registration_input input {
-    width: 260px;
+.registration_input input,
+.control-group input,
+.control-group textarea{
     border: 1px solid #C4C4C4;
     border-radius: 5px 5px 5px 5px;
     box-shadow: 0 2px 4px #E1E1E1 inset;
     width: 260px;
     height: 20px;
     padding: 2px 5px;
+}
+.control-group textarea
+{
+	height: 50px;
 }
 .registration_submit {
     margin-top: 20px;
@@ -38,7 +43,7 @@
     border-color: #ff9393 !important;
     padding-left: .5em;
     vertical-align: top;
-    font-family: Arial;
+    font-family: Arial,sans-serif;
     font-size: 11px;
 }
 #form_popup input{
@@ -46,7 +51,8 @@
     margin-top: 10px;
     margin-bottom: 25px;
 }
-#form_popup .button_register{
+#form_popup .submit_button
+{
     width: 130px;
 }
 #form_popup hr{
@@ -74,3 +80,25 @@
     vertical-align: bottom;
 }
 /*END login form*/
+
+/* PROFILE PAGE*/
+.profile tr
+{
+	height: 30px;
+}
+
+.profile td.label
+{
+	font-family: Arial,serif;
+	color: #999999;
+	font-size: 14px;
+	width: 150px;
+}
+
+.profile td.value
+{
+	font-family: Arial,serif;
+	color: #666;
+	font-size: 14px;
+}
+/* END PROFILE PAGE */
