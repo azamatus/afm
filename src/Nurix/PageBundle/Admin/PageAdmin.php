@@ -39,7 +39,6 @@ class PageAdmin extends Admin
             ->addIdentifier('id')
             ->addIdentifier('url')
             ->add('title')
-            ->add('content')
         ;
     }
 
