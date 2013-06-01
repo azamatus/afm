@@ -69,7 +69,7 @@ class GoodsAdmin extends Admin
             ->add('catalog', 'sonata_type_model', array('editable' => true,'label' => 'Подкатегория'))
             ->add('price', 'decimal', array('editable' => true,'label' => 'Цена','template'=>'CatalogBundle:Admin:list_price.html.twig'))
             ->add('active', 'boolean', array('editable' => true,'label' => 'Активен'))
-            ->add('amount', null, array('label' => 'Количество'));
+            ->add('amount', null, array('editable' => true,'label' => 'Количество','template'=>'CatalogBundle:Admin:list_price.html.twig'));
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
