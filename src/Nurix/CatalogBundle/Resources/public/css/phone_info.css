@@ -114,7 +114,8 @@
 }
 .product_hr1
 {
-    width: 443px;
+	width: 443px;
+	margin-bottom: 15px;
 }
 .product_hr2
 {
@@ -122,7 +123,7 @@
 }
 .product_description
 {
-    margin: -15px 3px;
+	margin-left: 5px;
     width: 450px;
     word-wrap: break-word;
     color: #666;
