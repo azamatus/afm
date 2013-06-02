@@ -5,6 +5,7 @@
 margin: 0 auto;
 width: 210px;
 float: left;
+	padding-right: 10px;
 }
 .slideViewer { 
 position: relative;
