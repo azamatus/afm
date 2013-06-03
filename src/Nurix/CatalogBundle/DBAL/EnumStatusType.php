@@ -25,7 +25,7 @@ class EnumStatusType extends Type
 
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
-        if (!in_array($value,array('В обработке','Заказ подтвержден','На складе','Отправлено','Доставлено','Заказ отменен','Задержка товара') )) {
+        if (!in_array($value,array_keys($this->toArray()) )) {
             throw new \InvalidArgumentException("Invalid status");
         }
         return $value;

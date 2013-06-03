@@ -26,10 +26,9 @@ class BinClientsAdmin extends Admin{
         $formMapper
             ->add('active','choice',array('label'=>'Статус','choices'=>EnumStatusType::toArray()))
             ->add('orders', 'sonata_type_collection',
-                array('label' => 'Ссылки', 'by_reference' => false),
+                array('label' => 'Ссылки'),
                 array(
                     'edit' => 'inline',
-                    'sortable' => 'pos',
                     'inline' => 'table',
                 ));
     }
