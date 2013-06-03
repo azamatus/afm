@@ -8,8 +8,18 @@
  */
 namespace Nurix\CatalogBundle\Twig;
 
+use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\ORM\EntityRepository;
+
 class ExchangeExtension extends \Twig_Extension
 {
+    protected $doctrine;
+
+    public function __construct(RegistryInterface $doctrine)
+    {
+        $this->doctrine = $doctrine;
+    }
+
     public function getFilters()
     {
         return array(
@@ -28,9 +38,17 @@ class ExchangeExtension extends \Twig_Extension
         }
         elseif ($exchange == 'SOM')
         {
-            // TODO Надо исправить, чтобы брать из базы
-            $price = number_format($number*47.8, $decimals, $decPoint,'');
-            $price = '<span class="value">'.$price.'</span>'.' сом';
+            // TODO Надо исправить, чтобы брать из базы, теперь берет из базы
+            $repository = $this -> doctrine ->getRepository("CatalogBundle:Exchange");
+
+            $exchange_rate = $repository -> getRate();
+            foreach($exchange_rate as $key=>$value){
+                foreach($value as $key2 =>$value2){
+                $price = number_format($number*$value2, $decimals, $decPoint,'');
+                $price = '<span class="value">'.$price.'</span>'.' сом';
+                }
+            }
+
         }
         else
         {

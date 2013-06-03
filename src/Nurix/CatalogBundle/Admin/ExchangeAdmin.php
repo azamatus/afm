@@ -30,8 +30,7 @@ class ExchangeAdmin extends Admin
     public function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('currency',null, array('label'=>'Валюта','required'=>false,
-            ))
+            ->add('currency',null, array('label'=>'Валюта','required'=>false))
             ->add('exchangeRate')
             ->add('date')
             ->end()
@@ -41,8 +40,8 @@ class ExchangeAdmin extends Admin
     public function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('currency')
-            ->add('exchangeRate')
+            ->addIdentifier('currency',null, array('label'=>'Валюта'))
+            ->add('exchangeRate',null, array('editable'=>true, 'label'=>'Курсы', 'template'=>'CatalogBundle:Admin:edit_exchange.html.twig'))
             ->add('date')
         ;
     }
