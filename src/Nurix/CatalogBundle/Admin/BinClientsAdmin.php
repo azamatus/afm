@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 namespace Nurix\CatalogBundle\Admin;
-use Nurix\DBAL\EnumStatusType;
+use Nurix\CatalogBundle\DBAL\EnumStatusType;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;

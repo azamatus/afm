@@ -1,5 +1,5 @@
 <?php
-namespace Nurix\DBAL;
+namespace Nurix\CatalogBundle\DBAL;
 
 use Doctrine\DBAL\Types\Type;
 use Doctrine\DBAL\Platforms\AbstractPlatform;

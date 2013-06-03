@@ -53,7 +53,7 @@ doctrine:
         charset:  UTF8
         types:
             json: Sonata\Doctrine\Types\JsonType
-            enumstatus: Nurix\DBAL\EnumStatusType
+            enumstatus: Nurix\CatalogBundle\DBAL\EnumStatusType
         mapping_types:
             enum: string
 
