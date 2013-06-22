@@ -1,13 +1,5 @@
-{% extends 'SonataAdminBundle:CRUD:list.html.twig' %}
+{% extends 'CatalogBundle:Admin:base_layout.html.twig' %}
 
-{% block stylesheets %}
-    {{ parent() }}
-        <link href="{{ asset('bundles/catalog/css/admin_edit_price.css') }} " type="text/css" rel="stylesheet"/>
-    {% endblock %}
-{% block javascripts %}
-    {{ parent() }}
-<script src="{{ asset('bundles/catalog/js/admin_edit_price.js') }}" type="text/javascript"></script>
- {% endblock %}
 {% block actions %}
     <div class="sonata-actions">
         <a href="{{ admin.generateUrl('excel') }}" class="btn">

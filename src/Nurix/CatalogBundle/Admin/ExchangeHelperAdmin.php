@@ -22,6 +22,7 @@ class ExchangeHelperAdmin extends Admin
         $showMapper
             ->add('id')
             ->add('currency')
+            ->add('currencyName')
          ;
     }
 
@@ -29,6 +30,7 @@ class ExchangeHelperAdmin extends Admin
     {
         $formMapper
             ->add('currency')
+            ->add('currencyName')
             ->end()
         ;
     }
@@ -38,7 +40,7 @@ class ExchangeHelperAdmin extends Admin
         $listMapper
             ->addIdentifier('id')
             ->addIdentifier('currency')
-
+            ->add('currencyName')
         ;
     }
 

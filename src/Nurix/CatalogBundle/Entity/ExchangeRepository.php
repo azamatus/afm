@@ -15,7 +15,7 @@ use Doctrine\ORM\EntityRepository;
 
 class ExchangeRepository  extends  EntityRepository{
 
-    public function getRate(){
+    public function getRate($exchange){
 
             $em = $this->getEntityManager();
             $repository =$em -> getRepository('CatalogBundle:Exchange');
@@ -23,10 +23,26 @@ class ExchangeRepository  extends  EntityRepository{
                 ->select('p.exchangeRate')
                 ->innerJoin("CatalogBundle:ExchangeHelper",'c','WITH','p.currency = c.id')
                 ->where('c.currency = :v')
-                ->setParameter('v', 'USD')
+                ->setParameter('v', $exchange)
+                ->orderBy('p.date','ASC')
                 ->getQuery();
-            $rate = $query -> getResult();
+
+            $rate = $query -> getOneOrNullResult();
             return $rate;
     }
 
+    public function getCurrencyName($exchange){
+
+        $em = $this->getEntityManager();
+        $repository =$em -> getRepository('CatalogBundle:ExchangeHelper');
+        $query = $repository ->createQueryBuilder('n')
+            ->select('n.currencyName')
+            ->where('n.currency = :e')
+            ->setParameter('e', $exchange)
+            ->getQuery();
+
+        $currencyName = $query -> getOneOrNullResult();
+
+        return $currencyName;
+    }
 }

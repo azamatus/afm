@@ -36,25 +36,26 @@ class ExchangeExtension extends \Twig_Extension
             $price = number_format($number, $decimals, $decPoint,'');
             $price = '$'.'<span class="value">'.$price.'</span>';
         }
-        elseif ($exchange == 'SOM')
+        else
         {
             // TODO Надо исправить, чтобы брать из базы, теперь берет из базы
             $repository = $this -> doctrine ->getRepository("CatalogBundle:Exchange");
+            $exchange_rate = $repository -> getRate($exchange);
 
-            $exchange_rate = $repository -> getRate();
-            foreach($exchange_rate as $key=>$value){
-                foreach($value as $key2 =>$value2){
-                $price = number_format($number*$value2, $decimals, $decPoint,'');
-                $price = '<span class="value">'.$price.'</span>'.' сом';
-                }
+            $repository_currency = $this -> doctrine -> getRepository("CatalogBundle:ExchangeHelper");
+            $currency_name = $repository_currency -> getCurrencyName($exchange);
+
+            foreach($currency_name as $current_currency_name)
+            {
+                $current_name = $current_currency_name;
             }
 
+            foreach($exchange_rate as $current_currency){
+                    $price = number_format($number*$current_currency, $decimals, $decPoint,'');
+                    $price = '<span class="value">'.$price.' '.$current_name.'</span>';
+            }
         }
-        else
-        {
-            throw new \Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('Не правильная валюта!'.$exchange);
 
-        }
         return $price;
     }
 

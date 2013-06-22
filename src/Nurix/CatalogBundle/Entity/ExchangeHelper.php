@@ -5,10 +5,11 @@ namespace Nurix\CatalogBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * ExchangeHelper
+ * Exchange
  *
  * @ORM\Table(name="exchange_helper")
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Nurix\CatalogBundle\Entity\ExchangeRepository")
  */
 class ExchangeHelper
 {
@@ -27,6 +28,13 @@ class ExchangeHelper
      * @ORM\Column(name="currency", type="string", length=50, nullable=true)
      */
     private $currency;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="currency_name", type="string", length=50, nullable=true)
+     */
+    private $currencyName;
 
 
 
@@ -63,9 +71,31 @@ class ExchangeHelper
         return $this->currency;
     }
 
+    /**
+     * Set currencyName
+     *
+     * @param string $currencyName
+     * @return ExchangeHelper
+     */
+    public function setCurrencyName($currencyName)
+    {
+        $this->currencyName = $currencyName;
+    
+        return $this;
+    }
+
+    /**
+     * Get currencyName
+     *
+     * @return string 
+     */
+    public function getCurrencyName()
+    {
+        return $this->currencyName;
+    }
+
     public function __toString()
     {
-
         return $this->getCurrency()?$this->getCurrency():"";
     }
 }

@@ -1,6 +1,7 @@
 {% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
 
-{% block field%}
+{% block field %}
+
     {% if field_description.options.editable is defined and field_description.options.editable and admin.isGranted('EDIT', object) %}
         <div style="width: 150px;">
         <div class="admin_edit_price">
