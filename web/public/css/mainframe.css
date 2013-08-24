@@ -33,9 +33,9 @@ h6 {
 {
 
 }
-body
+header,.middle,footer
 {
-	margin: 0;
+    display: block;
 }
 a, a:hover, a:link, a:visited
 {
@@ -80,7 +80,7 @@ ul
 {
     color: #666666;
 }
-.mainframe
+body
 {
     margin: 0 auto;
     background-color: #ffffff;
@@ -178,6 +178,7 @@ input.search
     border: none;
     margin-left: -30px;
     background: url("../img/search.png") no-repeat 50% 50%;
+    vertical-align: middle;
 }
 div.search
 {
@@ -187,10 +188,6 @@ div.search
     width: 370px;
     height: 27px;
     vertical-align: middle;
-
-}
-div.search
-{
     padding-left: 50px;
     float: left;
     margin-top: -3px;

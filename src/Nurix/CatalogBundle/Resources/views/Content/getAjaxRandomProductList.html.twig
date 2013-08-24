@@ -1,6 +1,9 @@
-<div class="all-catalog-items" style="display: none;">
+<div class="all-catalog-items" {% if app.request.isxmlhttprequest %} style="display: none;" {% endif %}>
     {% for product in pagination %}
         {% include  "CatalogBundle:Content:item.html.twig" with {'product':product} %}
+        {% if loop.index is divisibleby(3) %}
+            <hr class="catalog_hr"/>
+        {% endif %}
     {% endfor %}
 </div>
 

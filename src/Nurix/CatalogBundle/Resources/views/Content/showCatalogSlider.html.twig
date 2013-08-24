@@ -3,15 +3,16 @@
     <link href="{{ asset('bundles/catalog/css/rcarousel_catalog.css') }} " type="text/css" rel="stylesheet"/>
 {% endblock %}
 <div class="sale margin_top10px">
-<div class="catalog_title">{{ title }}<br></div>
-
-    <div id="carousel_catalog">
-        {% for product in products %}
-            {% include  "CatalogBundle:Content:item.html.twig" with {'product':product} %}
-        {% endfor %}
+    <div class="catalog_title">{{ title }}<br></div>
+    <div class="carousel">
+        <div id="carousel_catalog">
+            {% for product in products %}
+                {% include  "CatalogBundle:Content:item.html.twig" with {'product':product} %}
+            {% endfor %}
+        </div>
+        <a href="#" id="slider-carousel-next"></a>
+        <a href="#" id="slider-carousel-prev"></a>
     </div>
-    <a href="#" id="slider-carousel-next"></a>
-    <a href="#" id="slider-carousel-prev"></a>
 </div>
 {% block javascripts %}
     <script type="text/javascript" src="{{ asset("bundles/catalog/js/slider_catalog.js") }}"></script>

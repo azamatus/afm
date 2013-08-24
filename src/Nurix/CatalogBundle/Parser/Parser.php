@@ -8,6 +8,7 @@
  */
 namespace Nurix\CatalogBundle\Parser;
 use DateTime;
+use Doctrine\Bundle\DoctrineBundle\Registry;
 use Nurix\CatalogBundle\Entity\Goods;
 use Doctrine\ORM\EntityNotFoundException;
 use Nurix\CatalogBundle\Entity\Characteristic;
@@ -19,7 +20,7 @@ use Sunra\PhpSimple\HtmlDomParser;
 class Parser
 {
     private $xlsx_service;
-
+    /* @var Registry $doctrine_service */
     private $doctrine_service;
 
     public function __construct($doctrine_service, $xlsx_service)
@@ -69,14 +70,19 @@ class Parser
                     }
                 }
 
+                /* @var Goods $good */
                 $good = $entityManager->getRepository('CatalogBundle:Goods')->findOneByArticle($article);
+
                 if ($good) {
                     $updated_goods++;
-                    $good->setName($name);
                     $good->setLastUpdate($last_update);
                     $good->setPrice($price);
-                    $good->setCatalog($subcatalog);
                     $good->setActive(true);
+
+
+                    if ($good->getCatalog()==null)
+                    $good->setCatalog($subcatalog);
+
                     $entityManager->flush();
 
 

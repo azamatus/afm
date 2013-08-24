@@ -1,4 +1,4 @@
-{% extends  '::base.html.twig' %}
+{% extends request.isxmlhttprequest? '' : '::base.html.twig' %}
 {% block body %}
     <h1>Упс! Ошибка обнаружена</h1>
     <h3>Сервер вернул ошибку "{{ status_code }} {{ status_text }}".</h3>

@@ -7,8 +7,8 @@ jQuery(function($)
             speed: 500,
             auto:
             {
-                enabled: false,
-                interval: 2000
+                enabled: true,
+                interval: 4000
             },
             width: 700,
             height: 345,

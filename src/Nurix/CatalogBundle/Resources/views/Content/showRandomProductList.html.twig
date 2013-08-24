@@ -8,14 +8,6 @@
     <h1 class="left size24px">Весь каталог</h1>
 
     <div id="all-catalog">
-        <div class="all-catalog-items">
-            {% for product in pagination %}
-                {% include  "CatalogBundle:Content:item.html.twig" with {'product':product} %}
-            {% endfor %}
-        </div>
-
-        <div class="navigation">
-            {{ knp_pagination_render(pagination,'CatalogBundle:Pagination:pagination.html.twig') }}
-        </div>
+        {% include  "CatalogBundle:Content:getAjaxRandomProductList.html.twig" with {'pagination':pagination} %}
     </div>
 </div>
