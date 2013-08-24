@@ -27,7 +27,6 @@ class MenuBuilder extends ContainerAware
 
     public function createCatalogSideMenu(Request $request,$em)
     {
-
         $menu = $this->factory->createItem('catalog_sidebar');
         $menu->setCurrentUri($request->getRequestUri());
         $menu->setChildrenAttribute('class','side_menu');
@@ -36,19 +35,41 @@ class MenuBuilder extends ContainerAware
             ->setLinkAttribute('class','f20')
             ->setExtra('currentClass','active');
 
+        $this->getCatalogMenu($em, $menu);
+        return $menu;
+    }
+    /**
+     * создает боковое меню каталога
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @return mixed
+     */
+
+    public function createSiteMapMenu(Request $request,$em)
+    {
+        $menu = $this->factory->createItem('catalog_sitemap');
+        $menu->setCurrentUri($request->getRequestUri());
+        $menu->setChildrenAttribute('class','siteMapLinks');
+
+        $this->getCatalogMenu($em, $menu);
+        return $menu;
+    }
+
+    /**
+     * @param $em
+     * @param $menu
+     */
+    private function getCatalogMenu($em, $menu)
+    {
         $cm = $em->getRepository("CatalogBundle:Catalog");
 
-        $catalog = $cm->getAll(array('active'=>1, 'parent'=>null));
+        $catalog = $cm->getAll(array('active' => 1, 'parent' => null));
 
-        foreach ($catalog as $category)
-        {
-            $cat=$menu->addChild($category->getCname(),array('route'=>'nurix_goods_get_catalog','routeParameters'=>array('cid'=>$category->getId())))->setDisplayChildren(true);
-            foreach ($category->getChildren() as $child)
-            {
+        foreach ($catalog as $category) {
+            $cat = $menu->addChild($category->getCname(), array('route' => 'nurix_goods_get_catalog', 'routeParameters' => array('cid' => $category->getId())))->setDisplayChildren(true);
+            foreach ($category->getChildren() as $child) {
                 if ($child->getActive())
-                    $cat->addChild($child->getCname(),array('route'=>'nurix_goods_get_catalog','routeParameters'=>array('cid'=>$child->getId())));
+                    $cat->addChild($child->getCname(), array('route' => 'nurix_goods_get_catalog', 'routeParameters' => array('cid' => $child->getId())));
             }
         }
-        return $menu;
     }
 }

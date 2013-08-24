@@ -28,3 +28,12 @@ services:
         class: Nurix\NurixBundle\Twig\DateExtension
         tags:
             - { name: twig.extension }
+
+    nurix.menu.info_sitemap:
+            class: Knp\Menu\MenuItem
+            factory_service: nurix.menu_builder
+            factory_method: createSiteMapMenu
+            arguments: ["@request"]
+            scope: request
+            tags:
+                - { name: knp_menu.menu, alias: info_sitemap } # Named "sidebar" this time

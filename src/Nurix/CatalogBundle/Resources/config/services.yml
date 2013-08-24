@@ -27,3 +27,12 @@ services:
     catalog.product.parser:
         class: Nurix\CatalogBundle\Parser\Parser
         arguments: [@doctrine,@xls.load_xls2007]
+
+    catalog.menu.catalog_sitemap:
+            class: Knp\Menu\MenuItem
+            factory_service: catalog.menu_builder
+            factory_method: createSiteMapMenu
+            arguments:  [@request,@doctrine.orm.entity_manager]
+            scope: request
+            tags:
+                - { name: knp_menu.menu, alias: catalog_sitemap }
