@@ -36,9 +36,13 @@
         <!-- Delete the ${cache} directory trees -->
         <delete dir="${cache}"/>
     </target>
+
     <target name="-check-dir-exists">
-        <available file="${uploaddir}" type="dir"
-                   property="dir.exists"/>
+        <condition property="dir.exists">
+            <not>
+                <available file="${uploaddir}" type="dir"/>
+            </not>
+        </condition>
     </target>
     <target name="makedir"  depends="-check-dir-exists" if="dir.exists" description="make upload dir" >
         <!-- Delete the ${cache} directory trees -->
