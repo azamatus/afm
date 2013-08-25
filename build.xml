@@ -5,7 +5,7 @@
     <!-- set global properties for this build -->
     <property name="config" location="app/config"/>
     <property name="cache" location="app/cache"/>
-    <property name="uploaddir" location="web/upload"/>
+    <property name="uploaddir" location="web/uploads"/>
 
     <target name="replace">
         <replace file="${config}/sonata/media.yml" value="/uploads/media">
