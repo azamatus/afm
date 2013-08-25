@@ -5,6 +5,7 @@
     <!-- set global properties for this build -->
     <property name="config" location="app/config"/>
     <property name="cache" location="app/cache"/>
+    <property name="uploaddir" location="web/upload"/>
 
     <target name="replace">
         <replace file="${config}/sonata/media.yml" value="/uploads/media">
@@ -34,5 +35,13 @@
     <target name="clean" description="clean up" >
         <!-- Delete the ${cache} directory trees -->
         <delete dir="${cache}"/>
+    </target>
+    <target name="-check-dir-exists">
+        <available file="${uploaddir}" type="dir"
+                   property="dir.exists"/>
+    </target>
+    <target name="makedir"  depends="-check-dir-exists" if="dir.exists" description="make upload dir" >
+        <!-- Delete the ${cache} directory trees -->
+        <mkdir dir="${uploaddir}"/>
     </target>
 </project>
