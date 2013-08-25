@@ -29,7 +29,7 @@ class MenuBuilder extends ContainerAware
 
         $menu->addChild('home', array('route' => 'nurix_homepage','label'=>'Главная'));
         $menu->addChild('contacts', array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => 'contact'),'label'=>'Контакты'));
-        $menu->addChild('sitemap', array('route' => 'nurix_default', 'routeParameters' => array('name' => 'Nurlan'),'label'=>'Карта сайта'));
+        $menu->addChild('sitemap', array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => 'sitemap'),'label'=>'Карта сайта'));
         $menu->setChildrenAttribute('class','main_menu');
         return $menu;
     }

@@ -1,0 +1,38 @@
+<project name="Nurix" basedir=".">
+    <description>
+        simple example build file
+    </description>
+    <!-- set global properties for this build -->
+    <property name="config" location="app/config"/>
+    <property name="cache" location="app/cache"/>
+
+    <target name="replace">
+        <replace file="${config}/sonata/media.yml" value="/uploads/media">
+            <replacetoken>/nurix/web/uploads/media</replacetoken>
+        </replace>
+    </target>
+
+    <target name="parameters">
+        <copy file="${config}/parameters.yml.dist" tofile="${config}/parameters.yml"/>
+    </target>
+
+    <target name="mail" depends="parameters">
+        <replace file="${config}/parameters.yml" value="mailer_transport:  gmail">
+            <replacetoken>mailer_transport:  smtp</replacetoken>
+        </replace>
+        <replace file="${config}/parameters.yml" value="mailer_host:       ~">
+            <replacetoken>mailer_host:       localhost</replacetoken>
+        </replace>
+        <replace file="${config}/parameters.yml" value="mailer_user:       ${mail_login}">
+            <replacetoken>mailer_user:       ~</replacetoken>
+        </replace>
+        <replace file="${config}/parameters.yml" value="mailer_password:   ${mail_password}">
+            <replacetoken>mailer_password:   ~</replacetoken>
+        </replace>
+    </target>
+
+    <target name="clean" description="clean up" >
+        <!-- Delete the ${cache} directory trees -->
+        <delete dir="${cache}"/>
+    </target>
+</project>

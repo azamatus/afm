@@ -15,14 +15,14 @@
 {% block body %}
     <div class="product">
         <div class="slide_center">
-            {% if product.imagePath|isHaveImage  %}
-            <div id="my-folio-of-works" class="svwp">
-                <ul>
+            {% if product.imagePath|isHaveImage %}
+                <div id="my-folio-of-works" class="svwp">
+                    <ul>
                         {% for galleryHasMedia in product.imagePath.GalleryHasMedias %}
-                                    <li>{% thumbnail galleryHasMedia.media, 'goods_big' %}</li>
+                            <li>{% thumbnail galleryHasMedia.media, 'goods_big' %}</li>
                         {% endfor %}
-                </ul>
-            </div>
+                    </ul>
+                </div>
 
             {% else %}
                 {{ product.imagePath|galleryThumb(asset('bundles/catalog/img/noImage/good_big.jpg'),'big') }}
@@ -32,30 +32,33 @@
         <div class="float_left">
             <div class="product_name">{{ product.name }}</div>
             <div class="product_base_info">
-                <table  class="chars">
-                    {% if mainchar %}
-                    {% for type in mainchar %}
-                        <tr>
-                            <td class="mainCharType">{{ type.getCTypeId.name }}:</td>
-                            <td class="mainCharValue">{{ type.value }}</td>
-                        </tr>
+                {% if mainchar %}
+                    <table class="chars">
+                        {% for type in mainchar %}
+                            <tr>
+                                <td class="mainCharType">{{ type.getCTypeId.name }}:</td>
+                                <td class="mainCharValue">{{ type.value }}</td>
+                            </tr>
 
-                        {% if loop.index == 3 %}
-                            <tr><td class="table_otsup"></td></tr>
-                        {% endif %}
+                            {% if loop.index == 3 %}
+                                <tr>
+                                    <td class="table_otsup"></td>
+                                </tr>
+                            {% endif %}
 
-                    {% endfor %}
-                    {% else %}
-                      <h3>Характеристики еще не введены</h3>
-                    {% endif %}
-                </table>
+                        {% endfor %}
+                    </table>
+
+                {% else %}
+                    <h3>Характеристики еще не введены</h3>
+                {% endif %}
             </div>
             <div class="product_box">
                 <div class="product_price">{{ product.price| price('USD') }}</div>
                 <div class="product_price_som">{{ product.price| price('SOM') }}</div>
                 <div class="product_amount">
                     <div class="float_left word_col">кол-во:</div>
-                    <div><input type="text" class="box" value="{{ amount }}" id="amount" /></div>
+                    <div><input type="text" class="box" value="{{ amount }}" id="amount"/></div>
                     <div class="addrem" onmousedown="return false">
                         <span class="znak" id="add">+</span>
                         <span class="znak" id="rem">-</span>
@@ -68,13 +71,19 @@
             </div>
             <div class="clearbox"></div>
 
-            <hr class="product_hr1">
+            {% if mainchar %}
+                <hr class="product_hr1">
+            {% endif %}
         </div>
         <div class="product_description">
             <div style="color: #999;">
                 Описание:
             </div>
+            {%  if product.fullDesctiption  %}
             {{ product.fullDesctiption }}
+            {% else %}
+                Нет описания
+            {% endif %}
         </div>
         <div class="clearbox"></div>
         <hr class="product_hr2">
@@ -89,7 +98,7 @@
                 <span class="clear"></span>
 
                 <div class="tabs_content characteristic">
-                    {%  if mainchar %}
+                    {% if mainchar %}
                         {% include  "CatalogBundle:Product:characteristic.html.twig" %}
                     {% else %}
                         <h3>Характеристики еще не введены</h3>
@@ -109,7 +118,7 @@
                 </div>
 
                 <div class="tabs_content video">
-                    {%  if product.youtube %}
+                    {% if product.youtube %}
                         {% include  "CatalogBundle:Product:video.html.twig" %}
                     {% else %}
                         <h1>Пока видео еще нет</h1>
