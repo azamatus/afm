@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Nurix\CatalogBundle\Entity\Goods;
 use Nurix\CatalogBundle\Entity;
 use Doctrine\ORM\QueryBuilder;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ProductController extends Controller
 {
@@ -14,6 +15,9 @@ class ProductController extends Controller
         $entity = $this->getDoctrine()
             ->getRepository('CatalogBundle:Goods')
             ->find($id);
+        if (!$entity||!$entity->getActive())
+            throw $this->createNotFoundException('Page not found 404');
+
         $goods = $this->getRequest()->cookies->get("cookieGoods");
 
         $amount=1;

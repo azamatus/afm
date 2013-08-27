@@ -18,6 +18,7 @@ class GoodsRepository extends EntityRepository
         $repository = $em->getRepository("CatalogBundle:Goods");
         $qb = $repository->createQueryBuilder('r');
         $query = $qb->add('where', $qb->expr()->in('r.id', array_keys($goodsIds)))
+            ->where('r.active = 1')
             ->getQuery();
         return $query->getResult();
     }
@@ -26,6 +27,7 @@ class GoodsRepository extends EntityRepository
     {
         $query = $this->createQueryBuilder('g')
             ->leftJoin('Nurix\CatalogBundle\Entity\Characteristic', 'c', 'WITH', 'c.goodId = g.id')
+            ->where('g.active = 1')
             ->orWhere("g.name like :search")
             ->orWhere('g.shortDescription like :search')
             ->orWhere('g.fullDesctiption like :search')
@@ -51,6 +53,7 @@ class GoodsRepository extends EntityRepository
         $maxPrice = $good->getPrice() * 1.1;
         $qb = $this->createQueryBuilder('p');
         $query = $qb
+            ->where('p.active = 1')
             //->andWhere('p.catalog = :catalog')
             ->andWhere('p.id <> :id')
             ->andWhere('p.price > :minprice ')
@@ -59,6 +62,24 @@ class GoodsRepository extends EntityRepository
             ->setParameter('id', $good->getId())
             ->setParameter('minprice', $minPrice)
             ->setParameter('maxprice', $maxPrice)
+            ->getQuery();
+        return $query->getResult();
+    }
+
+    public function getSlider()
+    {
+
+        /** @var $last_updatedGoods Goods */
+        $last_updatedGoods = $this->createQueryBuilder('q')
+            ->where('q.active = 1')
+            ->orderBy('q.last_update', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()->getSingleResult();
+        $query = $this->createQueryBuilder('q')
+            ->where('q.active = 1')
+            ->andWhere('q.last_update = :last_update')
+            ->orderBy('q.name', 'ASC')
+            ->setParameter('last_update',$last_updatedGoods->getLastUpdate())
             ->getQuery();
         return $query->getResult();
     }
