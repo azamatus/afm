@@ -4,8 +4,8 @@
 <div>
     <div class="clearbox"></div>
     <h2 class="left size24px">Результаты поиска среди товаров: {{ searchText }}</h2>
-    {% for product in products  %}
-    {% include  "CatalogBundle:Content:item.html.twig" with {'product':product} %}
-    {% endfor %}
+    <div id="all-catalog">
+        {% include  "CatalogBundle:Content:getAjaxRandomProductList.html.twig" with {'pagination':pagination} %}
+    </div>
 </div>
 
