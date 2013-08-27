@@ -1,4 +1,7 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
+{% block title %}
+    {{ parent() }} : Подтверждение E-mail
+{% endblock %}
 
 {% block fos_user_content %}
     <p>{{ 'registration.check_email'|trans({'%email%': user.email}, 'FOSUserBundle') }}</p>

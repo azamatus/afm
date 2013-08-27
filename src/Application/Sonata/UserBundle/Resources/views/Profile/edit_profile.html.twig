@@ -9,6 +9,9 @@ file that was distributed with this source code.
 
 #}
 {% extends "FOSUserBundle::layout.html.twig" %}
+{% block title %}
+    {{ parent() }} : Редактирование профиля
+{% endblock %}
 
 {% block fos_user_content %}
 <div class="sonata-user-edit-profile">

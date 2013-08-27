@@ -1,4 +1,7 @@
 {% extends "::base.html.twig" %}
+{% block title %}
+    {{ parent() }} : Новости - {{ post.title }}
+{% endblock %}
 
 {% block stylesheets %}
 {{ parent() }}

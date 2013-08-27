@@ -1,4 +1,7 @@
 {% extends '::base.html.twig' %}
+{% block title %}
+    {{ parent() }} : Форма входа
+{% endblock %}
 {% block body %}
     <div class="login_form">
         {% block fos_user_content %}

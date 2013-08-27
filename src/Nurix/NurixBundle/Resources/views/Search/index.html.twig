@@ -1,4 +1,7 @@
 {% extends '::base.html.twig' %}
+{% block title %}
+    {{ parent() }} : Результаты поиска по запросу "{{ searchText }}"
+{% endblock %}
 {% block body %}
     {% render "CatalogBundle:Search:index" with {'searchText':searchText} %}
     <div class="clearbox"></div>
