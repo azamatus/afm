@@ -29,7 +29,7 @@ class ExchangeExtension extends \Twig_Extension
         elseif ($exchange == 'SOM')
         {
             // TODO Надо исправить, чтобы брать из базы
-            $price = number_format($number*47.8, $decimals, $decPoint,'');
+            $price = number_format($number*48.55, $decimals, $decPoint,'');
             $price = '<span class="value">'.$price.'</span>'.' сом';
         }
         else
