@@ -14,6 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class SearchController extends Controller
 {
+    var $limitPerPage = 12;
     public function indexAction($searchText)
     {
         $repository = $this->getDoctrine()->getRepository('CatalogBundle:Goods');
