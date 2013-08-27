@@ -83,4 +83,20 @@ class GoodsRepository extends EntityRepository
             ->getQuery();
         return $query->getResult();
     }
+
+    public function getGoods($cid)
+    {
+        if (!$cid){
+            $query=$this->getEntityManager()
+                ->createQuery("SELECT g FROM CatalogBundle:Goods g where g.active = 1")
+                ->getResult();
+            return $query;
+        }
+        else{
+            $query = $this->getEntityManager()
+                ->createQuery("SELECT g FROM CatalogBundle:Goods g where g.active = 1 and g.catalog in (select c.id from CatalogBundle:Catalog c where c.id = $cid or c.parent = $cid) order by g.name ASC")
+                ->getResult();
+            return $query;
+        }
+    }
 }

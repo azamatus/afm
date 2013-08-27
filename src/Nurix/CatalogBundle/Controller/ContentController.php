@@ -36,7 +36,8 @@ class ContentController extends Controller
     public function showSliderProductListAction()
     {
         $products = $this->getDoctrine()->getRepository('CatalogBundle:Goods')->getSlider();
-        return $this->render('CatalogBundle:Content:showCatalogSlider.html.twig', array('products' => $products,'title' => "Топ продаж"));
+        if (count($products)>0)
+        return $this->render('CatalogBundle:Content:showCatalogSlider.html.twig', array('products' => $products,'title' => "Последние обновленные"));
     }
 
 
@@ -52,7 +53,7 @@ class ContentController extends Controller
     public function getCatalogAction($cid)
     {
         $repository = $this->getDoctrine()
-            ->getRepository("CatalogBundle:Catalog");
+            ->getRepository("CatalogBundle:Goods");
 
         if (!$repository){
             throw new \Exception("Ошибка");

@@ -12,21 +12,6 @@ use Doctrine\ORM\EntityRepository;
 
 class CatalogRepository extends EntityRepository
 {
-    public function getGoods($cid)
-    {
-        if (!$cid){
-            $query=$this->getEntityManager()
-                ->createQuery("SELECT g FROM CatalogBundle:Goods g where g.active = 1")
-                ->getResult();
-            return $query;
-    }
-        else{
-            $query = $this->getEntityManager()
-                ->createQuery("SELECT g FROM CatalogBundle:Goods g where g.active = 1 and g.catalog in (select c.id from CatalogBundle:Catalog c where c.id = $cid or c.parent = $cid)")
-                ->getResult();
-            return $query;
-        }
-    }
 
 
     public function getAll($rules = array()){
