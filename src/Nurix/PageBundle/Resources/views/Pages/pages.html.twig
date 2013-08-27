@@ -1,4 +1,8 @@
 {% extends  '::base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} : {{ page.title }}
+{% endblock %}
 {% block stylesheets %}
     {{ parent() }}
     <link href="{{ asset('bundles/nurixpage/css/pages.css') }} " type="text/css" rel="stylesheet"/>
