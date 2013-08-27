@@ -34,7 +34,7 @@ class GoodsRepository extends EntityRepository
             ->andWhere('g.active = 1')
             ->setParameter('search', '%' . $searchText . '%');
 
-        return $query;
+        return $query->getQuery()->getResult();
 
     }
 

@@ -15,8 +15,3 @@ nurix_goods_get_info:
 nurix_bin:
     resource: "@CatalogBundle/Resources/config/routing/bin.yml"
     prefix:   /bin
-
-
-nurix_catalog_search:
-    pattern: /goods/search/
-    defaults: { _controller: CatalogBundle:Search:index }
