@@ -41,7 +41,7 @@ fos_user_change_password:
 
 admin:
     resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
-    prefix: /admin
+    prefix: /sonataadmin
 
 _sonata_admin:
     resource: .
