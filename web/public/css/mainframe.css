@@ -149,6 +149,11 @@ ul.main_menu
     width: 200px;
     margin-top: 4px;
 }
+ul.main_menu li
+{
+    float:left;
+}
+
 ul.main_menu a
 {
     color: #000000;

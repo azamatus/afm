@@ -10,7 +10,7 @@
         <link type="text/css" rel="stylesheet" href="{{ asset("bundles/applicationsonatauser/css/sonata.css") }}"/>
         <link type="text/css" rel="stylesheet" href="{{ asset("public/css/jquery-ui.css") }}"/>
     {% endblock %}
-    <script type="text/javascript" language="javascript">
+    <script type="text/javascript">
         var base_url = "{{ path('nurix_homepage') }}";
     </script>
     {% block javascripts %}
@@ -76,7 +76,7 @@
         </script>
     {% endblock %}
 
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" title="favicon"/>
 </head>
 <body>
 <header>
@@ -110,7 +110,7 @@
                     {% endif %}
 
                     <a href="{{ path('fos_user_registration_register') }}">
-                        <div class="button f12" id="">
+                        <div class="button f12">
                             Зарегистрироваться
                         </div>
                     </a>
@@ -228,19 +228,15 @@
                 </div>
 
                 <div class="footerColumn">
-                    <ul class="otherLinks">
-
                         {{ knp_menu_render('info_sitemap', {'currentClass': 'current'}) }}
-
-                    </ul>
                 </div>
 
                 <div class="footerColumn footerColumnLast">
 
                     <div class="shareLinks">
-                        <a href="http://facebook.com/nurix.kg"><img
+                        <a href="http://facebook.com/nurix.kg"><img alt="Страница на Facebook"
                                     src="{{ asset('public/img/icon/fb_icon.png') }}"></a>
-                        <a href="https://twitter.com/nurixKG"><img
+                        <a href="https://twitter.com/nurixKG"><img alt="Профиль в твиттере"
                                     src="{{ asset('public/img/icon/twit_icon.png') }}"></a>
                     </div>
 <!--
