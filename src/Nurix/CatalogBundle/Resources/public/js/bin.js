@@ -1,6 +1,6 @@
 $(function () {
     function refreshWidget() {
-        var widget_path = base_url+"bin/widget";
+        var widget_path = base_url+"bin/widget";//TODO:Перевести на js_router
         $.ajax({
             url:widget_path,
             success:function (data) {

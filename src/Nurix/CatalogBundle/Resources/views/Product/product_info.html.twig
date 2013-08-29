@@ -46,10 +46,8 @@
                                 <td class="mainCharValue">{{ type.value }}</td>
                             </tr>
 
-                            {% if loop.index == 3 %}
-                                <tr>
-                                    <td class="table_otsup"></td>
-                                </tr>
+                            {% if loop.index is divisibleby(3) %}
+                                <tr class="table_otsup"></tr>
                             {% endif %}
 
                         {% endfor %}
