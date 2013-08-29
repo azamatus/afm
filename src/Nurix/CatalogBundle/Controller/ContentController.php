@@ -24,7 +24,11 @@ class ContentController extends Controller
 
         $pagination->setUsedRoute('nurix_catalog_get_rndcatalog');
 
-        return $this->getProductListView($pagination, null);
+        if ($this->getRequest()->isXmlHttpRequest()){
+            return $this->render('CatalogBundle:Content:getAjaxRandomProductList.html.twig', array( 'pagination' => $pagination));
+        }else{
+            return $this->render('CatalogBundle:Content:showRandomProductList.html.twig', array( 'pagination' => $pagination));
+        }
 
     }
 
@@ -74,16 +78,6 @@ class ContentController extends Controller
 
         $pagination->setUsedRoute('nurix_goods_get_catalog');
 
-        return $this->getProductListView($pagination, $catalog);
-    }
-
-    /**
-     * @param $pagination
-     * @param $catalog
-     * @return mixed
-     */
-    public function getProductListView($pagination, $catalog)
-    {
         if ($this->getRequest()->isXmlHttpRequest()) {
             return $this->render('CatalogBundle:Content:getAjaxRandomProductList.html.twig', array('pagination' => $pagination));
         } else {
