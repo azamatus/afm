@@ -157,7 +157,10 @@ class Catalog
 
     public function __toString()
     {
-        return $this->cname.'';
+        if ($this->getParent()!=null)
+            return $this->getParent().' / '.$this->cname;
+        else
+            return $this->cname.'';
     }
     /**
      * Constructor
