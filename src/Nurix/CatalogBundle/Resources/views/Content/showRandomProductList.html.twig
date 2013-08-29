@@ -1,6 +1,6 @@
     <div>
         <div class="clearbox"></div>
-        <h1 class="left size24px">{{ catalog? catalog.cname : "Весь каталог" }}</h1>
+        <h1 class="left size24px">{{ catalog is defined ? catalog.cname : "Весь каталог" }}</h1>
 
         <div id="all-catalog">
             {% include  "CatalogBundle:Content:getAjaxRandomProductList.html.twig" with {'pagination':pagination} %}
