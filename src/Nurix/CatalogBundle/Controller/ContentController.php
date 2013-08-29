@@ -24,11 +24,7 @@ class ContentController extends Controller
 
         $pagination->setUsedRoute('nurix_catalog_get_rndcatalog');
 
-        if ($this->getRequest()->isXmlHttpRequest()){
-            return $this->render('CatalogBundle:Content:getAjaxRandomProductList.html.twig', array( 'pagination' => $pagination));
-        }else{
-            return $this->render('CatalogBundle:Content:showRandomProductList.html.twig', array( 'pagination' => $pagination));
-        }
+        return $this->getProductListView($pagination, null);
 
     }
 
@@ -52,14 +48,22 @@ class ContentController extends Controller
 
     public function getCatalogAction($cid)
     {
-        $repository = $this->getDoctrine()
+        /** @var $goodsRepository Entity\GoodsRepository */
+        $goodsRepository = $this->getDoctrine()
             ->getRepository("CatalogBundle:Goods");
+        /** @var $goodsRepository Entity\CatalogRepository */
+        $catalogRepository = $this->getDoctrine()
+            ->getRepository("CatalogBundle:Catalog");
 
-        if (!$repository){
+        if (!$goodsRepository||!$catalogRepository){
             throw new \Exception("Ошибка");
         }
+        $catalog = $catalogRepository->find($cid);
 
-        $paginate = $repository->getGoods($cid);
+        if (!$catalog||!$catalog->getActive())
+            throw $this->createNotFoundException('Page not found 404');
+
+        $paginate = $goodsRepository->getGoods($cid);
 
         $paginator = $this->get('knp_paginator');
 
@@ -70,10 +74,20 @@ class ContentController extends Controller
 
         $pagination->setUsedRoute('nurix_goods_get_catalog');
 
-        if ($this->getRequest()->isXmlHttpRequest()){
+        return $this->getProductListView($pagination, $catalog);
+    }
+
+    /**
+     * @param $pagination
+     * @param $catalog
+     * @return mixed
+     */
+    public function getProductListView($pagination, $catalog)
+    {
+        if ($this->getRequest()->isXmlHttpRequest()) {
             return $this->render('CatalogBundle:Content:getAjaxRandomProductList.html.twig', array('pagination' => $pagination));
-        } else{
-            return $this->render('CatalogBundle:Content:getcatalog.html.twig', array('pagination' => $pagination));
-        }
+        } else {
+            return $this->render('CatalogBundle:Content:getcatalog.html.twig', array('pagination' => $pagination, 'catalog' => $catalog));
         }
     }
+}

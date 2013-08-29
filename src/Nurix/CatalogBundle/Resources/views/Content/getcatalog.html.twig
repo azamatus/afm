@@ -1,27 +1,19 @@
-{% extends "::base.html.twig" %}
+{% extends app.request.isxmlhttprequest? "" : "::base.html.twig" %}
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset("bundles/catalog/js/ajax_pagination.js") }}" type="text/javascript"></script>
 {% endblock %}
 {% block stylesheets %}
     {{ parent() }}
-    <link href="{{ asset('bundles/catalog/css/catalog.css') }} " type="text/css" rel="stylesheet"/>
+    <link href="{{ asset('bundles/catalog/css/catalog.css') }}" type="text/css" media="screen" rel="stylesheet"/>
 {% endblock %}
 {% block body %}
 <div>
     <div class="clearbox"></div>
-    <h1 class="left size24px">Весь каталог</h1>
+    <h1 class="left size24px">{% catalog? catalog.cname : "Весь каталог" %}</h1>
 
     <div id="all-catalog">
-        <div class="all-catalog-items">
-            {% for product in pagination %}
-                {% include  "CatalogBundle:Content:item.html.twig" with {'product':product} %}
-            {% endfor %}
-        </div>
-
-        <div class="navigation">
-            {{ knp_pagination_render(pagination,'CatalogBundle:Pagination:pagination.html.twig') }}
-        </div>
+        {% include  "CatalogBundle:Content:getAjaxRandomProductList.html.twig" with {'pagination':pagination} %}
     </div>
 </div>
 {% endblock body %}
