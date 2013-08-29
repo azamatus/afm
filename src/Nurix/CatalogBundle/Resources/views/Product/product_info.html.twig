@@ -46,10 +46,6 @@
                                 <td class="mainCharValue">{{ type.value }}</td>
                             </tr>
 
-                            {% if loop.index is divisibleby(3) %}
-                                <tr class="table_otsup"></tr>
-                            {% endif %}
-
                         {% endfor %}
                     </table>
 
@@ -110,10 +106,11 @@
                 </div>
 
                 <div class="tabs_content review">
+                    <h2>Обзор</h2>
                     {% if product.review %}
                         {{ product.review|raw }}
                     {% else %}
-                        <h3>Обзор</h3>
+                        <h3>еще не загружен</h3>
                     {% endif %}
                 </div>
 
