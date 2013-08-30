@@ -33,7 +33,7 @@
         "egeloen/ckeditor-bundle": "2.*",
         "sonata-project/news-bundle": "2.1.*",
         "bupychuk/php-simple-html-dom-parser": "dev-master",
-        "liuggio/ExcelBundle": "1.0.4",
+        "liuggio/ExcelBundle": ">=1.0.4",
         "knplabs/knp-paginator-bundle": "dev-master",
         "friendsofsymfony/jsrouting-bundle": "~1.1"
     },

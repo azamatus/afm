@@ -12,91 +12,101 @@ use Doctrine\ORM\EntityRepository;
 
 class GoodsRepository extends EntityRepository
 {
-    public function getGoodsByIds($goodsIds)
-    {
-        $em = $this->getEntityManager();
-        $repository = $em->getRepository("CatalogBundle:Goods");
-        $qb = $repository->createQueryBuilder('r');
-        $query = $qb->add('where', $qb->expr()->in('r.id', array_keys($goodsIds)))
-            ->andWhere('r.active = 1')
-            ->getQuery();
-        return $query->getResult();
-    }
+	public function getGoodsByIds($goodsIds)
+	{
+		$em = $this->getEntityManager();
+		$repository = $em->getRepository("CatalogBundle:Goods");
+		$qb = $repository->createQueryBuilder('r');
+		$query = $qb->add('where', $qb->expr()->in('r.id', array_keys($goodsIds)))
+			->andWhere('r.active = 1')
+			->getQuery();
+		return $query->getResult();
+	}
 
-    public function searchGoods($searchText)
-    {
-        $query = $this->createQueryBuilder('g')
-            ->leftJoin('Nurix\CatalogBundle\Entity\Characteristic', 'c', 'WITH', 'c.goodId = g.id')
-            ->orWhere("g.name like :search")
-            ->orWhere('g.shortDescription like :search')
-            ->orWhere('g.fullDesctiption like :search')
-            ->orWhere('c.value like :search')
-            ->andWhere('g.active = 1')
-            ->setParameter('search', '%' . $searchText . '%');
+	public function searchGoods($searchText)
+	{
+		$query = $this->createQueryBuilder('g')
+			->leftJoin('Nurix\CatalogBundle\Entity\Characteristic', 'c', 'WITH', 'c.goodId = g.id')
+			->orWhere("g.name like :search")
+			->orWhere('g.shortDescription like :search')
+			->orWhere('g.fullDesctiption like :search')
+			->orWhere('c.value like :search')
+			->andWhere('g.active = 1')
+			->setParameter('search', '%' . $searchText . '%');
 
-        return $query->getQuery()->getResult();
+		return $query->getQuery()->getResult();
 
-    }
+	}
 
-    public function paginateGoods()
-    {
-        $query = $this->createQueryBuilder('q')
-            ->where('q.active = 1')
-            ->orderBy('q.id', 'DESC');
+	public function paginateGoods()
+	{
+		$query = $this->createQueryBuilder('q')
+			->where('q.active = 1')
+			->orderBy('q.id', 'DESC');
 
-        return $query;
-    }
+		return $query;
+	}
 
-    public function getSamePositionsForGood(Goods $good)
-    {
-        $minPrice = $good->getPrice() * 0.9;
-        $maxPrice = $good->getPrice() * 1.1;
-        $qb = $this->createQueryBuilder('p');
-        $query = $qb
-            ->where('p.active = 1')
-            //->andWhere('p.catalog = :catalog')
-            ->andWhere('p.id <> :id')
-            ->andWhere('p.price > :minprice ')
-            ->andWhere('p.price < :maxprice ')
-            //->setParameter('catalog', $good->getCatalog())
-            ->setParameter('id', $good->getId())
-            ->setParameter('minprice', $minPrice)
-            ->setParameter('maxprice', $maxPrice)
-            ->getQuery();
-        return $query->getResult();
-    }
+	public function getSamePositionsForGood(Goods $good)
+	{
+		$minPrice = $good->getPrice() * 0.9;
+		$maxPrice = $good->getPrice() * 1.1;
+		$qb = $this->createQueryBuilder('p');
+		$query = $qb
+			->where('p.active = 1')
+			//->andWhere('p.catalog = :catalog')
+			->andWhere('p.id <> :id')
+			->andWhere('p.price > :minprice ')
+			->andWhere('p.price < :maxprice ')
+			//->setParameter('catalog', $good->getCatalog())
+			->setParameter('id', $good->getId())
+			->setParameter('minprice', $minPrice)
+			->setParameter('maxprice', $maxPrice)
+			->getQuery();
+		return $query->getResult();
+	}
 
-    public function getSlider()
-    {
+	public function getSlider()
+	{
 
-        /** @var $last_updatedGoods Goods */
-        $last_updatedGoods = $this->createQueryBuilder('q')
-            ->where('q.active = 1')
-            ->orderBy('q.last_update', 'DESC')
-            ->setMaxResults(1)
-            ->getQuery()->getSingleResult();
-        $query = $this->createQueryBuilder('q')
-            ->where('q.active = 1')
-            ->andWhere('q.last_update = :last_update')
-            ->orderBy('q.name', 'ASC')
-            ->setParameter('last_update',$last_updatedGoods->getLastUpdate())
-            ->getQuery();
-        return $query->getResult();
-    }
+		/** @var $last_updatedGoods Goods */
+		$last_updatedGoods = $this->createQueryBuilder('q')
+			->where('q.active = 1')
+			->orderBy('q.last_update', 'DESC')
+			->setMaxResults(1)
+			->getQuery()->getSingleResult();
+		$query = $this->createQueryBuilder('q')
+			->where('q.active = 1')
+			->andWhere('q.last_update = :last_update')
+			->orderBy('q.name', 'ASC')
+			->setParameter('last_update', $last_updatedGoods->getLastUpdate())
+			->getQuery();
+		return $query->getResult();
+	}
 
-    public function getGoods($cid)
-    {
-        if (!$cid){
-            $query=$this->getEntityManager()
-                ->createQuery("SELECT g FROM CatalogBundle:Goods g where g.active = 1")
-                ->getResult();
-            return $query;
-        }
-        else{
-            $query = $this->getEntityManager()
-                ->createQuery("SELECT g FROM CatalogBundle:Goods g where g.active = 1 and g.catalog in (select c.id from CatalogBundle:Catalog c where c.id = $cid or c.parent = $cid) order by g.name ASC")
-                ->getResult();
-            return $query;
-        }
-    }
+	public function getGoods($cid)
+	{
+		if (!$cid)
+		{
+			$query = $this->getEntityManager()
+				->createQuery("SELECT g FROM CatalogBundle:Goods g where g.active = 1")
+				->getResult();
+			return $query;
+		}
+		else
+		{
+			$query = $this->getEntityManager()
+				->createQuery("SELECT g FROM CatalogBundle:Goods g where g.active = 1 and g.catalog in (select c.id from CatalogBundle:Catalog c where c.id = $cid or c.parent = $cid) order by g.name ASC")
+				->getResult();
+			return $query;
+		}
+	}
+
+	public function deactivateAll()
+	{
+		$this->createQueryBuilder('u')
+			->update('models\User', 'u')
+			->set('u.active', 1)
+			->getQuery()->execute();
+	}
 }

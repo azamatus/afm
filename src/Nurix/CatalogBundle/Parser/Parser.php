@@ -14,6 +14,7 @@ use Doctrine\ORM\EntityNotFoundException;
 use Nurix\CatalogBundle\Entity\Characteristic;
 use Nurix\CatalogBundle\Entity\CharacteristicSection;
 use Nurix\CatalogBundle\Entity\CharacteristicType;
+use Nurix\CatalogBundle\Entity\GoodsRepository;
 use Symfony\Component\HttpFoundation\File\File;
 use Sunra\PhpSimple\HtmlDomParser;
 
@@ -33,11 +34,14 @@ class Parser
     {
 
         $exelObj = $this->xlsx_service->load($file);
-        $sheetData = $exelObj->getActiveSheet()->toArray(null, true, true, true);
+        $sheetData = $exelObj->getActiveSheet()->toArray(null, true, false, true);
         $index = 0;
 
         $entityManager = $this->doctrine_service->getManager();
 
+		/** @var $goodsRepository GoodsRepository */
+		$goodsRepository = $entityManager->getRepository('CatalogBundle:Goods');
+		$goodsRepository->deactivateAll();
         $catalogs = $entityManager->getRepository('CatalogBundle:Catalog')->findAll();
         $goods_alias = array();
 
@@ -54,7 +58,7 @@ class Parser
             if ($index == 1) continue;
             $article = $sheetRow['A'] ? $sheetRow['A'] : null;
             $name = $sheetRow['B'] ? $sheetRow['B'] : null;
-            $last_update = new DateTime(date('Y-m-d', strtotime($sheetRow['I'])));
+            $last_update = new DateTime(date('Y-m-d', mktime(0,0,0,1,$sheetRow['I']-1,1900)));
             $price = (float)$sheetRow['L'];
             $urlYandex = $sheetRow['Q'];
             $subcatalog = null;
@@ -71,7 +75,7 @@ class Parser
                 }
 
                 /* @var Goods $good */
-                $good = $entityManager->getRepository('CatalogBundle:Goods')->findOneByArticle($article);
+                $good = $goodsRepository->findOneByArticle($article);
 
                 if ($good) {
                     $updated_goods++;
