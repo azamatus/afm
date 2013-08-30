@@ -18,7 +18,7 @@ class GoodsRepository extends EntityRepository
         $repository = $em->getRepository("CatalogBundle:Goods");
         $qb = $repository->createQueryBuilder('r');
         $query = $qb->add('where', $qb->expr()->in('r.id', array_keys($goodsIds)))
-            ->where('r.active = 1')
+            ->andWhere('r.active = 1')
             ->getQuery();
         return $query->getResult();
     }
