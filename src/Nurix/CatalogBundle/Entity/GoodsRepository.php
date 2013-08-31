@@ -104,9 +104,9 @@ class GoodsRepository extends EntityRepository
 
 	public function deactivateAll()
 	{
-		$this->createQueryBuilder('u')
-			->update('Goods', 'u')
-			->set('u.active', 1)
+		$this->createQueryBuilder('g')
+			->update('CatalogBundle:Goods', 'g')
+			->set('g.active', 0)
 			->getQuery()->execute();
 	}
 }
