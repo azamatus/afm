@@ -4,6 +4,7 @@ namespace Nurix\CatalogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Nurix\CatalogBundle\Entity;
+use Symfony\Component\HttpFoundation\Response;
 
 class ContentController extends Controller
 {
@@ -36,8 +37,10 @@ class ContentController extends Controller
     public function showSliderProductListAction()
     {
         $products = $this->getDoctrine()->getRepository('CatalogBundle:Goods')->getSlider();
-        if (count($products)>0)
-        return $this->render('CatalogBundle:Content:showCatalogSlider.html.twig', array('products' => $products,'title' => "Последние обновленные"));
+		if (count($products)>=3)
+			return $this->render('CatalogBundle:Content:showCatalogSlider.html.twig', array('products' => $products,'title' => "Последние обновленные"));
+		else
+			return new Response();
     }
 
 
