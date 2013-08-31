@@ -8,7 +8,7 @@ imports:
     - { resource: @NurixSliderBundle/Resources/config/admin.xml }
 
 framework:
-    trusted_proxies: ~
+    trusted_proxies: ['127.0.0.1', '10.0.0.1'] # a list of proxy IPs you trust
     esi:             ~
     translator:      { fallback: %locale% }
     secret:          %secret%
@@ -20,7 +20,6 @@ framework:
     validation:      { enable_annotations: true }
     templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
     default_locale:  %locale%
-    trust_proxy_headers: false # Whether or not the Request object should trust proxy headers (X_FORWARDED_FOR/HTTP_CLIENT_IP)
     session:         ~
 
 # Twig Configuration
