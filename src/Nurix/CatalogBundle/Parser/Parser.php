@@ -58,7 +58,7 @@ class Parser
             if ($index == 1) continue;
             $article = $sheetRow['A'] ? $sheetRow['A'] : null;
             $name = $sheetRow['B'] ? $sheetRow['B'] : null;
-            $last_update = new DateTime(date('Y-m-d', mktime(0,0,0,1,$sheetRow['I']-1,1900)));
+            $last_update = new DateTime(date('Y-m-d', mktime(0,0,0,1,$sheetRow['K']-1,1900)));
             $price = (float)$sheetRow['L'];
             $urlYandex = $sheetRow['Q'];
             $subcatalog = null;
@@ -124,7 +124,7 @@ class Parser
                 $url = $yandex_info['url'];
                 $good = $this->doctrine_service->getRepository('CatalogBundle:Goods')->find($goodid);
                 if (!$good) {
-                    Throw new EntityNotFoundException("Товар не найдена");
+                    Throw new EntityNotFoundException("Товар не найден");
                 }
                 $html = HtmlDomParser::file_get_html($url);
                 foreach ($html->find('table.l-page_layout_72-20 .b-properties') as $table) {

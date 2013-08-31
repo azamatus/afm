@@ -79,7 +79,7 @@ class GoodsAdmin extends Admin
             ->add('name', null, array('label' => 'Название'))
             ->add('catalog', null, array('label' => 'Подкатегория'), null, array('expanded' => false,'multiple'=>true))
             ->add('price',null,array('label'=>'Цена'))
-			->add('last_update','date',array('label'=>'Последнее обновление'));
+			->add('last_update',null,array('label'=>'Последнее обновление'));
     }
 
 
