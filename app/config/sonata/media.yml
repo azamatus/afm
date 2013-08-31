@@ -4,14 +4,12 @@ sonata_media:
     contexts:
         default:  # the default context is mandatory
             providers:
-                - sonata.media.provider.dailymotion
-                - sonata.media.provider.youtube
                 - sonata.media.provider.image
-                - sonata.media.provider.file
 
             formats:
                 goods_big:   { width: 210 , height: 210, quality: 90}
-                youtube_big:   { width: 560}
+                goods_original: { width: 800}
+
         news:
             providers:
                 - sonata.media.provider.image
@@ -19,6 +17,12 @@ sonata_media:
             formats:
                 small: { width: 190 , quality: 95}
                 big:   { width: 500 , quality: 90}
+        youtube:
+            providers:
+                - sonata.media.provider.youtube
+
+            formats:
+                default:  { width: 560}
     cdn:
         server:
             path: /nurix/web/uploads/media # http://media.sonata-project.org/

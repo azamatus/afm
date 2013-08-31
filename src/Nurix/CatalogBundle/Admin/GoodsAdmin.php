@@ -29,7 +29,7 @@ class GoodsAdmin extends Admin
             ->add('full_desctiption', null, array('label' => 'Полное описание'))
             ->add('price', null, array('label' => 'Цена'))
             ->add('imagePath', 'sonata_media_type', array('label' => 'Галерея', 'provider' => 'sonata.media.provider.image', 'context' => 'default'))
-            ->add('youtube', 'sonata_media_type', array('label' => 'Youtube', 'provider' => 'sonata.media.provider.youtube', 'context' => 'default'))
+            ->add('youtube', 'sonata_media_type', array('label' => 'Youtube', 'provider' => 'sonata.media.provider.youtube', 'context' => 'youtube'))
             ->add('active', null, array('label' => 'Активен'))
             ->add('amount', null, array('label' => 'Количество'))
             ->add('last_update','date',array('label'=>'Последнее обновление'))
@@ -53,7 +53,7 @@ class GoodsAdmin extends Admin
             ->add('full_desctiption', 'textarea', array('label' => 'Полное описание', 'required' => false))
             ->add('price', null, array('label' => 'Цена'))
             ->add('imagePath', 'sonata_type_model_list', array('required' => false, 'label' => 'Галерея'), array('link_parameters' => array('context' => 'default')))
-            ->add('youtube', 'sonata_type_model_list', array('required' => false, 'label' => 'Youtube'), array('link_parameters' => array('context' => 'default')))
+            ->add('youtube', 'sonata_type_model_list', array('required' => false, 'label' => 'Youtube'), array('link_parameters' => array('context' => 'youtube')))
             ->add('active', null, array('label' => 'Активен'))
             ->add('amount', null, array('label' => 'Количество'))
             ->add('review', 'ckeditor', array('label' => 'Обзор','config_name' => 'my_config'))
@@ -69,7 +69,8 @@ class GoodsAdmin extends Admin
             ->add('catalog', 'sonata_type_model', array('editable' => true,'label' => 'Подкатегория'))
             ->add('price', 'decimal', array('editable' => true,'label' => 'Цена','template'=>'CatalogBundle:Admin:list_price.html.twig'))
             ->add('active', 'boolean', array('editable' => true,'label' => 'Активен'))
-            ->add('amount', null, array('editable' => true,'label' => 'Количество','template'=>'CatalogBundle:Admin:list_price.html.twig'));
+            ->add('amount', null, array('editable' => true,'label' => 'Количество','template'=>'CatalogBundle:Admin:list_price.html.twig'))
+			->add('last_update','date',array('label'=>'Последнее обновление'));
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -77,7 +78,8 @@ class GoodsAdmin extends Admin
         $datagridMapper
             ->add('name', null, array('label' => 'Название'))
             ->add('catalog', null, array('label' => 'Подкатегория'), null, array('expanded' => false,'multiple'=>true))
-            ->add('price',null,array('label'=>'Цена'));
+            ->add('price',null,array('label'=>'Цена'))
+			->add('last_update','date',array('label'=>'Последнее обновление'));
     }
 
 
