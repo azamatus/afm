@@ -1,5 +1,10 @@
 {% extends '::base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/catalog/css/catalog.css') }}" type="text/css" media="screen" rel="stylesheet"/>
+{% endblock %}
+
 {% block body %}
     {% render "CatalogBundle:Content:showSliderProductList" %}
     <div class="clearbox"></div>
