@@ -19,7 +19,7 @@
         <div class="sonata-blog-post-information">
 
             <div class="sonata-blog-post-info">
-                <a class="sonata-blog-post-info-a-img" href="{{ url('sonata_news_view', { 'permalink': sonata_news_permalink(post) }) }}">{% thumbnail post, 'small' %}</a>
+                <a class="sonata-blog-post-info-a-img" href="{{ url('sonata_news_view', { 'permalink': sonata_news_permalink(post) }) }}">{% thumbnail post.image, 'small' %}</a>
 
                 <h1 class="sonata-blog-post-title">
                     <a href="{{ url('sonata_news_view', { 'permalink': sonata_news_permalink(post) }) }}">{{ post.title }}</a>
