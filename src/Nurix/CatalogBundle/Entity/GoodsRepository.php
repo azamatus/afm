@@ -68,20 +68,18 @@ class GoodsRepository extends EntityRepository
 
 	public function getSlider()
 	{
+		$last_updatedGoods = $this->createQueryBuilder('g')
+            ->select('max(g.last_update)')
+			->where('g.active = 1')
+			->getQuery()->getDQL();
 
-		/** @var $last_updatedGoods Goods */
-		$last_updatedGoods = $this->createQueryBuilder('q')
-			->where('q.active = 1')
-			->orderBy('q.last_update', 'DESC')
-			->setMaxResults(1)
-			->getQuery()->getSingleResult();
 		$query = $this->createQueryBuilder('q')
 			->where('q.active = 1')
-			->andWhere('q.last_update = :last_update')
+			->andWhere('q.last_update in ('.$last_updatedGoods.')')
 			->orderBy('q.name', 'ASC')
-			->setParameter('last_update', $last_updatedGoods->getLastUpdate())
 			->getQuery();
-		return $query->getResult();
+
+        return $query->getResult();
 	}
 
 	public function getGoods($cid)
