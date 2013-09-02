@@ -7,6 +7,12 @@
     <h1 class="left size24px">{{ catalog is defined ? catalog : "Весь каталог" }}</h1>
 
     <div id="all-catalog">
-        {% include  "CatalogBundle:Content:getAjaxRandomProductList.html.twig" with {'pagination':pagination} %}
+        {% if pagination.getTotalItemCount > 0 %}
+            {% include  "CatalogBundle:Content:getAjaxRandomProductList.html.twig" with {'pagination':pagination} %}
+        {% else %}
+            <h2>
+                В этой категории товаров пока нет
+            </h2>
+        {% endif %}
     </div>
 </div>
