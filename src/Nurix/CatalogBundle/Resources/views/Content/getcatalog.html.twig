@@ -5,7 +5,13 @@
     <link href="{{ asset('bundles/catalog/css/catalog.css') }}" type="text/css" media="screen" rel="stylesheet"/>
 {% endblock %}
 {% block body %}
+    {% if pagination %}
 {% include  "CatalogBundle:Content:showRandomProductList.html.twig" with {'pagination':pagination} %}
+{% else %}
+        <h2>
+            В этой категории товаров пока нет
+        </h2>
+{% endif %}
 {% endblock %}
 
 
