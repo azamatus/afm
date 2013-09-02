@@ -66,11 +66,12 @@ class GoodsAdmin extends Admin
         $listmapper
             ->addIdentifier('id', null, array('label' => 'ID'))
             ->addIdentifier('name', null, array('label' => 'Название'))
-            ->add('catalog', 'sonata_type_model', array('editable' => true,'label' => 'Подкатегория'))
+            ->add('catalog', 'sonata_type_model', array('editable' => false,'label' => 'Подкатегория'))
             ->add('price', 'decimal', array('editable' => true,'label' => 'Цена','template'=>'CatalogBundle:Admin:list_price.html.twig'))
             ->add('active', 'boolean', array('editable' => true,'label' => 'Активен'))
             ->add('amount', null, array('editable' => true,'label' => 'Количество','template'=>'CatalogBundle:Admin:list_price.html.twig'))
-			->add('last_update','date',array('label'=>'Последнее обновление'));
+			->add('last_update','date',array('editable' => true,'label'=>'Последнее обновление'))
+            ->add('imagePath', 'sonata_type_model_list', array('editable' => true,'label' => 'Галерея'));
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -79,7 +80,9 @@ class GoodsAdmin extends Admin
             ->add('name', null, array('label' => 'Название'))
             ->add('catalog', null, array('label' => 'Подкатегория'), null, array('expanded' => false,'multiple'=>true))
             ->add('price',null,array('label'=>'Цена'))
-			->add('last_update',null,array('label'=>'Последнее обновление'));
+			->add('last_update','doctrine_orm_date_range',array('label'=>'Последнее обновление'))
+            ->add('imagePath', null, array('label' => 'Галерея'), null, array('expanded' => false, 'empty_value' => ""))
+        ;
     }
 
 

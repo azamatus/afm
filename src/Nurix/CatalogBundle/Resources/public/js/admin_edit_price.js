@@ -10,7 +10,7 @@ $(function () {
         jQuery('.sonata-int-edit-inline').live('click', function (event) {
             event.preventDefault();
             var subject = jQuery(this);
-            value = subject.parent().parent().find(".admin_edit_price_input").val();
+            value = subject.parents(".admin_edit_price").find(".admin_edit_price_input").val();
             jQuery.ajax({
                 url:subject.attr('href'),
                 data:{"value":value},
@@ -35,6 +35,12 @@ $(function () {
             var subject = jQuery(this);
             subject.hide();
             subject.parent().children(".admin_edit_price").show();
+        });
+
+        jQuery('.sonata-int-cancel-inline').live('click', function (event) {
+            var subject = jQuery(this).parents(".admin_edit_price");
+            subject.hide();
+            subject.parent().children(".admin_price").show();
         });
     }
 );

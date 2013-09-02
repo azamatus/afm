@@ -36,7 +36,7 @@ class Post extends BasePost
     /**
      * @var integer $views
      */
-    protected $views;
+    protected $views = 0;
 
     /**
      * Get id
