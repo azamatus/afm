@@ -3,7 +3,7 @@
     {{ parent() }} : Результаты поиска по запросу "{{ searchText }}"
 {% endblock %}
 {% block body %}
-    {% render "CatalogBundle:Search:index" with {'searchText':searchText} %}
+    {% render controller("CatalogBundle:Search:index", {'searchText':searchText}) %}
     <div class="clearbox"></div>
     {#{% render  "ArticleBundle:Search:index" with {'searchText':searchText}%}#}
 {% endblock %}

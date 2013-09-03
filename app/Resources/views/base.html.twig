@@ -86,7 +86,7 @@
                 {{ knp_menu_render('main',{template : '::main_menu.html.twig'}) }}
             {% endblock %}
             <div class="search">
-                {% render 'NurixBundle:Search:ShowForm' %}
+                {% render controller('NurixBundle:Search:ShowForm') %}
             </div>
             <div class="vhod_div">
                 {% if app.user and is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -162,7 +162,7 @@
                 <span class="gray_color f16">7 дней в неделю</span>
             </div>
             <div class="korzina" id="bin_widget">
-                {% render 'CatalogBundle:Bin:mainBin' %}
+                {% render controller('CatalogBundle:Bin:mainBin') %}
             </div>
         </div>
         <div class="clearbox"></div>

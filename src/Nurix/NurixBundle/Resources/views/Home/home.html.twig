@@ -6,13 +6,13 @@
 {% endblock %}
 
 {% block body %}
-    {% render "CatalogBundle:Content:showSliderProductList" %}
+    {% render controller("CatalogBundle:Content:showSliderProductList") %}
     <div class="clearbox"></div>
-    {% render  "CatalogBundle:Content:showRandomProductList" %}
+    {% render controller("CatalogBundle:Content:showRandomProductList") %}
 {% endblock %}
 
 {% block slider %}
-     {% render "NurixSliderBundle:Slider:getSlider" %}
+    {% render controller("NurixSliderBundle:Slider:getSlider") %}
 {% endblock %}
 
 {% block javascripts %}
