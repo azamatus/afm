@@ -20,11 +20,12 @@ class ExchangeRepository  extends  EntityRepository{
             $em = $this->getEntityManager();
             $repository =$em -> getRepository('CatalogBundle:Exchange');
             $query = $repository ->createQueryBuilder('p')
-                ->select('p.exchangeRate')
+                ->select('p')
                 ->innerJoin("CatalogBundle:ExchangeHelper",'c','WITH','p.currency = c.id')
                 ->where('c.currency = :v')
                 ->setParameter('v', $exchange)
-                ->orderBy('p.date','ASC')
+                ->orderBy('p.date','DESC')
+                ->setMaxResults(1)
                 ->getQuery();
 
             $rate = $query -> getOneOrNullResult();

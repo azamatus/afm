@@ -35,6 +35,7 @@ class ExchangeExtension extends \Twig_Extension
         {
             $price = number_format($number, $decimals, $decPoint,'');
             $price = '$'.'<span class="value">'.$price.'</span>';
+
         }
         else
         {
@@ -42,20 +43,20 @@ class ExchangeExtension extends \Twig_Extension
             $repository = $this -> doctrine ->getRepository("CatalogBundle:Exchange");
             $exchange_rate = $repository -> getRate($exchange);
 
-            $repository_currency = $this -> doctrine -> getRepository("CatalogBundle:ExchangeHelper");
-            $currency_name = $repository_currency -> getCurrencyName($exchange);
-
-            foreach($currency_name as $current_currency_name)
+            if (count($exchange_rate)>0)
             {
-                $current_name = $current_currency_name;
-            }
+                $currency_name = $exchange_rate->getCurrency()->getCurrencyName($exchange);
 
-            foreach($exchange_rate as $current_currency){
+                foreach($exchange_rate as $current_currency){
+
                     $price = number_format($number*$current_currency, $decimals, $decPoint,'');
-                    $price = '<span class="value">'.$price.' '.$current_name.'</span>';
-            }
-        }
+                    $price = '<span class="value">'.$price.' '.$currency_name.'</span>';
+                    }
+                }
 
+            else throw new \Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('Не правильная валюта!'.$exchange);
+
+        }
         return $price;
     }
 
