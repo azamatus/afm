@@ -66,10 +66,10 @@ class GoodsAdmin extends Admin
         $listmapper
             ->addIdentifier('id', null, array('label' => 'ID'))
             ->addIdentifier('name', null, array('label' => 'Название'))
-            ->add('catalog', 'sonata_type_model', array('editable' => false,'label' => 'Подкатегория'))
-            ->add('price', 'decimal', array('editable' => true,'label' => 'Цена','template'=>'CatalogBundle:Admin:list_price.html.twig'))
+            ->add('catalog', 'sonata_type_model', array('editable' => true,'label' => 'Подкатегория'))
+            ->add('price', 'decimal', array('editable' => true,'label' => 'Цена','template'=>'CatalogBundle:Admin:edit_integer.html.twig'))
             ->add('active', 'boolean', array('editable' => true,'label' => 'Активен'))
-            ->add('amount', null, array('editable' => true,'label' => 'Количество','template'=>'CatalogBundle:Admin:list_price.html.twig'))
+            ->add('amount', null, array('editable' => true,'label' => 'Количество','template'=>'CatalogBundle:Admin:edit_integer.html.twig'))
 			->add('last_update','date',array('editable' => true,'label'=>'Последнее обновление'))
             ->add('imagePath', 'sonata_type_model_list', array('editable' => true,'label' => 'Галерея'));
     }
