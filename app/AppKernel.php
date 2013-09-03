@@ -53,6 +53,7 @@ class AppKernel extends Kernel
             new Nurix\PageBundle\NurixPageBundle(),
             new Nurix\SliderBundle\NurixSliderBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new CoopTilleuls\Bundle\CKEditorSonataMediaBundle\CoopTilleulsCKEditorSonataMediaBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
