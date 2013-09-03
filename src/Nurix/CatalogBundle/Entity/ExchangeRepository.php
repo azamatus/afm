@@ -27,23 +27,7 @@ class ExchangeRepository  extends  EntityRepository{
                 ->orderBy('p.date','DESC')
                 ->setMaxResults(1)
                 ->getQuery();
-
             $rate = $query -> getOneOrNullResult();
             return $rate;
-    }
-
-    public function getCurrencyName($exchange){
-
-        $em = $this->getEntityManager();
-        $repository =$em -> getRepository('CatalogBundle:ExchangeHelper');
-        $query = $repository ->createQueryBuilder('n')
-            ->select('n.currencyName')
-            ->where('n.currency = :e')
-            ->setParameter('e', $exchange)
-            ->getQuery();
-
-        $currencyName = $query -> getOneOrNullResult();
-
-        return $currencyName;
     }
 }

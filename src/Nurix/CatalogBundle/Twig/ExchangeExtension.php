@@ -42,19 +42,15 @@ class ExchangeExtension extends \Twig_Extension
             // TODO Надо исправить, чтобы брать из базы, теперь берет из базы
             $repository = $this -> doctrine ->getRepository("CatalogBundle:Exchange");
             $exchange_rate = $repository -> getRate($exchange);
-
-            if (count($exchange_rate)>0)
-            {
-                $currency_name = $exchange_rate->getCurrency()->getCurrencyName($exchange);
-
-                foreach($exchange_rate as $current_currency){
-
-                    $price = number_format($number*$current_currency, $decimals, $decPoint,'');
+			//var_dump("test");die;
+			if ($exchange_rate)
+				{
+                	$currency_name = $exchange_rate->getCurrency()->getCurrencyName();
+                    $price = number_format($number*$exchange_rate->getExchangeRate(), $decimals, $decPoint,'');
                     $price = '<span class="value">'.$price.' '.$currency_name.'</span>';
-                    }
-                }
-
-            else throw new \Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('Не правильная валюта!'.$exchange);
+				}
+            else
+				throw new \Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('Не правильная валюта! '.$exchange);
 
         }
         return $price;
