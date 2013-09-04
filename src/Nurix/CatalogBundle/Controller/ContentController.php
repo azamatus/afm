@@ -55,6 +55,7 @@ class ContentController extends Controller
 
     public function getCatalogAction($cid)
     {
+        $catalog=null;
         /** @var $goodsRepository Entity\GoodsRepository */
         $goodsRepository = $this->getDoctrine()
             ->getRepository("CatalogBundle:Goods");
@@ -65,10 +66,14 @@ class ContentController extends Controller
         if (!$goodsRepository||!$catalogRepository){
             throw new \Exception("Ошибка");
         }
-        $catalog = $catalogRepository->find($cid);
 
-        if (!$catalog||!$catalog->getActive())
-            throw $this->createNotFoundException('Page not found 404');
+        if ($cid)
+        {
+            $catalog = $catalogRepository->find($cid);
+
+            if (!$catalog||!$catalog->getActive())
+                throw $this->createNotFoundException('Page not found 404');
+        }
 
         $paginate = $goodsRepository->getGoods($cid);
 
