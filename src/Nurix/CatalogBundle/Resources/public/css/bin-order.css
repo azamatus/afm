@@ -3,7 +3,7 @@ form#order-form label {
     float: left;
     width: 150px;
 }
-form#order-form input[type="text"] {
+form#order-form input[type="text"], form#order-form input[type="email"] {
     border: 1px solid #C4C4C4;
     border-radius: 5px 5px 5px 5px;
     box-shadow: 0 2px 4px #E1E1E1 inset;
