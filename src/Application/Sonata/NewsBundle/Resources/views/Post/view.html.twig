@@ -3,6 +3,10 @@
     {{ parent() }} : Новости - {{ post.title }}
 {% endblock %}
 
+{% block meta_description %}
+    {{ post.abstract|raw  }}
+{% endblock %}
+
 {% block stylesheets %}
 {{ parent() }}
 <link rel="stylesheet" type="text/css" href="{{ asset('bundles/applicationsonatanews/css/s-article.css') }}">
