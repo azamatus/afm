@@ -45,8 +45,8 @@
                             </td>
                             <td>
                                 <div class="bin_itemPrice" id="price_{{ good.id }}">
-                                    <span class="Som"><span class="value">{{ good.price * 48 }}</span> сом</span>
-                                    <span class="Dollar">$<span class="value">{{ good.price }}</span></span>
+                                    <span class="Som">{{ good.price|price('KGS') }}</span>
+                                    <span class="Dollar">{{ good.price|price('USD') }}</span>
                                 </div>
                             </td>
                             <td>
