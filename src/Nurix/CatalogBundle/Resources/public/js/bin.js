@@ -58,8 +58,8 @@ $(function () {
             Tdol = goodTotal.find('.Dollar > .value');
         var som = price.find('.Som > .value').html(),
             dol = price.find('.Dollar > .value').html();
-        som = parseFloat(som.replace(/[^\d]/gi, ''));
-        dol = parseFloat(dol.replace(/[^\d]/gi, ''));
+        som = parseFloat(som.replace(/\d+(\.\d+)?/gi, ''));
+        dol = parseFloat(dol.replace(/\d+(\.\d+)?/gi, ''));
 
         Tsom.html(som * amount);
         Tdol.html(dol * amount);
