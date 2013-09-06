@@ -52,34 +52,6 @@ class PostController extends BaseController
     }
 
     /**
-     * @param array $criteria
-     *
-     * @return Response
-     */
-    public function renderArchive(array $criteria = array(), array $parameters = array())
-    {
-        $pager = $this->getPostManager()->getPager(
-            $criteria,
-            $this->getRequest()->get('page', 1)
-        );
-        $pager->setMaxPageLinks(10);
-
-        $parameters = array_merge(array(
-            'pager' => $pager,
-            'blog'  => $this->get('sonata.news.blog'),
-            'tag'   => false
-        ), $parameters);
-
-        $response = $this->render(sprintf('SonataNewsBundle:Post:archive.%s.twig', $this->getRequest()->getRequestFormat()), $parameters);
-
-        if ('rss' === $this->getRequest()->getRequestFormat()) {
-            $response->headers->set('Content-Type', 'application/rss+xml');
-        }
-
-        return $response;
-    }
-
-    /**
      * @return Response
      */
     public function archiveAction()
