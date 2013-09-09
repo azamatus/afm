@@ -47,6 +47,18 @@
                     <span class="sonata-blog-post-lbl btm_viewed">Просмотров {{ post.views }}</span>
                 </div>
                 <div class="clearbox"></div>
+                {# TODO: Перевести в отдельный бандл#}
+                <script type="text/javascript">(function() {
+                        if (window.pluso) if (typeof window.pluso.start == "function") return;
+                        var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
+                        s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
+                        s.src = ('https:' == window.location.protocol ? 'https' : 'http')  + '://share.pluso.ru/pluso-like.js';
+                        var h=d[g]('head')[0] || d[g]('body')[0];
+                        h.appendChild(s);
+                    })()
+                </script>
+                <div class="pluso" data-background="none;" data-options="medium,square,line,horizontal,nocounter,sepcounter=1,theme=14" data-services="facebook,twitter,google,vkontakte,odnoklassniki,moimir,email"></div>
+                <div class="clearbox"></div>
             </div>
 
             <div class="clearbox"></div>
