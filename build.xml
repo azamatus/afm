@@ -48,4 +48,9 @@
         <!-- Delete the ${cache} directory trees -->
         <mkdir dir="${uploaddir}"/>
     </target>
+    <target name="copyUploadDir" depends="makedir">
+        <copy todir="${copydir}/${version}">
+            <fileset dir="${uploaddir}"/>
+        </copy>
+    </target>
 </project>
