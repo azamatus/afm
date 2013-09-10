@@ -24,7 +24,7 @@ class ContentController extends Controller
             $this->get('request')->query->get('page',1),
                 $this->limitPerPage);
 
-        $pagination->setUsedRoute($this->getRequest()->get('_route'));
+        $pagination->setUsedRoute('nurix_catalog_get_rndcatalog');
 
         if ($this->getRequest()->isXmlHttpRequest()){
             return $this->render('CatalogBundle:Content:getAjaxRandomProductList.html.twig', array( 'pagination' => $pagination));
