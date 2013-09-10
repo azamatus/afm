@@ -8,6 +8,10 @@ nurix_catalog_get_rndcatalog:
     pattern: /goods/rnd-catalog/
     defaults: { _controller: CatalogBundle:Content:showRandomProductList }
 
+nurix_catalog_get_available:
+    pattern: /goods/available/
+    defaults: { _controller: CatalogBundle:Content:showAvailableProductList }
+
 nurix_goods_get_info:
     pattern: /catalog/product/{id}/
     defaults: { _controller: CatalogBundle:Product:getInfo}

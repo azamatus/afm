@@ -11,10 +11,11 @@ class ContentController extends Controller
     var $limitPerPage = 12;
     public function showRandomProductListAction()
     {
+        /** @var $repository Entity\GoodsRepository */
         $repository = $this->getDoctrine()
             ->getRepository("CatalogBundle:Goods");
 
-        $paginate = $repository->paginateGoods();
+        $paginate = $repository->getMainGoods();
 
         $paginator = $this->get('knp_paginator');
 
@@ -23,12 +24,37 @@ class ContentController extends Controller
             $this->get('request')->query->get('page',1),
                 $this->limitPerPage);
 
-        $pagination->setUsedRoute('nurix_catalog_get_rndcatalog');
+        $pagination->setUsedRoute($this->getRequest()->get('_route'));
 
         if ($this->getRequest()->isXmlHttpRequest()){
             return $this->render('CatalogBundle:Content:getAjaxRandomProductList.html.twig', array( 'pagination' => $pagination));
         }else{
             return $this->render('CatalogBundle:Content:showRandomProductList.html.twig', array( 'pagination' => $pagination));
+        }
+
+    }
+
+    public function showAvailableProductListAction()
+    {
+        /** @var $repository Entity\GoodsRepository */
+        $repository = $this->getDoctrine()
+            ->getRepository("CatalogBundle:Goods");
+
+        $paginate = $repository->getAvailableGoods();
+
+        $paginator = $this->get('knp_paginator');
+
+        $pagination = $paginator
+            ->paginate($paginate,
+                $this->get('request')->query->get('page',1),
+                $this->limitPerPage);
+
+        $pagination->setUsedRoute($this->getRequest()->get('_route'));
+
+        if ($this->getRequest()->isXmlHttpRequest()){
+            return $this->render('CatalogBundle:Content:getAjaxRandomProductList.html.twig', array( 'pagination' => $pagination));
+        }else{
+            return $this->render('CatalogBundle:Content:showAvailableProductList.html.twig', array( 'pagination' => $pagination));
         }
 
     }
