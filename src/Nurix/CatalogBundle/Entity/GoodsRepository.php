@@ -112,7 +112,7 @@ class GoodsRepository extends EntityRepository
     {
         $query = $this->createQueryBuilder('q')
             ->where('q.active = 1')
-            ->andWhere('q.count > 0')
+            ->andWhere('q.amount > 0')
 			->orderBy('q.name', 'ASC');
 
         return $query;
