@@ -1,4 +1,10 @@
 {% extends '::base.html.twig' %}
+
+{% if product.imagePath|isHaveImage %}
+    {% block facebook_image_url %}
+        {% path product.imagePath.GalleryHasMedias, 'goods_big' %}
+    {% endblock %}
+{% endif %}
 {% block title %}
     {{ parent() }} : {{ product.name }}
 {% endblock %}

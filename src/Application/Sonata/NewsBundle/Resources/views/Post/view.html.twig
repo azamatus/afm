@@ -7,6 +7,10 @@
     {{ post.abstract|raw  }}
 {% endblock %}
 
+{% block facebook_image_url %}
+    {% path post.image, 'small' %}
+{% endblock %}
+
 {% block stylesheets %}
 {{ parent() }}
 <link rel="stylesheet" type="text/css" href="{{ asset('bundles/applicationsonatanews/css/s-article.css') }}">
