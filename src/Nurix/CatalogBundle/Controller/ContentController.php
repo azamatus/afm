@@ -29,7 +29,7 @@ class ContentController extends Controller
         if ($this->getRequest()->isXmlHttpRequest()){
             return $this->render('CatalogBundle:Content:getAjaxRandomProductList.html.twig', array( 'pagination' => $pagination));
         }else{
-            return $this->render('CatalogBundle:Content:showRandomProductList.html.twig', array( 'pagination' => $pagination));
+            return $this->render('CatalogBundle:Content:showRandomProductList.html.twig', array( 'pagination' => $pagination, 'title' => "Весь каталог"));
         }
 
     }
@@ -54,7 +54,7 @@ class ContentController extends Controller
         if ($this->getRequest()->isXmlHttpRequest()){
             return $this->render('CatalogBundle:Content:getAjaxRandomProductList.html.twig', array( 'pagination' => $pagination));
         }else{
-            return $this->render('CatalogBundle:Content:showAvailableProductList.html.twig', array( 'pagination' => $pagination));
+            return $this->render('CatalogBundle:Content:showRandomProductList.html.twig', array( 'pagination' => $pagination, 'title' => "В наличии",'subtitle' => "Уточните наличие товара у менеджера"));
         }
 
     }
@@ -115,7 +115,7 @@ class ContentController extends Controller
         if ($this->getRequest()->isXmlHttpRequest()) {
             return $this->render('CatalogBundle:Content:getAjaxRandomProductList.html.twig', array('pagination' => $pagination));
         } else {
-            return $this->render('CatalogBundle:Content:getcatalog.html.twig', array('pagination' => $pagination, 'catalog' => $catalog));
+            return $this->render('CatalogBundle:Content:getcatalog.html.twig', array('pagination' => $pagination, 'catalog' => $catalog, 'title' => $catalog->__toString()));
         }
     }
 }
