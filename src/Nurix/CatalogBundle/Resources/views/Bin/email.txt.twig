@@ -3,7 +3,7 @@
 Телефон: {{ binclient.phone }}<br/>
 Email: {{ binclient.email }}<br/>
 Адрес: {{ binclient.address }}<br/>
-Дата доставки: {{ binclient.deliveryTime }}<br/>
+Дата доставки: {{ binclient.deliveryTime|date('Y-m-d') }}<br/>
 <table>
     <tr>
         <th>Товар:</th>
