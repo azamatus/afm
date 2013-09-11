@@ -212,7 +212,7 @@ class BinController extends Controller
             ->setFrom('nurixkg@gmail.com')
             ->setTo('nurixkg@gmail.com')
             ->setBody(
-                $this->renderView(
+                $this->get('templating')->render(
                     'CatalogBundle:Bin:email.txt.twig',
                     array('binclient' => $binClients,'orders' => $orders)
                 )
