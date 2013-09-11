@@ -115,7 +115,7 @@ class ContentController extends Controller
         if ($this->getRequest()->isXmlHttpRequest()) {
             return $this->render('CatalogBundle:Content:getAjaxRandomProductList.html.twig', array('pagination' => $pagination));
         } else {
-            return $this->render('CatalogBundle:Content:getcatalog.html.twig', array('pagination' => $pagination, 'catalog' => $catalog, 'title' => $catalog->__toString()));
+            return $this->render('CatalogBundle:Content:getcatalog.html.twig', array('pagination' => $pagination, 'catalog' => $catalog, 'title' => $catalog!=null?$catalog->__toString():"Весь каталог"));
         }
     }
 }
