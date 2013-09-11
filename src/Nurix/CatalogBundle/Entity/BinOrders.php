@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * BinOrders
  *
  * @ORM\Table(name="bin_orders")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Nurix\CatalogBundle\Entity\BinOrdersRepository")
  */
 class BinOrders
 {
@@ -159,3 +159,4 @@ class BinOrders
         return $this->good;
     }
 }
+
