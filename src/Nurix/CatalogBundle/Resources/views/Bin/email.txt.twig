@@ -11,6 +11,7 @@ Email: {{ binclient.email }}<br/>
         <th>Кол-во:</th>
         <th>Итого:</th>
     </tr>
+    {% set totalPrice = 0%}
     {% for order in orders %}
         {% set good = order.good %}
         {% set totalPrice = totalPrice + good.price * order.amount %}
