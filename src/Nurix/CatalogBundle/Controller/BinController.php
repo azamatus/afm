@@ -217,6 +217,7 @@ class BinController extends Controller
                     array('binclient' => $binClients,'orders' => $orders)
                 )
             )
+            ->setContentType("text/html")
         ;
         $this->get('mailer')->send($message);
     }
