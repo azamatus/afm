@@ -768,12 +768,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/egeloen/IvoryCKEditorBundle.git",
-                "reference": "9c1f32338bf5d2562a5a9e09e9504e2c12edd322"
+                "reference": "6dacb5bf003deea42e681eabd2ee41eb0dfe2908"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egeloen/IvoryCKEditorBundle/zipball/9c1f32338bf5d2562a5a9e09e9504e2c12edd322",
-                "reference": "9c1f32338bf5d2562a5a9e09e9504e2c12edd322",
+                "url": "https://api.github.com/repos/egeloen/IvoryCKEditorBundle/zipball/6dacb5bf003deea42e681eabd2ee41eb0dfe2908",
+                "reference": "6dacb5bf003deea42e681eabd2ee41eb0dfe2908",
                 "shasum": ""
             },
             "require": {
@@ -814,7 +814,7 @@
             "keywords": [
                 "CKEditor"
             ],
-            "time": "2013-09-03 21:42:30"
+            "time": "2013-09-12 18:42:30"
         },
         {
             "name": "friendsofsymfony/jsrouting-bundle",
