@@ -505,4 +505,9 @@ class Goods
     {
         return $this->yandex_url;
     }
+
+    public function __toString()
+    {
+        return $this->getName() ?: '';
+    }
 }
