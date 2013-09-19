@@ -29,7 +29,7 @@ class ContentController extends Controller
         if ($this->getRequest()->isXmlHttpRequest()){
             return $this->render('CatalogBundle:Content:getAjaxRandomProductList.html.twig', array( 'pagination' => $pagination));
         }else{
-            return $this->render('CatalogBundle:Content:showRandomProductList.html.twig', array( 'pagination' => $pagination, 'title' => "Весь каталог",'subtitle' => ""));
+            return $this->render('CatalogBundle:Content:showRandomProductList.html.twig', array( 'pagination' => $pagination, 'title' => "Весь каталог"));
         }
 
     }
@@ -68,16 +68,6 @@ class ContentController extends Controller
 		else
 			return new Response();
     }
-
-
-    public function catalogAction()
-    {
-        $catalogs = $this->getDoctrine()->getManager()
-            ->getRepository('CatalogBundle:Catalog')->getAll(array('active'=>1, 'parent'=>1));
-
-        return $this->render('CatalogBundle:Content:catalog.html.twig',array('catalogs'=>$catalogs));
-    }
-
 
     public function getCatalogAction($cid)
     {

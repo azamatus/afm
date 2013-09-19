@@ -12,6 +12,7 @@
 namespace Application\Sonata\NewsBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
+use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\NewsBundle\Admin\TagAdmin as BaseAdmin;
 
@@ -20,13 +21,25 @@ class TagAdmin extends BaseAdmin
     /**
      * {@inheritdoc}
      */
-    protected function configureFormFields(FormMapper $formMapper)
+    protected function configureListFields(ListMapper $listMapper)
     {
-        $formMapper
-            ->add('name')
-            ->add('slug')
-            ->add('enabled', null, array('required' => false))
+        $listMapper
+            ->addIdentifier('name')
+            ->add('slug', null, array('editable' => true,'template'=>'StrokitCoreBundle:Admin:edit_integer.html.twig'))
+            ->add('enabled', null, array('editable' => true))
         ;
+    }
+
+    public function getTemplate($name)
+    {
+        switch ($name) {
+            case 'list':
+                return 'StrokitCoreBundle:Admin:base_layout.html.twig';
+                break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
     }
 
     public function isAclEnabled()

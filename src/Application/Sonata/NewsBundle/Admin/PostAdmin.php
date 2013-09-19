@@ -95,6 +95,7 @@ class PostAdmin extends Admin
             ->addIdentifier('title')
             ->add('author')
             ->add('category')
+            ->add('slug', null, array('editable' => true,'template'=>'StrokitCoreBundle:Admin:edit_integer.html.twig'))
             ->add('enabled', null, array('editable' => true))
             ->add('local', null, array('editable' => true))
             ->add('tags')
@@ -131,6 +132,18 @@ class PostAdmin extends Admin
                 'field_type' => 'checkbox'
             ))
         ;
+    }
+
+    public function getTemplate($name)
+    {
+        switch ($name) {
+            case 'list':
+                return 'StrokitCoreBundle:Admin:base_layout.html.twig';
+                break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
     }
 
     /**

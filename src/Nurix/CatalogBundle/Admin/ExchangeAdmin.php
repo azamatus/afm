@@ -41,7 +41,7 @@ class ExchangeAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('currency',null, array('label'=>'Валюта'))
-            ->add('exchangeRate',null, array('editable'=>true, 'label'=>'Курсы', 'template'=>'CatalogBundle:Admin:edit_integer.html.twig'))
+            ->add('exchangeRate',null, array('editable'=>true, 'label'=>'Курсы', 'template'=>'StrokitCoreBundle:Admin:edit_integer.html.twig'))
             ->add('date')
         ;
     }
@@ -50,7 +50,7 @@ class ExchangeAdmin extends Admin
     {
         switch ($name) {
             case 'list':
-                return 'CatalogBundle:Admin:base_layout.html.twig';
+                return 'StrokitCoreBundle:Admin:base_layout.html.twig';
                 break;
             default:
                 return parent::getTemplate($name);
