@@ -1,6 +1,7 @@
 {% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
 
-{% block field%}
+{% block field %}
+
     {% if field_description.options.editable is defined and field_description.options.editable and admin.isGranted('EDIT', object) %}
         {% if value is empty %}
             {% set value = 0 %}

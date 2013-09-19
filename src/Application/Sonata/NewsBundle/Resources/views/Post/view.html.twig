@@ -3,6 +3,14 @@
     {{ parent() }} : Новости - {{ post.title }}
 {% endblock %}
 
+{% block meta_description %}
+    {{ post.abstract|raw  }}
+{% endblock %}
+
+{% block facebook_image_url %}
+    {% path post.image, 'small' %}
+{% endblock %}
+
 {% block stylesheets %}
 {{ parent() }}
 <link rel="stylesheet" type="text/css" href="{{ asset('bundles/applicationsonatanews/css/s-article.css') }}">
@@ -52,7 +60,18 @@
             <span class="sonata-blog-post-lbl btm_viewed">Просмотров {{ post.views }}</span>
         </div>
         <div class="clearbox"></div>
-
+        {# TODO: Перевести в отдельный бандл#}
+        <script type="text/javascript">(function() {
+                if (window.pluso)if (typeof window.pluso.start == "function") return;
+                if (window.ifpluso==undefined) { window.ifpluso = 1;
+                    var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
+                    s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
+                    s.src = ('https:' == window.location.protocol ? 'https' : 'http')  + '://share.pluso.ru/pluso-like.js';
+                    var h=d[g]('body')[0];
+                    h.appendChild(s);
+                }})();</script>
+        <div class="pluso" data-background="none;" data-options="medium,square,line,horizontal,nocounter,sepcounter=1,theme=14" data-services="facebook,twitter,google,vkontakte,odnoklassniki,moimir,email" data-user="1122871114"></div>
+        <div class="clearbox"></div>
     </div>
 
     {% render controller('SonataNewsBundle:Post:comments', {'postId': post.id}) %}

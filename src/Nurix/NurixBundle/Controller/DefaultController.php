@@ -15,10 +15,10 @@ class DefaultController extends Controller
                 $extension = $file->guessExtension();
             if(in_array($extension,array('jpg','jpeg','png'))){
                     $baseurl = $request->getBasePath();
-                    $dir = $this->get('kernel')->getRootDir() . '/../web/upload/ckimages';
+                    $dir = $this->get('kernel')->getRootDir() . '/../web/uploads/ckimages';
                     $filename = sha1(uniqid(mt_rand(), true));
                     $filename = $filename . '.' . $extension;
-                    $fileurl = $baseurl."/upload/ckimages/".$filename;
+                    $fileurl = $baseurl."/uploads/ckimages/".$filename;
                     $file->move($dir, $filename);
 
                     $result = $this->GetCKEditorResult(0,$request->query->get('CKEditorFuncNum'),$fileurl,$filename);

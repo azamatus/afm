@@ -7,8 +7,9 @@
 {% endblock %}
 <div>
     <div class="clearbox"></div>
-    <h1 class="left size24px">{{ catalog is defined ? catalog : "Весь каталог" }}</h1>
-
+    <h1 class="left size24px">{{ title }}</h1>
+    <div class="clearbox"></div>
+    <h4>{{ subtitle }}</h4>
     <div id="all-catalog">
         {% if pagination.getTotalItemCount > 0 %}
             {% include  "CatalogBundle:Content:getAjaxRandomProductList.html.twig" with {'pagination':pagination} %}

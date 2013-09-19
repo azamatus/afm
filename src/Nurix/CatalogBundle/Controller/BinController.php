@@ -185,6 +185,7 @@ class BinController extends Controller
                     }
                     $em->flush();
                 }
+                $this->sendEmail($binClients);
                 $this->ClearCookies($goodsIds);
                 $this->get('session')->setFlash('notice', 'Ваш заказ принят');
             }
@@ -200,5 +201,24 @@ class BinController extends Controller
         foreach ($goodsIds as $key=>$value)
             $response->headers->clearCookie("cookieGoods[$key]");
         $response->send();
+    }
+
+    private function sendEmail(BinClients $binClients)
+    {
+        $repository = $this->getDoctrine()->getRepository("CatalogBundle:BinOrders");
+        $orders=$repository->GetClientOrders($binClients->getId());
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Новый заказ')
+            ->setFrom('nurixkg@gmail.com')
+            ->setTo('nurixkg@gmail.com')
+            ->setBody(
+                $this->get('templating')->render(
+                    'CatalogBundle:Bin:email.txt.twig',
+                    array('binclient' => $binClients,'orders' => $orders)
+                )
+            )
+            ->setContentType("text/html")
+        ;
+        $this->get('mailer')->send($message);
     }
 }

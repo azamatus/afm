@@ -6,7 +6,7 @@
     {% if count %}
 
         <div class="otstup">{{ count|count('товар','товара','товаров') }}</div>
-        <div class="otstup">на сумму {{ sum|price('SOM') }}</div>
+        <div class="otstup">на сумму {{ sum|price('KGS') }}</div>
 
     {% else %}
         <h5>Корзина пуста</h5>

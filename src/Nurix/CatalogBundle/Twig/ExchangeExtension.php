@@ -8,8 +8,18 @@
  */
 namespace Nurix\CatalogBundle\Twig;
 
+use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\ORM\EntityRepository;
+
 class ExchangeExtension extends \Twig_Extension
 {
+    protected $doctrine;
+
+    public function __construct(RegistryInterface $doctrine)
+    {
+        $this->doctrine = $doctrine;
+    }
+
     public function getFilters()
     {
         return array(
@@ -25,16 +35,22 @@ class ExchangeExtension extends \Twig_Extension
         {
             $price = number_format($number, $decimals, $decPoint,'');
             $price = '$'.'<span class="value">'.$price.'</span>';
-        }
-        elseif ($exchange == 'SOM')
-        {
-            // TODO Надо исправить, чтобы брать из базы
-            $price = number_format($number*48.55, $decimals, $decPoint,'');
-            $price = '<span class="value">'.$price.'</span>'.' сом';
+
         }
         else
         {
-            throw new \Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('Не правильная валюта!'.$exchange);
+            // TODO Надо исправить, чтобы брать из базы, теперь берет из базы
+            $repository = $this -> doctrine ->getRepository("CatalogBundle:Exchange");
+            $exchange_rate = $repository -> getRate($exchange);
+			//var_dump("test");die;
+			if ($exchange_rate)
+				{
+                	$currency_name = $exchange_rate->getCurrency()->getCurrencyName();
+                    $price = number_format($number*$exchange_rate->getExchangeRate(), $decimals, $decPoint,'');
+                    $price = '<span class="value">'.$price.' '.$currency_name.'</span>';
+				}
+            else
+				throw new \Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('Не правильная валюта! '.$exchange);
 
         }
         return $price;

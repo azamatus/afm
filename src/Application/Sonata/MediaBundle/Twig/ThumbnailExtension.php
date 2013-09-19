@@ -25,6 +25,8 @@ class ThumbnailExtension extends MediaExtension
                 'is_safe' => array('html')
             )),
             'isHaveImage' => new \Twig_Filter_Method($this, 'isGalleryWithImageFilter',array()),
+
+            'path' => new \Twig_Filter_Method($this, 'pathFilter',array()),
         );
     }
 
@@ -50,6 +52,23 @@ class ThumbnailExtension extends MediaExtension
         return $this->render($provider->getTemplate('helper_thumbnail'), array(
             'options'  => $options,
         ));
+    }
+    /**
+     * @param Gallery $gallery
+     * @param string $noImagePath
+     * @param string $format
+     * @param array  $options
+     * @return mixed|string
+     */
+    public function pathFilter($gallery,$noImagePath,$format='big')
+    {
+        if ($this->isGalleryWithImageFilter($gallery))
+        {
+            $medias = $gallery->getGalleryHasMedias();
+            return $this->path($medias[0]->getMedia(),$format);
+        }
+
+        return $noImagePath;
     }
     /**
      * @param Gallery $gallery

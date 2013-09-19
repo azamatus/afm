@@ -6,6 +6,7 @@
     <property name="config" location="app/config"/>
     <property name="cache" location="app/cache"/>
     <property name="uploaddir" location="web/uploads"/>
+    <property name="makedir" location="web/uploads"/>
 
     <target name="replace">
         <replace file="${config}/sonata/media.yml" value="/uploads/media">
@@ -40,12 +41,17 @@
     <target name="-check-dir-exists">
         <condition property="dir.exists">
             <not>
-                <available file="${uploaddir}" type="dir"/>
+                <available file="${makedir}" type="dir"/>
             </not>
         </condition>
     </target>
     <target name="makedir"  depends="-check-dir-exists" if="dir.exists" description="make upload dir" >
         <!-- Delete the ${cache} directory trees -->
-        <mkdir dir="${uploaddir}"/>
+        <mkdir dir="${makedir}"/>
+    </target>
+    <target name="copyUploadDir" depends="makedir">
+        <copy todir="${copydir}/${version}">
+            <fileset dir="${uploaddir}"/>
+        </copy>
     </target>
 </project>

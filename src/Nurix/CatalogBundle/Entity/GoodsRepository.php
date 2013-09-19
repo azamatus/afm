@@ -38,7 +38,7 @@ class GoodsRepository extends EntityRepository
 
 	}
 
-	public function paginateGoods()
+	public function getMainGoods()
 	{
 		$query = $this->createQueryBuilder('q')
 			->where('q.active = 1')
@@ -107,4 +107,14 @@ class GoodsRepository extends EntityRepository
 			->set('g.active', 0)
 			->getQuery()->execute();
 	}
+
+    public function getAvailableGoods()
+    {
+        $query = $this->createQueryBuilder('q')
+            ->where('q.active = 1')
+            ->andWhere('q.amount > 0')
+			->orderBy('q.name', 'ASC');
+
+        return $query;
+    }
 }

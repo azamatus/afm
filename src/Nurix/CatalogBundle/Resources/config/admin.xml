@@ -21,5 +21,25 @@
                 <argument>SonataAdminBundle</argument>
             </call>
         </service>
+
+        <service id="sonata.admin.exchange" class="Nurix\CatalogBundle\Admin\ExchangeAdmin">
+            <tag name="sonata.admin" manager_type="orm" group="Валюта" label="Курс"/>
+            <argument />
+            <argument>Nurix\CatalogBundle\Entity\Exchange</argument>
+            <argument>CatalogBundle:Admin</argument>
+            <call method="setTranslationDomain">
+                <argument>SonataAdminBundle</argument>
+            </call>
+        </service>
+
+        <service id="sonata.admin.exchangeHelper" class="Nurix\CatalogBundle\Admin\ExchangeHelperAdmin">
+            <tag name="sonata.admin" manager_type="orm" group="Валюта" label="Валюта"/>
+            <argument />
+            <argument>Nurix\CatalogBundle\Entity\ExchangeHelper</argument>
+            <argument>CatalogBundle:Admin</argument>
+            <call method="setTranslationDomain">
+                <argument>SonataAdminBundle</argument>
+            </call>
+        </service>
     </services>
 </container>

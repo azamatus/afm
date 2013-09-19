@@ -14,6 +14,7 @@
         <title>{{ blog.title }}{%if tag %} : {{ tag.name }}{%endif%}</title>
         <link>{{ blog.link }}</link>
         <description>{{ blog.description }}</description>
+        <language>ru-ru</language>
         {% for post in pager.getResults() %}
              <item>
                   <title>{{ post.title }}</title>

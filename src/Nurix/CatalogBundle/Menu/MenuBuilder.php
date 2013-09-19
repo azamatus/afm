@@ -36,6 +36,8 @@ class MenuBuilder extends ContainerAware
             ->setExtra('currentClass','active');
 
         $this->getCatalogMenu($em, $menu);
+
+        $menu->addChild('available', array('route' => 'nurix_catalog_get_available','label'=>'В наличии'));
         return $menu;
     }
     /**
