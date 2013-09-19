@@ -25,7 +25,7 @@ sonata_media:
                 default:  { width: 560}
     cdn:
         server:
-            path: /uploads/media # http://media.sonata-project.org/
+            path: /nurix/web/uploads/media # http://media.sonata-project.org/
 
     filesystem:
         local:

@@ -27,7 +27,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Nurix\CatalogBundle\CatalogBundle(),
-            new Nurix\StrokitCoreBundle\StrokitCoreBundle(),
+            new Strokit\CoreBundle\StrokitCoreBundle(),
             new Sonata\BlockBundle\SonataBlockBundle(),
             new Sonata\CacheBundle\SonataCacheBundle(),
             new Sonata\jQueryBundle\SonatajQueryBundle(),

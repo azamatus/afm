@@ -1,3 +1,0 @@
-nurix_slider_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: NurixSliderBundle:Default:index }

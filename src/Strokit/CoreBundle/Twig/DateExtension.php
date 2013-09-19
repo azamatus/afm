@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Nurix\NurixBundle\Twig;
+namespace Strokit\CoreBundle\Twig;
 
 class DateExtension extends \Twig_Extension
 {
@@ -48,6 +48,6 @@ class DateExtension extends \Twig_Extension
 
     public function getName()
     {
-        return 'nurix_extension';
+        return 'date_extension';
     }
 }

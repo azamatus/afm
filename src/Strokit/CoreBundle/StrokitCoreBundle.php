@@ -1,6 +1,6 @@
 <?php
 
-namespace Nurix\StrokitCoreBundle;
+namespace Strokit\CoreBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
