@@ -19,17 +19,20 @@
     </target>
 
     <target name="mail" depends="parameters">
+        <replace file="${config}/parameters.yml" value="database_name: nurix_test">
+            <replacetoken>database_name: nurix</replacetoken>
+        </replace>
         <replace file="${config}/parameters.yml" value="mailer_transport:  gmail">
-            <replacetoken>mailer_transport:  smtp</replacetoken>
+            <replacetoken>mailer_transport: smtp</replacetoken>
         </replace>
-        <replace file="${config}/parameters.yml" value="mailer_host:       ~">
-            <replacetoken>mailer_host:       localhost</replacetoken>
+        <replace file="${config}/parameters.yml" value="mailer_host: null">
+            <replacetoken>mailer_host: localhost</replacetoken>
         </replace>
-        <replace file="${config}/parameters.yml" value="mailer_user:       ${mail_login}">
-            <replacetoken>mailer_user:       ~</replacetoken>
+        <replace file="${config}/parameters.yml" value="mailer_user: ${mail_login}">
+            <replacetoken>mailer_user: null</replacetoken>
         </replace>
-        <replace file="${config}/parameters.yml" value="mailer_password:   ${mail_password}">
-            <replacetoken>mailer_password:   ~</replacetoken>
+        <replace file="${config}/parameters.yml" value="mailer_password: ${mail_password}">
+            <replacetoken>mailer_password: null</replacetoken>
         </replace>
     </target>
 
