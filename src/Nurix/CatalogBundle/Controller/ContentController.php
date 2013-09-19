@@ -29,7 +29,7 @@ class ContentController extends Controller
         if ($this->getRequest()->isXmlHttpRequest()){
             return $this->render('CatalogBundle:Content:getAjaxRandomProductList.html.twig', array( 'pagination' => $pagination));
         }else{
-            return $this->render('CatalogBundle:Content:showRandomProductList.html.twig', array( 'pagination' => $pagination, 'title' => "Весь каталог"));
+            return $this->render('CatalogBundle:Content:showRandomProductList.html.twig', array( 'pagination' => $pagination, 'title' => "Весь каталог",'subtitle' => ""));
         }
 
     }
