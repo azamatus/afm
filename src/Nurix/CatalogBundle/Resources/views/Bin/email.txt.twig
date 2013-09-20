@@ -17,15 +17,15 @@ Email: {{ binclient.email }}<br/>
         {% set totalPrice = totalPrice + good.price * order.amount %}
         <tr id="{{ good.id }}">
             <td>
-                <a href="{{ path('nurix_goods_get_info', {'id': good.id} ) }}">
-                    {{ good.imagePath|galleryThumb(asset('bundles/catalog/img/noImage/good_small.jpg'),'goods_big',{'class':'bin_itemPic'}) }}
+                <a href="{{ url('nurix_goods_get_info', {'id': good.id} ) }}">
+                    {{ app.request.uriForPath(good.imagePath|galleryThumb(asset('bundles/catalog/img/noImage/good_small.jpg'),'goods_big',{'class':'bin_itemPic'})) }}
                 </a>
 
                 <div>
-                    <a class="name" href="{{ path('nurix_goods_get_info', {'id': good.id} ) }}">{{ good.name }}</a>
+                    <a class="name" href="{{ url('nurix_goods_get_info', {'id': good.id} ) }}">{{ good.name }}</a>
 
                     <div class="from">{{ good.shortDescription }}</div>
-                    <a href="{{ path('nurix_goods_get_info', {'id': good.id} ) }}" style="color: #ca5f00;">подробная
+                    <a href="{{ url('nurix_goods_get_info', {'id': good.id} ) }}" style="color: #ca5f00;">подробная
                         информация &rarr;</a>
                 </div>
             </td>

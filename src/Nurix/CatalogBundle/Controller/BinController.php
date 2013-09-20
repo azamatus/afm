@@ -207,10 +207,11 @@ class BinController extends Controller
     {
         $repository = $this->getDoctrine()->getRepository("CatalogBundle:BinOrders");
         $orders=$repository->GetClientOrders($binClients->getId());
+        $email = $this->container->getParameter('fos_user.from_email.address');
         $message = \Swift_Message::newInstance()
             ->setSubject('Новый заказ')
-            ->setFrom('nurixkg@gmail.com')
-            ->setTo('nurixkg@gmail.com')
+            ->setFrom($email)
+            ->setTo($email)
             ->setBody(
                 $this->get('templating')->render(
                     'CatalogBundle:Bin:email.txt.twig',
