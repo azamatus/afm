@@ -37,7 +37,7 @@
         <div class="flash-notice">
             {{ flashMessage }}
         </div>
-    {% endfor %}
+    {% else %}
     <form action="{{ path("nurix_bin_order_form") }}" method="post" id="order-form">
         <div id="order-form-fio">
             {{ form_label(form.fio) }}
