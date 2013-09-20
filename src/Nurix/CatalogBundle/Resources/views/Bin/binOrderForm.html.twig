@@ -33,11 +33,11 @@
 {% block body %}
     <h2>Форма оформления заказа</h2>
 
-    {% if app.session.hasFlash('notice') %}
-    <div class="flash-notice">
-        {{ app.session.flash('notice') }}
-    </div>
-    {% else %}
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-notice">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
     <form action="{{ path("nurix_bin_order_form") }}" method="post" id="order-form">
         <div id="order-form-fio">
             {{ form_label(form.fio) }}
