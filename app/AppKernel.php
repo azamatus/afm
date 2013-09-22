@@ -22,15 +22,12 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new JMS\AopBundle\JMSAopBundle(),
-            new JMS\DiExtraBundle\JMSDiExtraBundle($this),
-            new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Nurix\NurixBundle\NurixBundle(),
             new Sonata\AdminBundle\SonataAdminBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Nurix\CatalogBundle\CatalogBundle(),
-            new Nurix\ArticleBundle\ArticleBundle(),
+            new Strokit\CoreBundle\StrokitCoreBundle(),
             new Sonata\BlockBundle\SonataBlockBundle(),
             new Sonata\CacheBundle\SonataCacheBundle(),
             new Sonata\jQueryBundle\SonatajQueryBundle(),
@@ -53,6 +50,7 @@ class AppKernel extends Kernel
             new Nurix\PageBundle\NurixPageBundle(),
             new Nurix\SliderBundle\NurixSliderBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new CoopTilleuls\Bundle\CKEditorSonataMediaBundle\CoopTilleulsCKEditorSonataMediaBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

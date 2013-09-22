@@ -1,0 +1,10 @@
+{% extends 'SonataAdminBundle:CRUD:list.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/strokitcore/css/admin_edit_price.css') }} " type="text/css" rel="stylesheet"/>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/strokitcore/js/admin_edit_price.js') }}" type="text/javascript"></script>
+{% endblock %}

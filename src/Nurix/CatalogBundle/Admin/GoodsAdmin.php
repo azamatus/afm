@@ -65,11 +65,11 @@ class GoodsAdmin extends Admin
     {
         $listmapper
             ->addIdentifier('id', null, array('label' => 'ID'))
-            ->add('name', null, array('editable' => true,'label' => 'Название','template'=>'CatalogBundle:Admin:edit_integer.html.twig'))
+            ->addIdentifier('name', null, array('editable' => true,'label' => 'Название','template'=>'StrokitCoreBundle:Admin:edit_integer.html.twig'))
             ->add('catalog', 'sonata_type_model', array('editable' => true,'label' => 'Подкатегория'))
-            ->add('price', 'decimal', array('editable' => true,'label' => 'Цена','template'=>'CatalogBundle:Admin:edit_integer.html.twig'))
+            ->add('price', 'decimal', array('editable' => true,'label' => 'Цена','template'=>'StrokitCoreBundle:Admin:edit_integer.html.twig'))
             ->add('active', 'boolean', array('editable' => true,'label' => 'Активен'))
-            ->add('amount', null, array('editable' => true,'label' => 'Количество','template'=>'CatalogBundle:Admin:edit_integer.html.twig'))
+            ->add('amount', null, array('editable' => true,'label' => 'Количество','template'=>'StrokitCoreBundle:Admin:edit_integer.html.twig'))
 			->add('last_update','date',array('editable' => true,'label'=>'Последнее обновление'))
             ->add('imagePath', 'sonata_type_model_list', array('editable' => true,'label' => 'Галерея'));
     }

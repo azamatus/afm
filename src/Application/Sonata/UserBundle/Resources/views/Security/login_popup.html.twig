@@ -1,7 +1,7 @@
 {% block fos_user_content %}
     <form action="{{ path("fos_user_security_check") }}" method="post" id="form_popup">
 
-        <input type="hidden" name="_csrf_token" value="{% render('ApplicationSonataUserBundle:Security:getToken') %}"/>
+        <input type="hidden" name="_csrf_token" value="{% render controller('ApplicationSonataUserBundle:Security:getToken') %}"/>
         <div class="registration_input">
             <label for="username" class="registration_label">Ваш логин:</label><br/>
             <input type="text" id="username" name="_username" required="required" placeholder="Введите Ваш логин"/>

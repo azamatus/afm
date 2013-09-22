@@ -40,17 +40,24 @@ class ExchangeAdmin extends Admin
     public function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('currency',null, array('label'=>'Валюта'))
-            ->add('exchangeRate',null, array('editable'=>true, 'label'=>'Курсы', 'template'=>'CatalogBundle:Admin:edit_integer.html.twig'))
-            ->add('date')
+            ->addIdentifier('date')
+            ->add('currency',null, array('label'=>'Валюта'))
+            ->add('exchangeRate',null, array('editable'=>true, 'label'=>'Курс', 'template'=>'StrokitCoreBundle:Admin:edit_integer.html.twig'))
         ;
+    }
+
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
+        $datagridMapper
+            ->add('currency',null, array('label'=>'Валюта'))
+            ->add('date','doctrine_orm_date_range',array('label'=>'Дата')) ;
     }
 
     public function getTemplate($name)
     {
         switch ($name) {
             case 'list':
-                return 'CatalogBundle:Admin:base_layout.html.twig';
+                return 'StrokitCoreBundle:Admin:base_layout.html.twig';
                 break;
             default:
                 return parent::getTemplate($name);

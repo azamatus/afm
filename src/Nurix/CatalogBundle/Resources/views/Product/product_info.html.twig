@@ -148,7 +148,7 @@
         </div>
         <hr class="product_hr2">
         <div class="product_same">
-            {% render "CatalogBundle:Product:getSame" with {'product':product} %}
+            {% render controller("CatalogBundle:Product:getSame", {'product':product}) %}
         </div>
     </div>
 {% endblock %}

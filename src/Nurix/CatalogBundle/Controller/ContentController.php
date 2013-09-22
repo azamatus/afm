@@ -69,16 +69,6 @@ class ContentController extends Controller
 			return new Response();
     }
 
-
-    public function catalogAction()
-    {
-        $catalogs = $this->getDoctrine()->getManager()
-            ->getRepository('CatalogBundle:Catalog')->getAll(array('active'=>1, 'parent'=>1));
-
-        return $this->render('CatalogBundle:Content:catalog.html.twig',array('catalogs'=>$catalogs));
-    }
-
-
     public function getCatalogAction($cid)
     {
         $catalog=null;

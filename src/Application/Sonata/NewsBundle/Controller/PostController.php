@@ -273,7 +273,7 @@ class PostController extends BaseController
         $comment->setStatus($post->getCommentsDefaultStatus());
         $form = $this->createForm(new \Application\Sonata\NewsBundle\Form\Type\CommentType(), $comment);
         if ($this->getRequest()->isMethod('POST')){
-            $form->bindRequest($this->get('request'));
+            $form->bind($this->get('request'));
             if ($form->isValid()) {
 
                 $comment->setEmail($user->getEmail());

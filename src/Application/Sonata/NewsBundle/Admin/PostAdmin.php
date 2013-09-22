@@ -68,10 +68,6 @@ class PostAdmin extends Admin
                 ->add('category', 'sonata_type_model_list', array('required' => false))
                 ->add('title')
                 ->add('abstract', null, array('attr' => array('class' => 'span6', 'rows' => 5)))
-                ->add('contentFormatter', 'sonata_formatter_type_selector', array(
-                    'source' => 'rawContent',
-                    'target' => 'content'
-                ))
                 ->add('rawContent', 'ckeditor', array('attr' => array('class' => 'span10', 'rows' => 20), 'config_name' => 'my_config'))
             ->end()
             ->with('Tags')
@@ -99,6 +95,7 @@ class PostAdmin extends Admin
             ->addIdentifier('title')
             ->add('author')
             ->add('category')
+            ->add('slug', null, array('editable' => true,'template'=>'StrokitCoreBundle:Admin:edit_integer.html.twig'))
             ->add('enabled', null, array('editable' => true))
             ->add('local', null, array('editable' => true))
             ->add('tags')
@@ -135,6 +132,18 @@ class PostAdmin extends Admin
                 'field_type' => 'checkbox'
             ))
         ;
+    }
+
+    public function getTemplate($name)
+    {
+        switch ($name) {
+            case 'list':
+                return 'StrokitCoreBundle:Admin:base_layout.html.twig';
+                break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
     }
 
     /**
@@ -214,6 +223,7 @@ class PostAdmin extends Admin
      */
     public function prePersist($post)
     {
+        $post->setContentFormatter('richhtml');
         $post->setContent($this->getPoolFormatter()->transform($post->getContentFormatter(), $post->getRawContent()));
     }
 

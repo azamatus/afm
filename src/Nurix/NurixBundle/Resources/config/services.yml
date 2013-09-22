@@ -24,11 +24,6 @@ services:
             tags:
                 - { name: knp_menu.menu, alias: info_sidebar } # Named "sidebar" this time
 
-    nurix.twig.nurix_extension:
-        class: Nurix\NurixBundle\Twig\DateExtension
-        tags:
-            - { name: twig.extension }
-
     nurix.menu.info_sitemap:
             class: Knp\Menu\MenuItem
             factory_service: nurix.menu_builder

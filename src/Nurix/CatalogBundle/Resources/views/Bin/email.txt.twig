@@ -17,29 +17,23 @@ Email: {{ binclient.email }}<br/>
         {% set totalPrice = totalPrice + good.price * order.amount %}
         <tr id="{{ good.id }}">
             <td>
-                <a href="{{ path('nurix_goods_get_info', {'id': good.id} ) }}">
-                    {{ good.imagePath|galleryThumb(asset('bundles/catalog/img/noImage/good_small.jpg'),'goods_big',{'class':'bin_itemPic'}) }}
-                </a>
-
                 <div>
-                    <a class="name" href="{{ path('nurix_goods_get_info', {'id': good.id} ) }}">{{ good.name }}</a>
+                    <a class="name" href="{{ url('nurix_goods_get_info', {'id': good.id} ) }}">{{ good.name }}</a>
 
                     <div class="from">{{ good.shortDescription }}</div>
-                    <a href="{{ path('nurix_goods_get_info', {'id': good.id} ) }}" style="color: #ca5f00;">подробная
-                        информация &rarr;</a>
                 </div>
             </td>
             <td>
-                <span class="Som">{{ good.price|price('KGS') }}</span>
-                <span class="Dollar">{{ good.price|price('USD') }}</span>
+                <div class="Som">{{ good.price|price('KGS') }}</div>
+                <div class="Dollar">{{ good.price|price('USD') }}</div>
             </td>
             <td>
                 <div class="bin_itemCount">{{ order.amount }}</div>
             </td>
             <td>
                 <div class="bin_itemPrice" id="goodTotal_{{ good.id }}">
-                    <span class="Som">{{ (good.price * count)|price('KGS') }}</span>
-                    <span class="Dollar">{{ (good.price * count)|price('USD') }}</span>
+                    <div class="Som">{{ (good.price * count)|price('KGS') }}</div>
+                    <div class="Dollar">{{ (good.price * count)|price('USD') }}</div>
                 </div>
             </td>
         </tr>
@@ -52,8 +46,8 @@ Email: {{ binclient.email }}<br/>
         <td></td>
         <td>
             <div class="bin_itemTotalPrice">
-                <span class="Som">{{ totalPrice|price('KGS') }}</span>
-                <span class="Dollar">{{ totalPrice|price('USD') }}</span>
+                <div class="Som">{{ totalPrice|price('KGS') }}</div>
+                <div class="Dollar">{{ totalPrice|price('USD') }}</div>
             </div>
         </td>
     </tr>
