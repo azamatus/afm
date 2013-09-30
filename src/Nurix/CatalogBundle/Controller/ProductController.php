@@ -6,14 +6,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Nurix\CatalogBundle\Entity\Goods;
 use Nurix\CatalogBundle\Entity;
 use Doctrine\ORM\QueryBuilder;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 
 class ProductController extends Controller
 {
     public function getInfoAction($id)
     {
-        $entity = $this->getDoctrine()
-            ->getRepository('CatalogBundle:Goods')
+        /** @var $goodRepository Entity\GoodsRepository */
+        $goodRepository = $this->getDoctrine()
+            ->getRepository('CatalogBundle:Goods');
+        $entity = $goodRepository
             ->find($id);
         if (!$entity||!$entity->getActive())
             throw $this->createNotFoundException('Page not found 404');
@@ -24,14 +26,17 @@ class ProductController extends Controller
         if (isset($goods[$id]))
             $amount = $goods[$id];
 
-        $mainchar = $this -> getDoctrine()
-            ->getRepository("CatalogBundle:Characteristic")
-            ->findBy(array("goodId"=>$id), null, 8);
 
-        $repository= $this->getDoctrine()
+        $charRepository= $this->getDoctrine()
             ->getRepository("CatalogBundle:Characteristic");
 
-        $char = $repository->getGoodCharacteristic($id);
+        $mainchar = $charRepository
+            ->findBy(array("goodId"=>$id), null, 8);
+
+        $goodRepository->incrementViews($entity->getId());
+
+        /** @var $charRepository Entity\CharacteristicRepository */
+        $char = $charRepository->getGoodCharacteristic($id);
 
         return $this->render('CatalogBundle:Product:product_info.html.twig', array('product' => $entity, 'char'=>$char, 'mainchar' => $mainchar,'amount'=>$amount));
     }

@@ -1,7 +1,6 @@
     <div class="catalog_item float_left">
         <div class="product_title"><a class="name size16px"
                 href="{{ path('nurix_goods_get_info', {'id': product.id}) }}">{{ product.name }}</a></div>
-        <div class="gray short_description">{{ product.shortDescription }}</div>
         <div class="clearbox"></div>
         <div class="product_img">
             <a href="{{ path('nurix_goods_get_info', {'id': product.id} ) }}">
@@ -9,10 +8,11 @@
             </a>
         </div>
         <div>
-            <div class="gray float_left margin_top10px">Цена:</div>
+
             <div class="size16px price float_left">{{ product.price | price('USD') }}</div>
+            <div class="gray price_kgs float_left margin_top10px"> ({{ product.price | price('KGS',0) }})</div>
             <div class="clear"></div>
-            <div style="float: right;">{#TODO:убрать из стилей, перевести в css класс#}
+            <div class="float_right">{#TODO:убрать из стилей, перевести в css класс#}
                 <a href="{{ path('nurix_bin_ajax_add_item',{'id':product.id}) }}"
                    onclick="return false;" class="button_buy">
                     Купить

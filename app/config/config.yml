@@ -129,7 +129,6 @@ knp_paginator:
         sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # sort link template
 
 ivory_ck_editor:
-ivory_ck_editor:
     default_config: my_config
     configs:
         my_config:

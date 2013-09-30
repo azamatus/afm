@@ -42,13 +42,17 @@
     height: 175px;
 
  }
-.product_box
+.product_right_column
 {
     margin-left: 25px;
     width: 150px;
+    float: left;
+}
+.product_box
+{
+    width: 150px;
     height: 138px;
     padding-left: 60px;
-    float: left;
     border: 1px solid #999999;
     border-radius: 5px;
     -webkit-border-radius:5px;
@@ -67,7 +71,6 @@
 .product_price_som, .product_price_som > span.value
 {
     font-size: 18px;
-    margin-bottom: -5px;
 
 }
 .product_amount

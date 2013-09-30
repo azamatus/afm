@@ -39,6 +39,11 @@ class Post extends BasePost
     protected $views = 0;
 
     /**
+     * @var string $source
+     */
+    protected $source;
+
+    /**
      * Get id
      *
      * @return integer $id
@@ -100,5 +105,26 @@ class Post extends BasePost
      */
     public function getImage(){
         return $this->image;
+    }
+
+
+    /**
+     * Get source
+     *
+     * @return string $source
+     */
+    public function setSource($source)
+    {
+        $this->source = $source;
+    }
+
+    /**
+     * Set source
+     *
+     * @param string $source
+     */
+    public function getSource()
+    {
+        return $this->source;
     }
 }

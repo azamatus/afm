@@ -33,6 +33,7 @@ class GoodsAdmin extends Admin
             ->add('active', null, array('label' => 'Активен'))
             ->add('amount', null, array('label' => 'Количество'))
             ->add('last_update','date',array('label'=>'Последнее обновление'))
+            ->add('views',null,array('label'=>'Количество просмотров'))
             ->add('characteristic', null, array('label' => 'Характеристика'));
 
     }
@@ -40,6 +41,7 @@ class GoodsAdmin extends Admin
     protected function configureFormFields(FormMapper $formmapper)
     {
         $formmapper
+            ->with('General')
             ->add('name', null, array('label' => 'Название'))
             ->add('article', null, array('label' => 'Артикул'))
             ->add('catalog', 'entity', array('label' => 'Подкатегория',
@@ -56,9 +58,21 @@ class GoodsAdmin extends Admin
             ->add('youtube', 'sonata_type_model_list', array('required' => false, 'label' => 'Youtube'), array('link_parameters' => array('providers'=>'sonata.media.provider.youtube','context' => 'youtube')))
             ->add('active', null, array('label' => 'Активен'))
             ->add('amount', null, array('label' => 'Количество'))
-            ->add('review', 'ckeditor', array('label' => 'Обзор','config_name' => 'my_config'))
+            ->add('review', 'ckeditor', array('label' => 'Обзор','config'=>array('width'=>'700px','resize_enabled'=>false,'resize_minHeight' => '345px','resize_minWidth' => '700px','resize_maxWidth' => '700px'),  'config_name' => 'my_config'))
             ->add('last_update','date',array('label'=>'Последнее обновление'))
-            ->add('yandex_url', 'text', array('label' => 'Яндекс', 'required' => false));
+            ->add('yandex_url', 'text', array('label' => 'Яндекс', 'required' => false))
+        ->end()
+        ->with('Characteristic')
+            ->add('characteristic', 'sonata_type_collection', array(
+                // Prevents the "Delete" option from being displayed
+                'type_options' => array('delete' => true),'required' => false, 'by_reference' => false
+            ), array(
+                'edit' => 'inline',
+                'inline' => 'table'
+            ),array(
+                'create' => true
+            ),array('delete' => true))
+        ->end();
     }
 
     protected function configureListFields(ListMapper $listmapper)
@@ -71,6 +85,7 @@ class GoodsAdmin extends Admin
             ->add('active', 'boolean', array('editable' => true,'label' => 'Активен'))
             ->add('amount', null, array('editable' => true,'label' => 'Количество','template'=>'StrokitCoreBundle:Admin:edit_integer.html.twig'))
 			->add('last_update','date',array('editable' => true,'label'=>'Последнее обновление'))
+            ->add('views',null,array('label'=>'Количество просмотров'))
             ->add('imagePath', 'sonata_type_model_list', array('editable' => true,'label' => 'Галерея'));
     }
 

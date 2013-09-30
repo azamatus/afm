@@ -6,10 +6,10 @@
     {% endblock %}
 {% endif %}
 {% block title %}
-    {{ parent() }} : {{ product.name }}
+    {{ parent() }} : {{ product.name }} в Бишкеке
 {% endblock %}
 {% block meta_description %}
-    {{ product.name }}. {{ product.shortDescription }}
+    {{ product.name }} в Бишкеке по цене {{ product.price }}$. {{ product.shortDescription }}
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
@@ -59,28 +59,33 @@
                     <h3>Характеристики еще не введены</h3>
                 {% endif %}
             </div>
-            <div class="product_box">
-                <div class="product_price">{{ product.price| price('USD') }}</div>
-                <div class="product_price_som">{{ product.price| price('KGS') }}</div>
-                <div class="product_amount">
-                    <div class="float_left word_col">кол-во:</div>
-                    <div><input type="text" class="box" value="{{ amount }}" id="amount"/></div>
-                    <div class="addrem" onmousedown="return false">
-                        <span class="znak" id="add">+</span>
-                        <span class="znak" id="rem">-</span>
+            <div class="product_right_column">
+                <div class="product_box">
+                    <div class="product_price">{{ product.price| price('USD') }}</div>
+                    <div class="product_price_som">{{ product.price| price('KGS') }}</div>
+                    <div class="product_amount">
+                        <div class="float_left word_col">кол-во:</div>
+                        <div><input type="text" class="box" value="{{ amount }}" id="amount"/></div>
+                        <div class="addrem" onmousedown="return false">
+                            <span class="znak" id="add">+</span>
+                            <span class="znak" id="rem">-</span>
+                        </div>
+                        <a data-id="{{ product.id }}" href="{{ path('nurix_bin_ajax_add_item',{'id':product.id}) }}"
+                           onclick="return false;" class="button_buy_bin">
+                            В корзину
+                        </a>
                     </div>
-                    <a data-id="{{ product.id }}" href="{{ path('nurix_bin_ajax_add_item',{'id':product.id}) }}"
-                       onclick="return false;" class="button_buy_bin">
-                        В корзину
-                    </a>
                 </div>
+                <div class="clearbox"></div>
+                <div class="product_last_update">Последнее обновление цены: {{ product.lastUpdate|date('d-m-Y') }}</div>
             </div>
             <div class="clearbox"></div>
 
             {% if mainchar %}
-                <hr class="product_hr1">
+                <hr class="product_hr1"/>
             {% endif %}
         </div>
+        <div class="clearbox"></div>
         <div class="product_description">
             <div style="color: #999;">
                 Описание:
@@ -108,14 +113,14 @@
         <div id="tabs_container">
             <div>
                 <ul class="menu">
-                    <li id="characteristic" class="active tabs_ico tabs_char">Характеристики</li>
-                    <li id="review" class="tabs_ico tabs_obzor">Обзор</li>
+                    <li id="characteristic" class="{% if product.review is null %}active{% endif %} tabs_ico tabs_char">Характеристики</li>
+                    <li id="review" class="{% if product.review %}active{% endif %} tabs_ico tabs_obzor">Обзор</li>
                     <li id="pfeedbacks" class="tabs_ico tabs_feedbacks">Отзывы</li>
                     <li id="video" class="tabs_ico tabs_video">Видео</li>
                 </ul>
                 <span class="clear"></span>
 
-                <div class="tabs_content characteristic">
+                <div class="tabs_content characteristic" {% if product.review %}style="display:none"{% endif %}>
                     {% if mainchar %}
                         {% include  "CatalogBundle:Product:characteristic.html.twig" %}
                     {% else %}
@@ -123,7 +128,7 @@
                     {% endif %}
                 </div>
 
-                <div class="tabs_content review">
+                <div class="tabs_content review" {% if product.review %}style="display:block"{% endif %}>
                     <h2>Обзор</h2>
                     {% if product.review %}
                         {{ product.review|raw }}

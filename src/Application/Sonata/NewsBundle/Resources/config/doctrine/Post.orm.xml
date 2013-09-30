@@ -18,6 +18,7 @@
         </id>
         <field name="local" type="boolean" column="local" default="false" />
         <field name="views" type="integer" column="views" default="0" />
+        <field name="source" type="string" column="source" nullable="true" />
 
     </entity>
 </doctrine-mapping>
