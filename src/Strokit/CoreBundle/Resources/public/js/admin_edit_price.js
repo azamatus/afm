@@ -35,7 +35,6 @@ $(function () {
             var subject = jQuery(this);
             subject.hide();
             subject.parent().children(".admin_edit_price").show();
-            return false;
         });
 
         jQuery('.sonata-int-cancel-inline').live('click', function (event) {
