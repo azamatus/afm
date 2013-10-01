@@ -59,7 +59,7 @@ class Tag extends BaseTag
         return $text;
     }
 
-    public static function replaceCyrillic ($text)
+    protected static function replaceCyrillic ($text)
     {
         $chars = array(
             'ґ'=>'g','ё'=>'e','є'=>'e','ї'=>'i','і'=>'i',
