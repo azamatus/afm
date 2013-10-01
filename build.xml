@@ -19,9 +19,6 @@
     </target>
 
     <target name="mail" depends="parameters">
-        <replace file="${config}/parameters.yml" value="database_name: nurix_test">
-            <replacetoken>database_name: nurix</replacetoken>
-        </replace>
         <replace file="${config}/parameters.yml" value="mailer_transport:  gmail">
             <replacetoken>mailer_transport: smtp</replacetoken>
         </replace>
@@ -56,5 +53,10 @@
         <copy todir="${copydir}/${version}">
             <fileset dir="${uploaddir}"/>
         </copy>
+    </target>
+    <target name="test">
+        <replace file="${config}/parameters.yml" value="database_name: nurix_test">
+            <replacetoken>database_name: nurix</replacetoken>
+        </replace>
     </target>
 </project>

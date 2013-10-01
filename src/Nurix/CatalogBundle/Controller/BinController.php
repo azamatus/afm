@@ -187,7 +187,7 @@ class BinController extends Controller
                 }
                 $this->sendEmail($binClients);
                 $this->ClearCookies($goodsIds);
-                $this->get('session')->setFlash('notice', 'Ваш заказ принят');
+                $this->get('session')->getFlashBag()->add('notice', 'Ваш заказ принят');
             }
         }
         return $this->render("CatalogBundle:Bin:binOrderForm.html.twig", array(
