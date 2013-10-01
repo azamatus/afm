@@ -125,4 +125,9 @@ class CharacteristicType
     {
         return $this->section;
     }
+
+    public function __toString()
+    {
+        return $this->getName() ?: '';
+    }
 }

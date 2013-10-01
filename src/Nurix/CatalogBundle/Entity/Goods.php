@@ -133,6 +133,13 @@ class Goods
     private $youtube;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="views", type="integer", nullable=true, columnDefinition="int default 0")
+     */
+    private $views = 0;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -381,6 +388,27 @@ class Goods
         return $this->youtube;
     }
 
+    public function setCharacteristic($characteristics)
+    {
+        if (!$characteristics) {
+            $this->mac = new \Doctrine\Common\Collections\ArrayCollection();
+            return;
+        }
+
+        foreach ($characteristics as $item) {
+            $item->setGood($this);
+        }
+
+        foreach ($this->getMac() as $item) {
+            if (!$characteristics->contains($item)) {
+                $this->getMac()->removeElement($item);
+                $item->setGood(null);
+            }
+        }
+
+        $this->mac = $characteristics;
+    }
+
     /**
      * Add characteristic
      *
@@ -389,6 +417,7 @@ class Goods
      */
     public function addCharacteristic(\Nurix\CatalogBundle\Entity\Characteristic $characteristic)
     {
+        $characteristic->setGood($this);
         $this->characteristic[] = $characteristic;
 
         return $this;
@@ -509,5 +538,28 @@ class Goods
     public function __toString()
     {
         return $this->getName() ?: '';
+    }
+
+    /**
+     * Set count
+     *
+     * @param integer $count
+     * @return Goods
+     */
+    public function setViews($count)
+    {
+        $this->views = $count;
+    
+        return $this;
+    }
+
+    /**
+     * Get count
+     *
+     * @return integer 
+     */
+    public function getViews()
+    {
+        return $this->views;
     }
 }

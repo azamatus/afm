@@ -29,7 +29,7 @@ class MenuBuilder extends ContainerAware
 
         $menu->addChild('home', array('route' => 'nurix_homepage','label'=>'Главная'));
         $menu->addChild('contacts', array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => 'contact'),'label'=>'Контакты'));
-        $menu->addChild('sitemap', array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => 'sitemap'),'label'=>'Карта сайта'));
+        //$menu->addChild('sitemap', array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => 'sitemap'),'label'=>'Карта сайта'));
         $menu->setChildrenAttribute('class','main_menu');
         return $menu;
     }
@@ -91,12 +91,12 @@ class MenuBuilder extends ContainerAware
 
         $menu->addChild('Условия доставки', array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => 'conditions')));
 
-        $menu->addChild('Способы оплаты', array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => 'payment')));
+        //$menu->addChild('Способы оплаты', array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => 'payment')));
 
         $menu->addChild('Справка', array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => 'help')));
 
         $menu->addChild('Отзывы', array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => 'feedback')));
 
-        $menu->addChild('Оптовым покупателям', array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => 'optom')));
+        //$menu->addChild('Оптовым покупателям', array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => 'optom')));
     }
 }

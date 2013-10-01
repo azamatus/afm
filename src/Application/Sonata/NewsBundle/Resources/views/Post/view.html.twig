@@ -36,6 +36,11 @@
             <div class="sonata-blog-post-content">
                 {{ post.content|raw }}
             </div>
+            {% if post.source %}
+                <div class="sonata-blog-post-content">
+                    источник: <a href="{{post.source}}">{{post.source}}</a>
+                </div>
+            {% endif %}
         </div>
 
         <div class="clearbox"></div>

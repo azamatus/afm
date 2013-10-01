@@ -117,4 +117,14 @@ class GoodsRepository extends EntityRepository
 
         return $query;
     }
+
+    public function incrementViews($goodId)
+    {
+        $this->createQueryBuilder('g')
+            ->update('CatalogBundle:Goods', 'g')
+            ->set('g.views', 'g.views + 1')
+            ->where('g.id = :id')
+            ->setParameter('id', $goodId)
+            ->getQuery()->execute();
+    }
 }

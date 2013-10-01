@@ -62,4 +62,9 @@ class CharacteristicSection
     {
         return $this->sectionvalue;
     }
+
+    public function __toString()
+    {
+        return $this->getSectionvalue() ?: '';
+    }
 }

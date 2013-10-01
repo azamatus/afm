@@ -3,7 +3,7 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
         <service id="sonata.admin.catalog" class="Nurix\CatalogBundle\Admin\CatalogAdmin">
-            <tag name="sonata.admin" manager_type="orm" group="Каталог" label="Каталог"/>
+            <tag name="sonata.admin" manager_type="orm" group="Каталог" label="Категории"/>
             <argument />
             <argument>Nurix\CatalogBundle\Entity\Catalog</argument>
             <argument>SonataAdminBundle:CRUD</argument>
@@ -13,10 +13,30 @@
         </service>
 
         <service id="sonata.admin.goods" class="Nurix\CatalogBundle\Admin\GoodsAdmin">
-            <tag name="sonata.admin" manager_type="orm" group="Товары" label="Товары"/>
+            <tag name="sonata.admin" manager_type="orm" group="Каталог" label="Товары"/>
             <argument />
             <argument>Nurix\CatalogBundle\Entity\Goods</argument>
             <argument>CatalogBundle:Admin</argument>
+            <call method="setTranslationDomain">
+                <argument>SonataAdminBundle</argument>
+            </call>
+        </service>
+
+        <service id="sonata.admin.characteristic" class="Nurix\CatalogBundle\Admin\CharacteristicAdmin">
+            <tag name="sonata.admin" manager_type="orm" group="Каталог" label="Характеристики"/>
+            <argument />
+            <argument>Nurix\CatalogBundle\Entity\Characteristic</argument>
+            <argument>SonataAdminBundle:CRUD</argument>
+            <call method="setTranslationDomain">
+                <argument>SonataAdminBundle</argument>
+            </call>
+        </service>
+
+        <service id="sonata.admin.characteristictype" class="Nurix\CatalogBundle\Admin\CharacteristicTypeAdmin">
+            <tag name="sonata.admin" manager_type="orm" group="Каталог" label="Разделение характеристик"/>
+            <argument />
+            <argument>Nurix\CatalogBundle\Entity\CharacteristicType</argument>
+            <argument>SonataAdminBundle:CRUD</argument>
             <call method="setTranslationDomain">
                 <argument>SonataAdminBundle</argument>
             </call>
@@ -26,7 +46,7 @@
             <tag name="sonata.admin" manager_type="orm" group="Валюта" label="Курс"/>
             <argument />
             <argument>Nurix\CatalogBundle\Entity\Exchange</argument>
-            <argument>CatalogBundle:Admin</argument>
+            <argument>SonataAdminBundle:CRUD</argument>
             <call method="setTranslationDomain">
                 <argument>SonataAdminBundle</argument>
             </call>
@@ -36,7 +56,7 @@
             <tag name="sonata.admin" manager_type="orm" group="Валюта" label="Валюта"/>
             <argument />
             <argument>Nurix\CatalogBundle\Entity\ExchangeHelper</argument>
-            <argument>CatalogBundle:Admin</argument>
+            <argument>SonataAdminBundle:CRUD</argument>
             <call method="setTranslationDomain">
                 <argument>SonataAdminBundle</argument>
             </call>

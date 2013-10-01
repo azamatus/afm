@@ -54,8 +54,8 @@
             <fileset dir="${uploaddir}"/>
         </copy>
     </target>
-    <target name="test">
-        <replace file="${config}/parameters.yml" value="database_name: nurix_test">
+    <target name="db">
+        <replace file="${config}/parameters.yml" value="database_name: nurix_${env}">
             <replacetoken>database_name: nurix</replacetoken>
         </replace>
     </target>
