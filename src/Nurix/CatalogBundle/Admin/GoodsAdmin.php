@@ -32,8 +32,8 @@ class GoodsAdmin extends Admin
             ->add('youtube', 'sonata_media_type', array('label' => 'Youtube', 'provider' => 'sonata.media.provider.youtube', 'context' => 'youtube'))
             ->add('active', null, array('label' => 'Активен'))
             ->add('amount', null, array('label' => 'Количество'))
-            ->add('last_update','date',array('label'=>'Последнее обновление'))
-            ->add('views',null,array('label'=>'Количество просмотров'))
+            ->add('last_update', 'date', array('label' => 'Последнее обновление'))
+            ->add('views', null, array('label' => 'Количество просмотров'))
             ->add('characteristic', null, array('label' => 'Характеристика'));
 
     }
@@ -55,50 +55,50 @@ class GoodsAdmin extends Admin
             ->add('full_desctiption', 'textarea', array('label' => 'Полное описание', 'required' => false))
             ->add('price', null, array('label' => 'Цена'))
             ->add('imagePath', 'sonata_type_model_list', array('required' => false, 'label' => 'Галерея'), array('link_parameters' => array('context' => 'default')))
-            ->add('youtube', 'sonata_type_model_list', array('required' => false, 'label' => 'Youtube'), array('link_parameters' => array('providers'=>'sonata.media.provider.youtube','context' => 'youtube')))
+            ->add('youtube', 'sonata_type_model_list', array('required' => false, 'label' => 'Youtube'), array('link_parameters' => array('providers' => 'sonata.media.provider.youtube', 'context' => 'youtube')))
             ->add('active', null, array('label' => 'Активен'))
             ->add('amount', null, array('label' => 'Количество'))
-            ->add('review', 'ckeditor', array('label' => 'Обзор','config'=>array('width'=>'700px','resize_enabled'=>false,'resize_minHeight' => '345px','resize_minWidth' => '700px','resize_maxWidth' => '700px'),  'config_name' => 'my_config'))
-            ->add('last_update','date',array('label'=>'Последнее обновление'))
+            ->add('review', 'ckeditor', array('label' => 'Обзор', 'config' => array('width' => '700px', 'resize_enabled' => false, 'resize_minHeight' => '345px', 'resize_minWidth' => '700px', 'resize_maxWidth' => '700px'), 'config_name' => 'my_config'))
+            ->add('last_update', 'date', array('label' => 'Последнее обновление'))
             ->add('yandex_url', 'text', array('label' => 'Яндекс', 'required' => false))
-        ->end()
-        ->with('Characteristic')
+            ->end()
+            ->with('Characteristic')
             ->add('characteristic', 'sonata_type_collection', array(
                 // Prevents the "Delete" option from being displayed
-                'type_options' => array('delete' => true),'required' => false, 'by_reference' => false
-            ), array(
+                'type_options' => array('delete' => true), 'required' => false, 'by_reference' => false
+            ),
+                array(
                 'edit' => 'inline',
                 'inline' => 'table'
-            ),array(
-                'create' => true
-            ),array('delete' => true))
-        ->end();
+                ),
+                array('create' => true),
+                array('delete' => true))
+            ->end();
     }
 
     protected function configureListFields(ListMapper $listmapper)
     {
         $listmapper
             ->addIdentifier('id', null, array('label' => 'ID'))
-            ->addIdentifier('name', null, array('editable' => true,'label' => 'Название','template'=>'StrokitCoreBundle:Admin:edit_integer.html.twig'))
-            ->add('catalog', 'sonata_type_model', array('editable' => true,'label' => 'Подкатегория'))
-            ->add('price', 'decimal', array('editable' => true,'label' => 'Цена','template'=>'StrokitCoreBundle:Admin:edit_integer.html.twig'))
-            ->add('active', 'boolean', array('editable' => true,'label' => 'Активен'))
-            ->add('amount', null, array('editable' => true,'label' => 'Количество','template'=>'StrokitCoreBundle:Admin:edit_integer.html.twig'))
-			->add('last_update','date',array('editable' => true,'label'=>'Последнее обновление'))
-            ->add('views',null,array('label'=>'Количество просмотров'))
-            ->add('imagePath', 'sonata_type_model_list', array('editable' => true,'label' => 'Галерея'));
+            ->add('name', null, array('editable' => true, 'label' => 'Название', 'template' => 'StrokitCoreBundle:Admin:edit_integer.html.twig'))
+            ->add('catalog', 'sonata_type_model', array('editable' => true, 'label' => 'Подкатегория'))
+            ->add('price', 'decimal', array('editable' => true, 'label' => 'Цена', 'template' => 'StrokitCoreBundle:Admin:edit_integer.html.twig'))
+            ->add('active', 'boolean', array('editable' => true, 'label' => 'Активен'))
+            ->add('amount', null, array('editable' => true, 'label' => 'Количество', 'template' => 'StrokitCoreBundle:Admin:edit_integer.html.twig'))
+            ->add('last_update', 'date', array('editable' => true, 'label' => 'Последнее обновление'))
+            ->add('views', null, array('label' => 'Количество просмотров'))
+            ->add('imagePath', 'sonata_type_model_list', array('editable' => true, 'label' => 'Галерея'));
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
             ->add('name', null, array('label' => 'Название'))
-            ->add('catalog', null, array('label' => 'Подкатегория'), null, array('expanded' => false,'multiple'=>true))
-            ->add('price',null,array('label'=>'Цена'))
+            ->add('catalog', null, array('label' => 'Подкатегория'), null, array('expanded' => false, 'multiple' => true))
+            ->add('price', null, array('label' => 'Цена'))
             ->add('active', null, array('label' => 'Активен'))
-			->add('last_update','doctrine_orm_date_range',array('label'=>'Последнее обновление'))
-            ->add('imagePath', null, array('label' => 'Галерея'), null, array('expanded' => false, 'empty_value' => ""))
-        ;
+            ->add('last_update', 'doctrine_orm_date_range', array('label' => 'Последнее обновление'))
+            ->add('imagePath', null, array('label' => 'Галерея'), null, array('expanded' => false, 'empty_value' => ""));
     }
 
 
@@ -133,6 +133,7 @@ class GoodsAdmin extends Admin
                 ->parseYandex($url, $id);
         }
     }
+
     public function postPersist($object)
     {
         $this->preUpdate($object);

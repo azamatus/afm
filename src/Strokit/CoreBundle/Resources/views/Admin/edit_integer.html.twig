@@ -10,7 +10,7 @@
 
                 <div>
                     <a href="{{ url('sonata_admin_set_object_field_value', { 'context': 'list', 'field': field_description.name, 'objectId': admin.id(object),
-                    'code': admin.code(object) }) }}" class="sonata-ba-action sonata-int-edit-inline" onclick="return false;">
+                    'code': admin.code(object) }) }}" class="sonata-ba-action sonata-int-edit-inline">
                         <i class="icon-ok-circle"></i>
                     </a>
                     <a href="javascript:void(0)" class="sonata-ba-action sonata-int-cancel-inline">
@@ -18,22 +18,12 @@
                     </a>
                 </div>
             </div>
-            <a href="{{ block('link') }}" class="admin_price">{{ value }}</a>
+                <a href="{{ admin.generateObjectUrl(field_description.options.route.name, object, field_description.options.route.parameters) }}" class="admin_price" onclick="return false;">
+                    {{ value }}
+                </a>
         </div>
 
     {% else %}
         {{ value }}
-    {% endif %}
-{% endblock %}
-
-{% block link %}
-    {% if
-    field_description.options.identifier is defined
-    and field_description.options.route is defined
-    and admin.isGranted(field_description.options.route.name == 'show' ? 'VIEW' : field_description.options.route.name|upper, object)
-    and admin.hasRoute(field_description.options.route.name) %}
-        {{ admin.generateObjectUrl(field_description.options.route.name, object, field_description.options.route.parameters) }}
-    {% else %}
-        javascript:void()
     {% endif %}
 {% endblock %}

@@ -15,11 +15,14 @@
     {{ parent() }}
     <script type="text/javascript" src="{{ asset("bundles/catalog/js/addRem.js") }}"></script>
     <script type="text/javascript" src="{{ asset("bundles/catalog/js/product_slider.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("bundles/catalog/js/jquery.elevatezoom.js")}}"></script>
+    <script type="text/javascript" src="{{ asset("bundles/catalog/fancybox/jquery.fancybox.pack.js")}}"></script>
     <script type="text/javascript" src="{{ asset("bundles/catalog/js/product_slider_pictures.js") }}"></script>
     <script type="text/javascript" src="{{ asset("bundles/catalog/js/tabs.js") }}"></script>
 {% endblock %}
 {% block stylesheets %}
     {{ parent() }}
+    <link href="{{ asset("bundles/catalog/fancybox/jquery.fancybox.css")}}" type="text/css" rel="stylesheet"  media="screen" />
     <link href="{{ asset('bundles/catalog/css/phone_info.css') }} " type="text/css" rel="stylesheet"/>
     <link href="{{ asset('bundles/catalog/css/product_slider.css') }} " type="text/css" rel="stylesheet"/>
     <link href="{{ asset("bundles/catalog/css/tabs.css") }}" type="text/css" media="screen" rel="stylesheet"/>
@@ -31,7 +34,11 @@
                 <div id="my-folio-of-works" class="svwp">
                     <ul>
                         {% for galleryHasMedia in product.imagePath.GalleryHasMedias %}
-                            <li>{% thumbnail galleryHasMedia.media, 'goods_big' %}</li>
+                            <li>
+                                <a class="fancybox-thumb" rel="fancybox-thumb"  href="{% path galleryHasMedia.media, 'reference' %}">
+                                    <img src="{% path galleryHasMedia.media, 'goods_big' %}" data-zoom-image="{% path galleryHasMedia.media, 'reference' %}" />
+                                </a>
+                            </li>
                         {% endfor %}
                     </ul>
                 </div>

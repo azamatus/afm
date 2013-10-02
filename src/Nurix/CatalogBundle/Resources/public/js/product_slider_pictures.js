@@ -1,3 +1,4 @@
+
 $(window).bind("load", function () {
     $("div#my-folio-of-works").slideViewerPro({
 
@@ -14,4 +15,25 @@ $(window).bind("load", function () {
         leftButtonInner: "<", //could be an image "<img src='images/larw.gif' />" or an escaped char as "&larr";
         rightButtonInner: ">" //could be an image or an escaped char as "&rarr";
     });
+    $('.slideViewer img').elevateZoom();
+    $(".slideViewer a.fancybox-thumb").fancybox();
 });
+/*
+//initiate the plugin and pass the id of the div containing gallery images
+jQuery(document).ready(function ($) {
+$("#zoom_1").elevateZoom(
+    {
+        gallery:'gallery_01',
+        cursor: 'pointer',
+        galleryActiveClass: 'active',
+        imageCrossfade: true,
+        loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif'}
+);
+    $("#zoom_1").bind("click", function(e) {
+        var ez =   $('#zoom_1').data('elevateZoom');
+        $.fancybox(ez.getGalleryList());
+        return false;
+    });
+});
+
+ */
