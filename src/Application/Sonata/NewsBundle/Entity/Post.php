@@ -127,4 +127,15 @@ class Post extends BasePost
     {
         return $this->source;
     }
+    
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        $this->setSlug(Tag::slugify($title));
+    }
 }
