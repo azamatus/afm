@@ -1,4 +1,4 @@
-<form action="{{ path('nurix_search') }}" method="post" {{ form_enctype(form) }}>
+<form action="{{ path('nurix_search') }}" method="get" {{ form_enctype(form) }}>
     {{ form_widget(form.search) }}
 
     <input type="submit" class="search_button" value="">
