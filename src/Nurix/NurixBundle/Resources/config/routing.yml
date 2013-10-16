@@ -6,7 +6,7 @@ nurix_search:
     pattern:  /search/
     defaults: { _controller: NurixBundle:Search:index }
     requirements:
-        _method:  POST
+        _method:  GET
 nurix_ck_upload:
     pattern:  /cke/upload/
     defaults: { _controller: NurixBundle:Default:uploadFile }

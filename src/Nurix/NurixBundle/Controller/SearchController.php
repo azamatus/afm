@@ -21,8 +21,8 @@ class SearchController extends Controller
 
         $form = $this->createForm(new SearchType());
         $request = $this->getRequest();
-        if ($request->isMethod('POST')) {
-            $form->bind($request);
+        if ($request->isMethod('GET')) {
+            $form->submit($request);
         $searchText =$form->get('search')->getData();
         return $this->render('NurixBundle:Search:index.html.twig',array('searchText'=>$searchText));
         }
