@@ -54,10 +54,10 @@
         <replace file="${property}" value="database_name: nurix_${env}">
             <replacetoken>database_name: nurix</replacetoken>
         </replace>
-        <replace file="${property}" value="database_user: {db_user}">
+        <replace file="${property}" value="database_user: ${db_user}">
             <replacetoken>database_user: root</replacetoken>
         </replace>
-        <replace file="${property}" value="database_password: {db_password}">
+        <replace file="${property}" value="database_password: ${db_password}">
             <replacetoken>database_password: null</replacetoken>
         </replace>
     </target>
