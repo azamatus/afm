@@ -6,7 +6,7 @@
     <property name="config" location="app/config"/>
     <property name="property" location="app/config/parameters.yml"/>
     <property name="appdir" location="app"/>
-    <property name="makedir" location="${destdir}/web/uploads"/>
+    <property name="makedir" location="${dest_dir}/web/uploads"/>
     <property name="bundledir" location="web/bundles"/>
 
     <target name="replace">
