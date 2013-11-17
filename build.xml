@@ -36,7 +36,7 @@
 
     <target name="clean" description="clean up" >
         <!-- Delete the ${cache} directory trees -->
-        <delete dir="${dest_dir}/web/bundle"/>
+        <delete dir="${dest_dir}/web/bundles"/>
         <delete dir="${dest_dir}/${appdir}"/>
         <delete dir="${dest_dir}/vendor"/>
         <delete dir="${dest_dir}/src"/>
@@ -50,7 +50,7 @@
         </condition>
         <condition property="bundledir.exists">
             <not>
-                <available file="${dest_dir}/web/bundle" type="dir"/>
+                <available file="${dest_dir}/web/bundles" type="dir"/>
             </not>
         </condition>
     </target>
@@ -71,7 +71,7 @@
     </target>
 
     <target name="deploy" depends="clean">
-        <copydir src="web/bundle" dest="${dest_dir}/web"/>
+        <copydir src="web/bundles" dest="${dest_dir}/web"/>
         <copydir src="${appdir}" dest="${dest_dir}"/>
         <copydir src="vendor" dest="${dest_dir}"/>
         <copydir src="src" dest="${dest_dir}"/>
