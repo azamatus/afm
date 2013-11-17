@@ -36,6 +36,7 @@
 
     <target name="clean" description="clean up" >
         <!-- Delete the ${cache} directory trees -->
+        <delete dir="${dest_dir}/web/bundle"/>
         <delete dir="${dest_dir}/${appdir}"/>
         <delete dir="${dest_dir}/vendor"/>
         <delete dir="${dest_dir}/src"/>
@@ -65,7 +66,7 @@
     </target>
 
     <target name="deploy" depends="clean">
-        <copydir src="web/public" dest="${dest_dir}/web"/>
+        <copydir src="web/bundle" dest="${dest_dir}/web"/>
         <copydir src="${appdir}" dest="${dest_dir}"/>
         <copydir src="vendor" dest="${dest_dir}"/>
         <copydir src="src" dest="${dest_dir}"/>
