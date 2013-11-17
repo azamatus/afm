@@ -43,13 +43,18 @@
     </target>
 
     <target name="-check-dir-exists">
-        <condition property="dir.exists">
+        <condition property="makedir.exists">
             <not>
                 <available file="${makedir}" type="dir"/>
             </not>
         </condition>
+        <condition property="bundledir.exists">
+            <not>
+                <available file="${dest_dir}/web/bundle" type="dir"/>
+            </not>
+        </condition>
     </target>
-    <target name="makedir"  depends="-check-dir-exists" if="dir.exists" description="make upload dir" >
+    <target name="makedir"  depends="-check-dir-exists" if="makedir.exists" description="make upload dir" >
         <!-- Delete the ${cache} directory trees -->
         <mkdir dir="${makedir}"/>
     </target>
