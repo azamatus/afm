@@ -6,6 +6,7 @@
     <property name="config" location="app/config"/>
     <property name="property" location="app/config/parameters.yml"/>
     <property name="appdir" location="app"/>
+    <property name="appcachedir" location="app/cache"/>
     <property name="makedir" location="${dest_dir}/web/uploads"/>
     <property name="bundledir" location="web/bundles"/>
 
@@ -36,6 +37,7 @@
 
     <target name="clean" description="clean up" >
         <!-- Delete the ${cache} directory trees -->
+        <delete dir="${dest_dir}/${appcachedir}/prod"/>
         <delete dir="${dest_dir}/${bundledir}"/>
         <delete dir="${dest_dir}/${appdir}"/>
         <delete dir="${dest_dir}/vendor"/>
