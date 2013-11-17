@@ -8,6 +8,7 @@
     <property name="appdir" location="app"/>
     <property name="uploaddir" location="web/uploads"/>
     <property name="makedir" location="web/uploads"/>
+    <property name="bundledir" location="web/bundles"/>
 
     <target name="replace">
         <replace file="${config}/sonata/media.yml" value="/uploads/media">
@@ -36,7 +37,7 @@
 
     <target name="clean" description="clean up" >
         <!-- Delete the ${cache} directory trees -->
-        <delete dir="${dest_dir}/web/bundles"/>
+        <delete dir="${dest_dir}/${bundledir}"/>
         <delete dir="${dest_dir}/${appdir}"/>
         <delete dir="${dest_dir}/vendor"/>
         <delete dir="${dest_dir}/src"/>
@@ -50,7 +51,7 @@
         </condition>
         <condition property="bundledir.exists">
             <not>
-                <available file="${dest_dir}/web/bundles" type="dir"/>
+                <available file="${dest_dir}/${bundledir}" type="dir"/>
             </not>
         </condition>
     </target>
@@ -71,10 +72,18 @@
     </target>
 
     <target name="deploy" depends="clean">
-        <copydir src="web/bundles" dest="${dest_dir}/web"/>
-        <copydir src="${appdir}" dest="${dest_dir}"/>
-        <copydir src="vendor" dest="${dest_dir}"/>
-        <copydir src="src" dest="${dest_dir}"/>
+        <copy todir="${dest_dir}/${bundledir}">
+            <fileset dir="${bundledir}"/>
+        </copy>
+        <copy todir="${dest_dir}/${appdir}">
+            <fileset dir="${appdir}"/>
+        </copy>
+        <copy todir="${dest_dir}/vendor">
+            <fileset dir="vendor"/>
+        </copy>
+        <copy todir="${dest_dir}/src">
+            <fileset dir="src"/>
+        </copy>
 
     </target>
 </project>
