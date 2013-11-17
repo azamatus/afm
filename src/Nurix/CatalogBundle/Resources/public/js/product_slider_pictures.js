@@ -14,7 +14,7 @@ $(window).bind("load", function () {
         leftButtonInner: "<", //could be an image "<img src='images/larw.gif' />" or an escaped char as "&larr";
         rightButtonInner: ">" //could be an image or an escaped char as "&rarr";
     });
-    $('.slideViewer img').elevateZoom({cursor: 'pointer'});
+    //$('.slideViewer img').elevateZoom({cursor: 'pointer'});
     $(".slideViewer a.fancybox-thumb").fancybox();
 });
 /*
