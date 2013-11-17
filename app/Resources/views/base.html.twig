@@ -25,17 +25,11 @@
         <script type="text/javascript" src="{{ asset("bundles/catalog/js/bin.js") }}"></script>
         <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
         <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
-        <script>
-            // Jira Issue Collector
-            /*
-            jQuery.ajax({
-                url: "https://strokit.atlassian.net/s/en_US-38181l-1988229788/6080/26/1.4.0-m2/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector-embededjs/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector-embededjs.js?collectorId=c5b78c87",
-                type: "get",
-                cache: true,
-                dataType: "script"
-            });
-            */
-        </script>
+        <!-- BEGIN JIVOSITE CODE {literal} -->
+        <script type='text/javascript'>
+            (function(){ var widget_id = '96934';
+                var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);})();</script>
+        <!-- {/literal} END JIVOSITE CODE -->
         <script type="text/javascript">
             var reformalOptions = {
                 project_id: 117927,

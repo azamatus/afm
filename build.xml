@@ -5,7 +5,7 @@
     <!-- set global properties for this build -->
     <property name="config" location="app/config"/>
     <property name="property" location="app/config/parameters.yml"/>
-    <property name="cache" location="app/cache"/>
+    <property name="appdir" location="app"/>
     <property name="uploaddir" location="web/uploads"/>
     <property name="makedir" location="web/uploads"/>
 
@@ -36,7 +36,9 @@
 
     <target name="clean" description="clean up" >
         <!-- Delete the ${cache} directory trees -->
-        <delete dir="${cache}"/>
+        <delete dir="${dest_dir}/${appdir}"/>
+        <delete dir="${dest_dir}/vendor"/>
+        <delete dir="${dest_dir}/src"/>
     </target>
 
     <target name="-check-dir-exists">
@@ -51,7 +53,7 @@
         <mkdir dir="${makedir}"/>
     </target>
     <target name="db">
-        <replace file="${property}" value="database_name: nurix_${env}">
+        <replace file="${property}" value="database_name: ${db_name}">
             <replacetoken>database_name: nurix</replacetoken>
         </replace>
         <replace file="${property}" value="database_user: ${db_user}">
@@ -60,5 +62,13 @@
         <replace file="${property}" value="database_password: ${db_password}">
             <replacetoken>database_password: null</replacetoken>
         </replace>
+    </target>
+
+    <target name="deploy" depends="clean">
+        <copydir src="web/public" dest="${dest_dir}/web"/>
+        <copydir src="${appdir}" dest="${dest_dir}"/>
+        <copydir src="vendor" dest="${dest_dir}"/>
+        <copydir src="src" dest="${dest_dir}"/>
+
     </target>
 </project>
