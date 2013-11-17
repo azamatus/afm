@@ -80,11 +80,11 @@
     </target>
 
     <target name="deploy" depends="clean">
-        <copy todir="${dest_dir}/${bundledir}">
-            <fileset dir="${bundledir}"/>
+        <copy todir="${dest_dir}/web/bundles">
+            <fileset dir="web/bundles"/>
         </copy>
-        <copy todir="${dest_dir}/${appdir}">
-            <fileset dir="${appdir}"/>
+        <copy todir="${dest_dir}/app">
+            <fileset dir="app"/>
         </copy>
         <copy todir="${dest_dir}/vendor">
             <fileset dir="vendor"/>
