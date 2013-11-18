@@ -83,6 +83,9 @@
         <copy todir="${dest_dir}/web/bundles">
             <fileset dir="web/bundles"/>
         </copy>
+        <copy todir="${dest_dir}/web/public">
+            <fileset dir="web/public"/>
+        </copy>
         <copy todir="${dest_dir}/app">
             <fileset dir="app"/>
         </copy>
