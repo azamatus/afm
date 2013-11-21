@@ -7,6 +7,17 @@
 .sonata-blog-post-info .sonata-blog-post-content{
     margin-bottom: 20px;
 }
+.sonata-blog-post-content a, .sonata-blog-post-content a:visited
+.sonata-blog-post-source a, .sonata-blog-post-source a:visited
+{
+    color: deepskyblue;
+}
+
+.sonata-blog-post-content a:hover,
+.sonata-blog-post-source a:hover
+{
+    color: dodgerblue;
+}
 
 .sonata-blog-post-information{
     margin-bottom: 40px;
