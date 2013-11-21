@@ -14,10 +14,10 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Knp\Menu\ItemInterface as MenuItemInterface;
 
 class GoodsAdmin extends Admin
 {
-
     protected function configureShowField(ShowMapper $showmapper)
     {
         $showmapper
@@ -142,6 +142,12 @@ class GoodsAdmin extends Admin
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection->add('excel');
+    }
+
+    protected function configureSideMenu(MenuItemInterface $menu, $action, Admin $childAdmin = null)
+    {
+        if ($this->getRequest()->get('id')!=null && $this->getSubject()->getActive()!=null)
+            $menu->addChild('Просмотр товара',array('route' => 'nurix_goods_get_info','routeParameters'=>array('id' => $this->getRequest()->get('id'))));
     }
 
 }
