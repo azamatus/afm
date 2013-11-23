@@ -3,7 +3,7 @@ nurix_homepage:
     defaults: { _controller: NurixBundle:Home:home }
 
 nurix_search:
-    pattern:  /search/{search}
+    pattern:  /search/
     defaults: { _controller: NurixBundle:Search:index }
     requirements:
         _method:  GET
