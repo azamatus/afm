@@ -91,7 +91,7 @@ sonata_block:
         sonata.block.service.rss:
 
 sonata_admin:
-    title:      Admin Panel
+    title:      Nurix
     templates:
         ## default global templates
         layout:  SonataAdminBundle::standard_layout.html.twig
