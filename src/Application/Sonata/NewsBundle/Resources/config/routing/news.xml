@@ -45,7 +45,7 @@
         <default key="_controller">SonataNewsBundle:Post:news</default>
         <default key="type">local</default>
         <default key="_format">html</default>
-        <requirement key="local">local|international</requirement>
+        <requirement key="type">local|international</requirement>
         <requirement key="_format">html|rss</requirement>
     </route>
 
