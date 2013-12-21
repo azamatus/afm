@@ -61,5 +61,21 @@
                 <argument>SonataAdminBundle</argument>
             </call>
         </service>
+
+        <service id="sonata.admin.clients" class="Nurix\CatalogBundle\Admin\BinClientsAdmin">
+            <tag name="sonata.admin" manager_type="orm" group="Клиенты" label="Клиенты"/>
+            <argument />
+            <argument>Nurix\CatalogBundle\Entity\BinClients</argument>
+            <argument>CatalogBundle:Admin</argument>
+            <call method="setTranslationDomain">
+                <argument>SonataAdminBundle</argument>
+            </call>
+        </service>
+        <service id="sonata.admin.orders" class="Nurix\CatalogBundle\Admin\BinOrdersAdmin">
+            <tag name="sonata.admin" manager_type="orm" show_in_dashboard="false" />
+            <argument/>
+            <argument>Nurix\CatalogBundle\Entity\BinOrders</argument>
+            <argument>SonataAdminBundle:CRUD</argument>
+        </service>
     </services>
 </container>

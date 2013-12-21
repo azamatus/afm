@@ -55,6 +55,12 @@ class BinOrders
      */
     private $good;
 
+    /**
+     * @var enum
+     *
+     * @ORM\Column(name="status", type="enumstatus")
+     */
+    private $status = 1;
 
 
     /**
@@ -158,5 +164,27 @@ class BinOrders
     {
         return $this->good;
     }
-}
 
+    /**
+     * Set status
+     *
+     * @param string $status
+     * @return BinOrders
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string 
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+}

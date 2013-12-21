@@ -14,7 +14,7 @@ class BinClients
 {
 
 	const STATUS_DISABLED = false;
-	const STATUS_ACTIVE = true;
+	const STATUS_ACTIVE = 1;
     /**
      * @var integer
      *
@@ -67,9 +67,9 @@ class BinClients
     private $deliveryTime;
 
     /**
-     * @var boolean
+     * @var varchar
      *
-     * @ORM\Column(name="active", type="boolean", nullable=true)
+     * @ORM\Column(name="active", type="string", columnDefinition="ENUM('В обработке','Заказ подтвержден','На складе','Отправлено','Доставлено','Заказ отменен','Задержка товара')")
      */
     private $active = self::STATUS_ACTIVE;
 
@@ -90,6 +90,10 @@ class BinClients
      */
     private $user;
 
+    /**
+     * @ORM\OneToMany(targetEntity="BinOrders", mappedBy="binClient")
+     */
+    private $orders;
 
 
     /**
@@ -307,5 +311,45 @@ class BinClients
     public function getUser()
     {
         return $this->user;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->orders = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add orders
+     *
+     * @param \Nurix\CatalogBundle\Entity\BinOrders $orders
+     * @return BinClients
+     */
+    public function addOrder(\Nurix\CatalogBundle\Entity\BinOrders $orders)
+    {
+        $this->orders[] = $orders;
+    
+        return $this;
+    }
+
+    /**
+     * Remove orders
+     *
+     * @param \Nurix\CatalogBundle\Entity\BinOrders $orders
+     */
+    public function removeOrder(\Nurix\CatalogBundle\Entity\BinOrders $orders)
+    {
+        $this->orders->removeElement($orders);
+    }
+
+    /**
+     * Get orders
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getOrders()
+    {
+        return $this->orders;
     }
 }
