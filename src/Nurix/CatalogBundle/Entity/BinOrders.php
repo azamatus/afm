@@ -38,7 +38,7 @@ class BinOrders
     /**
      * @var \BinClients
      *
-     * @ORM\ManyToOne(targetEntity="BinClients")
+     * @ORM\ManyToOne(targetEntity="BinClients", cascade={"all"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="bin_client_id", referencedColumnName="id")
      * })
