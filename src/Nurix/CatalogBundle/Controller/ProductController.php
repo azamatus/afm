@@ -48,7 +48,7 @@ class ProductController extends Controller
             ->getRepository('CatalogBundle:Goods');
         /** @var $entity Goods */
         $entity = $goodRepository
-            ->findBy(array("article"=>$article));
+            ->findByArticle($article);
         if (!$entity||!$entity->getActive())
             throw $this->createNotFoundException('Page not found 404');
 
