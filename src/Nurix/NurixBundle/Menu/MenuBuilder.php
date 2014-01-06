@@ -91,6 +91,8 @@ class MenuBuilder extends ContainerAware
 
         $menu->addChild('Условия доставки', array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => 'conditions')));
 
+        $menu->addChild('Как оформить заказ', array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => 'howtoorder')));
+
         //$menu->addChild('Способы оплаты', array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => 'payment')));
 
         $menu->addChild('Справка', array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => 'help')));

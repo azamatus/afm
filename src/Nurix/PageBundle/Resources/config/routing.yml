@@ -1,3 +1,7 @@
 nurix_create_pages:
+    pattern:  /{url}.html
+    defaults: { _controller: NurixPageBundle:Page:index }
+
+nurix_create_pages_old:
     pattern:  /pages/{url}/
     defaults: { _controller: NurixPageBundle:Page:index }
