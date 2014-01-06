@@ -1,9 +1,9 @@
     <div class="catalog_item float_left">
         <div class="product_title"><a class="name size16px"
-                href="{{ path('nurix_goods_get_info_by_article', {'article': product.article}) }}">{{ product.name }}</a></div>
+                href="{{ path('nurix_goods_get_info', {'id': product.id}) }}">{{ product.name }}</a></div>
         <div class="clearbox"></div>
         <div class="product_img">
-            <a href="{{ path('nurix_goods_get_info_by_article', {'article': product.article}) }}">
+            <a href="{{ path('nurix_goods_get_info', {'id': product.id} ) }}">
                 {{ product.imagePath|galleryThumb(asset('bundles/catalog/img/noImage/good_big.jpg'),'goods_big') }}
             </a>
         </div>
