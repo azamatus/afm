@@ -33,14 +33,14 @@
                         {% set totalPrice = totalPrice + good.price * attribute(goodCount,good.id)  %}
                         <tr id="{{ good.id }}">
                             <td>
-                                <a href="{{ path('nurix_goods_get_info', {'id': good.id} ) }}">
+                                <a href="{{ path('nurix_goods_get_info_by_article', {'article': good.article} ) }}">
                                     {{ good.imagePath|galleryThumb(asset('bundles/catalog/img/noImage/good_small.jpg'),'goods_big',{'class':'bin_itemPic'}) }}
                                 </a>
                                 <div class="bin_aboutItem">
-                                    <a class="name" href="{{ path('nurix_goods_get_info', {'id': good.id} ) }}">{{ good.name }}</a>
+                                    <a class="name" href="{{ path('nurix_goods_get_info_by_article', {'article': good.article} ) }}">{{ good.name }}</a>
 
                                     <div class="from">{{ good.shortDescription }}</div>
-                                    <a href="{{ path('nurix_goods_get_info', {'id': good.id} ) }}" style="color: #ca5f00;">подробная информация &rarr;</a>
+                                    <a href="{{ path('nurix_goods_get_info_by_article', {'article': good.article} ) }}" style="color: #ca5f00;">подробная информация &rarr;</a>
                                 </div>
                             </td>
                             <td>

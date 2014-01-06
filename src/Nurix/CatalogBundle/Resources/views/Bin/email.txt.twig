@@ -18,7 +18,7 @@ Email: {{ binclient.email }}<br/>
         <tr id="{{ good.id }}">
             <td>
                 <div>
-                    <a class="name" href="{{ url('nurix_goods_get_info', {'id': good.id} ) }}">{{ good.name }}</a>
+                    <a class="name" href="{{ url('nurix_goods_get_info_by_article', {'article': tovar.article} ) }}">{{ good.name }}</a>
 
                     <div class="from">{{ good.shortDescription }}</div>
                 </div>
@@ -32,8 +32,8 @@ Email: {{ binclient.email }}<br/>
             </td>
             <td>
                 <div class="bin_itemPrice" id="goodTotal_{{ good.id }}">
-                    <div class="Som">{{ (good.price * count)|price('KGS') }}</div>
-                    <div class="Dollar">{{ (good.price * count)|price('USD') }}</div>
+                    <div class="Som">{{ (good.price * order.amount)|price('KGS') }}</div>
+                    <div class="Dollar">{{ (good.price * order.amount)|price('USD') }}</div>
                 </div>
             </td>
         </tr>

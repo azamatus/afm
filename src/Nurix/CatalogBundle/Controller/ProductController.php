@@ -40,6 +40,39 @@ class ProductController extends Controller
 
         return $this->render('CatalogBundle:Product:product_info.html.twig', array('product' => $entity, 'char'=>$char, 'mainchar' => $mainchar,'amount'=>$amount));
     }
+
+    public function getInfoByArticleAction($article)
+    {
+        /** @var $goodRepository Entity\GoodsRepository */
+        $goodRepository = $this->getDoctrine()
+            ->getRepository('CatalogBundle:Goods');
+        /** @var $entity Goods */
+        $entity = $goodRepository
+            ->findBy(array("article"=>$article));
+        if (!$entity||!$entity->getActive())
+            throw $this->createNotFoundException('Page not found 404');
+
+        $cookieGoods = $this->getRequest()->cookies->get("cookieGoods");
+
+        $amount=1;
+        if (isset($cookieGoods[$entity->getId()]))
+            $amount = $cookieGoods[$entity->getId()];
+
+
+        /** @var $charRepository Entity\CharacteristicRepository */
+        $charRepository= $this->getDoctrine()
+            ->getRepository("CatalogBundle:Characteristic");
+
+        $mainchar = $charRepository
+            ->findBy(array("goodId"=>$entity->getId()), null, 8);
+
+        $goodRepository->incrementViews($entity->getId());
+
+        $char = $charRepository->getGoodCharacteristic($entity->getId());
+
+        return $this->render('CatalogBundle:Product:product_info.html.twig', array('product' => $entity, 'char'=>$char, 'mainchar' => $mainchar,'amount'=>$amount));
+    }
+
     public function getSameAction(Goods $product)
     {
         $same = $this ->getDoctrine()

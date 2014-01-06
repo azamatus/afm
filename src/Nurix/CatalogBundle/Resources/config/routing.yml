@@ -16,6 +16,11 @@ nurix_goods_get_info:
     pattern: /catalog/product/{id}/
     defaults: { _controller: CatalogBundle:Product:getInfo}
 
+
+nurix_goods_get_info_by_article:
+    pattern: /product/{article}/
+    defaults: { _controller: CatalogBundle:Product:getInfoByArticle}
+
 nurix_bin:
     resource: "@CatalogBundle/Resources/config/routing/bin.yml"
     prefix:   /bin
