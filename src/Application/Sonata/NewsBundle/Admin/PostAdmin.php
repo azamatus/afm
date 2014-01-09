@@ -64,7 +64,6 @@ class PostAdmin extends Admin
                 ->add('enabled', null, array('required' => false))
                 ->add('local', null, array('required' => false))
                 ->add('image', 'sonata_type_model_list', array(), array('link_parameters' => array('context' => 'news')))
-                ->add('author', 'sonata_type_model')
                 ->add('category', 'sonata_type_model_list', array('required' => false))
                 ->add('title')
                 ->add('abstract', null, array('attr' => array('class' => 'span6', 'rows' => 5)))
@@ -224,6 +223,8 @@ class PostAdmin extends Admin
      */
     public function prePersist($post)
     {
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $post->setAuthor($user);
         $post->setContentFormatter('richhtml');
         $post->setContent($this->getPoolFormatter()->transform($post->getContentFormatter(), $post->getRawContent()));
     }
