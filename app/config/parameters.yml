@@ -12,4 +12,4 @@ parameters:
     mailer_password: null
     locale: ru
     secret: ThisTokenIsNotSoSecretChangeIt
-    good_image_count:   2
+    good_image_count:   3
