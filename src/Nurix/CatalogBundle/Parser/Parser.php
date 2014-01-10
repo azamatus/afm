@@ -23,11 +23,13 @@ class Parser
     private $xlsx_service;
     /* @var Registry $doctrine_service */
     private $doctrine_service;
+    private $googleParser;
 
-    public function __construct($doctrine_service, $xlsx_service)
+    public function __construct($doctrine_service, $xlsx_service,$googleParser)
     {
         $this->xlsx_service = $xlsx_service;
         $this->doctrine_service = $doctrine_service;
+        $this->googleParser = $googleParser;
     }
 
     public function parseExcel(File $file)
@@ -82,6 +84,12 @@ class Parser
                     $good->setLastUpdate($last_update);
                     $good->setPrice($price);
                     $good->setActive(true);
+                    if ($good->getImageId()==null)
+                    {
+                        $gallery = $this->googleParser->saveImages($name,'default','sonata.media.provider.image','goods_big',5);
+                        $good->setImageId($gallery->getId());
+                    }
+
 
 
                     if ($good->getCatalog()==null)
@@ -91,7 +99,7 @@ class Parser
 
 
                 } else {
-                    $added_goods++;
+                    $gallery = $this->googleParser->saveImages($name,'default','sonata.media.provider.image','goods_big',5);
                     $good = new Goods();
                     $good->setArticle($article);
                     $good->setName($name);
@@ -99,10 +107,10 @@ class Parser
                     $good->setLastUpdate($last_update);
                     $good->setPrice($price);
                     $good->setCatalog($subcatalog);
-
+                    $good->setImageId($gallery->getId());
                     $entityManager->persist($good);
                     $entityManager->flush();
-
+                    $added_goods++;
 
                 }
 

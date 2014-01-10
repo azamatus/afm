@@ -7,7 +7,10 @@
  * To change this template use File | Settings | File Templates.
  */
 namespace Nurix\CatalogBundle\Admin;
+use Application\Sonata\MediaBundle\Entity\Gallery;
 use Doctrine\ORM\EntityRepository;
+use Nurix\CatalogBundle\Entity\Goods;
+use Nurix\CatalogBundle\Parser\GoogleParser;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -132,11 +135,34 @@ class GoodsAdmin extends Admin
                 ->get('catalog.product.parser')
                 ->parseYandex($url, $id);
         }
+
+        if ($object->getImageId()==null)
+        {
+            $container = $this->getConfigurationPool()->getContainer();
+            /** @var $parser GoogleParser */
+            $parser = $container->get('catalog.product.google_parser');
+            /** @var $gallery Gallery */
+            $gallery = $parser->saveImages($object->getName(),'default','sonata.media.provider.image','goods_big',5);
+            $object->setImageId($gallery->getId());
+        }
     }
 
     public function postPersist($object)
     {
         $this->preUpdate($object);
+    }
+
+    public function prePersist($object)
+    {
+        if ($object->getImageId()==null)
+        {
+            $container = $this->getConfigurationPool()->getContainer();
+            /** @var $parser GoogleParser */
+            $parser = $container->get('catalog.product.google_parser');
+            /** @var $gallery Gallery */
+            $gallery = $parser->saveImages($object->getName(),'default','sonata.media.provider.image','goods_big',5);
+            $object->setImageId($gallery->getId());
+        }
     }
 
     protected function configureRoutes(RouteCollection $collection)

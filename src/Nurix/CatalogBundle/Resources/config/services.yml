@@ -28,7 +28,11 @@ services:
                 - { name: twig.extension }
     catalog.product.parser:
         class: Nurix\CatalogBundle\Parser\Parser
-        arguments: [@doctrine,@xls.load_xls2007]
+        arguments: [@doctrine,@xls.load_xls2007,@catalog.product.google_parser]
+
+    catalog.product.google_parser:
+        class: Nurix\CatalogBundle\Parser\GoogleParser
+        arguments: [@sonata.media.manager.media,@sonata.media.manager.gallery,@sonata.media.entity_manager]
 
     catalog.menu.catalog_sitemap:
             class: Knp\Menu\MenuItem
