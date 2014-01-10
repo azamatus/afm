@@ -12,7 +12,6 @@ namespace Nurix\CatalogBundle\Parser;
 use Application\Sonata\MediaBundle\Entity\GalleryHasMedia;
 use Application\Sonata\MediaBundle\Entity\Media;
 use Doctrine\ORM\EntityManager;
-use Exception;
 use Sonata\MediaBundle\Model\GalleryManagerInterface;
 use Sonata\MediaBundle\Model\MediaManagerInterface;
 use Sunra\PHPSimple\HtmlDomParser;
@@ -77,8 +76,7 @@ class GoogleParser
 //        die;
 //             imgurl\x3dhttp://mirsladosti.ru/wp-content/uploads/2008/09/19.gif\x26
 //            $m = $html->find('table.images_table a > img');
-        try
-        {
+        if ($data && $data->responseData)
             foreach ($data->responseData->results as $_m) {
                 //парсит только 2 картинки
                 if ($i == $count)
@@ -116,8 +114,7 @@ class GoogleParser
                     $i++;
                 }
             }
-        }
-        catch(Exception $e)
+        else
         {
             $this->galleryManager->delete($gallery);
             return null;

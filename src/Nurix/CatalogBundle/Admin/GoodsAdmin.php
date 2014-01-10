@@ -141,7 +141,8 @@ class GoodsAdmin extends Admin
             $parser = $container->get('catalog.product.google_parser');
             /** @var $gallery Gallery */
             $gallery = $parser->saveImages($object->getName(),'default','sonata.media.provider.image','goods_big',3);
-            $object->setImageId($gallery->getId());
+            if ($gallery!=null)
+                $object->setImageId($gallery->getId());
         }
     }
 
@@ -159,6 +160,7 @@ class GoodsAdmin extends Admin
             $parser = $container->get('catalog.product.google_parser');
             /** @var $gallery Gallery */
             $gallery = $parser->saveImages($object->getName(),'default','sonata.media.provider.image','goods_big',3);
+            if ($gallery!=null)
             $object->setImageId($gallery->getId());
         }
     }

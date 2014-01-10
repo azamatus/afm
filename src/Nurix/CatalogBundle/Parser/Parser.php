@@ -87,6 +87,7 @@ class Parser
                     if ($good->getImageId()==null)
                     {
                         $gallery = $this->googleParser->saveImages($name,'default','sonata.media.provider.image','goods_big',3);
+                        if ($gallery!=null)
                         $good->setImageId($gallery->getId());
                     }
 
@@ -107,7 +108,8 @@ class Parser
                     $good->setLastUpdate($last_update);
                     $good->setPrice($price);
                     $good->setCatalog($subcatalog);
-                    $good->setImageId($gallery->getId());
+                    if ($gallery!=null)
+                        $good->setImageId($gallery->getId());
                     $entityManager->persist($good);
                     $entityManager->flush();
                     $added_goods++;
