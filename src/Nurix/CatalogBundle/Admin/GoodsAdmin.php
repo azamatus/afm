@@ -130,19 +130,17 @@ class GoodsAdmin extends Admin
             $repository = $entity_manager->getRepository("CatalogBundle:Characteristic");
             $repository->deleteByGoodId($id);
 
-            $this->getConfigurationPool()
-                ->getContainer()
+            $container
                 ->get('catalog.product.parser')
                 ->parseYandex($url, $id);
         }
 
         if ($object->getImageId()==null)
         {
-            $container = $this->getConfigurationPool()->getContainer();
             /** @var $parser GoogleParser */
             $parser = $container->get('catalog.product.google_parser');
             /** @var $gallery Gallery */
-            $gallery = $parser->saveImages($object->getName(),'default','sonata.media.provider.image','goods_big',5);
+            $gallery = $parser->saveImages($object->getName(),'default','sonata.media.provider.image','goods_big',3);
             $object->setImageId($gallery->getId());
         }
     }
@@ -160,7 +158,7 @@ class GoodsAdmin extends Admin
             /** @var $parser GoogleParser */
             $parser = $container->get('catalog.product.google_parser');
             /** @var $gallery Gallery */
-            $gallery = $parser->saveImages($object->getName(),'default','sonata.media.provider.image','goods_big',5);
+            $gallery = $parser->saveImages($object->getName(),'default','sonata.media.provider.image','goods_big',3);
             $object->setImageId($gallery->getId());
         }
     }

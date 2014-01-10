@@ -86,7 +86,7 @@ class Parser
                     $good->setActive(true);
                     if ($good->getImageId()==null)
                     {
-                        $gallery = $this->googleParser->saveImages($name,'default','sonata.media.provider.image','goods_big',5);
+                        $gallery = $this->googleParser->saveImages($name,'default','sonata.media.provider.image','goods_big',3);
                         $good->setImageId($gallery->getId());
                     }
 
@@ -99,7 +99,7 @@ class Parser
 
 
                 } else {
-                    $gallery = $this->googleParser->saveImages($name,'default','sonata.media.provider.image','goods_big',5);
+                    $gallery = $this->googleParser->saveImages($name,'default','sonata.media.provider.image','goods_big',3);
                     $good = new Goods();
                     $good->setArticle($article);
                     $good->setName($name);
