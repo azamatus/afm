@@ -84,7 +84,7 @@ class GoogleParser
                 $buffer = file_get_contents($_m->url);
                 if ($buffer && !empty($buffer)) {
 
-                    $d = "uploads/{$i}." . substr($_m->url, -3, 3);
+                    $d = "uploads/media/{$i}." . substr($_m->url, -3, 3);
 
                     file_put_contents($d, $buffer);
 
