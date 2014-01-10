@@ -21,6 +21,7 @@ use Knp\Menu\ItemInterface as MenuItemInterface;
 
 class GoodsAdmin extends Admin
 {
+
     protected function configureShowField(ShowMapper $showmapper)
     {
         $showmapper
@@ -137,12 +138,7 @@ class GoodsAdmin extends Admin
 
         if ($object->getImageId()==null)
         {
-            /** @var $parser GoogleParser */
-            $parser = $container->get('catalog.product.google_parser');
-            /** @var $gallery Gallery */
-            $gallery = $parser->saveImages($object->getName(),'default','sonata.media.provider.image','goods_big',3);
-            if ($gallery!=null)
-                $object->setImageId($gallery->getId());
+            $this->saveGallery($object);
         }
     }
 
@@ -155,15 +151,23 @@ class GoodsAdmin extends Admin
     {
         if ($object->getImageId()==null)
         {
-            $container = $this->getConfigurationPool()->getContainer();
-            /** @var $parser GoogleParser */
-            $parser = $container->get('catalog.product.google_parser');
-            /** @var $gallery Gallery */
-            $gallery = $parser->saveImages($object->getName(),'default','sonata.media.provider.image','goods_big',3);
-            if ($gallery!=null)
-            $object->setImageId($gallery->getId());
+            $this->saveGallery($object);
         }
     }
+    /**
+     * @param $object
+     */
+    public function saveGallery($object)
+    {
+        $container = $this->getConfigurationPool()->getContainer();
+        /** @var $parser GoogleParser */
+        $parser = $container->get('catalog.product.google_parser');
+        /** @var $gallery Gallery */
+        $gallery = $parser->saveImages($object->getName(), 'default', 'sonata.media.provider.image', 'goods_big', $container->getParameter('good_image_count'));
+        if ($gallery != null)
+            $object->setImageId($gallery->getId());
+    }
+
 
     protected function configureRoutes(RouteCollection $collection)
     {

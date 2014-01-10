@@ -9,6 +9,7 @@
 namespace Nurix\CatalogBundle\Parser;
 use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Registry;
+use Doctrine\Common\Util\Debug;
 use Nurix\CatalogBundle\Entity\Goods;
 use Doctrine\ORM\EntityNotFoundException;
 use Nurix\CatalogBundle\Entity\Characteristic;
@@ -24,12 +25,14 @@ class Parser
     /* @var Registry $doctrine_service */
     private $doctrine_service;
     private $googleParser;
+    private $imageCount;
 
-    public function __construct($doctrine_service, $xlsx_service,$googleParser)
+    public function __construct($doctrine_service, $xlsx_service,$googleParser,$imageCount)
     {
         $this->xlsx_service = $xlsx_service;
         $this->doctrine_service = $doctrine_service;
         $this->googleParser = $googleParser;
+        $this->imageCount = $imageCount;
     }
 
     public function parseExcel(File $file)
@@ -86,7 +89,7 @@ class Parser
                     $good->setActive(true);
                     if ($good->getImageId()==null)
                     {
-                        $gallery = $this->googleParser->saveImages($name,'default','sonata.media.provider.image','goods_big',3);
+                        $gallery = $this->googleParser->saveImages($good->getName(),'default','sonata.media.provider.image','goods_big',$this->imageCount);
                         if ($gallery!=null)
                         $good->setImageId($gallery->getId());
                     }
@@ -100,7 +103,6 @@ class Parser
 
 
                 } else {
-                    $gallery = $this->googleParser->saveImages($name,'default','sonata.media.provider.image','goods_big',3);
                     $good = new Goods();
                     $good->setArticle($article);
                     $good->setName($name);
@@ -108,8 +110,12 @@ class Parser
                     $good->setLastUpdate($last_update);
                     $good->setPrice($price);
                     $good->setCatalog($subcatalog);
+
+                    $gallery = $this->googleParser->saveImages($name,'default','sonata.media.provider.image','goods_big',$this->imageCount);
+
                     if ($gallery!=null)
                         $good->setImageId($gallery->getId());
+
                     $entityManager->persist($good);
                     $entityManager->flush();
                     $added_goods++;

@@ -11,6 +11,7 @@ namespace Nurix\CatalogBundle\Parser;
 
 use Application\Sonata\MediaBundle\Entity\GalleryHasMedia;
 use Application\Sonata\MediaBundle\Entity\Media;
+use Doctrine\Common\Util\Debug;
 use Doctrine\ORM\EntityManager;
 use Sonata\MediaBundle\Model\GalleryManagerInterface;
 use Sonata\MediaBundle\Model\MediaManagerInterface;
@@ -34,7 +35,7 @@ class GoogleParser
      */
     private $em;
 
-    public function __construct(MediaManagerInterface $mediaManager,GalleryManagerInterface $galleryManager,EntityManager $em)
+    public function __construct(MediaManagerInterface $mediaManager, GalleryManagerInterface $galleryManager, EntityManager $em)
     {
 
         $this->mediaManager = $mediaManager;
@@ -42,7 +43,7 @@ class GoogleParser
         $this->em = $em;
     }
 
-    public function saveImages($query, $context, $providerName,$default_format, $count)
+    public function saveImages($query, $context, $providerName, $default_format, $count)
     {
         $gallery = $this->galleryManager->create();
         $gallery->setContext($context);
@@ -51,48 +52,34 @@ class GoogleParser
         $gallery->setDefaultFormat($default_format);
         $this->galleryManager->update($gallery);
 
-
-
-        if (!$query) throw new InvalidArgumentException("no query");
-
-            $i = 1;
-
-            $url = 'http://www.google.com/search?q=' . urlencode($query) . '&oe=utf-8&rls={moz:distributionID}:{moz:locale}:{moz:official}&client=firefox-a&um=1&ie=UTF-8&tbm=isch&source=og&tbs=isz:m&sa=N&hl=en&tab=wi&sa=N&start=0&ndsp=20';
-
-
-        $json = file_get_contents('http://ajax.googleapis.com/ajax/services/search/images?v=1.0&q='.urlencode($query));
+        $i = 0;
+        $json = file_get_contents('http://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=' . urlencode($query));
 
         $data = json_decode($json);
-
-//        foreach ($data->responseData->results as $result) {
-//            $m[] = array('url' => $result->url, 'alt' => $result->title);
-//        }
-
-//        print_r($results);
-
-//            $html = HtmlDomParser::file_get_html($url);
-
-//            echo $html;
-//        die;
-//             imgurl\x3dhttp://mirsladosti.ru/wp-content/uploads/2008/09/19.gif\x26
-//            $m = $html->find('table.images_table a > img');
-        if ($data && $data->responseData)
+        if ($data->responseStatus == 200)
             foreach ($data->responseData->results as $_m) {
-                //парсит только 2 картинки
-                if ($i == $count)
-                    return;
+
+                if ($_m->width>2000&&$_m->height>2000)
+                    continue;
+                if ($_m->width<210||$_m->height<210)
+                    continue;
                 $buffer = file_get_contents($_m->url);
                 if ($buffer && !empty($buffer)) {
 
                     $d = "uploads/media/{$i}." . substr($_m->url, -3, 3);
+
+                    if (file_exists($d))
+                    {
+                        unlink($d);
+                    }
 
                     file_put_contents($d, $buffer);
 
                     $file = new File($d);
                     $media = new Media();
                     $media->setBinaryContent($file);
-                    $media->setName($_m->title);
-                    $media->setContext($context); // video related to the user
+                    $media->setName($_m->contentNoFormatting);
+                    $media->setContext($context);
                     $media->setProviderName($providerName);
 
                     $this->mediaManager->save($media);
@@ -113,24 +100,13 @@ class GoogleParser
 
                     $i++;
                 }
+                if ($i == $count)
+                    break;
             }
-        else
-        {
+        if ($i == 0) {
             $this->galleryManager->delete($gallery);
             return null;
         }
         return $gallery;
-    }
-    function get_url_contents($url) {
-        $crl = curl_init();
-
-        curl_setopt($crl, CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322)');
-        curl_setopt($crl, CURLOPT_URL, $url);
-        curl_setopt($crl, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($crl, CURLOPT_CONNECTTIMEOUT, 5);
-
-        $ret = curl_exec($crl);
-        curl_close($crl);
-        return $ret;
     }
 } 
