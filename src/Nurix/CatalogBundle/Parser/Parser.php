@@ -111,12 +111,13 @@ class Parser
                     $good->setPrice($price);
                     $good->setCatalog($subcatalog);
 
+                    $entityManager->persist($good);
+                    $entityManager->flush();
+
                     $gallery = $this->googleParser->saveImages($name,'default','sonata.media.provider.image','goods_big',$this->imageCount);
 
                     if ($gallery!=null)
                         $good->setImageId($gallery->getId());
-
-                    $entityManager->persist($good);
                     $entityManager->flush();
                     $added_goods++;
 
