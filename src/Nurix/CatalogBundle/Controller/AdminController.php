@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: root
- * Date: 4/14/13
- * Time: 7:07 PM
- * To change this template use File | Settings | File Templates.
- */
 namespace Nurix\CatalogBundle\Controller;
 
 use Nurix\CatalogBundle\Form\Type\ExcelType;
@@ -19,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 class AdminController extends CRUDController
 {
 
-    public function excelAction(Request $request)
+    public function excelAction(Request $request)// бул обработчик контроллероош
     {
 
         $form = $this->createForm(new ExcelType());

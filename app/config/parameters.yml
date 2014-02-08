@@ -2,14 +2,14 @@
 parameters:
     database_driver: pdo_mysql
     database_host: localhost
-    database_port: null
+    database_port: ~
     database_name: nurix
     database_user: root
-    database_password: null
+    database_password: ~
     mailer_transport: smtp
     mailer_host: localhost
-    mailer_user: null
-    mailer_password: null
+    mailer_user: admin
+    mailer_password: ~
     locale: ru
     secret: ThisTokenIsNotSoSecretChangeIt
-    good_image_count:   3
+    good_image_count: 3
