@@ -173,6 +173,7 @@ class GoodsAdmin extends Admin
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection->add('excel');
+        $collection->add('excelImport');
     }
 
     protected function configureSideMenu(MenuItemInterface $menu, $action, AdminInterface $childAdmin = null)

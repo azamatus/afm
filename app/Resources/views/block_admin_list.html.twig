@@ -75,6 +75,28 @@ file that was distributed with this source code.
                                             </ul>
                                         {% endif %}
                                     {% endif %}
+
+                                    {% if admin.hasroute('excelImport') and admin.isGranted('CREATE') %}
+                                        {% if admin.subClasses is empty %}
+                                            <a class="btn btn-small" href="{{ admin.generateUrl('excelImport')}}">
+                                                <i class="icon-hdd"></i>
+                                                Импортировать остотки из файла
+                                            </a>
+                                        {% else %}
+                                            <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" href="#">
+                                                <i class="icon-hdd"></i>
+                                                Импортировать из файла
+                                                <span class="caret"></span>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                {% for subclass in admin.subclasses|keys %}
+                                                    <li>
+                                                        <a href="{{ admin.generateUrl('excel', {'subclass': subclass}) }}">{{ subclass }}</a>
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                    {% endif %}
                                 </div>
                             </td>
                         </tr>
