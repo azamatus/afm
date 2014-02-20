@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 class AdminController extends CRUDController
 {
 
-    public function excelAction(Request $request)// бул обработчик контроллер ошо
+    public function excelAction(Request $request)
     {
 
         $form = $this->createForm(new ExcelType());
@@ -55,7 +55,7 @@ class AdminController extends CRUDController
             ));
     }
 
-    public function excelImportAction(Request $request)// бул обработчик контроллероош
+    public function excelImportAction(Request $request)
     {
 
         $form = $this->createForm(new ExcelType());

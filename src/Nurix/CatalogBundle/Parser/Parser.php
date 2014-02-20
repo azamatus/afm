@@ -35,7 +35,7 @@ class Parser
         $this->imageCount = $imageCount;
     }
 
-    public function parseExcel(File $file)//ына парсер
+    public function parseExcel(File $file)
     {
 
         $exelObj = $this->xlsx_service->load($file);
