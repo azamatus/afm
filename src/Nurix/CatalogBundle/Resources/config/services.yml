@@ -26,9 +26,14 @@ services:
             class: Nurix\CatalogBundle\Twig\CountExtension
             tags:
                 - { name: twig.extension }
+
     catalog.product.parser:
         class: Nurix\CatalogBundle\Parser\Parser
         arguments: [@doctrine,@xls.load_xls2007,@catalog.product.google_parser,%good_image_count%]
+
+    catalog.product.importparser:
+            class: Nurix\CatalogBundle\Parser\Excel5Parser
+            arguments: [@doctrine, @xls.load_xls5]
 
     catalog.product.google_parser:
         class: Nurix\CatalogBundle\Parser\GoogleParser

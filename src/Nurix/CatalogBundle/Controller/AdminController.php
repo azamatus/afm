@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: root
- * Date: 4/14/13
- * Time: 7:07 PM
- * To change this template use File | Settings | File Templates.
- */
 namespace Nurix\CatalogBundle\Controller;
 
 use Nurix\CatalogBundle\Form\Type\ExcelType;
@@ -48,7 +41,47 @@ class AdminController extends CRUDController
                 } else {
                     $this->get('session')->getFlashBag()->add('notice', 'Неверный формат');
                 }
+                $this->redirect($this->container->get('sonata.admin.goods')->generateUrl('excel'));
 
+            }
+        }
+
+        return $this->render('CatalogBundle:Admin:excel.html.twig',
+            array('form' => $form->createView(),
+                'base_template' => $this->getBaseTemplate(),
+                'admin' => $this->container->get('sonata.admin.goods'),
+                'admin_pool'      => $this->container->get('sonata.admin.pool'),
+                'blocks'          => $this->container->getParameter('sonata.admin.configuration.dashboard_blocks')
+            ));
+    }
+
+    public function excelImportAction(Request $request)
+    {
+
+        $form = $this->createForm(new ExcelType());
+
+        if ($request->isMethod('POST')) {
+            $form->bind($request);
+
+            if ($form->isValid()) {
+                $file = $form['file']->getData();
+                $extension = null;
+                $original_file = $file->getClientOriginalName();
+
+                if (stripos($original_file, 'xls')) {
+                    $dir = $this->get('kernel')->getRootDir() . '/../web/price';
+                    $filename = sha1(uniqid(mt_rand(), true));
+                    $filename = $filename . '.' . $extension;
+                    $file->move($dir, $filename);
+                    $excel_file = new File($dir . '/' . $filename);
+
+                    $info = $this->get('catalog.product.ımportparser')->parseExcel($excel_file);
+
+                    $updated_message = 'Обновлено: ' . $info['updated'];
+                    $this->get('session')->getFlashBag()->add('notice', $updated_message);
+                } else {
+                    $this->get('session')->getFlashBag()->add('notice', 'Неверный формат');
+                }
                 $this->redirect($this->container->get('sonata.admin.goods')->generateUrl('excel'));
 
             }

@@ -108,6 +108,14 @@ class GoodsRepository extends EntityRepository
 			->getQuery()->execute();
 	}
 
+    public function deactivateAmountAll()
+    {
+        $this->createQueryBuilder('g')
+            ->update('CatalogBundle:Goods', 'g')
+            ->set('g.amount', 0)
+            ->getQuery()->execute();
+    }
+
     public function getAvailableGoods()
     {
         $query = $this->createQueryBuilder('q')
