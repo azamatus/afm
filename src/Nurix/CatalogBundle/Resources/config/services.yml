@@ -34,6 +34,10 @@ services:
         class: Nurix\CatalogBundle\Parser\GoogleParser
         arguments: [@sonata.media.manager.media,@sonata.media.manager.gallery,@sonata.media.entity_manager]
 
+    catalog.product.goods_upload_parser:
+        class: Nurix\CatalogBundle\Parser\GoodsUploadParser
+        arguments: [@doctrine,@xls.load_xls5]
+
     catalog.menu.catalog_sitemap:
             class: Knp\Menu\MenuItem
             factory_service: catalog.menu_builder
