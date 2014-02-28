@@ -12,6 +12,7 @@ use Doctrine\ORM\EntityRepository;
 use Nurix\CatalogBundle\Entity\Goods;
 use Nurix\CatalogBundle\Parser\GoogleParser;
 use Sonata\AdminBundle\Admin\Admin;
+use Sonata\AdminBundle\Admin\AdminInterface;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -175,7 +176,7 @@ class GoodsAdmin extends Admin
         $collection->add('excelImport');
     }
 
-    protected function configureSideMenu(MenuItemInterface $menu, $action, Admin $childAdmin = null)
+    protected function configureSideMenu(MenuItemInterface $menu, $action, AdminInterface $childAdmin = null)
     {
         if ($this->getRequest()->get('id')!=null && $this->getSubject()->getActive()!=null)
             $menu->addChild('Просмотр товара',array('route' => 'nurix_goods_get_info','routeParameters'=>array('id' => $this->getRequest()->get('id'))));
