@@ -1,263 +1,103 @@
 <!DOCTYPE html>
-<html>
+<!--[if lt IE 7 ]>
+<html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>
+<html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>
+<html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html> <!--<![endif]-->
 <head>
     <meta charset="UTF-8"/>
-    <title>{% block title %}Nurix Mobile{% endblock %}</title>
-    <meta name="Description" content="Интернет-Магазин Nurix-Mobile. {% block meta_description %} Мы занимаемся розничной и оптовой продажей сотовых телефонов с Объединенных Арабских Эмиратов по самым низким ценам. {% endblock %}">
-    <meta property="og:image" content="{% block facebook_image_url %}{{ asset('public/img/logo.png') }}{% endblock %}" />
-    {% block stylesheets %}
-        <link type="text/css" rel="stylesheet" href="{{ asset('public/css/mainframe.css') }}"/>
-        <link type="text/css" rel="stylesheet" href="{{ asset("public/css/facebook.css") }}"/>
-        <link type="text/css" rel="stylesheet" href="{{ asset("bundles/applicationsonatauser/css/sonata.css") }}"/>
-        <link type="text/css" rel="stylesheet" href="{{ asset("public/css/jquery-ui.css") }}"/>
-    {% endblock %}
+    <title>{% block title %}Nurazia{% endblock %}</title>
+    <meta name="Description" content="Интернет-Магазин NurAzia.{% block meta_description %}{% endblock %}">
+    <meta property="og:image" content="{% block facebook_image_url %}{{ asset('public/img/logo.png') }}{% endblock %}"/>
+    <!-- Mobile Specific Metas
+  ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link type="text/css" rel="stylesheet" href="{{ asset('public/css/style.css') }}"/>
+    <link type="text/css" rel="stylesheet" href="{{ asset("public/css/bootstrap.min.css") }}" media="screen"/>
+    <link type="text/css" rel="stylesheet" href="{{ asset("bundles/applicationsonatauser/css/sonata.css") }}"/>
+    <link type="text/css" rel="stylesheet" href="{{ asset("public/css/jquery-ui-1.10.1.min.css") }}"/>
+    <link type="text/css" rel="stylesheet" href="{{ asset("public/css/customize.css") }}"/>
+    <link type="text/css" rel="stylesheet" href="{{ asset("public/css/flexslider.css") }}"/>
+    <link type="text/css" rel="stylesheet" href="{{ asset("public/css/font-awesome.css") }}"/>
+    <link type="text/css" rel="stylesheet" href="{{ asset("public/css/jquery.fancybox.css") }}"/>
+    {% block stylesheets %}{% endblock %}
     <script type="text/javascript">
         var base_url = "{{ path('nurix_homepage') }}";
     </script>
-    {% block javascripts %}
-        <script type="text/javascript" src="{{ asset("public/js/facebook.js") }}"></script>
-        <script type="text/javascript" src="{{ asset("public/js/jquery-1.9.0.min.js") }}"></script>
-        <script type="text/javascript" src="{{ asset("public/js/html5placeholder.jquery.js") }}"></script>
-        <script type="text/javascript" src="{{ asset("public/js/jquery-ui.min.js") }}"></script>
-        <script type="text/javascript" src="{{ asset("public/js/jquery.validate.js") }}"></script>
-        <script type="text/javascript" src="{{ asset("bundles/applicationsonatauser/js/registration.js") }}"></script>
-        <script type="text/javascript" src="{{ asset("public/js/jquery.pwstrength.js") }}"></script>
-        <script type="text/javascript" src="{{ asset("bundles/catalog/js/bin.js") }}"></script>
-        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-        <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
-        <!-- BEGIN JIVOSITE CODE {literal} -->
-        <script type='text/javascript'>
-            (function(){ var widget_id = '96934';
-                var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);})();</script>
-        <!-- {/literal} END JIVOSITE CODE -->
-        <script type="text/javascript">
-            var reformalOptions = {
-                project_id: 117927,
-                project_host: "nurix.reformal.ru",
-                tab_orientation: "right",
-                tab_indent: "50%",
-                tab_bg_color: "#f0ac00",
-                tab_border_color: "#FFFFFF",
-                tab_image_url: "http://tab.reformal.ru/T9GC0LfRi9Cy0Ysg0Lgg0L%252FRgNC10LTQu9C%252B0LbQtdC90LjRjw==/FFFFFF/88128dfd6ca0743b5ccc2f8afed9f3b1/right/0/tab.png",
-                tab_border_width: 1
-            };
-
-            (function() {
-                var script = document.createElement('script');
-                script.type = 'text/javascript'; script.async = true;
-                script.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'media.reformal.ru/widgets/v3/reformal.js';
-                document.getElementsByTagName('head')[0].appendChild(script);
-            })();
-        </script><noscript><a href="http://reformal.ru"><img src="http://media.reformal.ru/reformal.png" /></a><a href="http://nurix.reformal.ru">Oтзывы и предложения для Nurix Mobile</a></noscript>
-        <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-            ga('create', 'UA-43463245-1', 'nurix.kg');
-            ga('send', 'pageview');
-
-        </script>
-        <script>
-            'article aside footer header nav section time'.replace(/\w+/g,function(n){document.createElement(n)})
-        </script>
-    {% endblock %}
-<!-- test -->
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" sizes="16x16"/>
 </head>
 <body>
-<header>
-    <div class="center">
-        <div class="header_line">
-            {% block mainMenu %}
-                {{ knp_menu_render('main',{template : '::main_menu.html.twig'}) }}
-            {% endblock %}
-            <div class="search">
-                {% render controller('NurixBundle:Search:ShowForm') %}
-            </div>
-            <div class="vhod_div">
-                {% if app.user and is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-
-                    <div id="vhod_message">
-                        <a href="{{ path('sonata_user_profile_show') }}">
-                            {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
-                        </a>
-                        |
-                    </div>
-
-                    <div class="vhod">
-                        <a href="{{ path('fos_user_security_logout') }}">
-                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                        </a>
-                    </div>
-
-                {% else %}
-                    {% if app.request.attributes.get('_route') != 'fos_user_security_login' %}
-                        <a class="vhod" id="register_button_id">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-                    {% endif %}
-
-                    <a href="{{ path('fos_user_registration_register') }}">
-                        <div class="button f12">
-                            Зарегистрироваться
-                        </div>
-                    </a>
-                {% endif %}
-                {# popup login#}
-                <div id="registration_form" style="display: none" title="Войти">
-                    {#{% render url('fos_user_security_login') %}#}
-                    {% include 'ApplicationSonataUserBundle:Security:login_popup.html.twig' %}
-                </div>
-                {#END popup login#}
-
-                <div id="tovar-added" title="Товар добавлен в корзину">
-
-                </div>
-
-            </div>
-
-        </div>
-        <!--[if lt IE 9]>
-            <div class="ie_stop">
-                <h2>
-                    Мы обнаружили, что у Вас установлен Internet Explorer версии 8 или ниже.
-                    Рекомендуем Вам установить более адекватный браузер такие как <a href="http://www.google.com/intl/ru/chrome/">Google Chrome</a>,<a href="http://www.mozilla.org/ru/firefox/new/"> Mozilla Firefox</a> или <a href="http://www.opera.com/computer/windows">Opera</a>.
-                </h2>
-            </div>
-
-        <![endif]-->
-        <div class="header_line2">
-
-            <div id="logo">
-                <a href="{{ path("nurix_homepage") }}"><img src="{{ asset('public/img/logo.png') }}" alt="header"/></a>
-            </div>
-            <div id="contacts">
-                <span class="gray_color f14">+996</span>
-                <span class="f18">555</span>
-                <span class="f24">414</span>
-                <span class="f24">125</span><br>
-                <span class="gray_color f14">+996</span>
-                <span class="f18">772</span>
-                <span class="f24">414</span>
-                <span class="f24">122</span>
-            </div>
-            <div id="times">
-                <span class="gray_color">Время работы:</span><br>
-                <span class="gray_color">c</span>
-                <span class="gray_color f20">10:00</span>
-                <span class="gray_color">до</span>
-                <span class="gray_color f20">20:00</span><br>
-                <span class="gray_color f16">7 дней в неделю</span>
-            </div>
-            <div class="korzina" id="bin_widget">
-                {% render controller('CatalogBundle:Bin:mainBin') %}
-            </div>
-        </div>
-        <div class="clearbox"></div>
-        <hr class="main_hr">
-    </div>
-    {% block slider %}
-    {% endblock %}
-
-</header>
-<div class="middle center">
-    <div class="leftColumn">
-        <div id="catalog_left_menu">
-        {% block catalog_menu %}
-            {{ knp_menu_render('catalog_sidebar', {'currentClass': 'current'}) }}
-        {% endblock %}
-        </div>
-        <div id="interesting">
-            {% block side_menu %}
-                {{ knp_menu_render('info_sidebar', {'currentClass': 'current'}) }}
-            {% endblock %}
-        </div>
-        <div class="facebook_page">
-            {% block facebook_page %}
-                <fb:fan profile_id="128170930622470" stream="0" connections="6" width="210px"
-                        header="0" logobar="0"
-                        css="http://nurix.sytes.net/public/css/facebook.css?v=4"></fb:fan>
-            {% endblock %}
-        </div>
-
-    </div>
-    <div class="content">
-        {% block body %}
-        {% endblock %}
-    </div>
+<div id="mainContainer" class="clearfix">
+    {% include '::header.html.twig' %}
+    {% block body %}{% endblock %}
+    {% include '::footer.html.twig' %}
 </div>
-<div class="clearbox"></div>
-<footer>
-    <div class="footerLine"></div>
-    <div class="footerBackgroung">
-        <div class="center">
-            <div class="footer">
+<!-- Sidebar Widget
+	================================================== -->
+<div class="switcher">
+    <h3>Site Switcher</h3>
+    <a class="Widget-toggle-link">+</a>
 
-                <div class="footerColumn">
-
-                    <div class="logoFooter">
-                        <a href="/"><img src="{{ asset('public/img/logoFooter.png') }}" alt="Nurix Mobile Logo"/></a>
-                    </div>
-
-                    <div class="aboutUsText f12">
-                        Мы занимаемся розничной и оптовой продажей сотовых телефонов с Объединенных Арабских Эмиратов по самым низким ценам в Бишкеке.
-                        <br/>
-                        У нас имеются телефоны HTC, Samsung, Nokia, Sony Ericsson, iPhone и Blackberry по самым низким ценам...
-                        Последние цены вы можете посмотреть тут или <a href="https://www.dropbox.com/sh/ou1vjre79pbyrlb/0pCQmjJ-uh">на Dropbox.com</a>...
-                        Будем обновляться по мере поступления телефонов...
-                        <br/>
-                        <a href="{{ path('nurix_create_pages',{'url' : 'about'}) }}">Подробнее о магазине...</a>
-                    </div>
-
-                    <div class="f12 white_color">
-                        © Nurix.kg, 2011 - {{ "now"|date("Y") }}
-                    </div>
-                </div>
-
-
-                <div class="footerColumn">
-
-                    <div class="f20 white_color">
-                        Карта Сайта:
-                    </div>
-
-                    {{ knp_menu_render('catalog_sitemap', {'currentClass': 'current'}) }}
-
-                </div>
-
-                <div class="footerColumn">
-                        {{ knp_menu_render('info_sitemap', {'currentClass': 'current'}) }}
-                </div>
-
-                <div class="footerColumn footerColumnLast">
-
-                    <div class="shareLinks">
-                        <a href="http://facebook.com/nurix.kg" target="_blank"><img alt="Страница на Facebook"
-                                    src="{{ asset('public/img/icon/fb_icon.png') }}"></a>
-                        <a href="https://twitter.com/nurixKG" target="_blank"><img alt="Профиль в твиттере"
-                                    src="{{ asset('public/img/icon/twit_icon.png') }}"></a>
-                        <a href="http://www.odnoklassniki.ru/nurix" target="_blank"><img alt="Группа в одноклассниках"
-                                    src="{{ asset('public/img/icon/ok_icon.png') }}"></a>
-                    </div>
-<!--
-                    <div class="f20 white_color">
-                        <div class="clearbox"></div>
-                        Подписка на новости:
-                        <form action="" name="forma2">
-                            <input type="text" class="podpiska" placeholder="Введите ваш электронный адрес"
-                                   name="podpiska"/>
-                            <input class="button_podpiska" type="submit" value="Подписаться">
-                        </form>
-                    </div>
--->
-                </div>
-
+    <div class="switcher-content clearfix">
+        <div class="layout-switch">
+            <h4>Layout Style</h4>
+            <div class="btn-group">
+                <a id="wide-style" class="btn">Wide</a>
+                <a id="boxed-style" class="btn">Boxed</a>
             </div>
+        </div><!--end layout-switch-->
 
-        </div>
-        <div class="clearbox"></div>
-    </div>
-</footer>
+        <div class="color-switch clearfix">
+            <h4>Color Style</h4>
+            <a id="orange-color" class="color-switch-link">orange</a>
+            <a id="blue-color" class="color-switch-link">blue</a>
+            <a id="green-color" class="color-switch-link">green</a>
+            <a id="brown-color" class="color-switch-link">brown</a>
+            <a id="red-color" class="color-switch-link">red</a>
+        </div><!--end color-switch-->
 
+        <div class="pattern-switch">
+            <h4>BG Pattern</h4>
+            <a style="background:url(img/backgrounds/retina_wood.png);">retina_wood</a>
+            <a style="background:url(img/backgrounds/bgnoise_lg.png);">bgnoise_lg</a>
+            <a style="background:url(img/backgrounds/purty_wood.png);">purty_wood</a>
+            <a style="background:url(img/backgrounds/irongrip.png);">irongrip</a>
+            <a style="background:url(img/backgrounds/low_contrast_linen.png);">low_contrast_linen</a>
+            <a style="background:url(img/backgrounds/tex2res5.png);">tex2res5</a>
+            <a style="background:url(img/backgrounds/wood_pattern.png);">wood_pattern</a>
+        </div><!--end pattern-switch-->
+
+    </div><!--end switcher-content-->
+</div>
+<!-- End Sidebar Widget-->
+<script type="text/javascript" src="{{ asset("public/js/facebook.js") }}"></script>
+<script type="text/javascript" src="{{ asset("public/js/jquery-1.9.0.min.js") }}"></script>
+<script type="text/javascript" src="{{ asset("public/js/html5placeholder.jquery.js") }}"></script>
+<script type="text/javascript" src="{{ asset("public/js/jquery-ui.min.js") }}"></script>
+<script type="text/javascript" src="{{ asset("public/js/jquery.validate.js") }}"></script>
+<script type="text/javascript" src="{{ asset("bundles/applicationsonatauser/js/registration.js") }}"></script>
+<script type="text/javascript" src="{{ asset("public/js/jquery.pwstrength.js") }}"></script>
+<script type="text/javascript" src="{{ asset("bundles/catalog/js/bin.js") }}"></script>
+<script type="text/javascript" src="{{ asset("public/js/bootstrap.min.js") }}"></script>
+<script type="text/javascript" src="{{ asset("public/js/custom.js") }}"></script>
+<script type="text/javascript" src="{{ asset("public/js/jquery.cookie.js") }}"></script>
+<script type="text/javascript" src="{{ asset("public/js/jquery.cycle2.carousel.min.js") }}"></script>
+<script type="text/javascript" src="{{ asset("public/js/jquery.cycle2.min.js") }}"></script>
+<script type="text/javascript" src="{{ asset("public/js/jquery.flexslider-min.js") }}"></script>
+<script type="text/javascript" src="{{ asset("public/js/jquery.tweet.js") }}"></script>
+<script type="text/javascript" src="{{ asset("public/js/jquery.fancybox.js") }}"></script>
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+<!-- BEGIN JIVOSITE CODE {literal} -->
+<script type='text/javascript'>
+    (function(){ var widget_id = '119878';
+        var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);})();</script>
+<!-- {/literal} END JIVOSITE CODE -->
+{% block javascripts %}
+{% endblock %}
 </body>
 </html>
