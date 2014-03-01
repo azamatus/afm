@@ -16,14 +16,17 @@
   ================================================== -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <link type="text/css" rel="stylesheet" href="{{ asset('public/css/style.css') }}"/>
     <link type="text/css" rel="stylesheet" href="{{ asset("public/css/bootstrap.min.css") }}" media="screen"/>
     <link type="text/css" rel="stylesheet" href="{{ asset("bundles/applicationsonatauser/css/sonata.css") }}"/>
     <link type="text/css" rel="stylesheet" href="{{ asset("public/css/jquery-ui-1.10.1.min.css") }}"/>
     <link type="text/css" rel="stylesheet" href="{{ asset("public/css/customize.css") }}"/>
+    <link type="text/css" rel="stylesheet" href="{{ asset('public/css/style.css') }}"/>
     <link type="text/css" rel="stylesheet" href="{{ asset("public/css/flexslider.css") }}"/>
     <link type="text/css" rel="stylesheet" href="{{ asset("public/css/font-awesome.css") }}"/>
     <link type="text/css" rel="stylesheet" href="{{ asset("public/css/jquery.fancybox.css") }}"/>
+    <link rel="stylesheet" id="active-bg" href="{{ asset("public/css/layout/Boxed.css") }}">
+    <link rel="stylesheet" id="active-bg" href="{{ asset("public/css/color/blue.css") }}">
+    <link rel="stylesheet" id="active-bg" href="{{ asset("public/css/backgrounds/tex2res5.css") }}">
     {% block stylesheets %}{% endblock %}
     <script type="text/javascript">
         var base_url = "{{ path('nurix_homepage') }}";
@@ -36,51 +39,11 @@
     {% block body %}{% endblock %}
     {% include '::footer.html.twig' %}
 </div>
-<!-- Sidebar Widget
-	================================================== -->
-<div class="switcher">
-    <h3>Site Switcher</h3>
-    <a class="Widget-toggle-link">+</a>
-
-    <div class="switcher-content clearfix">
-        <div class="layout-switch">
-            <h4>Layout Style</h4>
-            <div class="btn-group">
-                <a id="wide-style" class="btn">Wide</a>
-                <a id="boxed-style" class="btn">Boxed</a>
-            </div>
-        </div><!--end layout-switch-->
-
-        <div class="color-switch clearfix">
-            <h4>Color Style</h4>
-            <a id="orange-color" class="color-switch-link">orange</a>
-            <a id="blue-color" class="color-switch-link">blue</a>
-            <a id="green-color" class="color-switch-link">green</a>
-            <a id="brown-color" class="color-switch-link">brown</a>
-            <a id="red-color" class="color-switch-link">red</a>
-        </div><!--end color-switch-->
-
-        <div class="pattern-switch">
-            <h4>BG Pattern</h4>
-            <a style="background:url(img/backgrounds/retina_wood.png);">retina_wood</a>
-            <a style="background:url(img/backgrounds/bgnoise_lg.png);">bgnoise_lg</a>
-            <a style="background:url(img/backgrounds/purty_wood.png);">purty_wood</a>
-            <a style="background:url(img/backgrounds/irongrip.png);">irongrip</a>
-            <a style="background:url(img/backgrounds/low_contrast_linen.png);">low_contrast_linen</a>
-            <a style="background:url(img/backgrounds/tex2res5.png);">tex2res5</a>
-            <a style="background:url(img/backgrounds/wood_pattern.png);">wood_pattern</a>
-        </div><!--end pattern-switch-->
-
-    </div><!--end switcher-content-->
-</div>
-<!-- End Sidebar Widget-->
-<script type="text/javascript" src="{{ asset("public/js/facebook.js") }}"></script>
 <script type="text/javascript" src="{{ asset("public/js/jquery-1.9.0.min.js") }}"></script>
 <script type="text/javascript" src="{{ asset("public/js/html5placeholder.jquery.js") }}"></script>
 <script type="text/javascript" src="{{ asset("public/js/jquery-ui.min.js") }}"></script>
 <script type="text/javascript" src="{{ asset("public/js/jquery.validate.js") }}"></script>
 <script type="text/javascript" src="{{ asset("bundles/applicationsonatauser/js/registration.js") }}"></script>
-<script type="text/javascript" src="{{ asset("public/js/jquery.pwstrength.js") }}"></script>
 <script type="text/javascript" src="{{ asset("bundles/catalog/js/bin.js") }}"></script>
 <script type="text/javascript" src="{{ asset("public/js/bootstrap.min.js") }}"></script>
 <script type="text/javascript" src="{{ asset("public/js/custom.js") }}"></script>
@@ -90,13 +53,6 @@
 <script type="text/javascript" src="{{ asset("public/js/jquery.flexslider-min.js") }}"></script>
 <script type="text/javascript" src="{{ asset("public/js/jquery.tweet.js") }}"></script>
 <script type="text/javascript" src="{{ asset("public/js/jquery.fancybox.js") }}"></script>
-<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-<script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
-<!-- BEGIN JIVOSITE CODE {literal} -->
-<script type='text/javascript'>
-    (function(){ var widget_id = '119878';
-        var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);})();</script>
-<!-- {/literal} END JIVOSITE CODE -->
 {% block javascripts %}
 {% endblock %}
 </body>
