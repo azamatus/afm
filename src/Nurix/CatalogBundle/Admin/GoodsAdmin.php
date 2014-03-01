@@ -173,6 +173,7 @@ class GoodsAdmin extends Admin
     {
         $collection->add('excel');
         $collection->add('excelImport');
+        $collection->add('excelGoodsUpload');
     }
 
     protected function configureSideMenu(MenuItemInterface $menu, $action, Admin $childAdmin = null)
