@@ -51,6 +51,8 @@ class AppKernel extends Kernel
             new Nurix\SliderBundle\NurixSliderBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new CoopTilleuls\Bundle\CKEditorSonataMediaBundle\CoopTilleulsCKEditorSonataMediaBundle(),
+            new Prezent\Doctrine\TranslatableBundle\PrezentDoctrineTranslatableBundle(),
+            new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

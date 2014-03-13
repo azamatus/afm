@@ -2,32 +2,49 @@
 
 namespace Nurix\PageBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Prezent\Doctrine\Translatable\Annotation as Prezent;
+use Prezent\Doctrine\Translatable\Entity\AbstractTranslatable;
+use Nurix\PageBundle\Entity\PagesTranslation;
 
 /**
  * Pages
+ *
+ * @ORM\Entity
  */
-class Pages
+class Pages extends AbstractTranslatable
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="url", type="string", length=200)
      */
     private $url;
 
     /**
-     * @var string
+     * @Prezent\Translations(targetEntity="Nurix\PageBundle\Entity\PagesTranslation")
      */
-    private $title;
+    protected $translations;
 
     /**
-     * @var string
+     * @Prezent\CurrentLocale
      */
-    private $content;
+    private $currentLocale;
+
+    public function __construct()
+    {
+        $this->translations = new ArrayCollection();
+    }
 
 
     /**
@@ -63,49 +80,73 @@ class Pages
         return $this->url;
     }
 
-    /**
-     * Set title
-     *
-     * @param string $title
-     * @return Pages
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-    
-        return $this;
-    }
+    private $currentTranslation; // Cache current translation. Useful in Doctrine 2.4+
+
 
     /**
-     * Get title
-     *
-     * @return string 
+     * Translation helper method
      */
+    public function translate($locale = null)
+    {
+        if (null === $locale) {
+            $locale = $this->currentLocale;
+        }
+
+        if (!$locale) {
+            throw new \RuntimeException('No locale has been set and currentLocale is empty');
+        }
+
+        if ($this->currentTranslation && $this->currentTranslation->getLocale() === $locale) {
+            return $this->currentTranslation;
+        }
+
+        if (!$translation = $this->translations->get($locale)) {
+            $translation = new PagesTranslation();
+            $translation->setLocale($locale);
+            $this->addTranslation($translation);
+        }
+
+        $this->currentTranslation = $translation;
+        return $translation;
+    }
+
+    // Proxy getters and setters
+
     public function getTitle()
     {
-        return $this->title;
+        return $this->translate()->getTitle();
     }
 
-    /**
-     * Set content
-     *
-     * @param string $content
-     * @return Pages
-     */
+    public function setTitle($title)
+    {
+        $this->translate()->setTitle($title);
+        return $this;
+    }
+
+    public function getContent()
+    {
+        return $this->translate()->getContent();
+    }
+
     public function setContent($content)
     {
-        $this->content = $content;
-    
+        $this->translate()->setContent($content);
         return $this;
     }
 
     /**
-     * Get content
-     *
-     * @return string 
+     * @return mixed
      */
-    public function getContent()
+    public function getCurrentLocale()
     {
-        return $this->content;
+        return $this->currentLocale;
+    }
+
+    /**
+     * @param mixed $currentLocale
+     */
+    public function setCurrentLocale($currentLocale)
+    {
+        $this->currentLocale = $currentLocale;
     }
 }

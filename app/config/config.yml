@@ -149,5 +149,13 @@ ivory_ck_editor:
                 provider: sonata.media.provider.image
                 context: my-context # Optional, to upload in a custom context
 
+prezent_doctrine_translatable:
+    fallback_locale: ru
 
+
+a2lix_translation_form:
+    locales: [en, ru, cn]       # [1]
+    required_locales: [ru]      # [2]
+    manager_registry: doctrine      # [3]
+    templating: "A2lixTranslationFormBundle::default.html.twig"      # [4]
 
