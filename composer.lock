@@ -3,8 +3,74 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "23e68b4d29cc7885a90ba1f139c5fa19",
+    "hash": "061f21aa1fed0eae07b174e0d14a9f46",
     "packages": [
+        {
+            "name": "a2lix/translation-form-bundle",
+            "version": "dev-master",
+            "target-dir": "A2lix/TranslationFormBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/a2lix/TranslationFormBundle.git",
+                "reference": "f985f06463e74e0a878fc7717fde60261349ef49"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/a2lix/TranslationFormBundle/zipball/f985f06463e74e0a878fc7717fde60261349ef49",
+                "reference": "f985f06463e74e0a878fc7717fde60261349ef49",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/symfony": ">=2.3"
+            },
+            "require-dev": {
+                "gedmo/doctrine-extensions": "dev-wip-v2.4.0"
+            },
+            "suggest": {
+                "a2lix/i18n-doctrine-bundle": "For A2lix strategy",
+                "gedmo/doctrine-extensions": "For Gedmo strategy",
+                "knplabs/doctrine-behaviors": "For Knp strategy",
+                "prezent/doctrine-translatable-bundle": "For Prezent strategy"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "A2lix\\TranslationFormBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "A2lix",
+                    "homepage": "http://a2lix.fr"
+                },
+                {
+                    "name": "David ALLIX"
+                }
+            ],
+            "description": "Translate your doctrine objects easily with a custom form field",
+            "homepage": "https://github.com/a2lix/TranslationFormBundle",
+            "keywords": [
+                "Symfony2",
+                "doctrine2",
+                "form",
+                "gedmo",
+                "i18n",
+                "internationalization",
+                "knplabs",
+                "translatable",
+                "translation"
+            ],
+            "time": "2014-03-05 12:21:14"
+        },
         {
             "name": "avalanche123/imagine-bundle",
             "version": "v2.1",
@@ -1121,6 +1187,58 @@
             "time": "2013-04-26 18:42:52"
         },
         {
+            "name": "jms/metadata",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/schmittjoh/metadata.git",
+                "reference": "f44eefc065e980d5fa2f1be5c4fd944f41855a6b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/schmittjoh/metadata/zipball/f44eefc065e980d5fa2f1be5c4fd944f41855a6b",
+                "reference": "f44eefc065e980d5fa2f1be5c4fd944f41855a6b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "doctrine/cache": "~1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.5.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Metadata\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache"
+            ],
+            "authors": [
+                {
+                    "name": "Johannes M. Schmitt",
+                    "email": "schmittjoh@gmail.com",
+                    "homepage": "http://jmsyst.com",
+                    "role": "Developer of wrapped JMSSerializerBundle"
+                }
+            ],
+            "description": "Class/method/property metadata management in PHP",
+            "keywords": [
+                "annotations",
+                "metadata",
+                "xml",
+                "yaml"
+            ],
+            "time": "2013-12-21 14:45:50"
+        },
+        {
             "name": "knplabs/gaufrette",
             "version": "v0.1.5",
             "source": {
@@ -1777,6 +1895,99 @@
                 "xlsx"
             ],
             "time": "2013-05-24 11:57:42"
+        },
+        {
+            "name": "prezent/doctrine-translatable",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Prezent/doctrine-translatable.git",
+                "reference": "f3719e4f4de1ef95f67f4e1f32ad395ef142f37e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Prezent/doctrine-translatable/zipball/f3719e4f4de1ef95f67f4e1f32ad395ef142f37e",
+                "reference": "f3719e4f4de1ef95f67f4e1f32ad395ef142f37e",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/orm": ">=2.2.3,<2.6-dev",
+                "jms/metadata": "~1.1",
+                "php": ">=5.3.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Prezent\\Doctrine\\Translatable": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Prezent Internet B.V.",
+                    "email": "github@prezent.nl"
+                }
+            ],
+            "description": "Translatable behaviour extension for Doctrine2",
+            "homepage": "http://www.prezent.nl",
+            "keywords": [
+                "doctrine2",
+                "extensions",
+                "i18n",
+                "translatable"
+            ],
+            "time": "2013-10-22 07:51:05"
+        },
+        {
+            "name": "prezent/doctrine-translatable-bundle",
+            "version": "dev-master",
+            "target-dir": "Prezent/Doctrine/TranslatableBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Prezent/doctrine-translatable-bundle.git",
+                "reference": "22381a933e359e11e25df494320c32b5cbaedcd5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Prezent/doctrine-translatable-bundle/zipball/22381a933e359e11e25df494320c32b5cbaedcd5",
+                "reference": "22381a933e359e11e25df494320c32b5cbaedcd5",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/doctrine-bundle": ">=1.2.0,<1.3-dev",
+                "prezent/doctrine-translatable": "dev-master",
+                "symfony/symfony": ">=2.2,<2.5-dev"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Prezent\\Doctrine\\TranslatableBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Prezent Internet B.V.",
+                    "email": "github@prezent.nl"
+                }
+            ],
+            "description": "Integrate the doctrine-translatable extension in Symfony2",
+            "homepage": "http://www.prezent.nl",
+            "keywords": [
+                "Symfony2",
+                "bundle",
+                "doctrine2",
+                "extensions",
+                "i18n",
+                "translatable"
+            ],
+            "time": "2014-01-08 10:44:03"
         },
         {
             "name": "psr/log",
@@ -3473,7 +3684,7 @@
     "aliases": [
 
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": {
         "sonata-project/easy-extends-bundle": 20,
         "sonata-project/cache-bundle": 20,
@@ -3481,7 +3692,9 @@
         "sonata-project/markitup-bundle": 20,
         "tilleuls/ckeditor-sonata-media-bundle": 20,
         "bupychuk/php-simple-html-dom-parser": 20,
-        "knplabs/knp-paginator-bundle": 20
+        "knplabs/knp-paginator-bundle": 20,
+        "prezent/doctrine-translatable-bundle": 20,
+        "a2lix/translation-form-bundle": 20
     },
     "platform": {
         "php": ">=5.3.3"

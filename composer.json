@@ -35,7 +35,9 @@
         "bupychuk/php-simple-html-dom-parser": "dev-master",
         "liuggio/ExcelBundle": ">=1.0.4",
         "knplabs/knp-paginator-bundle": "dev-master",
-        "friendsofsymfony/jsrouting-bundle": "~1.1"
+        "friendsofsymfony/jsrouting-bundle": "~1.1",
+        "prezent/doctrine-translatable-bundle": "dev-master",
+        "a2lix/translation-form-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
@@ -53,7 +55,7 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
         ]
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",

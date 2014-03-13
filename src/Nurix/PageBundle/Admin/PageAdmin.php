@@ -27,8 +27,20 @@ class PageAdmin extends Admin
         $formMapper
             ->with('Страница')
             ->add('url')
-            ->add('title')
-            ->add('content', 'ckeditor', array('attr' => array('class' => 'span10', 'rows' => 20), 'config_name' => 'my_config'))
+            ->add('translations', 'a2lix_translations', array(
+            'fields' => array(                      // [3]
+                'title' => array(                   // [3.a]
+                    'label' => 'Заголовок',                     // [4]
+                ),                      // [3]
+                'content' => array(                   // [3.a]
+                    'field_type' => 'ckeditor',                 // [4]
+                    'label' => 'Контент',                     // [4]
+                    'attr' => array('class' => 'span10', 'rows' => 20), 'config_name' => 'my_config',
+                )
+            )
+        ))
+//            ->add('title')
+//            ->add('content', 'ckeditor', array('attr' => array('class' => 'span10', 'rows' => 20), 'config_name' => 'my_config'))
             ->end()
         ;
     }
