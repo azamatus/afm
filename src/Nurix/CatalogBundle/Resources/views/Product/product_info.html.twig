@@ -1,166 +1,656 @@
 {% extends '::base.html.twig' %}
 
-{% if product.imagePath|isHaveImage %}
-    {% block facebook_image_url %}
-        {{ product.imagePath|path(asset('public/img/logo.png'),'goods_big') }}
-    {% endblock %}
-{% endif %}
 {% block title %}
     {{ parent() }} : {{ product.name }} в Бишкеке
 {% endblock %}
 {% block meta_description %}
     {{ product.name }} в Бишкеке по цене {{ product.price }}$. {{ product.shortDescription }}
 {% endblock %}
-{% block javascripts %}
-    {{ parent() }}
-    <script type="text/javascript" src="{{ asset("bundles/catalog/js/addRem.js") }}"></script>
-    <script type="text/javascript" src="{{ asset("bundles/catalog/js/product_slider.js") }}"></script>
-    <script type="text/javascript" src="{{ asset("bundles/catalog/js/jquery.elevatezoom.js")}}"></script>
-    <script type="text/javascript" src="{{ asset("bundles/catalog/fancybox/jquery.fancybox.pack.js")}}"></script>
-    <script type="text/javascript" src="{{ asset("bundles/catalog/js/product_slider_pictures.js") }}"></script>
-    <script type="text/javascript" src="{{ asset("bundles/catalog/js/tabs.js") }}"></script>
-{% endblock %}
-{% block stylesheets %}
-    {{ parent() }}
-    <link href="{{ asset("bundles/catalog/fancybox/jquery.fancybox.css")}}" type="text/css" rel="stylesheet"  media="screen" />
-    <link href="{{ asset('bundles/catalog/css/phone_info.css') }} " type="text/css" rel="stylesheet"/>
-    <link href="{{ asset('bundles/catalog/css/product_slider.css') }} " type="text/css" rel="stylesheet"/>
-    <link href="{{ asset("bundles/catalog/css/tabs.css") }}" type="text/css" media="screen" rel="stylesheet"/>
-{% endblock %}
 {% block body %}
-    <div class="product">
-        <div class="slide_center">
-            {% if product.imagePath|isHaveImage %}
-                <div id="my-folio-of-works" class="svwp">
-                    <ul>
-                        {% for galleryHasMedia in product.imagePath.GalleryHasMedias %}
-                            <li>
-                                <a class="fancybox-thumb" rel="fancybox-thumb"  href="{% path galleryHasMedia.media, 'reference' %}">
-                                    <img src="{% path galleryHasMedia.media, 'goods_big' %}" data-zoom-image="{% path galleryHasMedia.media, 'reference' %}" />
-                                </a>
-                            </li>
-                        {% endfor %}
-                    </ul>
+    <div class="container">
+
+    <div class="row">
+
+    <div class="span9">
+    <div class="row">
+
+        <div class="product-details clearfix">
+            <div class="span5">
+                <div class="product-title">
+                    <h4>Foliomania the designer portfolio brochure</h4>
                 </div>
-
-            {% else %}
-                {{ product.imagePath|galleryThumb(asset('bundles/catalog/img/noImage/good_big.jpg'),'big') }}
-            {% endif %}
-        </div>
-
-        <div class="float_left">
-            <h1 class="product_name">{{ product.name }}</h1>
-            <div class="product_base_info">
-                {% if mainchar %}
-                    <table class="chars">
-                        {% for type in mainchar %}
-                            <tr>
-                                <td class="mainCharType">{{ type.getCTypeId.name }}:</td>
-                                <td class="mainCharValue">{{ type.value }}</td>
-                            </tr>
-
-                        {% endfor %}
-                    </table>
-
-                {% else %}
-                    <h3>Характеристики еще не введены</h3>
-                {% endif %}
+                <div class="product-img">
+                    <a class="fancybox" href="{{ asset('public/img/650x700.jpg') }}"><img src="{{ asset('public/img/372x370.jpg') }}" alt=""></a>
+                </div>
+                <!--end product-img-->
+                <div class="product-img-thumb">
+                    <a class="fancybox" href="{{ asset('public/img/650x700.jpg') }}"><img src="{{ asset('public/img/68x60.jpg') }}" alt=""></a>
+                    <a class="fancybox" href="{{ asset('public/img/650x700.jpg') }}"><img src="{{ asset('public/img/68x60.jpg') }}" alt=""></a>
+                    <a class="fancybox" href="{{ asset('public/img/650x700.jpg') }}"><img src="{{ asset('public/img/68x60.jpg') }}" alt=""></a>
+                    <a class="fancybox" href="{{ asset('public/img/650x700.jpg') }}"><img src="{{ asset('public/img/68x60.jpg') }}" alt=""></a>
+                </div>
+                <!--end flexslider-thumb-->
             </div>
-            <div class="product_right_column">
-                <div class="product_box">
-                    <div class="product_price">{{ product.price| price('USD') }}</div>
-                    <div class="product_price_som">{{ product.price| price('KGS') }}</div>
-                    <div class="product_amount">
-                        <div class="float_left word_col">кол-во:</div>
-                        <div><input type="text" class="box" value="{{ amount }}" id="amount"/></div>
-                        <div class="addrem" onmousedown="return false">
-                            <span class="znak" id="add">+</span>
-                            <span class="znak" id="rem">-</span>
-                        </div>
-                        <a data-id="{{ product.id }}" href="{{ path('nurix_bin_ajax_add_item',{'id':product.id}) }}"
-                           onclick="return false;" class="button_buy_bin">
-                            В корзину
-                        </a>
+            <!--end span5-->
+
+            <div class="span4">
+                <div class="product-set">
+                    <div class="product-price">
+                        <span><span class="strike-through">$200.00</span> $150.00</span>
                     </div>
+                    <!--end product-price-->
+                    <div class="product-rate clearfix">
+                        <ul class="rating">
+                            <li><i class="star-on"></i></li>
+                            <li><i class="star-on"></i></li>
+                            <li><i class="star-on"></i></li>
+                            <li><i class="star-off"></i></li>
+                            <li><i class="star-off"></i></li>
+                        </ul>
+                        <span>18 Review(s) <a href="#">Make a Review</a></span>
+                    </div>
+                    <!--end product-inputs-->
+                    <div class="product-info">
+                        <dl class="dl-horizontal">
+                            <dt>Availabilty:</dt>
+                            <dd>Available In Stock</dd>
+
+                            <dt>Product Code:</dt>
+                            <dd>No. CtAw9458</dd>
+
+                            <dt>Manfactuer:</dt>
+                            <dd>Nicka Corparation</dd>
+
+                            <dt>Review Points:</dt>
+                            <dd>25 Points</dd>
+                        </dl>
+                    </div>
+                    <!--end product-info-->
+                    <div class="product-inputs">
+                        <form method="post" action="page">
+                            <div class="controls-row">
+                                <select class="span2" name="#">
+                                    <option>-- Select Color --</option>
+                                    <option value="">Red</option>
+                                    <option value="">Blue</option>
+                                    <option value="">Brown</option>
+                                </select>
+                                <select class="span2" name="#">
+                                    <option>-- Select Size --</option>
+                                    <option value="">Size 36</option>
+                                    <option value="">Size 12</option>
+                                    <option value="">Size 18</option>
+                                </select>
+                            </div>
+                            <!--end controls-row-->
+
+                            <div class="controls-row">
+                                <input type="text" class="span2" name="" value="" placeholder="input...">
+                                <input type="text" class="span2" name="" value="" placeholder="input...">
+                            </div>
+                            <!--end controls-row-->
+
+                            <div class="controls-row">
+                                <input type="text" class="span3" name="" value="" placeholder="input...">
+                                <input type="text" class="span1" name="" value="" placeholder="input...">
+                            </div>
+                            <!--end controls-row-->
+
+                            <textarea name="" class="span4" placeholder="textarea..."></textarea>
+
+                            <div class="input-append">
+                                <input class="span1" type="text" name="" value="" placeholder="QTY">
+                                <button class="btn btn-primary"><i class="icon-shopping-cart"></i> Add To Cart</button>
+
+                                <button class="btn" data-toggle="tooltip" data-title="+To Wishlist"><i
+                                            class="icon-heart"></i></button>
+                                <button class="btn" data-toggle="tooltip" data-title="+To Compare"><i
+                                            class="icon-refresh"></i></button>
+                            </div>
+
+                        </form>
+                        <!--end form-->
+
+                    </div>
+                    <!--end product-inputs-->
                 </div>
-                <div class="clearbox"></div>
-                <div class="product_last_update">Последнее обновление цены: {{ product.lastUpdate|date('d-m-Y') }}</div>
+                <!--end product-set-->
             </div>
-            <div class="clearbox"></div>
+            <!--end span4-->
 
-            {% if mainchar %}
-                <hr class="product_hr1"/>
-            {% endif %}
         </div>
-        <div class="clearbox"></div>
-        <div class="product_description">
-            <div style="color: #999;">
-                Описание:
-            </div>
-            {%  if product.fullDesctiption  %}
-            {{ product.fullDesctiption }}
-            {% else %}
-                Нет описания
-            {% endif %}
-        </div>
-        <div class="clearbox"></div>
-        {# TODO: Перевести в отдельный бандл#}
-        <script type="text/javascript">(function() {
-                if (window.pluso)if (typeof window.pluso.start == "function") return;
-                if (window.ifpluso==undefined) { window.ifpluso = 1;
-                    var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
-                    s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
-                    s.src = ('https:' == window.location.protocol ? 'https' : 'http')  + '://share.pluso.ru/pluso-like.js';
-                    var h=d[g]('body')[0];
-                    h.appendChild(s);
-                }})();</script>
-        <div class="pluso" data-background="none;" data-options="medium,square,line,horizontal,nocounter,sepcounter=1,theme=14" data-services="facebook,twitter,google,vkontakte,odnoklassniki,moimir,email" data-user="1122871114"></div>
-        <div class="clearbox"></div>
-        <hr class="product_hr2">
-        <div id="tabs_container">
-            <div>
-                <ul class="menu">
-                    <li id="characteristic" class="{% if product.review is null %}active{% endif %} tabs_ico tabs_char">Характеристики</li>
-                    <li id="review" class="{% if product.review %}active{% endif %} tabs_ico tabs_obzor">Обзор</li>
-                    <li id="pfeedbacks" class="tabs_ico tabs_feedbacks">Отзывы</li>
-                    <li id="video" class="tabs_ico tabs_video">Видео</li>
-                </ul>
-                <span class="clear"></span>
+        <!--end product-details-->
 
-                <div class="tabs_content characteristic" {% if product.review %}style="display:none"{% endif %}>
-                    {% if mainchar %}
-                        {% include  "CatalogBundle:Product:characteristic.html.twig" %}
-                    {% else %}
-                        <h3>Характеристики еще не введены</h3>
-                    {% endif %}
-                </div>
-
-                <div class="tabs_content review" {% if product.review %}style="display:block"{% endif %}>
-                    <h2>Обзор</h2>
-                    {% if product.review %}
-                        {{ product.review|raw }}
-                    {% else %}
-                        <h3>еще не загружен</h3>
-                    {% endif %}
-                </div>
-
-                <div class="tabs_content pfeedbacks">
-                    <h1>Функцонал в разработке</h1>
-                </div>
-
-                <div class="tabs_content video">
-                    {% if product.youtube %}
-                        {% include  "CatalogBundle:Product:video.html.twig" %}
-                    {% else %}
-                        <h1>Пока видео еще нет</h1>
-                    {% endif %}
-                </div>
-
-            </div>
-        </div>
-        <hr class="product_hr2">
-        <div class="product_same">
-            {% render controller("CatalogBundle:Product:getSame", {'product':product}) %}
-        </div>
     </div>
+    <!--end row-->
+
+
+    <div class="product-tab">
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a href="#descraption" data-toggle="tab">Descraption</a>
+            </li>
+            <li>
+                <a href="#specfications" data-toggle="tab">Specfications</a>
+            </li>
+            <li>
+                <a href="#return-info" data-toggle="tab">Return Info</a>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reviews <i class="icon-caret-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#read-review" data-toggle="tab">Read Reviews</a></li>
+                    <li><a href="#make-review" data-toggle="tab">Make Review</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="descraption">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer a eros neque. In sapien est,
+                    malesuada non interdum id, cursus vel neque. Curabitur quis sem vel justo dictum ullamcorper ac
+                    vehicula lacus. Duis nisi dolor, suscipit id adipiscing ac, vestibulum in magna. Vestibulum ante
+                    ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce ut metus sem. Etiam in
+                    odio eu metus ornare convallis in sit amet lorem.
+
+                    Suspendisse potenti. In non nisl sem, eu rutrum augue. Donec eu dolor vel massa ornare cursus id
+                    eget erat. Mauris in ante magna. Curabitur eget risus mi, non interdum lacus. Duis magna leo,
+                    rhoncus eget malesuada quis, semper a quam. Morbi imperdiet imperdiet lectus ac pellentesque.
+                    Integer diam sem, vulputate in feugiat ut, porttitor eu libero. Integer non dolor ipsum. Cras
+                    condimentum mattis turpis quis vestibulum. Nulla a augue ipsum. Donec aliquam velit vel metus
+                    fermentum dictum sodales metus condimentum. Nullam id massa quis nulla molestie ultrices eget sed
+                    nulla. Cras feugiat odio at tellus euismod lacinia.
+                </p>
+
+                <p>
+                    Suspendisse potenti. In non nisl sem, eu rutrum augue. Donec eu dolor vel massa ornare cursus id
+                    eget erat. Mauris in ante magna. Curabitur eget risus mi, non interdum lacus. Duis magna leo,
+                    rhoncus eget malesuada quis, semper a quam. Morbi imperdiet imperdiet lectus ac pellentesque.
+                    Integer diam sem, vulputate in feugiat ut, porttitor eu libero. Integer non dolor ipsum. Cras
+                    condimentum mattis turpis quis vestibulum. Nulla a augue ipsum. Donec aliquam velit vel metus
+                    fermentum dictum sodales metus condimentum. Nullam id massa quis nulla molestie ultrices eget sed
+                    nulla. Cras feugiat odio at tellus euismod lacinia.
+
+                </p>
+            </div>
+            <div class="tab-pane" id="specfications">
+                <table class="table table-compare">
+                    <tr>
+                        <td class="aligned-color"><h5>Momery</h5></td>
+                        <td>Test One</td>
+                        <td>16GB</td>
+                    </tr>
+                    <tr>
+                        <td class="aligned-color"><h5>Processor</h5></td>
+                        <td>No. of Cores</td>
+                        <td>No.4</td>
+                    </tr>
+                    <tr>
+                        <td class="aligned-color"><h5>Momery</h5></td>
+                        <td>Test One</td>
+                        <td>16GB</td>
+                    </tr>
+                    <tr>
+                        <td class="aligned-color"><h5>Processor</h5></td>
+                        <td>No. of Cores</td>
+                        <td>No.4</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="tab-pane" id="return-info">
+                <h4>Read our Returning info</h4><br>
+
+                <p>
+                    Suspendisse potenti. In non nisl sem, eu rutrum augue. Donec eu dolor vel massa ornare cursus id
+                    eget erat. Mauris in ante magna. Curabitur eget risus mi, non interdum lacus. Duis magna leo,
+                    rhoncus eget malesuada quis, semper a quam. Morbi imperdiet imperdiet lectus ac pellentesque.
+                    Integer diam sem, vulputate in feugiat ut, porttitor eu libero. Integer non dolor ipsum. Cras
+                    condimentum mattis turpis quis vestibulum. Nulla a augue ipsum. Donec aliquam velit vel metus
+                    fermentum dictum sodales metus condimentum. Nullam id massa quis nulla molestie ultrices eget sed
+                    nulla. Cras feugiat odio at tellus euismod lacinia.
+
+                </p>
+            </div>
+
+            <div class="tab-pane" id="read-review">
+                <div class="single-review clearfix">
+                    <div class="review-header">
+                        <ul class="rating">
+                            <li><i class="star-on"></i></li>
+                            <li><i class="star-on"></i></li>
+                            <li><i class="star-off"></i></li>
+                            <li><i class="star-off"></i></li>
+                            <li><i class="star-off"></i></li>
+                        </ul>
+                        <h4>John Doe</h4>
+                        <small>26/11/2012</small>
+                    </div>
+                    <!--end review-header-->
+
+                    <div class="review-body">
+                        <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                            quis nostrud exercitation.</p>
+                    </div>
+                    <!--end review-body-->
+                </div>
+                <!--end single-review-->
+
+                <div class="single-review clearfix">
+                    <div class="review-header">
+                        <ul class="rating">
+                            <li><i class="star-off"></i></li>
+                            <li><i class="star-off"></i></li>
+                            <li><i class="star-off"></i></li>
+                            <li><i class="star-off"></i></li>
+                            <li><i class="star-off"></i></li>
+                        </ul>
+                        <h4>John Doe</h4>
+                        <small>26/11/2012</small>
+                    </div>
+                    <!--end review-header-->
+
+                    <div class="review-body">
+                        <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                            quis nostrud exercitation.</p>
+                    </div>
+                    <!--end review-body-->
+                </div>
+                <!--end single-review-->
+
+                <div class="single-review clearfix">
+                    <div class="review-header">
+                        <ul class="rating">
+                            <li><i class="star-on"></i></li>
+                            <li><i class="star-on"></i></li>
+                            <li><i class="star-on"></i></li>
+                            <li><i class="star-off"></i></li>
+                            <li><i class="star-off"></i></li>
+                        </ul>
+                        <h4>John Doe</h4>
+                        <small>26/11/2012</small>
+                    </div>
+                    <!--end review-header-->
+
+                    <div class="review-body">
+                        <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                            quis nostrud exercitation.</p>
+                    </div>
+                    <!--end review-body-->
+                </div>
+                <!--end single-review-->
+            </div>
+
+            <div class="tab-pane" id="make-review">
+                <form method="post" action="page" class="form-horizontal">
+                    <div class="control-group">
+                        <label class="control-label" for="inputName">Your Name <span class="text-error">*</span></label>
+
+                        <div class="controls">
+                            <input type="text" name="#" id="inputName" placeholder="John Doe...">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputReview">Your Review <span
+                                    class="text-error">*</span></label>
+
+                        <div class="controls">
+                            <textarea name="#" id="inputReview" placeholder="Put your review here..."></textarea>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputReview">Your Review <span
+                                    class="text-error">*</span></label>
+
+                        <div class="controls">
+                            <div class="btn-group" data-toggle="buttons-radio">
+                                <button type="button" class="btn" data-toggle="tooltip" data-title="1/5"><i
+                                            class="icon-star"></i></button>
+                                <button type="button" class="btn" data-toggle="tooltip" data-title="2/5"><i
+                                            class="icon-star"></i></button>
+                                <button type="button" class="btn" data-toggle="tooltip" data-title="3/5"><i
+                                            class="icon-star"></i></button>
+                                <button type="button" class="btn" data-toggle="tooltip" data-title="4/5"><i
+                                            class="icon-star"></i></button>
+                                <button type="button" class="btn" data-toggle="tooltip" data-title="5/5"><i
+                                            class="icon-star"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <button type="submit" class="btn btn-primary" name="submit">Add Review</button>
+                        </div>
+                    </div>
+                </form>
+                <!--end form-->
+            </div>
+        </div>
+        <!--end tab-content-->
+    </div>
+    <!--end product-tab-->
+
+
+    <div class="related-product">
+        <div class="titleHeader clearfix">
+            <h3>Related Product</h3>
+        </div>
+        <!--end titleHeader-->
+
+        <div class="row">
+            <ul class="hProductItems clearfix">
+                <li class="span3 clearfix">
+                    <div class="thumbnail">
+                        <a href=""><img src="{{ asset('public/img/212x192.jpg') }}" alt=""></a>
+                    </div>
+                    <div class="thumbSetting">
+                        <div class="thumbTitle">
+                            <a href="#" class="invarseColor">
+                                Foliomania the designer portfolio brochure
+                            </a>
+                        </div>
+                        <div class="thumbPrice">
+                            <span>$150.00</span>
+                        </div>
+
+                        <div class="thumbButtons">
+                            <button class="btn btn-primary btn-small" data-title="+To Cart" data-placement="top"
+                                    data-toggle="tooltip">
+                                <i class="icon-shopping-cart"></i>
+                            </button>
+                            <button class="btn btn-small" data-title="+To WishList" data-placement="top"
+                                    data-toggle="tooltip">
+                                <i class="icon-heart"></i>
+                            </button>
+
+                            <button class="btn btn-small" data-title="+To Compare" data-placement="top"
+                                    data-toggle="tooltip">
+                                <i class="icon-refresh"></i>
+                            </button>
+                        </div>
+
+                        <ul class="rating">
+                            <li><i class="star-on"></i></li>
+                            <li><i class="star-on"></i></li>
+                            <li><i class="star-on"></i></li>
+                            <li><i class="star-on"></i></li>
+                            <li><i class="star-off"></i></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="span3 clearfix">
+                    <div class="thumbnail">
+                        <a href=""><img src="{{ asset('public/img/212x192.jpg') }}" alt=""></a>
+                    </div>
+                    <div class="thumbSetting">
+                        <div class="thumbTitle">
+                            <a href="#" class="invarseColor">
+                                Foliomania the designer portfolio brochure
+                            </a>
+                        </div>
+                        <div class="thumbPrice">
+                            <span>$150.00</span>
+                        </div>
+
+                        <div class="thumbButtons">
+                            <button class="btn btn-primary btn-small" data-title="+To Cart" data-placement="top"
+                                    data-toggle="tooltip">
+                                <i class="icon-shopping-cart"></i>
+                            </button>
+                            <button class="btn btn-small" data-title="+To WishList" data-placement="top"
+                                    data-toggle="tooltip">
+                                <i class="icon-heart"></i>
+                            </button>
+
+                            <button class="btn btn-small" data-title="+To Compare" data-placement="top"
+                                    data-toggle="tooltip">
+                                <i class="icon-refresh"></i>
+                            </button>
+                        </div>
+
+                        <ul class="rating">
+                            <li><i class="star-on"></i></li>
+                            <li><i class="star-on"></i></li>
+                            <li><i class="star-on"></i></li>
+                            <li><i class="star-off"></i></li>
+                            <li><i class="star-off"></i></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="span3 clearfix">
+                    <div class="thumbnail">
+                        <a href=""><img src="{{ asset('public/img/212x192.jpg') }}" alt=""></a>
+                    </div>
+                    <div class="thumbSetting">
+                        <div class="thumbTitle">
+                            <a href="#" class="invarseColor">
+                                Foliomania the designer portfolio brochure
+                            </a>
+                        </div>
+                        <div class="thumbPrice">
+                            <span>$150.00</span>
+                        </div>
+
+                        <div class="thumbButtons">
+                            <button class="btn btn-primary btn-small" data-title="+To Cart" data-placement="top"
+                                    data-toggle="tooltip">
+                                <i class="icon-shopping-cart"></i>
+                            </button>
+                            <button class="btn btn-small" data-title="+To WishList" data-placement="top"
+                                    data-toggle="tooltip">
+                                <i class="icon-heart"></i>
+                            </button>
+
+                            <button class="btn btn-small" data-title="+To Compare" data-placement="top"
+                                    data-toggle="tooltip">
+                                <i class="icon-refresh"></i>
+                            </button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--end row-->
+    </div>
+    <!--end related-product-->
+
+    </div>
+    <!--end span9-->
+
+
+    <aside class="span3">
+        <div class="aside-inner" id="product-aside">
+            <div class="special">
+                <div class="titleHeader clearfix">
+                    <h3>Special</h3>
+                </div>
+                <!--end titleHeader-->
+
+                <ul class="vProductItemsTiny">
+                    <li class="span4 clearfix">
+                        <div class="thumbImage">
+                            <a href=""><img src="{{ asset('public/img/92x92.jpg') }}"></a>
+                        </div>
+                        <div class="thumbSetting">
+                            <div class="thumbTitle">
+                                <a href="#" class="invarseColor">
+                                    Foliomania the title here
+                                </a>
+                            </div>
+                            <div class="thumbPrice">
+                                <span>$150.00</span>
+                            </div>
+                            <ul class="rating">
+                                <li><i class="star-off"></i></li>
+                                <li><i class="star-off"></i></li>
+                                <li><i class="star-off"></i></li>
+                                <li><i class="star-off"></i></li>
+                                <li><i class="star-off"></i></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="span4 clearfix">
+                        <div class="thumbImage">
+                            <a href=""><img src="{{ asset('public/img/92x92.jpg') }}" alt=""></a>
+                        </div>
+                        <div class="thumbSetting">
+                            <div class="thumbTitle">
+                                <a href="#" class="invarseColor">
+                                    Foliomania the designer portfolio
+                                </a>
+                            </div>
+                            <div class="thumbPrice">
+                                <span>$150.00</span>
+                            </div>
+                            <ul class="rating">
+                                <li><i class="star-on"></i></li>
+                                <li><i class="star-on"></i></li>
+                                <li><i class="star-on"></i></li>
+                                <li><i class="star-off"></i></li>
+                                <li><i class="star-off"></i></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="span4 clearfix">
+                        <div class="thumbImage">
+                            <a href=""><img src="{{ asset('public/img/92x92.jpg') }}" alt=""></a>
+                        </div>
+                        <div class="thumbSetting">
+                            <div class="thumbTitle">
+                                <a href="#" class="invarseColor">
+                                    Foliomania the designer portfolio
+                                </a>
+                            </div>
+                            <div class="thumbPrice">
+                                <span>$150.00</span>
+                            </div>
+                            <ul class="rating">
+                                <li><i class="star-on"></i></li>
+                                <li><i class="star-on"></i></li>
+                                <li><i class="star-on"></i></li>
+                                <li><i class="star-off"></i></li>
+                                <li><i class="star-off"></i></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="span4 clearfix">
+                        <div class="thumbImage">
+                            <a href=""><img src="{{ asset('public/img/92x92.jpg') }}" alt=""></a>
+                        </div>
+                        <div class="thumbSetting">
+                            <div class="thumbTitle">
+                                <a href="#" class="invarseColor">
+                                    Foliomania the designer portfolio
+                                </a>
+                            </div>
+                            <div class="thumbPrice">
+                                <span>$150.00</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!--end special-->
+
+
+            <div class="special">
+                <div class="titleHeader clearfix">
+                    <h3>Featured</h3>
+                </div>
+                <!--end titleHeader-->
+
+                <ul class="vProductItemsTiny">
+                    <li class="span4 clearfix">
+                        <div class="thumbImage">
+                            <a href=""><img src="{{ asset('public/img/92x92.jpg') }}" alt=""></a>
+                        </div>
+                        <div class="thumbSetting">
+                            <div class="thumbTitle">
+                                <a href="#" class="invarseColor">
+                                    Foliomania the title here
+                                </a>
+                            </div>
+                            <div class="thumbPrice">
+                                <span>$150.00</span>
+                            </div>
+                            <ul class="rating">
+                                <li><i class="star-off"></i></li>
+                                <li><i class="star-off"></i></li>
+                                <li><i class="star-off"></i></li>
+                                <li><i class="star-off"></i></li>
+                                <li><i class="star-off"></i></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="span4 clearfix">
+                        <div class="thumbImage">
+                            <a href=""><img src="{{ asset('public/img/92x92.jpg') }}" alt=""></a>
+                        </div>
+                        <div class="thumbSetting">
+                            <div class="thumbTitle">
+                                <a href="#" class="invarseColor">
+                                    Foliomania the designer portfolio
+                                </a>
+                            </div>
+                            <div class="thumbPrice">
+                                <span>$150.00</span>
+                            </div>
+                            <ul class="rating">
+                                <li><i class="star-on"></i></li>
+                                <li><i class="star-on"></i></li>
+                                <li><i class="star-on"></i></li>
+                                <li><i class="star-off"></i></li>
+                                <li><i class="star-off"></i></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="span4 clearfix">
+                        <div class="thumbImage">
+                            <a href=""><img src="{{ asset('public/img/92x92.jpg') }}" alt=""></a>
+                        </div>
+                        <div class="thumbSetting">
+                            <div class="thumbTitle">
+                                <a href="#" class="invarseColor">
+                                    Foliomania the designer portfolio
+                                </a>
+                            </div>
+                            <div class="thumbPrice">
+                                <span>$150.00</span>
+                            </div>
+                            <ul class="rating">
+                                <li><i class="star-on"></i></li>
+                                <li><i class="star-on"></i></li>
+                                <li><i class="star-on"></i></li>
+                                <li><i class="star-off"></i></li>
+                                <li><i class="star-off"></i></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="span4 clearfix">
+                        <div class="thumbImage">
+                            <a href=""><img src="{{ asset('public/img/92x92.jpg') }}" alt=""></a>
+                        </div>
+                        <div class="thumbSetting">
+                            <div class="thumbTitle">
+                                <a href="#" class="invarseColor">
+                                    Foliomania the designer portfolio
+                                </a>
+                            </div>
+                            <div class="thumbPrice">
+                                <span>$150.00</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!--end special-->
+
+        </div>
+        <!--end aside-inner-->
+    </aside>
+    <!--end span3-->
+
+    </div>
+    <!--end row-->
+
+    </div><!--end conatiner-->
 {% endblock %}
