@@ -29,15 +29,17 @@ class MenuBuilder extends ContainerAware
     {
         $menu = $this->factory->createItem('catalog_sidebar');
         $menu->setCurrentUri($request->getRequestUri());
-        $menu->setChildrenAttribute('class','side_menu');
-        $menu->addChild('Catalog', array('route' => 'nurix_goods_get_catalog','routeParameters'=>array('cid'=>null),'label'=>'Каталог'))
-            ->setAttribute('class','catalog_menu')
-            ->setLinkAttribute('class','f20')
-            ->setExtra('currentClass','active');
+        $menu->setChildrenAttribute('class','nav');
+        $menu->addChild('Home', array('route' => 'nurix_homepage','label'=>'Home'))
+            ->setExtra('icon',true);
+        $menu->addChild('Catalog', array('route' => 'nurix_goods_get_catalog','routeParameters'=>array('cid'=>null),'label'=>'Каталог'));
 
         $this->getCatalogMenu($em, $menu);
 
         $menu->addChild('available', array('route' => 'nurix_catalog_get_available','label'=>'В наличии'));
+        $menu->addChild('pages.howToOrder', array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => 'howtoorder')));
+        $menu->addChild('pages.conditions', array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => 'conditions')));
+        $menu->addChild('pages.contact', array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => 'contact')));
         return $menu;
     }
     /**
