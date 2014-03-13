@@ -13,6 +13,7 @@ use Prezent\Doctrine\Translatable\Annotation as Prezent;
 use Prezent\Doctrine\Translatable\Entity\AbstractTranslation;
 
 /**
+ * @ORM\Table(value="pages_translations")
  * @ORM\Entity
  */
 class PagesTranslation extends AbstractTranslation

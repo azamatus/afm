@@ -11,6 +11,7 @@ use Nurix\PageBundle\Entity\PagesTranslation;
 /**
  * Pages
  *
+ * @ORM\Table(value="pages")
  * @ORM\Entity
  */
 class Pages extends AbstractTranslatable
