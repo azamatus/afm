@@ -17,7 +17,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <link type="text/css" rel="stylesheet" href="{{ asset("public/css/bootstrap.min.css") }}" media="screen"/>
-    <link type="text/css" rel="stylesheet" href="{{ asset("bundles/applicationsonatauser/css/sonata.css") }}"/>
     <link type="text/css" rel="stylesheet" href="{{ asset("public/css/jquery-ui-1.10.1.min.css") }}"/>
     <link type="text/css" rel="stylesheet" href="{{ asset("public/css/customize.css") }}"/>
     <link type="text/css" rel="stylesheet" href="{{ asset('public/css/style.css') }}"/>
@@ -27,6 +26,7 @@
     <link rel="stylesheet" id="active-bg" href="{{ asset("public/css/layout/Boxed.css") }}">
     <link rel="stylesheet" id="active-bg" href="{{ asset("public/css/color/blue.css") }}">
     <link rel="stylesheet" id="active-bg" href="{{ asset("public/css/backgrounds/tex2res5.css") }}">
+    {#<link type="text/css" rel="stylesheet" href="{{ asset("bundles/applicationsonatauser/css/sonata.css") }}"/>#}{# Если подключть, то review в странице товаров не правильно отображается#}
     {% block stylesheets %}{% endblock %}
     <script type="text/javascript">
         var base_url = "{{ path('nurix_homepage') }}";
