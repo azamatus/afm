@@ -11,8 +11,8 @@
     <property name="bundledir" location="web/bundles"/>
 
     <target name="replace">
-        <replace file="${config}/sonata/media.yml" value="/uploads/media">
-            <replacetoken>/nurix/web/uploads/media</replacetoken>
+        <replace file="${property}" value="media_upload_url: /uploads/media">
+            <replacetoken>media_upload_url: /nurazia/web/uploads/media</replacetoken>
         </replace>
     </target>
 

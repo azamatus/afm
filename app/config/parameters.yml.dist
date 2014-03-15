@@ -13,3 +13,4 @@ parameters:
     locale: ru
     secret: ThisTokenIsNotSoSecretChangeIt
     good_image_count:   3
+    media_upload_url: /nurazia/web/uploads/media

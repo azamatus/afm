@@ -32,7 +32,7 @@ sonata_media:
                 default:  { width: 560}
     cdn:
         server:
-            path: /nurazia/web/uploads/media # http://media.sonata-project.org/
+            path: %media_upload_url% # http://media.sonata-project.org/
 
     filesystem:
         local:

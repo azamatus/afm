@@ -7,9 +7,13 @@
                 <ul class="slides">
                     {% for slider in sliders %}
                         <li>
+                            {% if slider.url %}
                             <a href="{{ slider.url }}">
                                 <img src="{% path slider.image, 'slider_standard' %}"/>
                             </a>
+                            {% else %}
+                                <img src="{% path slider.image, 'slider_standard' %}"/>
+                            {% endif %}
                         </li>
                     {% endfor %}
 
