@@ -1261,7 +1261,7 @@ footer {margin:82px 0 0 0;}
 }
 .table-compare td.aligned-color {
   background-color:#f1f1f1;
-  text-align: right;
+  text-align: left;
   border-left:none;
 }
 /* price */

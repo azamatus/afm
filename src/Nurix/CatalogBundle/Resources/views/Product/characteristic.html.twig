@@ -1,24 +1,17 @@
-<div style="margin-left : -4px;">
-    <table >
-        {% set lastSection=-1 %}
-        {% for title in char %}
-            {% if title.getCTypeId.getSection.id !=lastSection %}
-                {% set lastSection=title.getCTypeId.getSection.id %}
-                <tr>
-                    <td colspan="2">
-                        <div class="char_title">
-                            {{ title.getCTypeId.getSection.Sectionvalue }}
-                        </div>
-                    </td>
-                </tr>
-            {% endif %}
+<table class="table table-compare">
+    {% set lastSection=-1 %}
+    {% for title in char %}
+        {% if title.getCTypeId.getSection.id !=lastSection %}
+            {% set lastSection=title.getCTypeId.getSection.id %}
             <tr>
-                <td class="charType">  {{ title.getCTypeId.name }}:</td>
-                <td class="charValue"> {{ title.value }}  </td>
+                <td colspan="2" class="aligned-color">
+                    <h3>{{ title.getCTypeId.getSection.Sectionvalue }}</h3>
+                </td>
             </tr>
-        {% endfor %}
-    </table>
-    <div class="char_title">
-        Характеристики и комплектация аппарата могут отличаться от указанных. Просьба уточнять у менеджера.
-    </div>
-</div>
+        {% endif %}
+        <tr>
+            <td>  {{ title.getCTypeId.name }}:</td>
+            <td> {{ title.value }}  </td>
+        </tr>
+    {% endfor %}
+</table>
