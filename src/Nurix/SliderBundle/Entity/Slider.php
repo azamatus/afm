@@ -2,6 +2,7 @@
 
 namespace Nurix\SliderBundle\Entity;
 
+use Application\Sonata\MediaBundle\Entity\Media;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,11 +37,22 @@ class Slider
     private $title;
 
     /**
+     * @var Media
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\MediaBundle\Entity\Media")
+     * @ORM\JoinColumns({
+     * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
+     * })
+     */
+    private $image;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="content", type="text", nullable=false)
+     * @ORM\Column(name="url", type="string", nullable=true)
      */
-    private $content;
+    private $url;
+
 
     /**
      * @var integer
@@ -113,9 +125,9 @@ class Slider
      * @param string $content
      * @return Slider
      */
-    public function setContent($content)
+    public function setImage($content)
     {
-        $this->content = $content;
+        $this->image = $content;
     
         return $this;
     }
@@ -125,9 +137,9 @@ class Slider
      *
      * @return string 
      */
-    public function getContent()
+    public function getImage()
     {
-        return $this->content;
+        return $this->image;
     }
 
     /**
@@ -151,5 +163,21 @@ class Slider
     public function getSliderOrder()
     {
         return $this->sliderOrder;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * @param string $url
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
     }
 }

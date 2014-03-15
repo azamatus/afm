@@ -15,19 +15,18 @@ class SliderAdmin extends Admin
             ->add('title')
             ->add('active')
             ->add('sliderOrder')
-            ->add('content')
+            ->add('url')
         ;
     }
 
     public function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('General')
             ->add('title')
-            ->add('sliderOrder')
+            ->add('sliderOrder','integer')
             ->add('active', null, array('required' => false))
-            ->add('content', 'ckeditor', array('attr' => array('class' => 'span10', 'rows' => 20),'config'=>array('width'=>'700px','height'=>'345px','resize_enabled'=>false,'resize_maxHeight' => '345px','resize_minHeight' => '345px'),  'config_name' => 'my_config'))
-            ->end()
+            ->add('url')
+            ->add('image', 'sonata_type_model_list', array('required' => true), array('link_parameters' => array('context' => 'slider')))
         ;
     }
 
