@@ -20,20 +20,17 @@
                     <h4>{{ product.name }}</h4>
                 </div>
                 <div class="product-img">
-                    {% for galleryHasMedia in product.imagePath.GalleryHasMedias %}
-                        {% if loop.index == 1 %}
-                        <a class="fancybox" href="{% path galleryHasMedia.media, 'goods_original' %}">
-                            <img src="{% path galleryHasMedia.media, 'goods_middle' %}"/>
-                        </a>
-                        {% endif %}
-                    {% endfor %}
+                    <a class="fancybox" href="{{ product.imagePath|path('path','goods_original') }}">
+                        {{ product.imagePath|galleryThumb('path','goods_middle') }}
+                    </a>
                 </div>
                 <!--end product-img-->
                 <div class="product-img-thumb">
-                    <a class="fancybox" href="{{ asset('public/img/650x700.jpg') }}"><img src="{{ asset('public/img/68x60.jpg') }}" alt=""></a>
-                    <a class="fancybox" href="{{ asset('public/img/650x700.jpg') }}"><img src="{{ asset('public/img/68x60.jpg') }}" alt=""></a>
-                    <a class="fancybox" href="{{ asset('public/img/650x700.jpg') }}"><img src="{{ asset('public/img/68x60.jpg') }}" alt=""></a>
-                    <a class="fancybox" href="{{ asset('public/img/650x700.jpg') }}"><img src="{{ asset('public/img/68x60.jpg') }}" alt=""></a>
+                    {% for galleryHasMedia in product.imagePath.GalleryHasMedias %}
+                        <a class="fancybox" href="{% path galleryHasMedia.media, 'goods_original' %}">
+                            <img src="{% path galleryHasMedia.media, 'goods_small' %}"/>
+                        </a>
+                    {% endfor %}
                 </div>
                 <!--end flexslider-thumb-->
             </div>
@@ -58,16 +55,17 @@
                     <!--end product-inputs-->
                     <div class="product-info">
                         <dl class="dl-horizontal">
-                            <dt>Availabilty:</dt>
-                            <dd>Available In Stock</dd>
-
-                            <dt>Product Code:</dt>
-                            <dd>No. CtAw9458</dd>
-
-                            <dt>Manfactuer:</dt>
-                            <dd>Nicka Corparation</dd>
-
-                            <dt>Review Points:</dt>
+                            <dt>{{ 'product_info.availability'|trans({}, 'CatalogBundle') }}:</dt>
+                            {% if product.amount %}
+                                <dd>{{ 'product_info.available'|trans({}, 'CatalogBundle') }}:</dd>
+                            {% else %}
+                                <dd>{{ 'product_info.notAvailable'|trans({}, 'CatalogBundle') }}:</dd>
+                            {% endif %}
+                            <dt>{{ 'product_info.article'|trans({}, 'CatalogBundle') }}:</dt>
+                            <dd>{{ product.article }}</dd>
+                            <dt>{{ 'product_info.catalog'|trans({}, 'CatalogBundle') }}:</dt>
+                            <dd>{{ product.catalog }}</dd>
+                            <dt>{{ 'product_info.reviewPoints'|trans({}, 'CatalogBundle') }}:</dt>
                             <dd>25 Points</dd>
                         </dl>
                     </div>
@@ -106,14 +104,18 @@
 
                             <div class="input-append">
                                 <input class="span1" type="text" name="" value="" placeholder="QTY">
-                                <button class="btn btn-primary"><i class="icon-shopping-cart"></i> Add To Cart</button>
-
+                                <a class="btn btn-primary button_buy_bin" data-id="{{ product.id }}"
+                                   href="{{ path('nurix_bin_ajax_add_item',{'id':product.id}) }}"
+                                   onclick="return false;">
+                                    <i class="icon-shopping-cart"></i>
+                                    {{ 'product_info.addToCard'|trans({}, 'CatalogBundle') }}
+                                </a>
                                 <button class="btn" data-toggle="tooltip" data-title="+To Wishlist"><i
                                             class="icon-heart"></i></button>
                                 <button class="btn" data-toggle="tooltip" data-title="+To Compare"><i
                                             class="icon-refresh"></i></button>
                             </div>
-
+                            <div id="tovar-added" title="{{ 'product_info.addedToCard'|trans({}, 'CatalogBundle') }}"></div>
                         </form>
                         <!--end form-->
 
@@ -137,27 +139,33 @@
                 <a href="#descraption" data-toggle="tab">{{ 'product_info.description'|trans({}, 'CatalogBundle') }}</a>
             </li>
             <li>
-                <a href="#specfications" data-toggle="tab">{{ 'product_info.specifications'|trans({}, 'CatalogBundle') }}</a>
+                <a href="#specfications"
+                   data-toggle="tab">{{ 'product_info.specifications'|trans({}, 'CatalogBundle') }}</a>
             </li>
             <li>
                 <a href="#review" data-toggle="tab">{{ 'product_info.review'|trans({}, 'CatalogBundle') }}</a>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ 'product_info.feedback'|trans({}, 'CatalogBundle') }} <i class="icon-caret-down"></i></a>
+                <a href="#" class="dropdown-toggle"
+                   data-toggle="dropdown">{{ 'product_info.feedback'|trans({}, 'CatalogBundle') }} <i
+                            class="icon-caret-down"></i></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#read-review" data-toggle="tab">{{ 'product_info.readFeedback'|trans({}, 'CatalogBundle') }}</a></li>
-                    <li><a href="#make-review" data-toggle="tab">{{ 'product_info.makeFeedback'|trans({}, 'CatalogBundle') }}</a></li>
+                    <li><a href="#read-review"
+                           data-toggle="tab">{{ 'product_info.readFeedback'|trans({}, 'CatalogBundle') }}</a></li>
+                    <li><a href="#make-review"
+                           data-toggle="tab">{{ 'product_info.makeFeedback'|trans({}, 'CatalogBundle') }}</a></li>
                 </ul>
             </li>
         </ul>
         <div class="tab-content">
             <div class="tab-pane active" id="descraption">
                 <p>
-                    {%  if product.fullDesctiption  %}
-                        {{ product.fullDesctiption }}
+                    {% if product.fullDesctiption %}
+                    {{ product.fullDesctiption }}
                     {% else %}
-                        <p>{{ 'product_info.notuploaded'|trans({}, 'CatalogBundle') }}</p>
-                    {% endif %}
+
+                <p>{{ 'product_info.notuploaded'|trans({}, 'CatalogBundle') }}</p>
+                {% endif %}
                 </p>
             </div>
             <div class="tab-pane" id="specfications">
@@ -170,8 +178,8 @@
             <div class="tab-pane" id="review">
                 {% if product.review %}
                     {{ product.review|raw }}
-                    {% else %}
-                <p>{{ 'product_info.notuploaded'|trans({}, 'CatalogBundle') }}</p>
+                {% else %}
+                    <p>{{ 'product_info.notuploaded'|trans({}, 'CatalogBundle') }}</p>
                 {% endif %}
             </div>
 

@@ -1,16 +1,17 @@
 <table class="table table-compare">
-        {% set lastSection=-1 %}
-        {% for title in char %}
-            {% if title.getCTypeId.getSection.id !=lastSection %}
-                {% set lastSection=title.getCTypeId.getSection.id %}
-                <tr>
-                    <td class="aligned-color">
-                       <h5>{{ title.getCTypeId.getSection.Sectionvalue }}</h5>
-                    </td>
-
-            {% endif %}
-                <td class="charType">  {{ title.getCTypeId.name }}:</td>
-                <td class="charValue"> {{ title.value }}  </td>
+    {% set lastSection=-1 %}
+    {% for title in char %}
+        {% if title.getCTypeId.getSection.id !=lastSection %}
+            {% set lastSection=title.getCTypeId.getSection.id %}
+            <tr>
+                <td colspan="2" class="aligned-color">
+                    <h3>{{ title.getCTypeId.getSection.Sectionvalue }}</h3>
+                </td>
             </tr>
-        {% endfor %}
+        {% endif %}
+        <tr>
+            <td>  {{ title.getCTypeId.name }}:</td>
+            <td> {{ title.value }}  </td>
+        </tr>
+    {% endfor %}
 </table>
