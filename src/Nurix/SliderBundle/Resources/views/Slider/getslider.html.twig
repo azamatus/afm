@@ -1,14 +1,21 @@
+
 {% if sliders %}
-<link href="{{ asset('bundles/nurixslider/css/rcarousel.css') }} " type="text/css" rel="stylesheet"/>
-<script type="text/javascript" src="{{ asset("bundles/nurixslider/js/slider_header.js") }}"></script>
-<div class="container center">
-    <div id="carousel" class="center">
-        {% for slider in sliders %}
-         <div>
-            {{ slider.content|raw}}
-         </div>
-        {% endfor %}
-    </div>
-    <div id="pages"></div>
-</div>
+
+
+        <div class="span8">
+            <div class="flexslider">
+                <ul class="slides">
+                    {% for slider in sliders %}
+                        <li>
+                            <a href="{{ slider.url }}">
+                                <img src="{% path slider.image, 'slider_standard' %}"/>
+                            </a>
+                        </li>
+                    {% endfor %}
+
+                </ul>
+            </div><!--end flexslider-->
+        </div><!--end span8-->
+
+
 {% endif %}

@@ -36,7 +36,11 @@
 <body>
 <div id="mainContainer" class="clearfix">
     {% include '::header.html.twig' %}
+    <div class="container">
+    {% block slider %}
+    {% endblock %}
     {% block body %}{% endblock %}
+    </div>
     {% include '::footer.html.twig' %}
 </div>
 <script type="text/javascript" src="{{ asset("public/js/jquery-1.9.0.min.js") }}"></script>

@@ -17,6 +17,13 @@ sonata_media:
             formats:
                 small: { width: 190 , quality: 95}
                 big:   { width: 500 , quality: 90}
+
+        slider:
+            providers:
+                - sonata.media.provider.image
+
+            formats:
+                standard: { width: 614, height: 300 , quality: 90}
         youtube:
             providers:
                 - sonata.media.provider.youtube
@@ -25,7 +32,7 @@ sonata_media:
                 default:  { width: 560}
     cdn:
         server:
-            path: /nurix/web/uploads/media # http://media.sonata-project.org/
+            path: /nurazia/web/uploads/media # http://media.sonata-project.org/
 
     filesystem:
         local:
@@ -33,4 +40,4 @@ sonata_media:
             create:     true
     providers:
         image:
-            resizer:    sonata.media.resizer.square # sonata.media.resizer.simple
+            resizer:    sonata.media.resizer.simple # sonata.media.resizer.simple
