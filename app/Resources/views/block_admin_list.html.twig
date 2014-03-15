@@ -54,27 +54,6 @@ file that was distributed with this source code.
                                             {% trans from 'SonataAdminBundle' %}link_list{% endtrans -%}
                                         </a>
                                     {% endif %}
-                                    {% if admin.hasroute('excel') and admin.isGranted('CREATE') %}
-                                        {% if admin.subClasses is empty %}
-                                            <a class="btn btn-small" href="{{ admin.generateUrl('excel')}}">
-                                                <i class="icon-hdd"></i>
-                                                Импортировать из файла
-                                            </a>
-                                        {% else %}
-                                            <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" href="#">
-                                                <i class="icon-hdd"></i>
-                                                Импортировать из файла
-                                                <span class="caret"></span>
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                {% for subclass in admin.subclasses|keys %}
-                                                    <li>
-                                                        <a href="{{ admin.generateUrl('excel', {'subclass': subclass}) }}">{{ subclass }}</a>
-                                                    </li>
-                                                {% endfor %}
-                                            </ul>
-                                        {% endif %}
-                                    {% endif %}
 
                                     {% if admin.hasroute('excelGoodsUpload') and admin.isGranted('CREATE') %}
                                         {% if admin.subClasses is empty %}
@@ -88,20 +67,13 @@ file that was distributed with this source code.
                                                 Подгрузка товаров из файла
                                                 <span class="caret"></span>
                                             </a>
-                                            <ul class="dropdown-menu">
-                                                {% for subclass in admin.subclasses|keys %}
-                                                    <li>
-                                                        <a href="{{ admin.generateUrl('excel', {'subclass': subclass}) }}">{{ subclass }}</a>
-                                                    </li>
-                                                {% endfor %}
-                                            </ul>
                                         {% endif %}
                                     {% endif %}
                                     {% if admin.hasroute('excelImport') and admin.isGranted('CREATE') %}
                                         {% if admin.subClasses is empty %}
                                             <a class="btn btn-small" href="{{ admin.generateUrl('excelImport')}}">
                                                     <i class="icon-hdd"></i>
-                                                    Импортировать остотки из файла
+                                                    Импортировать остатки из файла
                                                 </a>
                                         {% else %}
                                             <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" href="#">
@@ -109,13 +81,6 @@ file that was distributed with this source code.
                                                     Импортировать из файла
                                                     <span class="caret"></span>
                                                 </a>
-                                            <ul class="dropdown-menu">
-                                                    {% for subclass in admin.subclasses|keys %}
-                                                            <li>
-                                                                 <a href="{{ admin.generateUrl('excel', {'subclass': subclass}) }}">{{ subclass }}</a>
-                                                            </li>
-                                                        {% endfor %}
-                                                </ul>
                                         {% endif %}
                                     {% endif %}
                                 </div>

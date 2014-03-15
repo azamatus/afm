@@ -172,7 +172,6 @@ class GoodsAdmin extends Admin
 
     protected function configureRoutes(RouteCollection $collection)
     {
-        $collection->add('excel');
         $collection->add('excelImport');
         $collection->add('excelGoodsUpload');
     }
