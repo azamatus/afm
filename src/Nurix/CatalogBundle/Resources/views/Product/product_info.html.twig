@@ -20,8 +20,8 @@
                     <h4>{{ product.name }}</h4>
                 </div>
                 <div class="product-img">
-                    <a class="fancybox" href="{{ product.imagePath|path({{ asset('public/img/650x700.jpg')},'goods_original') }}">
-                        {{ product.imagePath|galleryThumb({{ asset('public/img/68x60.jpg')},'goods_middle') }}
+                    <a class="fancybox" href="{{ product.imagePath|path(asset('public/img/650x700.jpg'),'goods_original') }}">
+                        {{ product.imagePath|galleryThumb(asset('public/img/68x60.jpg'),'goods_middle') }}
                     </a>
                 </div>
                 <!--end product-img-->
