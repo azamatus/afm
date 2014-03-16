@@ -1,0 +1,22 @@
+product_info:
+  availability:  В наличии
+  yes:  Да
+  no:  Нет
+  article: Производитель
+  catalog: Подкатегория
+  reviewPoints: Обзор очков
+  addToCard: Добавить в корзину
+  addedToCard: Товар добавлен в корзину
+  description: Описание
+  specifications: Характеристики
+  review: Обзор
+  feedback: Отзывы
+  readFeedback: Прочитать отзывы
+  makeFeedback: Написать отзыв
+  notuploaded: Еще не загружены
+  selectColor: Выбрать цвет
+  red: Красный
+  blue: Синий
+  brown: Коричневый
+  selectSize: Выбрать размер
+  size: Размер
