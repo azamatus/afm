@@ -20,8 +20,8 @@
                     <h4>{{ product.name }}</h4>
                 </div>
                 <div class="product-img">
-                    <a class="fancybox" href="{{ product.imagePath|path(asset('public/img/650x700.jpg'),'goods_original') }}">
-                        {{ product.imagePath|galleryThumb(asset('public/img/68x60.jpg'),'goods_middle') }}
+                    <a class="fancybox" href="{{ product.imagePath|path({{ asset('public/img/650x700.jpg')},'goods_original') }}">
+                        {{ product.imagePath|galleryThumb({{ asset('public/img/372x370.jpg')},'goods_middle') }}
                     </a>
                 </div>
                 <!--end product-img-->
@@ -50,16 +50,16 @@
                             <li><i class="star-off"></i></li>
                             <li><i class="star-off"></i></li>
                         </ul>
-                        <span>18 Review(s) <a href="#">{{ 'product_info.makeFeedback'|trans({}, 'CatalogBundle') }}</a></span>
+                        <span>18 Review(s) <a href="#">Make a Review</a></span>
                     </div>
                     <!--end product-inputs-->
                     <div class="product-info">
                         <dl class="dl-horizontal">
                             <dt>{{ 'product_info.availability'|trans({}, 'CatalogBundle') }}:</dt>
                             {% if product.amount %}
-                                <dd>{{ 'product_info.yes'|trans({}, 'CatalogBundle') }}:</dd>
+                                <dd>{{ 'product_info.available'|trans({}, 'CatalogBundle') }}:</dd>
                             {% else %}
-                                <dd>{{ 'product_info.no'|trans({}, 'CatalogBundle') }}:</dd>
+                                <dd>{{ 'product_info.notAvailable'|trans({}, 'CatalogBundle') }}:</dd>
                             {% endif %}
                             <dt>{{ 'product_info.article'|trans({}, 'CatalogBundle') }}:</dt>
                             <dd>{{ product.article }}</dd>
@@ -74,16 +74,16 @@
                         <form method="post" action="page">
                             <div class="controls-row">
                                 <select class="span2" name="#">
-                                    <option>{{ 'product_info.selectColor'|trans({}, 'CatalogBundle') }}</option>
-                                    <option value="">{{ 'product_info.red'|trans({}, 'CatalogBundle') }}</option>
-                                    <option value="">{{ 'product_info.blue'|trans({}, 'CatalogBundle') }}</option>
-                                    <option value="">{{ 'product_info.brown'|trans({}, 'CatalogBundle') }}</option>
+                                    <option>-- Select Color --</option>
+                                    <option value="">Red</option>
+                                    <option value="">Blue</option>
+                                    <option value="">Brown</option>
                                 </select>
                                 <select class="span2" name="#">
-                                    <option>{{ 'product_info.selectSize'|trans({}, 'CatalogBundle') }}</option>
-                                    <option value="">{{ 'product_info.size'|trans({}, 'CatalogBundle') }} 36</option>
-                                    <option value="">{{ 'product_info.size'|trans({}, 'CatalogBundle') }} 12</option>
-                                    <option value="">{{ 'product_info.size'|trans({}, 'CatalogBundle') }} 18</option>
+                                    <option>-- Select Size --</option>
+                                    <option value="">Size 36</option>
+                                    <option value="">Size 12</option>
+                                    <option value="">Size 18</option>
                                 </select>
                             </div>
                             <!--end controls-row-->
