@@ -1,10 +1,5 @@
 {% extends '::base.html.twig' %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    <link href="{{ asset('bundles/catalog/css/catalog.css') }}" type="text/css" media="screen" rel="stylesheet"/>
-{% endblock %}
-
 {% block body %}
     {% render controller("CatalogBundle:Content:showSliderProductList") %}
     <div class="clearbox"></div>
@@ -111,11 +106,4 @@
 
     </div><!--end span4-->
 </div>
-{% endblock %}
-
-{% block javascripts %}
-    {{ parent() }}
-    <script type="text/javascript" src="{{ asset("bundles/nurix/js/jquery.ui.core.min.js") }}"></script>
-    <script type="text/javascript" src="{{ asset("bundles/nurix/js/jquery.ui.widget.min.js") }}"></script>
-    <script type="text/javascript" src="{{ asset("bundles/nurix/js/jquery.ui.rcarousel.min.js") }}"></script>
 {% endblock %}
