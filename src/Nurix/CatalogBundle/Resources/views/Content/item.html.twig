@@ -1,22 +1,40 @@
-    <div class="catalog_item float_left">
-        <div class="product_title"><a class="name size16px"
-                href="{{ path('nurix_goods_get_info', {'id': product.id}) }}">{{ product.name }}</a></div>
-        <div class="clearbox"></div>
-        <div class="product_img">
+<div class="hProductItems">
+    <li class="span3 clearfix">
+        <div class="thumbnail">
             <a href="{{ path('nurix_goods_get_info', {'id': product.id} ) }}">
                 {{ product.imagePath|galleryThumb(asset('bundles/catalog/img/noImage/good_big.jpg'),'goods_big') }}
             </a>
         </div>
-        <div>
-
-            <div class="size16px price float_left">{{ product.price | price('USD') }}</div>
-            <div class="gray price_kgs float_left margin_top10px"> ({{ product.price | price('KGS',0) }})</div>
-            <div class="clear"></div>
-            <div class="float_right">{#TODO:убрать из стилей, перевести в css класс#}
-                <a href="{{ path('nurix_bin_ajax_add_item',{'id':product.id}) }}"
-                   onclick="return false;" class="button_buy">
-                    Купить
-                </a>
+        <div class="thumbSetting">
+            <div class="thumbTitle">
+                <a href="{{ path('nurix_goods_get_info', {'id': product.id}) }}"
+                   class="invarseColor">{{ product.name }}</a>
             </div>
+            <div class="thumbPrice">
+                <span>{{ product.price | price('USD') }}</span>
+            </div>
+
+            <div class="thumbButtons">
+                <button class="btn btn-primary btn-small" data-title="+To Cart" data-placement="top"
+                        data-toggle="tooltip">
+                    <i class="icon-shopping-cart"></i>
+                </button>
+                <button class="btn btn-small" data-title="+To WishList" data-placement="top" data-toggle="tooltip">
+                    <i class="icon-heart"></i>
+                </button>
+
+                <button class="btn btn-small" data-title="+To Compare" data-placement="top" data-toggle="tooltip">
+                    <i class="icon-refresh"></i>
+                </button>
+            </div>
+
+            <ul class="rating">
+                <li><i class="star-on"></i></li>
+                <li><i class="star-on"></i></li>
+                <li><i class="star-on"></i></li>
+                <li><i class="star-on"></i></li>
+                <li><i class="star-off"></i></li>
+            </ul>
         </div>
-    </div>
+    </li>
+</div>
