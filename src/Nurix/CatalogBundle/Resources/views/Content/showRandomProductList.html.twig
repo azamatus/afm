@@ -7,26 +7,30 @@
 {% endif %}
 
 <div class="titleHeader clearfix">
-        <h3>{{ title|trans({},'CatalogBundle') }}: {% if subtitle is defined %}{{ subtitle }}{% endif %}</h3>
-        <div class="pagers">
-            <div class="btn-toolbar">
-                <button class="btn btn-mini">{{ 'catalog.view_all'|trans({},'CatalogBundle') }}</button>
+    <div id="featuredItems">
+        <div class="titleHeader clearfix">
+            <h3>{{ title|trans({},'CatalogBundle') }}: {% if subtitle is defined %}{{ subtitle }}{% endif %}</h3>
+
+            <div class="pagers">
+                <div class="btn-toolbar">
+                    <button class="btn btn-mini">{{ 'catalog.view_all'|trans({},'CatalogBundle') }}</button>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        {% if pagination.getTotalItemCount > 0 %}
-            {% for product in pagination %}
-                {% include  "CatalogBundle:Content:item.html.twig" with {'product':product} %}
-            {% endfor %}
+        <div class="row">
+            {% if pagination.getTotalItemCount > 0 %}
+                {% for product in pagination %}
+                    {% include  "CatalogBundle:Content:item.html.twig" with {'product':product} %}
+                {% endfor %}
 
-            <div class="navigation">
-                {{ knp_pagination_render(pagination,'CatalogBundle:Pagination:pagination.html.twig') }}
-            </div>
-        {% else %}
-            <h2>
-                В этой категории товаров пока нет
-            </h2>
-        {% endif %}
+                <div class="navigation">
+                    {{ knp_pagination_render(pagination,'CatalogBundle:Pagination:pagination.html.twig') }}
+                </div>
+            {% else %}
+                <h2>
+                    В этой категории товаров пока нет
+                </h2>
+            {% endif %}
+        </div>
     </div>
-
+</div>
