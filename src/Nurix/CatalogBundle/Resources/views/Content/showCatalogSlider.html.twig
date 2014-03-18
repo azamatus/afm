@@ -1,14 +1,16 @@
+<div id="featuredItems">
+    <div class="titleHeader clearfix">
+        <h3>{{ title|trans({},'CatalogBundle') }}</h3>
 
-        <div class="titleHeader clearfix">
-            <h3>{{ title|trans({},'CatalogBundle') }}</h3>
-            <div class="pagers">
-                <div class="btn-toolbar">
-                    <button class="btn btn-mini">{{ 'catalog.view_all'|trans({},'CatalogBundle') }}</button>
-                </div>
+        <div class="pagers">
+            <div class="btn-toolbar">
+                <button class="btn btn-mini">{{ 'catalog.view_all'|trans({},'CatalogBundle') }}</button>
             </div>
         </div>
-        <div class="row">
-            {% for product in products %}
-                {% include  "CatalogBundle:Content:item.html.twig" with {'product':product} %}
-            {% endfor %}
-        </div>
+    </div>
+    <div class="row">
+        {% for product in products %}
+            {% include  "CatalogBundle:Content:item.html.twig" with {'product':product} %}
+        {% endfor %}
+    </div>
+</div>
