@@ -20,3 +20,5 @@ product_info:
   brown: Коричневый
   selectSize: Выбрать размер
   size: Размер
+catalog:
+  view_all: Показать всё

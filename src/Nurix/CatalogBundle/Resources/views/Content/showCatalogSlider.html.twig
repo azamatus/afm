@@ -1,12 +1,14 @@
-<div class="sale margin_top10px">
-    <div class="catalog_title">{{ title }}<br></div>
-    <div class="carousel">
-        <div id="carousel_catalog">
+
+        <div class="titleHeader clearfix">
+            <h3>{{ title|trans({},'CatalogBundle') }}</h3>
+            <div class="pagers">
+                <div class="btn-toolbar">
+                    <button class="btn btn-mini">{{ 'catalog.view_all'|trans({},'CatalogBundle') }}</button>
+                </div>
+            </div>
+        </div>
+        <div class="raw">
             {% for product in products %}
                 {% include  "CatalogBundle:Content:item.html.twig" with {'product':product} %}
             {% endfor %}
         </div>
-        <a href="#" id="slider-carousel-next"></a>
-        <a href="#" id="slider-carousel-prev"></a>
-    </div>
-</div>
