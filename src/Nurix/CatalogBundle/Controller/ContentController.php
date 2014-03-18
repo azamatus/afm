@@ -60,13 +60,12 @@ class ContentController extends Controller
     }
 
 
-    public function showSliderProductListAction()
+    public function showMainPageCatalogListAction()
     {
         $products = $this->getDoctrine()->getRepository('CatalogBundle:Goods')->getSlider();
-		if (count($products)>=3)
-			return $this->render('CatalogBundle:Content:showCatalogSlider.html.twig', array('products' => $products,'title' => "Последние обновленные"));
-		else
-			return new Response();
+
+		return $this->render('CatalogBundle:Content:showMainPageCatalog.html.twig', array('products' => $products,'title' => "Последние обновленные"));
+
     }
 
     public function getCatalogAction($cid)

@@ -1,8 +1,7 @@
-<div class="hProductItems">
-    <li class="span3 clearfix">
+<li class="span3 clearfix">
         <div class="thumbnail">
             <a href="{{ path('nurix_goods_get_info', {'id': product.id} ) }}">
-                {{ product.imagePath|galleryThumb(asset('bundles/catalog/img/noImage/good_big.jpg'),'goods_big') }}
+                {{ product.imagePath|galleryThumb(asset('public/img/372x370.jpg'),'goods_middle') }}
             </a>
         </div>
         <div class="thumbSetting">
@@ -37,4 +36,3 @@
             </ul>
         </div>
     </li>
-</div>

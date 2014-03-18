@@ -1,0 +1,28 @@
+<div class="sale margin_top10px">
+    <div class="catalog_title">{{ title }}<br></div>
+    <div class="carousel">
+        <div id="carousel_catalog">
+            {% for product in products %}
+                {% include  "CatalogBundle:Content:item.html.twig" with {'product':product} %}
+            {% endfor %}
+        </div>
+        <a href="#" id="slider-carousel-next"></a>
+        <a href="#" id="slider-carousel-prev"></a>
+    </div>
+</div>
+<div id="productSlider" class="carousel slide">
+    <!-- Carousel items -->
+    <div class="carousel-inner">
+        {#{% for product in products %}#}
+            {#{% include  "CatalogBundle:Content:item.html.twig" with {'product':product} %}#}
+            <div class="active item"><img src="{{ asset('public/img/650x700.jpg') }}" alt=""></div>
+            <div class="active item"><img src="{{ asset('public/img/650x700.jpg') }}" alt=""></div>
+            <div class="active item"><img src="{{ asset('public/img/650x700.jpg') }}" alt=""></div>
+        {#{% endfor %}#}
+    </div>
+
+    <!-- Carousel nav -->
+    <a class="carousel-control left" href="#productSlider" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#productSlider" data-slide="next">&rsaquo;</a>
+</div>
+<!--end productSlider-->

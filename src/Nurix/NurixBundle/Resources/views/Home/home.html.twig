@@ -1,9 +1,7 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-    {% render controller("CatalogBundle:Content:showSliderProductList") %}
-    <div class="clearbox"></div>
-    {% render controller("CatalogBundle:Content:showRandomProductList") %}
+    {% render controller("CatalogBundle:Content:showMainPageCatalogList") %}
 {% endblock %}
 
 {% block slider %}
