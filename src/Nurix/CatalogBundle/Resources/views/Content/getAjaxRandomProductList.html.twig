@@ -1,11 +1,6 @@
-<div class="all-catalog-items" {% if app.request.isxmlhttprequest %} style="display: none;" {% endif %}>
-    {% for product in pagination %}
-        {% include  "CatalogBundle:Content:item.html.twig" with {'product':product} %}
-        {% if loop.index is divisibleby(3) %}
-            <hr class="catalog_hr"/>
-        {% endif %}
-    {% endfor %}
-</div>
+{% for product in pagination %}
+    {% include  "CatalogBundle:Content:item.html.twig" with {'product':product} %}
+{% endfor %}
 
 <div class="navigation">
     {{ knp_pagination_render(pagination,'CatalogBundle:Pagination:pagination.html.twig') }}
