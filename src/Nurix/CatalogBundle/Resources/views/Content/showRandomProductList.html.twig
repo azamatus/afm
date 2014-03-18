@@ -11,7 +11,13 @@
     </div>
     <div class="row">
         {% if pagination.getTotalItemCount > 0 %}
-            {% include  "CatalogBundle:Content:getAjaxRandomProductList.html.twig" with {'pagination':pagination} %}
+            {% for product in pagination %}
+                {% include  "CatalogBundle:Content:item.html.twig" with {'product':product} %}
+            {% endfor %}
+
+            <div class="navigation">
+                {{ knp_pagination_render(pagination,'CatalogBundle:Pagination:pagination.html.twig') }}
+            </div>
         {% else %}
             <h2>
                 В этой категории товаров пока нет
