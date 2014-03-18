@@ -7,7 +7,7 @@
                 </div>
             </div>
         </div>
-        <div class="raw">
+        <div class="row">
             {% for product in products %}
                 {% include  "CatalogBundle:Content:item.html.twig" with {'product':product} %}
             {% endfor %}
