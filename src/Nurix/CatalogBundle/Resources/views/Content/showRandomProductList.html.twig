@@ -1,8 +1,7 @@
-
-
-
-<div class="titleHeader clearfix">
+<div id="featuredItems">
+    <div class="titleHeader clearfix">
         <h3>{{ title|trans({},'CatalogBundle') }}: {% if subtitle is defined %}{{ subtitle }}{% endif %}</h3>
+
         <div class="pagers">
             <div class="btn-toolbar">
                 <button class="btn btn-mini">{{ 'catalog.view_all'|trans({},'CatalogBundle') }}</button>
@@ -24,3 +23,4 @@
             </h2>
         {% endif %}
     </div>
+</div>
