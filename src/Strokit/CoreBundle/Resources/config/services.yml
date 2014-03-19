@@ -6,6 +6,6 @@ services:
         tags:
             - { name: twig.extension }
 
-    strokit.media.resizer.custom:
+    sonata.media.resizer.custom:
         class: Strokit\CoreBundle\Image\CustomResizer
         arguments: [@sonata.media.adapter.image.gd, 'outbound', @sonata.media.metadata.proxy]
