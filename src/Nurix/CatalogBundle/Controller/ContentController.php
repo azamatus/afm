@@ -63,7 +63,7 @@ class ContentController extends Controller
     public function showSliderProductListAction()
     {
         $products = $this->getDoctrine()->getRepository('CatalogBundle:Goods')->getSlider();
-		return $this->render('CatalogBundle:Content:showCatalogSlider.html.twig', array('products' => $products,'title' => "Последние обновленные"));
+		return $this->render('CatalogBundle:Content:showCatalogSlider.html.twig', array('products' => $products,'title' => "catalog.updated_title"));
     }
 
     public function getCatalogAction($cid)
