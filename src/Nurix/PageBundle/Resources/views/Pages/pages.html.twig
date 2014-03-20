@@ -3,11 +3,16 @@
 {% block title %}
     {{ parent() }} : {{ page.title }}
 {% endblock %}
-{% block stylesheets %}
-    {{ parent() }}
-    <link href="{{ asset('bundles/nurixpage/css/pages.css') }} " type="text/css" rel="stylesheet"/>
-{% endblock %}
 {% block body %}
-        <h1 class="pages_center">{{ page.title }}</h1>
-         {{ page.content|raw }}
+    <article class="blog-article">
+
+        <div class="blog-content">
+            <div class="blog-content-title">
+                <h2><a href="#" class="invarseColor">{{ page.title }}</a></h2>
+            </div>
+            <div class="blog-content-entry">
+                {{ page.content|raw }}
+            </div>
+        </div><!--end blog-content-->
+    </article>
 {% endblock %}
