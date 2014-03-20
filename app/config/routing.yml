@@ -4,7 +4,7 @@ nurix_page:
 
 catalog:
     resource: "@CatalogBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /{_locale}
 
 nurix:
     resource: "@NurixBundle/Resources/config/routing.yml"

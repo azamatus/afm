@@ -1,6 +1,10 @@
 nurix_homepage:
-    pattern:  /
-    defaults: { _controller: NurixBundle:Home:home }
+    pattern:  /{_locale}
+    defaults: { _controller: NurixBundle:Home:home, _locale:ru }
+    requirements:
+        _locale: en|ru|cn
+    options:
+        expose: true
 
 nurix_search:
     pattern:  /search/

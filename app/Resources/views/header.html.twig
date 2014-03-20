@@ -52,14 +52,14 @@
                     </div>
                     <div class="btn-group">
                         <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                            EN <span class="caret"></span>
+                            {{ app.request.locale|upper }} <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu language">
-                            <li><a href="#">FR</a></li>
+                            <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}">EN</a></li>
                             <li class="divider"></li>
-                            <li><a href="#">CH</a></li>
+                            <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'cn'})) }}">CH</a></li>
                             <li class="divider"></li>
-                            <li><a href="#">AR</a></li>
+                            <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'ru'})) }}">RU</a></li>
                         </ul>
                     </div>
 
