@@ -236,20 +236,37 @@ function rangePriceSlider() {
       " - $" + $slideRange.slider( "values", 1 ) );
 }
 
-
+function changeCatalogStyle(){
+    var style= $.cookie("style");
+    if(style) $("#"+style).addClass("active btn-primary");
+    $(".btn-group .btn").click(function(){
+        $(this).siblings().removeClass('active btn-primary');
+        $(this).addClass('active btn-primary');
+        $.cookie("style", this.id);
+        if($(this).attr('id') == 'grid'){
+            $.cookie("cookieCatalogStyle", "grid", { expires: 3, path: '/' });
+            location.reload();
+        }
+        else{
+            $.cookie("cookieCatalogStyle", "list", { expires: 3, path: '/' });
+            location.reload();
+        }
+    });
+}
 $(document).ready(function(){
-	topNavToSelect();
-	NavToSelect();
-	showtooltip();
-	cartContent();
-	flexSlideShow();
-	productSlider();
-	productFancyBox();
-	dropdownMainNav();
-	latestTweets();
-	openSidePanel();
-	changeBackgroundPattern();
-	changeLayoutStyle();
-	changeColorStyle();
-	rangePriceSlider();
+    changeCatalogStyle();
+    topNavToSelect();
+    NavToSelect();
+    showtooltip();
+    cartContent();
+    flexSlideShow();
+    productSlider();
+    productFancyBox();
+    dropdownMainNav();
+    latestTweets();
+    openSidePanel();
+    changeBackgroundPattern();
+    changeLayoutStyle();
+    changeColorStyle();
+    rangePriceSlider();
 });

@@ -18,6 +18,9 @@ a.active:link, a.active:visited {
   cursor:default;
 }
 
+.btn-group a.btn-primary:link, a.btn-primary:visited{
+    color: #ffffff!important;
+}
 /*=================== dropdown =============*/
 .dropdown-menu li > a:hover,
 .dropdown-menu li > a:focus,

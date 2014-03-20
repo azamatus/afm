@@ -9,8 +9,13 @@
         </div>
     </div>
     <div class="row">
+        <ul class="hProductItems clearfix">
         {% for product in products %}
             {% include  "CatalogBundle:Content:item.html.twig" with {'product':product} %}
+            {% if loop.index is divisibleby(4) %}
+                <div style="clear: both"></div>
+            {% endif %}
         {% endfor %}
+        </ul>
     </div>
 </div>

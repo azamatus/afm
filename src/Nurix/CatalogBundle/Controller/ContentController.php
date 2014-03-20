@@ -4,6 +4,7 @@ namespace Nurix\CatalogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Nurix\CatalogBundle\Entity;
+use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Response;
 
 class ContentController extends Controller
@@ -25,12 +26,8 @@ class ContentController extends Controller
                 $this->limitPerPage);
 
         $pagination->setUsedRoute('nurix_catalog_get_rndcatalog');
-
-        if ($this->getRequest()->isXmlHttpRequest()){
-            return $this->render('CatalogBundle:Content:getAjaxRandomProductList.html.twig', array( 'pagination' => $pagination));
-        }else{
             return $this->render('CatalogBundle:Content:showRandomProductList.html.twig', array( 'pagination' => $pagination, 'title' => "Весь каталог"));
-        }
+
 
     }
 
@@ -51,20 +48,17 @@ class ContentController extends Controller
 
         $pagination->setUsedRoute($this->getRequest()->get('_route'));
 
-        if ($this->getRequest()->isXmlHttpRequest()){
-            return $this->render('CatalogBundle:Content:getAjaxRandomProductList.html.twig', array( 'pagination' => $pagination));
-        }else{
             return $this->render('CatalogBundle:Content:getcatalog.html.twig', array( 'pagination' => $pagination, 'title' => "В наличии",'subtitle' => "Уточните наличие товара у менеджера"));
-        }
+
 
     }
 
 
-    public function showMainPageCatalogListAction()
+    public function showSliderProductListAction()
     {
         $products = $this->getDoctrine()->getRepository('CatalogBundle:Goods')->getSlider();
 
-		return $this->render('CatalogBundle:Content:showMainPageCatalog.html.twig', array('products' => $products,'title' => "Последние обновленные"));
+		return $this->render('CatalogBundle:Content:showCatalogSlider.html.twig', array('products' => $products,'title' => "Последние обновленные"));
 
     }
 
@@ -101,10 +95,12 @@ class ContentController extends Controller
 
         $pagination->setUsedRoute('nurix_goods_get_catalog');
 
-        if ($this->getRequest()->isXmlHttpRequest()) {
-            return $this->render('CatalogBundle:Content:getAjaxRandomProductList.html.twig', array('pagination' => $pagination));
-        } else {
+        $cookieCatalogStyle = $this->getRequest()->cookies->get("cookieCatalogStyle");
+
+        if ($cookieCatalogStyle == 'list')
+            return $this->render('CatalogBundle:Content:getcatalog_list.html.twig', array('pagination' => $pagination, 'catalog' => $catalog, 'title' => $catalog!=null?$catalog->__toString():"Весь каталог"));
+        else
             return $this->render('CatalogBundle:Content:getcatalog.html.twig', array('pagination' => $pagination, 'catalog' => $catalog, 'title' => $catalog!=null?$catalog->__toString():"Весь каталог"));
-        }
+
     }
 }
