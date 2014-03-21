@@ -18,7 +18,8 @@ services:
     catalog.twig.exchange_extension:
             class: Nurix\CatalogBundle\Twig\ExchangeExtension
             arguments:
-                  doctrine: "@doctrine"
+                - @doctrine
+                - @service_container
             tags:
                 - { name: twig.extension }
 

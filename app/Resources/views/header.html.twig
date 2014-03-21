@@ -49,20 +49,7 @@
                 </div>
 
                 <div class="pull-right">
-                    <div class="btn-group">
-                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                            $ <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu currency">
-                            <li><a href="#">$</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">?</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">?</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">€</a></li>
-                        </ul>
-                    </div>
+                    {{ exchange_list() }}
                     <div class="btn-group">
                         <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
                             {{ app.request.locale|upper }} <span class="caret"></span>

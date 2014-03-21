@@ -1,0 +1,18 @@
+<div class="btn-group">
+    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+        {% if currentCurrency %}
+            {{ currentCurrency.getCurrencyName() }}
+        {% else %}
+            $
+        {% endif %}
+        <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu currency">
+        <li><a href="#" id="USD">$</a></li>
+        <li class="divider"></li>
+        {% for currency in exchangeList %}
+        <li><a href="#" id="{{ currency.currency }}">{{ currency.currencyName }}</a></li>
+        <li class="divider"></li>
+        {% endfor %}
+    </ul>
+</div>

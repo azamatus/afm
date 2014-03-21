@@ -15,9 +15,6 @@
                 {% include  "CatalogBundle:Content:item.html.twig" with {'product':product} %}
             {% endfor %}
             </ul>
-            <div class="navigation">
-                {{ knp_pagination_render(pagination,'CatalogBundle:Pagination:pagination.html.twig') }}
-            </div>
         {% else %}
             <h2>
                 В этой категории товаров пока нет

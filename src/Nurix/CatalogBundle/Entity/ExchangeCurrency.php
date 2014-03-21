@@ -7,11 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Exchange
  *
- * @ORM\Table(name="exchange_helper")
+ * @ORM\Table(name="exchange_currency")
  * @ORM\Entity
- * @ORM\Entity(repositoryClass="Nurix\CatalogBundle\Entity\ExchangeRepository")
  */
-class ExchangeHelper
+class ExchangeCurrency
 {
     /**
      * @var integer
@@ -52,7 +51,7 @@ class ExchangeHelper
      * Set currency
      *
      * @param string $currency
-     * @return ExchangeHelper
+     * @return ExchangeCurrency
      */
     public function setCurrency($currency)
     {
@@ -75,7 +74,7 @@ class ExchangeHelper
      * Set currencyName
      *
      * @param string $currencyName
-     * @return ExchangeHelper
+     * @return ExchangeCurrency
      */
     public function setCurrencyName($currencyName)
     {

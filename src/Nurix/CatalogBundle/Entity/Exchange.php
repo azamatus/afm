@@ -39,7 +39,7 @@ class Exchange
     /**
      * @var \ExchangeHelper
      *
-     * @ORM\ManyToOne(targetEntity="ExchangeHelper")
+     * @ORM\ManyToOne(targetEntity="ExchangeCurrency")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="currency_id", referencedColumnName="id")
      * })
@@ -110,10 +110,10 @@ class Exchange
     /**
      * Set currency
      *
-     * @param \Nurix\CatalogBundle\Entity\ExchangeHelper $currency
+     * @param \Nurix\CatalogBundle\Entity\ExchangeCurrency $currency
      * @return Exchange
      */
-    public function setCurrency(\Nurix\CatalogBundle\Entity\ExchangeHelper $currency = null)
+    public function setCurrency(\Nurix\CatalogBundle\Entity\ExchangeCurrency $currency = null)
     {
         $this->currency = $currency;
     
@@ -123,7 +123,7 @@ class Exchange
     /**
      * Get currency
      *
-     * @return \Nurix\CatalogBundle\Entity\ExchangeHelper 
+     * @return \Nurix\CatalogBundle\Entity\ExchangeCurrency
      */
     public function getCurrency()
     {

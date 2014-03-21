@@ -251,8 +251,17 @@ function changeCatalogStyle(){
         }
     });
 }
+
+function changeCurrency(){
+    $(".currency a").click(function(){
+
+            $.cookie("currency", $(this).attr('id'), { expires: 3, path: '/' });
+            location.reload();
+    });
+}
 $(document).ready(function(){
     changeCatalogStyle();
+    changeCurrency();
     topNavToSelect();
     NavToSelect();
     showtooltip();
