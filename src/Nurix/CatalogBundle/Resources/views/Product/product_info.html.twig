@@ -26,11 +26,13 @@
                 </div>
                 <!--end product-img-->
                 <div class="product-img-thumb">
-                    {% for galleryHasMedia in product.imagePath.GalleryHasMedias %}
-                        <a class="fancybox" rel="gallery" href="{% path galleryHasMedia.media, 'goods_original' %}">
-                            <img src="{% path galleryHasMedia.media, 'goods_small' %}"/>
-                        </a>
-                    {% endfor %}
+                    {% if product.imagePath %}
+                        {% for galleryHasMedia in product.imagePath.GalleryHasMedias %}
+                            <a class="fancybox" rel="gallery" href="{% path galleryHasMedia.media, 'goods_original' %}">
+                                <img src="{% path galleryHasMedia.media, 'goods_small' %}"/>
+                            </a>
+                        {% endfor %}
+                    {% endif %}
                 </div>
                 <!--end flexslider-thumb-->
             </div>
@@ -57,9 +59,9 @@
                         <dl class="dl-horizontal">
                             <dt>{{ 'product_info.availability'|trans({}, 'CatalogBundle') }}:</dt>
                             {% if product.amount %}
-                                <dd>{{ 'product_info.yes'|trans({}, 'CatalogBundle') }}:</dd>
+                                <dd>{{ 'product_info.yes'|trans({}, 'CatalogBundle') }}</dd>
                             {% else %}
-                                <dd>{{ 'product_info.no'|trans({}, 'CatalogBundle') }}:</dd>
+                                <dd>{{ 'product_info.no'|trans({}, 'CatalogBundle') }}</dd>
                             {% endif %}
                             <dt>{{ 'product_info.article'|trans({}, 'CatalogBundle') }}:</dt>
                             <dd>{{ product.article }}</dd>
