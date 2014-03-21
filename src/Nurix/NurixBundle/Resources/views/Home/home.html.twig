@@ -1,8 +1,6 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-    {% render controller("CatalogBundle:Content:showSliderProductList") %}
-    <div class="clearbox"></div>
     {% render controller("CatalogBundle:Content:showRandomProductList") %}
 {% endblock %}
 
@@ -11,98 +9,9 @@
 <div class="row">
     {% render controller("NurixSliderBundle:Slider:getSlider") %}
     <div class="span4">
-
-        <div id="homeSpecial">
-            <div class="titleHeader clearfix">
-                <h3>Special</h3>
-                <div class="pagers">
-                    <div class="btn-toolbar">
-                        <div class="btn-group">
-                            <button class="btn btn-mini vNext"><i class="icon-caret-down"></i></button>
-                            <button class="btn btn-mini vPrev"><i class="icon-caret-up"></i></button>
-                        </div>
-                        <button class="btn btn-mini">View All</button>
-                    </div>
-                </div>
-            </div><!--end titleHeader-->
+        {% render controller("CatalogBundle:Content:showSliderProductList") %}
 
 
-            <ul class="vProductItems cycle-slideshow vertical clearfix"
-                data-cycle-fx="carousel"
-                data-cycle-timeout=0
-                data-cycle-slides="> li"
-                data-cycle-next=".vPrev"
-                data-cycle-prev=".vNext"
-                data-cycle-carousel-visible="2"
-                data-cycle-carousel-vertical="true">
-                <li class="span4 clearfix">
-                    <div class="thumbImage">
-                        <a href="#"><img src="{{ asset('public/img/92x92.jpg') }}" alt=""></a>
-                    </div>
-                    <div class="thumbSetting">
-                        <div class="thumbTitle">
-                            <a href="#" class="invarseColor">
-                                Foliomania the title here
-                            </a>
-                        </div>
-                        <div class="thumbPrice">
-                            <span>$150.00</span>
-                        </div>
-                        <ul class="rating">
-                            <li><i class="star-off"></i></li>
-                            <li><i class="star-off"></i></li>
-                            <li><i class="star-off"></i></li>
-                            <li><i class="star-off"></i></li>
-                            <li><i class="star-on"></i></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="span4 clearfix">
-                    <div class="thumbImage">
-                        <a href=""><img src="{{ asset('public/img/92x92.jpg') }}" alt=""></a>
-                    </div>
-                    <div class="thumbSetting">
-                        <div class="thumbTitle">
-                            <a href="#" class="invarseColor">
-                                Foliomania the designer portfolio
-                            </a>
-                        </div>
-                        <div class="thumbPrice">
-                            <span>$150.00</span>
-                        </div>
-                        <ul class="rating">
-                            <li><i class="star-on"></i></li>
-                            <li><i class="star-on"></i></li>
-                            <li><i class="star-on"></i></li>
-                            <li><i class="star-off"></i></li>
-                            <li><i class="star-off"></i></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="span4 clearfix">
-                    <div class="thumbImage">
-                        <a href=""><img src="{{ asset('public/img/92x92.jpg') }}" alt=""></a>
-                    </div>
-                    <div class="thumbSetting">
-                        <div class="thumbTitle">
-                            <a href="#" class="invarseColor">
-                                Foliomania the designer portfolio
-                            </a>
-                        </div>
-                        <div class="thumbPrice">
-                            <span>$150.00</span>
-                        </div>
-                        <ul class="rating">
-                            <li><i class="star-on"></i></li>
-                            <li><i class="star-on"></i></li>
-                            <li><i class="star-on"></i></li>
-                            <li><i class="star-off"></i></li>
-                            <li><i class="star-off"></i></li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-        </div><!--end homeSpecial-->
 
     </div><!--end span4-->
 </div>

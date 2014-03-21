@@ -1,0 +1,25 @@
+<li class="span4 clearfix">
+    <div class="thumbImage">
+
+        <a href="{{ path('nurix_goods_get_info', {'id': product.id} ) }}">
+            {{ product.imagePath|galleryThumb(asset('bundles/catalog/img/noImage/good_small.jpg'),'goods_92') }}
+        </a>
+    </div>
+    <div class="thumbSetting">
+        <div class="thumbTitle">
+            <a href="{{ path('nurix_goods_get_info', {'id': product.id} ) }}" class="invarseColor">
+                {{ product.name }}
+            </a>
+        </div>
+        <div class="thumbPrice">
+            <span>{{ product.price | price }}</span>
+        </div>
+        <ul class="rating">
+            <li><i class="star-on"></i></li>
+            <li><i class="star-on"></i></li>
+            <li><i class="star-on"></i></li>
+            <li><i class="star-off"></i></li>
+            <li><i class="star-off"></i></li>
+        </ul>
+    </div>
+</li>

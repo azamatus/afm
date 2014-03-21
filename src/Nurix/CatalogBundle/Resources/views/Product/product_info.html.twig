@@ -27,7 +27,7 @@
                 <!--end product-img-->
                 <div class="product-img-thumb">
                     {% for galleryHasMedia in product.imagePath.GalleryHasMedias %}
-                        <a class="fancybox" href="{% path galleryHasMedia.media, 'goods_original' %}">
+                        <a class="fancybox" rel="gallery" href="{% path galleryHasMedia.media, 'goods_original' %}">
                             <img src="{% path galleryHasMedia.media, 'goods_small' %}"/>
                         </a>
                     {% endfor %}

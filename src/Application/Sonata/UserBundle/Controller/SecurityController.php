@@ -11,11 +11,11 @@
 
 namespace Application\Sonata\UserBundle\Controller;
 
-use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
+use FOS\UserBundle\Controller\SecurityController as BaseController;
 
-class SecurityController extends ContainerAware
+class SecurityController extends BaseController
 {
     public function loginAction(Request $request)
     {

@@ -8,8 +8,10 @@ sonata_media:
 
             formats:
                 goods_middle:   { width: 372 , height: 370, quality: 90}
-                goods_original: { width: 650, height: 700, quality: 100}
+                goods_original: { width: 650, quality: 80}
                 goods_small: { width: 68, height: 60, quality: 80 }
+                goods_92: { width: 92, height: 92, quality: 80 }
+                goods_big: { width: 212, height: 192, quality: 80 }
 
         news:
             providers:
@@ -41,4 +43,4 @@ sonata_media:
             create:     true
     providers:
         image:
-            resizer:    sonata.media.resizer.simple # sonata.media.resizer.simple
+            resizer:    sonata.media.resizer.custom # sonata.media.resizer.simple
