@@ -10,6 +10,7 @@ namespace Nurix\CatalogBundle\Parser;
 
 use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Registry;
+use Nurix\CatalogBundle\Entity\Catalog;
 use Nurix\CatalogBundle\Entity\Goods;
 use Nurix\CatalogBundle\Entity\GoodsRepository;
 use Symfony\Component\HttpFoundation\File\File;
@@ -31,7 +32,7 @@ class GoodsUploadParser
     {
         $excelObj = $this->xlsx_service->load($file);
         $sheetData = $excelObj->getActiveSheet()->toArray(null, true, false, true);
-        $last_update = new DateTime(date('Y-m-d', mktime()));
+        $last_update = new DateTime();
 
         $index = 0;
         $updated_goods = 0;
@@ -47,7 +48,8 @@ class GoodsUploadParser
         $goods_alias = array();
 
         foreach ($catalogs as $catalog) {
-            $goods_alias[$catalog->getId()] = explode(',', $catalog->getGoodsAlias());
+			/** @var $catalog Catalog */
+			$goods_alias[$catalog->getId()] = explode(',', $catalog->getGoodsAlias());
         }
 
         foreach ($sheetData as $sheetRow) {
@@ -82,6 +84,7 @@ class GoodsUploadParser
 
                     $good->setPrice($price);
                     $good->setLastUpdate($last_update);
+					$good->setActive(true);
 
                     if ($good->getCatalog()==null)
                         $good->setCatalog($subcatalog);
@@ -97,8 +100,10 @@ class GoodsUploadParser
                     $good->setPrice($price);
                     $good->setLastUpdate($last_update);
                     $good->setCatalog($subcatalog);
+					$good->setActive(true);
 
-                    $entityManager->persist($good);
+
+					$entityManager->persist($good);
                     $entityManager->flush();
                 }
             }
