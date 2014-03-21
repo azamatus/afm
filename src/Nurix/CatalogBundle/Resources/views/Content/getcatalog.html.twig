@@ -199,10 +199,13 @@
                 <div class="displaytBy inline pull-right">
                     Display
                     <div class="btn-group">
-                        {#<a href="{{ path('nurix_goods_get_catalog') }}" class="btn"><i class="icon-th"></i></a>#}
-                        {#<a href="{{ path('nurix_goods_get_catalog') }}" class="btn"><i class="icon-list"></i></a>#}
-                        <button id="grid" class="btn"><i class="icon-th"></i></button>
-                        <button id="list" class="btn"><i class="icon-list"></i></button>
+                        {% if app.request.cookies.get('style') == 'list' %}
+                            <button id="grid" class="btn change_catalog_view"><i class="icon-th"></i></button>
+                            <button id="list" class="btn change_catalog_view active btn-primary"><i class="icon-list"></i></button>
+                        {% else %}
+                            <button id="grid" class="btn change_catalog_view active btn-primary"><i class="icon-th"></i></button>
+                            <button id="list" class="btn change_catalog_view"><i class="icon-list"></i></button>
+                        {% endif %}
                     </div>
                 </div>
                 <!--end displaytBy-->
@@ -212,7 +215,7 @@
 
 
             <div class="row">
-                <ul class="hProductItems clearfix">*
+                <ul class="hProductItems clearfix">
                     {% block items %}
                         {% for product in pagination %}
                                 {% include  "CatalogBundle:Content:item.html.twig" with {'product':product} %}

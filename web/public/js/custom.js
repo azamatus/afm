@@ -237,9 +237,7 @@ function rangePriceSlider() {
 }
 
 function changeCatalogStyle(){
-    var style= $.cookie("style");
-    if(style) $("#"+style).addClass("active btn-primary");
-    $(".btn-group .btn").click(function(){
+    $(".btn-group .change_catalog_view").click(function(){
         $(this).siblings().removeClass('active btn-primary');
         $(this).addClass('active btn-primary');
         $.cookie("style", this.id);
