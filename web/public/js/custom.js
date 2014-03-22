@@ -237,10 +237,13 @@ function rangePriceSlider() {
 }
 
 function changeCatalogStyle(){
+//    var style= $.cookie("style");
+//    if(style) $("#"+style).addClass("active btn-primary");
+//    else $("#grid").addClass("active btn-primary");
     $(".btn-group .change_catalog_view").click(function(){
         $(this).siblings().removeClass('active btn-primary');
         $(this).addClass('active btn-primary');
-        $.cookie("style", this.id);
+        $.cookie("cookieCatalogStyle", this.id);
         if($(this).attr('id') == 'grid'){
             $.cookie("cookieCatalogStyle", "grid", { expires: 3, path: '/' });
             location.reload();

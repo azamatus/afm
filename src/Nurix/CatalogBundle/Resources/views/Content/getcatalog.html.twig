@@ -199,7 +199,7 @@
                 <div class="displaytBy inline pull-right">
                     Display
                     <div class="btn-group">
-                        {% if app.request.cookies.get('style') == 'list' %}
+                        {% if app.request.cookies.get('cookieCatalogStyle') == 'list' %}
                             <button id="grid" class="btn change_catalog_view"><i class="icon-th"></i></button>
                             <button id="list" class="btn change_catalog_view active btn-primary"><i class="icon-list"></i></button>
                         {% else %}
