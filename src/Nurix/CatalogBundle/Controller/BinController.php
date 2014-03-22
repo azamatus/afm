@@ -113,7 +113,9 @@ class BinController extends Controller
             }
             elseif ($request->request->get('bin-btn') == 'Продолжить покупки') {
                 $response->setTargetUrl($this->generateUrl('nurix_homepage'));
-			}
+			}elseif ($request->request->get('bin-btn') == 'refresh'){
+                $response->setTargetUrl($this->generateUrl('nurix_bin_item'));
+            }
         }
         return $response;
     }
@@ -138,7 +140,12 @@ class BinController extends Controller
                 $sum += ($good->getPrice() * $k);
             }
         }
-        return $this->render('CatalogBundle:Bin:mainBin.html.twig', array('count' => $kol, 'sum' => $sum));
+        return $this->render('CatalogBundle:Bin:mainBin.html.twig', array(
+            'goods' => $goods,
+            'goodCount' => $goodsIds,
+            'count' => $kol,
+            'sum' => $sum
+        ));
     }
 
     public function binOrderFormAction(Request $request)

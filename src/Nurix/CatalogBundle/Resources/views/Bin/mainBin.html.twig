@@ -1,14 +1,84 @@
-<a href="{{ path('nurix_bin_item') }}">
-    <div class="brown_color">
-        <img src="{{ asset('public/img/korzinka.png') }}" alt="header">Ваша корзина:
+{% if goods %}
+    {% set totalPrice = 0 %}
+    <a class="btn dropdown-toggle" data-toggle="dropdown" href="{{ path('nurix_bin_item') }}">
+        <i class="icon-shopping-cart"></i> {{ count|count('товар','товара','товаров') }}
+        <span class="caret"></span>
+    </a>
+
+    <div class="dropdown-menu cart-content pull-right">
+        <table class="table-cart">
+            <tbody>
+            {% for good in goods %}
+                {% set count = attribute(goodCount,good.id) %}
+                {% set totalPrice = totalPrice + good.price * attribute(goodCount,good.id) %}
+                <tr id="widjet_item_{{ good.id }}">
+                    <td class="cart-product-info">
+                        <a href="{{ path('nurix_goods_get_info', {'id': good.id} ) }}">{{ good.imagePath|galleryThumb(asset('bundles/catalog/img/noImage/good_small.jpg'),'goods_big',{'class':'bin_itemPic','alt':'product image'}) }}</a>
+
+                        <div class="cart-product-desc">
+                            <p><a class="invarseColor"
+                                  href="{{ path('nurix_goods_get_info', {'id': good.id} ) }}">{{ good.name }}</a>
+                            </p>
+                            <ul class="unstyled">
+                                <li>{{ good.shortDescription }}</li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td class="cart-product-setting">
+                        <p><strong>{{ count }}x-{{ good.price|price('USD') }}</strong></p>
+                        <span class="remove-pro remove-item" data-id="{{ good.id }}" data-toggle="tooltip"
+                           data-title="Delete"><i class="icon-trash"></i></span>
+                    </td>
+                </tr>
+            {% endfor %}
+            {#<tr>#}
+            {#<td class="cart-product-info">#}
+            {#<a href="#"><img src="img/72x72.jpg" alt="product image"></a>#}
+            {#<div class="cart-product-desc">#}
+            {#<p><a class="invarseColor" href="#">{{ good.name }}</a></p>#}
+            {#<ul class="unstyled">#}
+            {#<li>Available: Yes</li>#}
+            {#<li>Color: Black</li>#}
+            {#</ul>#}
+            {#</div>#}
+            {#</td>#}
+            {#<td class="cart-product-setting">#}
+            {#<p><strong>1x-$500.00</strong></p>#}
+            {#<a href="#" class="remove-pro" data-toggle="tooltip" data-title="Delete"><i class="icon-trash"></i></a>#}
+            {#</td>#}
+            {#</tr>#}
+            {#<tr>#}
+            {#<td class="cart-product-info">#}
+            {#<a href="#"><img src="img/72x72.jpg" alt="product image"></a>#}
+            {#<div class="cart-product-desc">#}
+            {#<p><a class="invarseColor" href="#">Foliomania the designer portfolio brochure</a></p>#}
+            {#<ul class="unstyled">#}
+            {#<li>Available: Yes</li>#}
+            {#<li>Color: Black</li>#}
+            {#</ul>#}
+            {#</div>#}
+            {#</td>#}
+            {#<td class="cart-product-setting">#}
+            {#<p><strong>2x-$450.00</strong></p>#}
+            {#<a href="#" class="remove-pro" data-toggle="tooltip" data-title="Delete"><i class="icon-trash"></i></a>#}
+            {#</td>#}
+            {#</tr>#}
+            </tbody>
+            <tfoot>
+            <tr>
+                <td class="cart-product-info">
+                    <a href="{{ path('nurix_bin_item') }}" class="btn btn-small">Vew cart</a>
+                    <a href="#" class="btn btn-small btn-primary">Checkout</a>
+                </td>
+                <td>
+                    <h3>TOTAL<br>{{ sum|price('USD') }}</h3>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
     </div>
-
-    {% if count %}
-
-        <div class="otstup">{{ count|count('товар','товара','товаров') }}</div>
-        <div class="otstup">на сумму {{ sum|price('KGS') }}</div>
-
-    {% else %}
-        <h5>Корзина пуста</h5>
-    {% endif %}
-</a>
+{% else %}
+    <a class="btn" href="{{ path('nurix_bin_item') }}">
+        <i class="icon-shopping-cart"></i> Корзина пуста
+    </a>
+{% endif %}

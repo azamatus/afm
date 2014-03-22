@@ -293,13 +293,14 @@ header {
 	.cart-content .table-cart td.cart-product-setting p {
 		margin-bottom:3px;
 	}
-	.cart-content .table-cart td.cart-product-setting a.remove-pro {
+	.cart-content .table-cart td.cart-product-setting span.remove-pro {
 		font-size: 18px;
 		color:#555;
 		line-height: auto;
 	}
-	.cart-content .table-cart td.cart-product-setting a.remove-pro:hover {
+	.cart-content .table-cart td.cart-product-setting span.remove-pro:hover {
 		text-decoration: none;
+        cursor: pointer;
 	}
 /*============================= end header styling =======================*/
 
