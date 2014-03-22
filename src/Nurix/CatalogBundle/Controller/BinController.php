@@ -108,10 +108,10 @@ class BinController extends Controller
                     }
                 }
             }
-            if ($request->request->get('bin-btn') == 'Оформить заказ') {
+            if ($request->request->get('bin-btn') == 'checkout') {
                 $response->setTargetUrl($this->generateUrl('nurix_bin_order_form'));
             }
-            elseif ($request->request->get('bin-btn') == 'Продолжить покупки') {
+            elseif ($request->request->get('bin-btn') == 'continue') {
                 $response->setTargetUrl($this->generateUrl('nurix_homepage'));
 			}elseif ($request->request->get('bin-btn') == 'refresh'){
                 $response->setTargetUrl($this->generateUrl('nurix_bin_item'));
