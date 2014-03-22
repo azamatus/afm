@@ -28,7 +28,6 @@ class ContentController extends Controller
         $pagination->setUsedRoute('nurix_catalog_get_rndcatalog');
             return $this->render('CatalogBundle:Content:showRandomProductList.html.twig', array( 'pagination' => $pagination, 'title' => "Весь каталог"));
 
-
     }
 
     public function showAvailableProductListAction()
@@ -50,16 +49,13 @@ class ContentController extends Controller
 
             return $this->render('CatalogBundle:Content:getcatalog.html.twig', array( 'pagination' => $pagination, 'title' => "В наличии",'subtitle' => "Уточните наличие товара у менеджера"));
 
-
     }
 
 
     public function showSliderProductListAction()
     {
         $products = $this->getDoctrine()->getRepository('CatalogBundle:Goods')->getSlider();
-
-		return $this->render('CatalogBundle:Content:showCatalogSlider.html.twig', array('products' => $products,'title' => "Последние обновленные"));
-
+		return $this->render('CatalogBundle:Content:showCatalogSlider.html.twig', array('products' => $products,'title' => "catalog.updated_title"));
     }
 
     public function getCatalogAction($cid)
