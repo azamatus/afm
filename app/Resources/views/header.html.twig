@@ -7,9 +7,9 @@
                 <li class="divider-vertical"></li>
                 <li><a class="invarseColor" href="#">My Wish List (5)</a></li>
                 <li class="divider-vertical"></li>
-                <li><a class="invarseColor" href="{{ path('nurix_bin_item') }}">Shoping Cart</a></li>
+                <li><a class="invarseColor" href="{{ path('nurix_bin_item') }}">{{ 'itemInBin.view_card'|trans({}, 'CatalogBundle') }}</a></li>
                 <li class="divider-vertical"></li>
-                <li><a class="invarseColor" href="#">Checkout</a></li>
+                <li><a class="invarseColor" href="{{ path('nurix_bin_order_form') }}">{{ 'itemInBin.checkout'|trans({}, 'CatalogBundle') }}</a></li>
             </ul>
             <p>
                 Welcome to ShopFine, <a href="login.html">Login</a> or <a href="register.html">Create new account</a>
