@@ -15,7 +15,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class ExchangeHelperAdmin extends Admin
+class ExchangeCurrencyAdmin extends Admin
 {
     public function configureShowFields(ShowMapper $showMapper)
     {

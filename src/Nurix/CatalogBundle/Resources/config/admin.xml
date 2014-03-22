@@ -52,10 +52,10 @@
             </call>
         </service>
 
-        <service id="sonata.admin.exchangeHelper" class="Nurix\CatalogBundle\Admin\ExchangeHelperAdmin">
+        <service id="sonata.admin.exchangeHelper" class="Nurix\CatalogBundle\Admin\ExchangeCurrencyAdmin">
             <tag name="sonata.admin" manager_type="orm" group="Валюта" label="Валюта"/>
             <argument />
-            <argument>Nurix\CatalogBundle\Entity\ExchangeHelper</argument>
+            <argument>Nurix\CatalogBundle\Entity\ExchangeCurrency</argument>
             <argument>SonataAdminBundle:CRUD</argument>
             <call method="setTranslationDomain">
                 <argument>SonataAdminBundle</argument>
