@@ -5,6 +5,7 @@ nurix_page:
 catalog:
     resource: "@CatalogBundle/Resources/config/routing.yml"
     prefix:   /{_locale}
+    defaults: {_locale: ru}
 
 nurix:
     resource: "@NurixBundle/Resources/config/routing.yml"
