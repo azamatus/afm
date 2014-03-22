@@ -23,3 +23,7 @@ product_info:
 catalog:
   view_all: Показать всё
   updated_title: Обновленные
+  view: Вид
+pagination:
+  prev: Пред
+  next: След

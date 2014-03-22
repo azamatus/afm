@@ -1,6 +1,23 @@
-{% if next is defined %}
-    <div class="button_else">
-            <a id="showMoreRnd" class="button_buy-trn" href="{{ path(route, query|merge({(pageParameterName): next})) }}">
-                <div class="strelka_vniz"></div>Показать еще<div class="strelka_vniz"></div></a>
-    </div>
+{% if pageCount > 1 %}
+    <ul>
+    {% if previous is defined %}
+        <li class="previous">
+            <a class="invarseColor" href="{{ path(route, query|merge({(pageParameterName): previous})) }}" title="Предыдущий">{{ 'pagination.prev'|trans({}, 'CatalogBundle') }}</a>
+        </li>
+        {% endif %}
+        {% for page in pagesInRange %}
+            {% if page != current %}
+            <li class="page">
+                <a class="invarseColor" href="{{ path(route, query|merge({(pageParameterName): page})) }}">{{ page }}</a>
+            </li>
+            {% else %}
+                <li class="active"><span>{{ page }}</span></li>
+            {% endif %}
+        {% endfor %}
+        {% if next is defined %}
+            <li class="next">
+            <a class="invarseColor" href="{{ path(route, query|merge({(pageParameterName): next})) }}" title="Следующий">{{ 'pagination.next'|trans({}, 'CatalogBundle') }}</a>
+            </li>
+        {% endif %}
+    </ul>
 {% endif %}

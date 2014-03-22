@@ -2,8 +2,7 @@
     <div class="span3">
         <div class="thumbnail">
             <a href="{{ path('nurix_goods_get_info', {'id': product.id} ) }}">
-                {{ product.imagePath|galleryThumb(asset('public/img/372x370.jpg'),'goods_middle') }}
-                {#<img src="{{ asset('public/img/372x370.jpg') }}"/>#}
+                {{ product.imagePath|galleryThumb(asset('public/img/372x370.jpg'),'goods_big') }}
             </a>
         </div>
     </div>
@@ -27,14 +26,12 @@
             <div class="thumbDesc">
                 <p>
                     {% if product.fullDesctiption %}
-                    {{ product.fullDesctiption }}
+                        {{ product.fullDesctiption }}
                     {% else %}
-
                 <p>{{ 'product_info.notuploaded'|trans({}, 'CatalogBundle') }}</p>
                 {% endif %}
                 </p>
             </div>
-
             <div class="thumbButtons">
                 <a class="btn btn-primary button_buy_bin btn-small" data-id="{{ product.id }}"
                    href="{{ path('nurix_bin_ajax_add_item',{'id':product.id}) }}"

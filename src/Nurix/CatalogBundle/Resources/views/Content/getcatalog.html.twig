@@ -197,7 +197,7 @@
                 <!--end compareItem-->
 
                 <div class="displaytBy inline pull-right">
-                    Display
+                    {{ 'catalog.view'|trans({}, 'CatalogBundle') }}
                     <div class="btn-group">
                         {% if app.request.cookies.get('cookieCatalogStyle') == 'list' %}
                             <button id="grid" class="btn change_catalog_view"><i class="icon-th"></i></button>
@@ -228,21 +228,11 @@
             </div>
             <!--end row-->
             <div class="pagination pagination-right">
-                <span class="pull-left">Showing 9 of 20 pages:</span>
-                <ul>
-                    <li><a class="invarseColor" href="">Prev</a></li>
-                    <li class="active"><a class="invarseColor" href="">1</a></li>
-                    <li><a class="invarseColor" href="">2</a></li>
-                    <li><a class="invarseColor" href="">2</a></li>
-                    <li><a class="invarseColor" href="">3</a></li>
-                    <li><a class="invarseColor" href="">Next</a></li>
-                </ul>
+                {{ knp_pagination_render(pagination,'CatalogBundle:Pagination:pagination.html.twig') }}
             </div>
             <!--end pagination-->
-
         </div>
         <!--end span9-->
-
         </div>
         <!--end row-->
     {% else %}
