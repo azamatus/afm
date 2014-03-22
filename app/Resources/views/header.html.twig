@@ -5,9 +5,9 @@
             <ul class="pull-right inline">
                 <li><a class="invarseColor" href="#">My Wish List (5)</a></li>
                 <li class="divider-vertical"></li>
-                <li><a class="invarseColor" href="{{ path('nurix_bin_item') }}">Shoping Cart</a></li>
+                <li><a class="invarseColor" href="{{ path('nurix_bin_item') }}">{{ 'itemInBin.view_card'|trans({}, 'CatalogBundle') }}</a></li>
                 <li class="divider-vertical"></li>
-                <li><a class="invarseColor" href="#">Checkout</a></li>
+                <li><a class="invarseColor" href="{{ path('nurix_bin_order_form') }}">{{ 'itemInBin.checkout'|trans({}, 'CatalogBundle') }}</a></li>
 
                 {% if app.user and is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                     <li><a class="invarseColor" href="{{ path('sonata_user_profile_show') }}">{{ 'layout.my_profile'|trans({},'FOSUserBundle') }}</a></li>

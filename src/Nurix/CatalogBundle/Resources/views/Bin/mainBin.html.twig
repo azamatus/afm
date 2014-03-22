@@ -1,7 +1,8 @@
 {% if goods %}
     {% set totalPrice = 0 %}
     <a class="btn dropdown-toggle" data-toggle="dropdown" href="{{ path('nurix_bin_item') }}">
-        <i class="icon-shopping-cart"></i> {{ count|count('товар','товара','товаров') }}
+
+        <i class="icon-shopping-cart"></i> {{ count|count('items_count.single'|trans({},'CatalogBundle'),'items_count.several'|trans({},'CatalogBundle'),'items_count.many'|trans({},'CatalogBundle')) }}
         <span class="caret"></span>
     </a>
 
@@ -67,11 +68,11 @@
             <tfoot>
             <tr>
                 <td class="cart-product-info">
-                    <a href="{{ path('nurix_bin_item') }}" class="btn btn-small">Vew cart</a>
-                    <a href="#" class="btn btn-small btn-primary">Checkout</a>
+                    <a href="{{ path('nurix_bin_item') }}" class="btn btn-small">{{ 'itemInBin.view_card'|trans({}, 'CatalogBundle') }}</a>
+                    <a href="#" class="btn btn-small btn-primary">{{ 'itemInBin.checkout'|trans({}, 'CatalogBundle') }}</a>
                 </td>
                 <td>
-                    <h3>TOTAL<br>{{ sum|price('USD') }}</h3>
+                    <h3>{{ 'itemInBin.total_price'|trans({}, 'CatalogBundle') }}<br>{{ sum|price('USD') }}</h3>
                 </td>
             </tr>
             </tfoot>
@@ -79,6 +80,6 @@
     </div>
 {% else %}
     <a class="btn" href="{{ path('nurix_bin_item') }}">
-        <i class="icon-shopping-cart"></i> Корзина пуста
+        <i class="icon-shopping-cart"></i> {{ 'itemInBin.card_is_empty'|trans({}, 'CatalogBundle') }}
     </a>
 {% endif %}

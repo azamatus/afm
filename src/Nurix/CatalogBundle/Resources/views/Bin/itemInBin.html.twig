@@ -1,6 +1,6 @@
 {% extends "::base.html.twig" %}
 {% block title %}
-    {{ parent() }} : Корзина
+    {{ parent() }} {{ 'itemInBin.card'|trans({}, 'CatalogBundle') }}
 {% endblock %}
 
 {% block javascripts %}
@@ -24,12 +24,12 @@
             <table class="table bin-table">
                 <thead>
                 <tr>
-                    <th>Image</th>
-                    <th class="desc">Descraption</th>
-                    <th>Quantity</th>
-                    <th>Unit Price</th>
-                    <th>Sub Price</th>
-                    <th>Action</th>
+                    <th>{{ 'itemInBin.image'|trans({}, 'CatalogBundle') }}</th>
+                    <th class="desc">{{ 'itemInBin.descraption'|trans({}, 'CatalogBundle') }}</th>
+                    <th>{{ 'itemInBin.quantity'|trans({}, 'CatalogBundle') }}</th>
+                    <th>{{ 'itemInBin.unit_price'|trans({}, 'CatalogBundle') }}</th>
+                    <th>{{ 'itemInBin.sub_price'|trans({}, 'CatalogBundle') }}</th>
+                    <th>{{ 'itemInBin.action'|trans({}, 'CatalogBundle') }}</th>
                 </tr>
                 </thead>
 
@@ -224,15 +224,15 @@
             <div class="cart-receipt">
                 <table class="table table-receipt">
                     <tr>
-                        <td class="alignRight"><h2>Total</h2></td>
+                        <td class="alignRight"><h2>{{ 'itemInBin.total_price'|trans({}, 'CatalogBundle') }}</h2></td>
                         <td class="alignLeft"><h2 class="bin_itemTotalPrice">{{ totalPrice|price('USD') }}</h2></td>
                     </tr>
                     <tr>
                         <td class="alignRight">
-                            <input class="btn" type="submit" value="Продолжить покупки" name="bin-btn">
+                            <button class="btn" type="submit" value="continue" name="bin-btn">{{ 'itemInBin.continue'|trans({}, 'CatalogBundle') }}</button>
                         </td>
                         <td class="alignLeft">
-                            <input class="btn btn-primary" type="submit" value="Оформить заказ" name="bin-btn">
+                            <button class="btn btn-primary" type="submit" value="checkout" name="bin-btn">{{ 'itemInBin.checkout'|trans({}, 'CatalogBundle') }}</button>
                         </td>
                     </tr>
                 </table>
@@ -248,7 +248,7 @@
         <!--end conatiner-->
         </form>
     {% else %}
-        <h1>Корзина пуста</h1>
+        <h1>{{ 'itemInBin.card_is_empty'|trans({}, 'CatalogBundle') }}</h1>
     {% endif %}
     </div>
 
