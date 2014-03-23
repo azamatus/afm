@@ -20,6 +20,7 @@ product_info:
   brown: Коричневый
   selectSize: Выбрать размер
   size: Размер
+  related_products: Похожие товары
 catalog:
   view_all: Показать всё
   updated_title: Обновленные

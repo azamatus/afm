@@ -1,0 +1,17 @@
+{% if products %}
+<div class="related-product">
+    <div class="titleHeader clearfix">
+        <h3>{{ 'product_info.related_products'|trans({},'CatalogBundle') }}</h3>
+    </div>
+    <!--end titleHeader-->
+
+    <div class="row">
+        <ul class="hProductItems clearfix">
+            {% for product in products %}
+                {% include  "CatalogBundle:Content:_item.html.twig" with {'product':product} %}
+            {% endfor %}
+        </ul>
+    </div>
+    <!--end row-->
+</div>
+{% endif %}

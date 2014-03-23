@@ -47,7 +47,7 @@ class GoodsRepository extends EntityRepository
 		return $query;
 	}
 
-	public function getSamePositionsForGood(Goods $good)
+	public function getRelativeProducts(Goods $good,$count)
 	{
 		$minPrice = $good->getPrice() * 0.9;
 		$maxPrice = $good->getPrice() * 1.1;
@@ -62,21 +62,24 @@ class GoodsRepository extends EntityRepository
 			->setParameter('id', $good->getId())
 			->setParameter('minprice', $minPrice)
 			->setParameter('maxprice', $maxPrice)
+            ->setMaxResults($count)
 			->getQuery();
 		return $query->getResult();
 	}
 
-	public function getSlider()
+	public function getSlider($count)
 	{
-		$last_updatedGoods = $this->createQueryBuilder('g')
+		$last_updatedDate = $this->createQueryBuilder('g')
             ->select('max(g.last_update)')
 			->where('g.active = 1')
-			->getQuery()->getDQL();
+			->getQuery()->getSingleScalarResult();
 
 		$query = $this->createQueryBuilder('q')
 			->where('q.active = 1')
-			->andWhere('q.last_update in ('.$last_updatedGoods.')')
+			->andWhere('q.last_update=:last_update')
 			->orderBy('q.name', 'ASC')
+            ->setParameter('last_update',$last_updatedDate)
+            ->setMaxResults($count)
 			->getQuery();
 
         return $query->getResult();

@@ -201,7 +201,7 @@
                 <ul class="hProductItems clearfix">
                     {% block items %}
                         {% for product in pagination %}
-                                {% include  "CatalogBundle:Content:item.html.twig" with {'product':product} %}
+                                {% include  "CatalogBundle:Content:_item.html.twig" with {'product':product} %}
                             {% if loop.index is divisibleby(3) %}
                                 <div class="clearfix"></div>
                             {% endif %}

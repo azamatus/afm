@@ -1,6 +1,6 @@
 {% extends 'CatalogBundle:Content:getcatalog.html.twig' %}
 {% block items %}
     {% for product in pagination %}
-        {% include  "CatalogBundle:Content:item_list.html.twig" with {'product':product} %}
+        {% include  "CatalogBundle:Content:_item_list.html.twig" with {'product':product} %}
     {% endfor %}
 {% endblock %}

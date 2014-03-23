@@ -5,7 +5,7 @@
     <div class="clearbox"></div>
     <h2 class="left size24px">Результаты поиска среди товаров: {{ searchText }}</h2>
     {% for product in products  %}
-    {% include  "CatalogBundle:Content:item.html.twig" with {'product':product} %}
+    {% include  "CatalogBundle:Content:_item.html.twig" with {'product':product} %}
     {% endfor %}
 </div>
 

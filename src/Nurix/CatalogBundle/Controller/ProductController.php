@@ -44,8 +44,8 @@ class ProductController extends Controller
     {
         $same = $this ->getDoctrine()
             ->getRepository('CatalogBundle:Goods')
-            ->getSamePositionsForGood($product);
+            ->getRelativeProducts($product,$this->container->getParameter('related_product_count'));
 
-        return $this->render('CatalogBundle:Content:showCatalogSlider.html.twig', array('products' => $same,'title' => "Похожие позиции"));
+        return $this->render('CatalogBundle:Product:get_related_items.html.twig', array('products' => $same,'title' => "Похожие позиции"));
     }
 }

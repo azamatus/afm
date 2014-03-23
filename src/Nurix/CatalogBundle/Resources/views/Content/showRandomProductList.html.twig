@@ -12,7 +12,7 @@
         {% if pagination.getTotalItemCount > 0 %}
             <ul class="hProductItems clearfix">
             {% for product in pagination %}
-                {% include  "CatalogBundle:Content:item.html.twig" with {'product':product} %}
+                {% include  "CatalogBundle:Content:_item.html.twig" with {'product':product} %}
             {% endfor %}
             </ul>
         {% else %}
