@@ -27,3 +27,20 @@ catalog:
 pagination:
   prev: Пред
   next: След
+items_count:
+  single: товар
+  several: товара
+  many: товаров
+itemInBin:
+  card: Корзина
+  view_card: Перейти в корзину
+  item: Товар
+  description: Описание
+  quantity: Количество
+  unit_price: Цена
+  sub_price: Итого
+  action: Дейтсвие
+  total_price: Общая цена
+  continue: Продолжить покупки
+  checkout: Заказать
+  card_is_empty: Корзина пуста
