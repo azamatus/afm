@@ -1859,5 +1859,8 @@ footer {margin:82px 0 0 0;}
 	}
 
 }
+.display_none{
+    display: none!important;
+}
 
 

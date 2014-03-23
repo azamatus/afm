@@ -15,6 +15,15 @@ services:
             tags:
                 - { name: knp_menu.menu, alias: catalog_sidebar } # Named "sidebar" this time
 
+    catalog.menu.catalog_side_menu:
+            class: Knp\Menu\MenuItem
+            factory_service: catalog.menu_builder
+            factory_method: createCatalogLeftMenu
+            arguments:  [@request,@doctrine.orm.entity_manager]
+            scope: request
+            tags:
+                - { name: knp_menu.menu, alias: catalog_side_menu } # Named "sidebar" this time
+
     catalog.twig.exchange_extension:
             class: Nurix\CatalogBundle\Twig\ExchangeExtension
             arguments:
