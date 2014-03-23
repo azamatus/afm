@@ -3,6 +3,8 @@ nurix_bin_ajax_add_item:
     defaults: { _controller: CatalogBundle:Bin:addAjaxBin }
     requirements:
       id:  \d+
+    options:
+      expose: true
 
 nurix_bin_item:
     pattern: /
@@ -15,6 +17,8 @@ nurix_bin_bin_form:
 nurix_bin_main_widget:
     pattern: /widget/
     defaults: { _controller: CatalogBundle:Bin:mainBin }
+    options:
+      expose: true
 
 nurix_bin_order_form:
     pattern: /order/

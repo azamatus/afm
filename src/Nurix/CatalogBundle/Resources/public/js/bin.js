@@ -1,6 +1,6 @@
 $(function () {
     function refreshWidget() {
-        var widget_path = base_url+"/bin/widget";//TODO:Перевести на js_router
+        var widget_path = Routing.generate('nurix_bin_main_widget')//+"/bin/widget";//TODO:Перевести на js_router
         $.ajax({
             url:widget_path,
             success:function (data) {
@@ -10,7 +10,8 @@ $(function () {
     }
 
     $(document).on('click','.button_buy,.button_buy_bin',function () {
-        var path = $(this).attr("id");
+        var id = $(this).attr("data-id");
+        var path = Routing.generate("nurix_bin_ajax_add_item", { "id" : id });
         var $amount = 1, productPage = false;
         if ($(this).hasClass('button_buy_bin')){
             $amount = parseInt($('#amount').val());
