@@ -42,6 +42,16 @@ class MenuBuilder extends ContainerAware
         $menu->addChild('pages.contact', array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => 'contact')));
         return $menu;
     }
+
+    public function createCatalogLeftMenu(Request $request,$em){
+
+        $menu = $this->factory->createItem('catalog_side_menu');
+        $menu->setCurrentUri($request->getRequestUri());
+        $menu->setChildrenAttribute('class','unstyled');
+        $this->getCatalogMenu($em, $menu);
+        return $menu;
+    }
+
     /**
      * создает боковое меню каталога
      * @param \Symfony\Component\HttpFoundation\Request $request

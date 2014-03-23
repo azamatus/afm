@@ -11,24 +11,7 @@
                     <h3>{{ title }}</h3>
                 </div>
                 <!--end titleHeader-->
-                <ul class="unstyled">
-                    <li><a class="invarseColor active" href="#">Women (16)</a>
-                        <ul class="submenu">
-                            <li><a class="invarseColor" href="#">Beauty (3)</a></li>
-                            <li><a class="invarseColor active" href="#">Dresses (4)</a></li>
-                            <li><a class="invarseColor" href="#">Shorts (6)</a></li>
-                            <li><a class="invarseColor" href="#">Shoes (2)</a></li>
-                            <li><a class="invarseColor" href="#">Tops (1)</a></li>
-                            <li><a class="invarseColor" href="#">Jakets &amp; Coats (7)</a></li>
-                        </ul>
-                    </li>
-                    <li><a class="invarseColor" href="#">Men (6)</a></li>
-                    <li><a class="invarseColor" href="#">Children (8)</a></li>
-                    <li><a class="invarseColor" href="#">FootWear (3)</a></li>
-                    <li><a class="invarseColor" href="#">Accesspries (56)</a></li>
-                    <li><a class="invarseColor" href="#">Outlet (12)</a></li>
-                    <li><a class="invarseColor" href="#">Community (0)</a></li>
-                </ul>
+                {{ knp_menu_render('catalog_side_menu', {'currentClass': 'active','ancestorClass': 'active','template':'catalog_side_menu.html.twig'}) }}
             </div>
             <!--end categories-->
 
