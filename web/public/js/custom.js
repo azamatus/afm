@@ -240,7 +240,6 @@ function changeCatalogStyle(){
     $(".btn-group .change_catalog_view").click(function(){
         $(this).siblings().removeClass('active btn-primary');
         $(this).addClass('active btn-primary');
-        $.cookie("cookieCatalogStyle", this.id);
         if($(this).attr('id') == 'grid'){
             $.cookie("cookieCatalogStyle", "grid", { expires: 3, path: '/' });
             location.reload();
