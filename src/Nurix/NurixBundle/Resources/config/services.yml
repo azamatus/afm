@@ -32,3 +32,8 @@ services:
             scope: request
             tags:
                 - { name: knp_menu.menu, alias: info_sitemap } # Named "sidebar" this time
+
+
+    nurix.search_form:
+        class: Nurix\NurixBundle\Form\SearchType
+        arguments: ["@translator"]

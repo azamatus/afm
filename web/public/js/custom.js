@@ -240,14 +240,8 @@ function changeCatalogStyle(){
     $(".btn-group .change_catalog_view").click(function(){
         $(this).siblings().removeClass('active btn-primary');
         $(this).addClass('active btn-primary');
-        if($(this).attr('id') == 'grid'){
-            $.cookie("cookieCatalogStyle", "grid", { expires: 3, path: '/' });
-            location.reload();
-        }
-        else{
-            $.cookie("cookieCatalogStyle", "list", { expires: 3, path: '/' });
-            location.reload();
-        }
+        $.cookie("cookieCatalogStyle", $(this).attr('id'), { expires: 3, path: '/' });
+        location.reload();
     });
 }
 

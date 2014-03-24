@@ -40,12 +40,7 @@
                 </div>
 
                 <div class="pull-right">
-                    <form method="get" action="page" class="siteSearch">
-                        <div class="input-append">
-                            <input type="text" class="span2" id="appendedInputButton" placeholder="Search...">
-                            <button class="btn btn-primary" type="submit" name=""><i class="icon-search"></i></button>
-                        </div>
-                    </form>
+                    {% render controller('CatalogBundle:Search:ShowForm') %}
                 </div>
 
                 <div class="pull-right">

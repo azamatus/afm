@@ -57,7 +57,7 @@ class ExchangeExtension extends \Twig_Extension
 		);
 	}
 
-	public function priceFilter($number, $currentCurrency = 'USD', $decimals = 1, $decPoint = '.')
+	public function priceFilter($number, $currentCurrency = 'USD', $decimals = 0, $decPoint = '.')
 	{
 		/** @var $currentCurrency ExchangeCurrency */
 		$currentCurrency = $this->getCurrentExchange();
