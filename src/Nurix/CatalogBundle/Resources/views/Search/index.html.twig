@@ -7,7 +7,7 @@
         <div class="span3">
             <div class="search">
                 <div class="titleHeader clearfix">
-                    <h3>Search</h3>
+                    <h3>{{ 'search.search'|trans({},'messages') }}</h3>
                 </div>
 
                 <form action="{{ path('nurix_search') }}" method="get" {{ form_enctype(form) }}>
@@ -28,7 +28,7 @@
             {% if pagination|length %}
 
             <div class="titleHeader clearfix">
-                <h3>Search Result</h3>
+                <h3>{{ 'search.result'|trans({},'messages') }}</h3>
             </div>
             <!--end titleHeader-->
 
@@ -97,8 +97,7 @@
 
             <div class="alert alert-error">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <h4>Oh, We're So Sorry</h4>
-                There is no product that matches the search criteria.
+                {{ 'search.not_found'|trans({},'messages')|raw }}
             </div>
             <!--end alert-->
             {% endif %}

@@ -30,7 +30,7 @@ class SearchType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('search', null,array('attr'=>array('placeholder'=>$this->translator->trans('search',array(),'messages'))));
+        $builder->add('search', null,array('attr'=>array('placeholder'=>$this->translator->trans('search.text',array(),'messages'))));
         //$builder->add('dueDate', null, array('widget' => 'single_text'));
     }
 

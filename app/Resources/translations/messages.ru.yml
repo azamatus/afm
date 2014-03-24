@@ -1,5 +1,11 @@
 or: или
 and: и
 welcome: Добро пожаловать!
-search: Поиск...
+search:
+  text: Поиск...
+  not_found: |
+                <h4>Извиняемся,</h4>
+                Но по Вашему запросу товаров нет
+  result: Результаты поиска
+  search: Поиск
 showing_pages: Страница page_index из page_count
