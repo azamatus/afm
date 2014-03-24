@@ -67,7 +67,7 @@ $(function () {
         $('.bin_itemTotalPrice > .value').html(sumUSD.toString());
     }
 
-    $(".remove-item").click(function(){
+    $(document).on('click', ".remove-item", function(){
         if (confirm("Вы действительно хотите удалить товар?")){
             var id = $(this).data('id'),
                     url = Routing.generate("nurix_bin_delete_good", { "id" : id });
