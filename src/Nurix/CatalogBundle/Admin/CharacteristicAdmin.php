@@ -29,7 +29,7 @@ class CharacteristicAdmin extends Admin
     protected function configureFormFields(FormMapper $formmapper)
     {
         $formmapper
-            ->add('cTypeId', null, array('label' => 'Тип'))
+            ->add('cTypeId', 'sonata_type_model', array('label' => 'Тип'))
             ->add('value', null, array('label' => 'Значение'));
     }
 
