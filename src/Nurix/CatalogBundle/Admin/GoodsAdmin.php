@@ -53,8 +53,8 @@ class GoodsAdmin extends Admin
             ->where('c.parent IS NOT NULL');
         $formmapper
             ->with('General')
-            ->add('name', null, array('label' => 'Название'))
             ->add('article', null, array('label' => 'Артикул'))
+            ->add('name', null, array('label' => 'Название'))
             ->add('catalog', 'sonata_type_model', array('label' => 'Подкатегория',
                 'class' => 'CatalogBundle:Catalog', 'required' => true,
                 'query' => $query,
@@ -125,12 +125,10 @@ class GoodsAdmin extends Admin
     public function preUpdate($object)
     {
 
-        $url = $object->getYandexUrl();
         $id = $object->getId();
         $container = $this->getConfigurationPool()->getContainer();
-        $yandex_info = $container->get('catalog.product.parser')->isValidYandexUrl($url);
 
-        if (isset($url) && $yandex_info['valid']) {
+        if (isset($url)) {
             $entity_manager = $container->get('doctrine')->getManager();
             $repository = $entity_manager->getRepository("CatalogBundle:Characteristic");
             $repository->deleteByGoodId($id);
