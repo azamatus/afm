@@ -16,3 +16,6 @@ parameters:
     media_upload_url: /nurazia/web/uploads/media
     slider_count:   5
     related_product_count:   3
+    phone_number: 0123456789
+    email: test@test.ru
+    address: Bishkek

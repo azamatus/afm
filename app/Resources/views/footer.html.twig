@@ -36,28 +36,28 @@
 
                 <div class="span3">
                     <div class="titleHeader clearfix">
-                        <h3>Contact Info</h3>
+                        <h3>{{ 'contact_info'|trans({},'messages') }}</h3>
                     </div>
 
                     <div class="contactInfo">
                         <ul class="unstyled">
                             <li>
                                 <button class="btn btn-small">
-                                    <i class="icon-volume-up"></i>
+                                    <i class="icon-phone"></i>
                                 </button>
-                                Call Us: <a class="invarseColor" href="#">5246-4697-891</a>
+                                <span class="invarseColor" >{{ get_param('phone_number') }}</span>
                             </li>
                             <li>
                                 <button class="btn btn-small">
                                     <i class="icon-envelope-alt"></i>
                                 </button>
-                                <a class="invarseColor" href="#">shopfine@shopfine.com</a>
+                                <span class="invarseColor">{{ get_param('email') }}</span>
                             </li>
                             <li>
                                 <button class="btn btn-small">
                                     <i class="icon-map-marker"></i>
                                 </button>
-                                22 Avenue Park, Los Angeles
+                                {{ get_param('address') }}
                             </li>
                         </ul>
                     </div>
@@ -87,13 +87,10 @@
     <div class="container">
         <div class="row">
             <div class="span12">
-                <ul class="payments inline pull-right">
-                    <li class="visia"></li>
-                    <li class="paypal"></li>
-                    <li class="electron"></li>
-                    <li class="discover"></li>
-                </ul>
-                <p>© Copyrights 2012 for shopfine.com</p>
+                <a class="inline pull-right invarseColor" href="http://strokit.net">
+                    StrOkIT © {{ date()|format_date('YYYY') }}
+                </a>
+                <p>© {{ 'copyright'|trans({'year':date()|format_date('YYYY')},'messages') }}</p>
             </div>
         </div>
     </div>
