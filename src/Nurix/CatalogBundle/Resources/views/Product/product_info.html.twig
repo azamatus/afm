@@ -105,7 +105,7 @@
                             <textarea name="" class="span4" placeholder="textarea..."></textarea>
 
                             <div class="input-append">
-                                <input class="span1" type="text" name="" value="" placeholder="QTY">
+                                <input id="item-amount" class="span1 quantity-input" type="text" value="1">
                                 <a class="btn btn-primary button_buy_bin" data-id="{{ product.id }}"
                                    href="{{ path('nurix_bin_ajax_add_item',{'id':product.id}) }}"
                                    onclick="return false;">
@@ -114,8 +114,6 @@
                                 </a>
                                 <button class="btn" data-toggle="tooltip" data-title="+To Wishlist"><i
                                             class="icon-heart"></i></button>
-                                <button class="btn" data-toggle="tooltip" data-title="+To Compare"><i
-                                            class="icon-refresh"></i></button>
                             </div>
                         </form>
                         <!--end form-->
