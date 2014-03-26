@@ -14,7 +14,7 @@ $(function () {
         var path = Routing.generate("nurix_bin_ajax_add_item", { "id" : id });
         var $amount = 1, productPage = false;
         if ($(this).hasClass('button_buy_bin')){
-            $amount = parseInt($('#amount').val());
+            $amount = parseInt($('#item-amount').val());
             productPage = true;
         }
         $.ajax({
