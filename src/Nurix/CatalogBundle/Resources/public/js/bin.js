@@ -21,7 +21,12 @@ $(function () {
             url:path,
             data:{ amount : $amount, productPage : productPage  },
             success:function (data) {
-                alert("Товар добавлен в корзину");
+                noty({
+                    text: 'Товар добавлен в корзину',
+                    type: 'success',
+                    layout: 'topCenter',
+                    timeout: 1200
+                });
                 refreshWidget();
             }
         });
@@ -68,22 +73,44 @@ $(function () {
     }
 
     $(document).on('click', ".remove-item", function(){
-        if (confirm("Вы действительно хотите удалить товар?")){
-            var id = $(this).data('id'),
-                    url = Routing.generate("nurix_bin_delete_good", { "id" : id });
-            $.ajax({
-                url:url,
-                error:function(){
-                    alert('error');
-                },
-                success:function (data) {
-                    $("#"+id).remove();
-                    calculate();
-                    refreshWidget();
+        var id = $(this).data('id'),
+            url = Routing.generate("nurix_bin_delete_good", { "id" : id });
+        noty({
+            text: 'Вы действительно хотите удалить товар?',
+            layout: 'center',
+            killer: true,
+            animation: {
+                open: {height: 'toggle'},
+                close: {height: 'toggle'},
+                easing: 'swing',
+                speed: 250
+            },
+            buttons: [
+                {
+                    addClass: 'btn btn-primary', text: 'Да', onClick: function($noty) {
+
+                    $.ajax({
+                        url:url,
+                        error:function(){
+                            alert('Что то не так!!!');
+                        },
+                        success:function (data) {
+                            $("#"+id).remove();
+                            calculate();
+                            refreshWidget();
+                        }
+                    });
+
+                    $noty.close();
                 }
-            });
-        }
-        return false;
+                },
+                {
+                    addClass: 'btn btn-danger', text: 'Нет', onClick: function($noty) {
+                    $noty.close();
+                }
+                }
+            ]
+        });
     });
 
     $('.quantity-input').bind("change blur", function(){
