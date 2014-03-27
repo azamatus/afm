@@ -1,0 +1,3 @@
+{% if (not (pagination.isSorted('q.'~field) and pagination.params['direction']==direction) and not first) or ((pagination.isSorted('q.'~field) and pagination.params['direction']==direction) and first) %}
+    {{ knp_pagination_sortable(pagination, ('catalog.sort.'~field~'_'~direction) |trans({}, 'CatalogBundle'), 'q.'~field,{'direction':direction},{},'CatalogBundle:Pagination:sortable_link.html.twig') }}
+{% endif %}

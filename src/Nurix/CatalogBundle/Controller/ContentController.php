@@ -43,7 +43,7 @@ class ContentController extends Controller
         $pagination = $paginator
             ->paginate($paginate,
                 $this->get('request')->query->get('page',1),
-                $this->limitPerPage);
+                $this->getRequest()->cookies->get("cookieQuantity", 12));
 
         $pagination->setUsedRoute($this->getRequest()->get('_route'));
 

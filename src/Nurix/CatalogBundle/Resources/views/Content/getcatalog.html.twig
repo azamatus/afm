@@ -145,46 +145,8 @@
             <!--end productSlider-->
 
 
-            <div class="productFilter clearfix">
+            {{ include('CatalogBundle:Content:_catalog_header.html.twig') }}
 
-                <div class="sortBy inline pull-left">
-                    {{ 'catalog.sort.sortBy'|trans({}, 'CatalogBundle') }}
-                    <select name="sortItem" id="sortItem">
-                        {% if pagination.isSorted('q.name') %}
-                            {{ knp_pagination_sortable(pagination, 'catalog.sort.name'|trans({}, 'CatalogBundle'), 'q.name',{},{},'CatalogBundle:Pagination:sortable_link.html.twig') }}
-                            {{ knp_pagination_sortable(pagination, 'catalog.sort.price'|trans({}, 'CatalogBundle'), 'q.price',{},{},'CatalogBundle:Pagination:sortable_link.html.twig') }}
-                        {% elseif pagination.isSorted('q.price') %}
-                        {{ knp_pagination_sortable(pagination, 'catalog.sort.price'|trans({}, 'CatalogBundle'), 'q.price',{},{},'CatalogBundle:Pagination:sortable_link.html.twig') }}
-                        {{ knp_pagination_sortable(pagination, 'catalog.sort.name'|trans({}, 'CatalogBundle'), 'q.name',{},{},'CatalogBundle:Pagination:sortable_link.html.twig') }}
-                        {% else  %}
-                            <option>{{ 'catalog.sort.default'|trans({}, 'CatalogBundle') }}</option>
-                            {{ knp_pagination_sortable(pagination, 'catalog.sort.price'|trans({}, 'CatalogBundle'), 'q.price',{},{},'CatalogBundle:Pagination:sortable_link.html.twig') }}
-                            {{ knp_pagination_sortable(pagination, 'catalog.sort.name'|trans({}, 'CatalogBundle'), 'q.name',{},{},'CatalogBundle:Pagination:sortable_link.html.twig') }}
-                        {% endif %}
-                    </select>
-                </div>
-
-                <div class="showItem inline pull-left">
-                    {{ 'catalog.sort.show'|trans({}, 'CatalogBundle') }}
-                    <select name="showItem">
-                        <option value="12">12</option>
-                        <option value="24">24</option>
-                        <option value="36">36</option>
-                        <option value="48">48</option>
-                    </select>
-                </div>
-                <!--end sortBy-->
-
-                <div class="displaytBy inline pull-right">
-                    {{ 'catalog.view'|trans({}, 'CatalogBundle') }}
-                    <div class="btn-group">
-                        <button id="grid" class="btn change_catalog_view {% if app.request.cookies.get('cookieCatalogStyle','grid') == 'grid' %} active btn-primary{% endif %}"><i class="icon-th"></i></button>
-                        <button id="list" class="btn change_catalog_view {% if app.request.cookies.get('cookieCatalogStyle','grid') == 'list' %} active btn-primary{% endif %}"><i class="icon-list"></i></button>
-                    </div>
-                </div>
-                <!--end displaytBy-->
-
-            </div>
             <!--end productFilter-->
             <div class="row">
                 <ul class="hProductItems clearfix">

@@ -32,7 +32,7 @@ class SearchController extends Controller
             $pagination = $paginator
                 ->paginate($products,
                     $this->get('request')->query->get('page',1),
-                    15);
+                    $this->getRequest()->cookies->get("cookieQuantity", 12));
 
             $pagination->setUsedRoute($this->getRequest()->get('_route'));
 

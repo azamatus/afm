@@ -1,0 +1,47 @@
+
+<div class="productFilter clearfix">
+
+    <div class="sortBy inline pull-left">
+        {{ 'catalog.sort.sortBy'|trans({}, 'CatalogBundle') }}
+        <select name="sortItem" id="sortItem">
+            {% if not pagination.isSorted('q.name') and not pagination.isSorted('q.price') and not pagination.isSorted('q.id')  %}
+                <option>{{ 'catalog.sort.default'|trans({}, 'CatalogBundle') }}</option>
+            {% endif %}
+            {% include 'CatalogBundle:Content:_sort_field.html.twig' with {direction:'asc', field:'price',first: true} %}
+            {% include 'CatalogBundle:Content:_sort_field.html.twig' with {direction:'desc', field:'price',first: true} %}
+            {% include 'CatalogBundle:Content:_sort_field.html.twig' with {direction:'asc', field:'name',first: true} %}
+            {% include 'CatalogBundle:Content:_sort_field.html.twig' with {direction:'desc', field:'name',first: true} %}
+            {% include 'CatalogBundle:Content:_sort_field.html.twig' with {direction:'asc', field:'id',first: true} %}
+            {% include 'CatalogBundle:Content:_sort_field.html.twig' with {direction:'desc', field:'id',first: true} %}
+
+            {% include 'CatalogBundle:Content:_sort_field.html.twig' with {direction:'asc', field:'price',first: false} %}
+            {% include 'CatalogBundle:Content:_sort_field.html.twig' with {direction:'desc', field:'price',first: false} %}
+            {% include 'CatalogBundle:Content:_sort_field.html.twig' with {direction:'asc', field:'name',first: false} %}
+            {% include 'CatalogBundle:Content:_sort_field.html.twig' with {direction:'desc', field:'name',first: false} %}
+            {% include 'CatalogBundle:Content:_sort_field.html.twig' with {direction:'asc', field:'id',first: false} %}
+            {% include 'CatalogBundle:Content:_sort_field.html.twig' with {direction:'desc', field:'id',first: false} %}
+
+        </select>
+    </div>
+
+    <div class="showItem inline pull-left">
+        {{ 'catalog.sort.show'|trans({}, 'CatalogBundle') }}
+        <select name="showItem">
+            <option value="12">12</option>
+            <option value="24">24</option>
+            <option value="36">36</option>
+            <option value="48">48</option>
+        </select>
+    </div>
+    <!--end sortBy-->
+
+    <div class="displaytBy inline pull-right">
+        {{ 'catalog.view'|trans({}, 'CatalogBundle') }}
+        <div class="btn-group">
+            <button id="grid" class="btn change_catalog_view {% if app.request.cookies.get('cookieCatalogStyle','grid') == 'grid' %} active btn-primary{% endif %}"><i class="icon-th"></i></button>
+            <button id="list" class="btn change_catalog_view {% if app.request.cookies.get('cookieCatalogStyle','grid') == 'list' %} active btn-primary{% endif %}"><i class="icon-list"></i></button>
+        </div>
+    </div>
+    <!--end displaytBy-->
+
+</div>

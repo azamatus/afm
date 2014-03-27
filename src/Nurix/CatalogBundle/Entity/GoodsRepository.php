@@ -25,13 +25,13 @@ class GoodsRepository extends EntityRepository
 
 	public function searchGoods($searchText)
 	{
-		$query = $this->createQueryBuilder('g')
+		$query = $this->createQueryBuilder('q')
 			//->leftJoin('Nurix\CatalogBundle\Entity\Characteristic', 'c', 'WITH', 'c.goodId = g.id')
-			->orWhere("g.name like :search")
-			->orWhere('g.shortDescription like :search')
-			->orWhere('g.fullDesctiption like :search')
+			->orWhere("q.name like :search")
+			->orWhere('q.shortDescription like :search')
+			->orWhere('q.fullDesctiption like :search')
 			//->orWhere('c.value like :search')
-			->andWhere('g.active = 1')
+			->andWhere('q.active = 1')
 			->setParameter('search', '%' . $searchText . '%');
 
 		return $query->getQuery();

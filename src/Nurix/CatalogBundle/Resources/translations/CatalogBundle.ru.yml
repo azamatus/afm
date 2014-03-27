@@ -27,8 +27,12 @@ catalog:
   view: Вид
   sort:
       sortBy: Сортировка
-      name: названию
-      price: цене
+      name_asc: названию (А-Я)
+      name_desc: названию (Я-А)
+      price_asc: цене (по возрастанию)
+      price_desc: цене (по убыванию)
+      id_asc: дате добавления (по возрастанию)
+      id_desc: дате добавления (по убыванию)
       default: Сортировать по
       show: Показать
 pagination:
