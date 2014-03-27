@@ -81,30 +81,15 @@ class ContentController extends Controller
                 throw $this->createNotFoundException('Page not found 404');
         }
 
-       $cookieQuantity = $this->getRequest()->cookies->get("cookieQuantity");
-       switch($cookieQuantity){
-            case "10":
-                $quantity = 10;
-                break;
-            case "15":
-                $quantity = 15;
-                break;
-            case "20":
-                $quantity = 20;
-                break;
-           case "25":
-                $quantity = 25;
-                break;
-            default:
-                $quantity = 5;
-        }
+        $cookieQuantity = $this->getRequest()->cookies->get("cookieQuantity", 12);
+
         $paginate = $goodsRepository->getGoods($cid);
 
         $paginator = $this->get('knp_paginator');
 
         $pagination = $paginator
             ->paginate($paginate,
-            $this->get('request')->query->get('page',1),$quantity);
+            $this->get('request')->query->get('page',1),$cookieQuantity);
 
         $pagination->setUsedRoute('nurix_goods_get_catalog');
 
