@@ -25,6 +25,12 @@ catalog:
   view_all: Показать всё
   updated_title: Обновленные
   view: Вид
+  sort:
+      sortBy: Сортировка
+      name: названию
+      price: цене
+      default: Сортировать по
+      show: Показать
 pagination:
   prev: Пред
   next: След

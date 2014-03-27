@@ -89,16 +89,23 @@ class GoodsRepository extends EntityRepository
 	{
 		if (!$cid)
 		{
-			$query = $this->getEntityManager()
-				->createQuery("SELECT g FROM CatalogBundle:Goods g where g.active = 1")
-				->getResult();
+			$query = $this->createQueryBuilder('q')
+                ->where('q.active = 1')
+                ->getQuery();
+
 			return $query;
 		}
 		else
 		{
-			$query = $this->getEntityManager()
-				->createQuery("SELECT g FROM CatalogBundle:Goods g where g.active = 1 and g.catalog in (select c.id from CatalogBundle:Catalog c where c.id = $cid or c.parent = $cid) order by g.name ASC")
-				->getResult();
+            /** @var $catalog Catalog */
+            $catalog = $this->getEntityManager()->getRepository('CatalogBundle:Catalog')->find($cid);
+
+			$query = $this->createQueryBuilder('q')
+                ->where('q.active = 1')
+                ->andWhere('q.catalog = :cid or q.catalog = :cparent')
+                ->setParameter(':cid',$cid)
+                ->setParameter(':cparent',$catalog->getParent())
+                ->getQuery();
 			return $query;
 		}
 	}
@@ -124,7 +131,7 @@ class GoodsRepository extends EntityRepository
         $query = $this->createQueryBuilder('q')
             ->where('q.active = 1')
             ->andWhere('q.amount > 0')
-			->orderBy('q.name', 'ASC');
+        ->getQuery();
 
         return $query;
     }
