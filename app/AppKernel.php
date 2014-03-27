@@ -5,8 +5,9 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 
 class AppKernel extends Kernel
 {
-    public function init(){
-        date_default_timezone_set( 'Asia/Almaty' );
+    public function init()
+    {
+        date_default_timezone_set('Asia/Almaty');
         parent::init();
     }
 
@@ -53,6 +54,7 @@ class AppKernel extends Kernel
             new CoopTilleuls\Bundle\CKEditorSonataMediaBundle\CoopTilleulsCKEditorSonataMediaBundle(),
             new Prezent\Doctrine\TranslatableBundle\PrezentDoctrineTranslatableBundle(),
             new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
+            new Strokit\ConfigBundle\StrokitConfigBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
@@ -66,6 +68,6 @@ class AppKernel extends Kernel
 
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
-        $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
+        $loader->load(__DIR__ . '/config/config_' . $this->getEnvironment() . '.yml');
     }
 }

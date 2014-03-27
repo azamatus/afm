@@ -38,6 +38,7 @@ class Parser
     public function parseYandex($url, $goodid)
     {
             $yandex_info = $this->isValidYandexUrl($url);
+        $em = $this->doctrine_service->getManager();
             if($yandex_info['valid']){
                 $url = $yandex_info['url'];
                 $good = $this->doctrine_service->getRepository('CatalogBundle:Goods')->find($goodid);
@@ -62,7 +63,6 @@ class Parser
                                 $section = new CharacteristicSection();
                                 $section->setSectionvalue($section_type);
 
-                                $em = $this->doctrine_service->getManager();
                                 $em->persist($section);
                                 $em->flush();
                                 $sid = $section;
@@ -82,7 +82,6 @@ class Parser
                                 $characteristic_type->setName($char_type);
                                 $characteristic_type->setSection($sid);
 
-                                $em = $this->doctrine_service->getManager();
                                 $em->persist($characteristic_type);
                                 $em->flush();
                                 $tid = $characteristic_type;
@@ -92,7 +91,6 @@ class Parser
                             $characteristic->setCTypeId($tid);
                             $characteristic->setGood($good);
 
-                            $em = $this->doctrine_service->getManager();
                             $em->persist($characteristic);
                             $em->flush();
 
@@ -101,18 +99,5 @@ class Parser
 
                 }
             }
-    }
-
-    public function isValidYandexUrl($url){
-        $pattern = '/^http:\/\/market\.yandex.ru\/model(-spec)?\.xml\?modelid=([0-9]+)&hid=([0-9]+)$/';
-        $valid = false;
-        if(preg_match($pattern,$url,$matches)){
-            $url = 'http://market.yandex.ru/model-spec.xml?modelid='. $matches[2].'&hid='.$matches[3];
-            $valid= true;
-        }
-        elseif($url==null)
-            $valid=true;
-        return array('valid'=>$valid,'url'=>$url);
-
     }
 }

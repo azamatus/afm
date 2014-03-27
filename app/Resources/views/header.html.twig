@@ -3,8 +3,8 @@
     <div class="upperHeader">
         <div class="container">
             <ul class="pull-right inline">
-                <li><a class="invarseColor" href="#">My Wish List (5)</a></li>
-                <li class="divider-vertical"></li>
+                {#<li><a class="invarseColor" href="#">My Wish List (5)</a></li>#}
+                {#<li class="divider-vertical"></li>#}
                 <li><a class="invarseColor" href="{{ path('nurix_bin_item') }}">{{ 'itemInBin.view_card'|trans({}, 'CatalogBundle') }}</a></li>
                 <li class="divider-vertical"></li>
                 <li><a class="invarseColor" href="{{ path('nurix_bin_order_form') }}">{{ 'itemInBin.checkout'|trans({}, 'CatalogBundle') }}</a></li>
@@ -40,12 +40,7 @@
                 </div>
 
                 <div class="pull-right">
-                    <form method="get" action="page" class="siteSearch">
-                        <div class="input-append">
-                            <input type="text" class="span2" id="appendedInputButton" placeholder="Search...">
-                            <button class="btn btn-primary" type="submit" name=""><i class="icon-search"></i></button>
-                        </div>
-                    </form>
+                    {% render controller('CatalogBundle:Search:ShowForm') %}
                 </div>
 
                 <div class="pull-right">

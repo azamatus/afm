@@ -29,7 +29,7 @@ class GoodsAdmin extends Admin
             ->add('id', null, array('label' => 'ID'))
             ->add('name', null, array('label' => 'Название'))
             ->add('article', null, array('label' => 'Артикул'))
-            ->add('catalog', 'sonata_type_collection', array('label' => 'Подкатегория'))
+            ->add('catalog', 'sonata_type_model', array('label' => 'Подкатегория'))
             ->add('short_description', null, array('label' => 'Краткое описание'))
             ->add('full_desctiption', null, array('label' => 'Полное описание'))
             ->add('price', null, array('label' => 'Цена'))
@@ -45,16 +45,19 @@ class GoodsAdmin extends Admin
 
     protected function configureFormFields(FormMapper $formmapper)
     {
+        $em = $this->modelManager->getEntityManager('CatalogBundle:Catalog');
+
+        $query = $em->createQueryBuilder('c')
+            ->select('c')
+            ->from('CatalogBundle:Catalog', 'c')
+            ->where('c.parent IS NOT NULL');
         $formmapper
             ->with('General')
-            ->add('name', null, array('label' => 'Название'))
             ->add('article', null, array('label' => 'Артикул'))
-            ->add('catalog', 'entity', array('label' => 'Подкатегория',
+            ->add('name', null, array('label' => 'Название'))
+            ->add('catalog', 'sonata_type_model', array('label' => 'Подкатегория',
                 'class' => 'CatalogBundle:Catalog', 'required' => true,
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('p')
-                        ->where('p.parent is not null');
-                },
+                'query' => $query,
             ))
             ->add('short_description', 'textarea', array('label' => 'Краткое описание', 'required' => false))
             ->add('full_desctiption', 'textarea', array('label' => 'Полное описание', 'required' => false))
@@ -122,19 +125,18 @@ class GoodsAdmin extends Admin
     public function preUpdate($object)
     {
 
-        $url = $object->getYandexUrl();
         $id = $object->getId();
         $container = $this->getConfigurationPool()->getContainer();
-        $yandex_info = $container->get('catalog.product.parser')->isValidYandexUrl($url);
 
-        if (isset($url) && $yandex_info['valid']) {
-            $entity_manager = $container->get('doctrine')->getEntityManager();
+        if (isset($url)) {
+            $entity_manager = $container->get('doctrine')->getManager();
             $repository = $entity_manager->getRepository("CatalogBundle:Characteristic");
             $repository->deleteByGoodId($id);
 
             $container
                 ->get('catalog.product.parser')
                 ->parseYandex($url, $id);
+            $object->setYandexUrl(null);
         }
 
         if ($object->getImageId()==null)

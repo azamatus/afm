@@ -8,7 +8,7 @@
     <div class="row">
         <ul class="hProductItems clearfix">
             {% for product in products %}
-                {% include  "CatalogBundle:Content:_item.html.twig" with {'product':product} %}
+                {% include  "CatalogBundle:Content:_item_grid.html.twig" with {'product':product} %}
             {% endfor %}
         </ul>
     </div>

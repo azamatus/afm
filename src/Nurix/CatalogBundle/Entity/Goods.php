@@ -390,23 +390,15 @@ class Goods
 
     public function setCharacteristic($characteristics)
     {
+        $this->characteristic = new \Doctrine\Common\Collections\ArrayCollection();
         if (!$characteristics) {
-            $this->mac = new \Doctrine\Common\Collections\ArrayCollection();
             return;
         }
 
         foreach ($characteristics as $item) {
-            $item->setGood($this);
+            if ($item)
+            $this->addCharacteristic($item);
         }
-
-        foreach ($this->getMac() as $item) {
-            if (!$characteristics->contains($item)) {
-                $this->getMac()->removeElement($item);
-                $item->setGood(null);
-            }
-        }
-
-        $this->mac = $characteristics;
     }
 
     /**
@@ -417,7 +409,8 @@ class Goods
      */
     public function addCharacteristic(\Nurix\CatalogBundle\Entity\Characteristic $characteristic)
     {
-        $characteristic->setGood($this);
+        if (!$this->characteristic)
+            $this->characteristic = new \Doctrine\Common\Collections\ArrayCollection();
         $this->characteristic[] = $characteristic;
 
         return $this;

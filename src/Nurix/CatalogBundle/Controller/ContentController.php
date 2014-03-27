@@ -93,11 +93,6 @@ class ContentController extends Controller
 
         $pagination->setUsedRoute('nurix_goods_get_catalog');
 
-        $cookieCatalogStyle = $this->getRequest()->cookies->get("cookieCatalogStyle");
-
-        if ($cookieCatalogStyle == 'list')
-            return $this->render('CatalogBundle:Content:getcatalog_list.html.twig', array('pagination' => $pagination, 'catalog' => $catalog, 'title' => $catalog!=null?$catalog->__toString():"Весь каталог"));
-        else
             return $this->render('CatalogBundle:Content:getcatalog.html.twig', array('pagination' => $pagination, 'catalog' => $catalog, 'title' => $catalog!=null?$catalog->__toString():"Весь каталог"));
 
     }

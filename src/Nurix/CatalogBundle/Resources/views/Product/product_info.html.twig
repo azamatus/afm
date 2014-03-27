@@ -74,48 +74,45 @@
                     <!--end product-info-->
                     <div class="product-inputs">
                         <form method="post" action="page">
-                            <div class="controls-row">
-                                <select class="span2" name="#">
-                                    <option>{{ 'product_info.selectColor'|trans({}, 'CatalogBundle') }}</option>
-                                    <option value="">{{ 'product_info.red'|trans({}, 'CatalogBundle') }}</option>
-                                    <option value="">{{ 'product_info.blue'|trans({}, 'CatalogBundle') }}</option>
-                                    <option value="">{{ 'product_info.brown'|trans({}, 'CatalogBundle') }}</option>
-                                </select>
-                                <select class="span2" name="#">
-                                    <option>{{ 'product_info.selectSize'|trans({}, 'CatalogBundle') }}</option>
-                                    <option value="">{{ 'product_info.size'|trans({}, 'CatalogBundle') }} 36</option>
-                                    <option value="">{{ 'product_info.size'|trans({}, 'CatalogBundle') }} 12</option>
-                                    <option value="">{{ 'product_info.size'|trans({}, 'CatalogBundle') }} 18</option>
-                                </select>
-                            </div>
+                            {#<div class="controls-row">#}
+                                {#<select class="span2" name="#">#}
+                                    {#<option>{{ 'product_info.selectColor'|trans({}, 'CatalogBundle') }}</option>#}
+                                    {#<option value="">{{ 'product_info.red'|trans({}, 'CatalogBundle') }}</option>#}
+                                    {#<option value="">{{ 'product_info.blue'|trans({}, 'CatalogBundle') }}</option>#}
+                                    {#<option value="">{{ 'product_info.brown'|trans({}, 'CatalogBundle') }}</option>#}
+                                {#</select>#}
+                                {#<select class="span2" name="#">#}
+                                    {#<option>{{ 'product_info.selectSize'|trans({}, 'CatalogBundle') }}</option>#}
+                                    {#<option value="">{{ 'product_info.size'|trans({}, 'CatalogBundle') }} 36</option>#}
+                                    {#<option value="">{{ 'product_info.size'|trans({}, 'CatalogBundle') }} 12</option>#}
+                                    {#<option value="">{{ 'product_info.size'|trans({}, 'CatalogBundle') }} 18</option>#}
+                                {#</select>#}
+                            {#</div>#}
                             <!--end controls-row-->
 
-                            <div class="controls-row">
-                                <input type="text" class="span2" name="" value="" placeholder="input...">
-                                <input type="text" class="span2" name="" value="" placeholder="input...">
-                            </div>
-                            <!--end controls-row-->
+                            {#<div class="controls-row">#}
+                                {#<input type="text" class="span2" name="" value="" placeholder="input...">#}
+                                {#<input type="text" class="span2" name="" value="" placeholder="input...">#}
+                            {#</div>#}
+                            {#<!--end controls-row-->#}
 
-                            <div class="controls-row">
-                                <input type="text" class="span3" name="" value="" placeholder="input...">
-                                <input type="text" class="span1" name="" value="" placeholder="input...">
-                            </div>
-                            <!--end controls-row-->
+                            {#<div class="controls-row">#}
+                                {#<input type="text" class="span3" name="" value="" placeholder="input...">#}
+                                {#<input type="text" class="span1" name="" value="" placeholder="input...">#}
+                            {#</div>#}
+                            {#<!--end controls-row-->#}
 
-                            <textarea name="" class="span4" placeholder="textarea..."></textarea>
+                            {#<textarea name="" class="span4" placeholder="textarea..."></textarea>#}
 
                             <div class="input-append">
-                                <input class="span1" type="text" name="" value="" placeholder="QTY">
-                                <a class="btn btn-primary button_buy_bin" data-id="{{ product.id }}"
-                                   href="{{ path('nurix_bin_ajax_add_item',{'id':product.id}) }}"
+                                <input id="item-amount" class="span1 quantity-input" type="text" value="1">
+                                <button class="btn btn-primary button_buy_bin" data-id="{{ product.id }}"
                                    onclick="return false;">
                                     <i class="icon-shopping-cart"></i>
                                     {{ 'product_info.addToCard'|trans({}, 'CatalogBundle') }}
-                                </a>
-                                <button class="btn" data-toggle="tooltip" data-title="+To Wishlist"><i
-                                            class="icon-heart"></i></button>
-                                <button class="btn" data-toggle="tooltip" data-title="+To Compare"><i
-                                            class="icon-refresh"></i></button>
+                                </button>
+                                {#<button class="btn" data-toggle="tooltip" data-title="+To Wishlist"><i#}
+                                            {#class="icon-heart"></i></button>#}
                             </div>
                         </form>
                         <!--end form-->

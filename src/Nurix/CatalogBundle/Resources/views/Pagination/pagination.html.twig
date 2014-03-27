@@ -1,4 +1,5 @@
 {% if pageCount > 1 %}
+    <span class="pull-left">{{ 'showing_pages'|trans({'page_index':current,'page_count':pageCount},'messages') }}:</span>
     <ul>
     {% if previous is defined %}
         <li class="previous">

@@ -178,13 +178,8 @@
                 <div class="displaytBy inline pull-right">
                     {{ 'catalog.view'|trans({}, 'CatalogBundle') }}
                     <div class="btn-group">
-                        {% if app.request.cookies.get('cookieCatalogStyle') == 'list' %}
-                            <button id="grid" class="btn change_catalog_view"><i class="icon-th"></i></button>
-                            <button id="list" class="btn change_catalog_view active btn-primary"><i class="icon-list"></i></button>
-                        {% else %}
-                            <button id="grid" class="btn change_catalog_view active btn-primary"><i class="icon-th"></i></button>
-                            <button id="list" class="btn change_catalog_view"><i class="icon-list"></i></button>
-                        {% endif %}
+                        <button id="grid" class="btn change_catalog_view {% if app.request.cookies.get('cookieCatalogStyle','grid') == 'grid' %} active btn-primary{% endif %}"><i class="icon-th"></i></button>
+                        <button id="list" class="btn change_catalog_view {% if app.request.cookies.get('cookieCatalogStyle','grid') == 'list' %} active btn-primary{% endif %}"><i class="icon-list"></i></button>
                     </div>
                 </div>
                 <!--end displaytBy-->
@@ -193,14 +188,9 @@
             <!--end productFilter-->
             <div class="row">
                 <ul class="hProductItems clearfix">
-                    {% block items %}
                         {% for product in pagination %}
-                                {% include  "CatalogBundle:Content:_item.html.twig" with {'product':product} %}
-                            {% if loop.index is divisibleby(3) %}
-                                <div class="clearfix"></div>
-                            {% endif %}
+                            {% include  "CatalogBundle:Content:_item_"~app.request.cookies.get('cookieCatalogStyle','grid')~".html.twig" with {'product':product} %}
                         {% endfor %}
-                    {% endblock %}
                 </ul>
             </div>
             <!--end row-->

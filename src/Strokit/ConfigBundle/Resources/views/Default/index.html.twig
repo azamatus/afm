@@ -1,0 +1,67 @@
+{% extends base_template %}
+
+
+{% block title %}Редактирование настроек{% endblock %}
+
+            {% block sonata_top_bar_nav %}
+                {% for group in admin_pool.dashboardgroups %}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle"
+                           data-toggle="dropdown">{{ group.label|trans({}, group.label_catalogue) }} <span
+                                    class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            {% for admin in group.items %}
+                                {% if admin.hasroute('list') and admin.isGranted('LIST') %}
+                                    <li>
+                                        <a href="{{ admin.generateUrl('list') }}">{{ admin.label|trans({}, admin.translationdomain) }}</a>
+                                    </li>
+                                {% endif %}
+                                {% if admin.hasroute('config') and admin.isGranted('CREATE') %}
+                                    <li>
+                                        <a href="{{ path('strokit_config_edit') }}">Редактировать настройки</a>
+                                    </li>
+                                {% endif %}
+                                {% if admin.hasroute('cacheclear') and admin.isGranted('CREATE') %}
+                                    <li>
+                                        <a href="{{ path('strokit_config_cacheclear') }}">Очистить кэш</a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+            {% endblock %}
+
+
+{% block breadcrumb %}
+    <li><a href="{{ path('sonata_admin_dashboard') }}">Панель управления</a><span class="divider">/</span></li>
+    <li class="active">Редактировать настройки</li>
+{% endblock %}
+
+{% block form %}
+    <p>Для сохранения параметров необходимо сохранить и очистить кэш</p>
+    {{ form_start(form,{'attr':{'class':'form-horizontal' }}) }}
+    <fieldset>
+        <div class="sonata-ba-collapsed-fields">
+            {% for key,field in form.iterator %}
+
+                <div class="control-group" id="sonata-ba-field-container-{{ field.vars['id'] }}">
+                    {% if field.vars['name'] !='_token' %}
+
+                        {{ form_label(field, null, { 'label_attr' : {'class' : 'control-label'} }) }}
+                    {% endif %}
+
+                    <div class="controls sonata-ba-field sonata-ba-field-standard-natural ">
+                        <div id="field_container_{{ field.vars['id'] }}" class="field-container">
+                            {{ form_widget(field) }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </fieldset>
+    <button type="submit" class="btn btn-primary">Сохранить настройки</button>
+    <a class="btn sonata-action-element" href="{{ path('strokit_config_cacheclear') }}">Очистить кэш</a>
+    {{ form_rest(form) }}
+    {{ form_end(form) }}
+{% endblock %}

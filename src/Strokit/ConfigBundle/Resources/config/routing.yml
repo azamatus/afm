@@ -1,0 +1,7 @@
+strokit_config_edit:
+    pattern:  /config/
+    defaults: { _controller: StrokitConfigBundle:Admin:config, _sonata_admin: sonata.admin.config }
+
+strokit_config_cacheclear:
+    pattern:  /cache/clear/
+    defaults: { _controller: StrokitConfigBundle:Admin:cacheclear, _sonata_admin: sonata.admin.config }

@@ -1,0 +1,22 @@
+parameters:
+    strokit_config.configurator.class: Strokit\ConfigBundle\Configurator\Configurator
+
+services:
+    strokit_config.configurator:
+        class: %strokit_config.configurator.class%
+        arguments: [%kernel.root_dir%]
+    sonata.admin.config:
+        class: Strokit\ConfigBundle\Admin\ConfigAdmin
+        arguments:
+                - admin_config
+                - ~
+                - Strokit\ConfigBundle\Controller\ConfigController
+        tags:
+                - { name: sonata.admin, manager_type: orm, group: "Конфигурация", label: "Пользовательские настройки" }
+
+    strokit_config.twig.parameter_extension:
+            class: Strokit\ConfigBundle\Twig\ParameterExtension
+            arguments:
+                - @service_container
+            tags:
+                - { name: twig.extension }
