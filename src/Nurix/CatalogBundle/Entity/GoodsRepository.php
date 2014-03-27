@@ -97,15 +97,25 @@ class GoodsRepository extends EntityRepository
 		}
 		else
 		{
-            /** @var $catalog Catalog */
-            $catalog = $this->getEntityManager()->getRepository('CatalogBundle:Catalog')->find($cid);
+            /** @var $catalogQuery Catalog */
+            $catalogQuery = $this->getEntityManager()->getRepository('CatalogBundle:Catalog')
+                ->createQueryBuilder('c')
+                ->select('c.id')
+                ->where('c.parent = :cparent')
+                ->setParameter(':cparent',$cid)
+                ->getDQL();
 
 			$query = $this->createQueryBuilder('q')
-                ->where('q.active = 1')
-                ->andWhere('q.catalog = :cid or q.catalog = :cparent')
+                ->where('q.catalog = :cid')
+                ->orWhere($this->createQueryBuilder('q')->expr()->in(
+                    'q.catalog',
+                    $catalogQuery
+                ))
+                ->andWhere('q.active = 1')
                 ->setParameter(':cid',$cid)
-                ->setParameter(':cparent',$catalog->getParent())
+                ->setParameter(':cparent',$cid)
                 ->getQuery();
+
 			return $query;
 		}
 	}
