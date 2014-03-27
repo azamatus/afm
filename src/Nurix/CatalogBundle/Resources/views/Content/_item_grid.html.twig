@@ -14,12 +14,12 @@
             </div>
 
             <div class="thumbButtons">
-                <button class="btn btn-primary btn-small button_buy" data-title="+To Cart" data-placement="top" data-toggle="tooltip" data-id="{{ product.id}}">
+                <button class="btn btn-primary btn-small button_buy" data-title="{{ 'product_info.addToCard'|trans({}, 'CatalogBundle') }}" data-placement="top" data-toggle="tooltip" data-id="{{ product.id}}">
                     <i class="icon-shopping-cart"></i>
                 </button>
-                <button class="btn btn-small" data-title="+To WishList" data-placement="top" data-toggle="tooltip">
-                    <i class="icon-heart"></i>
-                </button>
+                {#<button class="btn btn-small" data-title="+To WishList" data-placement="top" data-toggle="tooltip">#}
+                    {#<i class="icon-heart"></i>#}
+                {#</button>#}
 
             </div>
 
