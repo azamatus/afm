@@ -58,9 +58,9 @@ class BinOrders
     /**
      * @var enum
      *
-     * @ORM\Column(name="status", type="enumstatus")
+     * @ORM\Column(name="status", type="enumstatus", nullable=true)
      */
-    private $status = 1;
+    private $status = "new";
 
 
     /**

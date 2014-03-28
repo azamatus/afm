@@ -1852,6 +1852,9 @@ footer {margin:82px 0 0 0;}
 	.login table td:last-child {
 		border-bottom:none;
 	}
+    .checkout-content form.form-horizontal select{
+        display: block;
+    }
 
 	/* form-horizontal */
 	form.form-horizontal .control-label{

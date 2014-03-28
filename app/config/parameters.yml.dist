@@ -19,3 +19,5 @@ parameters:
     phone_number: 0555-123456
     email: test@test.ru
     address: Bishkek
+    email_from: nurixkg@gmail.com
+    email_to: nurixkg@gmail.com

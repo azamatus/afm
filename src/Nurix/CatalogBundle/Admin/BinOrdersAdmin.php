@@ -19,6 +19,6 @@ class BinOrdersAdmin extends Admin{
             ->add('amount',null,array('label'=>'Количество'))
             ->add('good',null,array('label'=>'Товар'))
             ->add('coast',null,array('label'=>'Цена'))
-            ->add('status','choice',array('label'=>'Статус','choices'=>EnumStatusType::toArray()));
+            ->add('status','choice',array('label'=>'Статус','choices'=>EnumStatusType::getArray()));
     }
 }

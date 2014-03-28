@@ -135,7 +135,7 @@ class Goods
     /**
      * @var integer
      *
-     * @ORM\Column(name="views", type="integer", nullable=true, columnDefinition="int default 0")
+     * @ORM\Column(name="views", type="integer", nullable=false)
      */
     private $views = 0;
 

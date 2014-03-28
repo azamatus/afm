@@ -24,7 +24,6 @@ Email: {{ binclient.email }}<br/>
                 </div>
             </td>
             <td>
-                <div class="Som">{{ good.price|price('KGS') }}</div>
                 <div class="Dollar">{{ good.price|price('USD') }}</div>
             </td>
             <td>
@@ -32,8 +31,7 @@ Email: {{ binclient.email }}<br/>
             </td>
             <td>
                 <div class="bin_itemPrice" id="goodTotal_{{ good.id }}">
-                    <div class="Som">{{ (good.price * count)|price('KGS') }}</div>
-                    <div class="Dollar">{{ (good.price * count)|price('USD') }}</div>
+                    <div class="Dollar">{{ (good.price * order.amount)|price('USD') }}</div>
                 </div>
             </td>
         </tr>

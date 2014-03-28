@@ -24,7 +24,7 @@ class BinClientsAdmin extends Admin{
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('active','choice',array('label'=>'Статус','choices'=>EnumStatusType::toArray()))
+            ->add('status','choice',array('label'=>'Статус','choices'=>EnumStatusType::getArray()))
             ->add('orders', 'sonata_type_collection',
                 array('label' => 'Ссылки'),
                 array(
@@ -43,6 +43,6 @@ class BinClientsAdmin extends Admin{
             ->add('email',null,array('label'=>'E-mail'))
             ->add('deliveryTime',null,array('label'=>'Время доставки'))
             ->add('delivery',null,array('label'=>'Доставка'))
-            ->add('active','',array('label'=>'Статус'));
+            ->add('active','trans',array('label'=>'Статус'));
     }
 }

@@ -3,36 +3,16 @@ namespace Nurix\CatalogBundle\DBAL;
 
 use Doctrine\DBAL\Types\Type;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
+use Strokit\CoreBundle\DBAL\EnumType;
 
-class EnumStatusType extends Type
+class EnumStatusType extends EnumType
 {
     const ENUM_STATUS = 'enumstatus';
 
-    public static function toArray()
+    protected $name = 'enumstatus';
+    protected $values = array('new','confirmed','in_storage','sended','delivered','canceled','delay');
+    public static function getArray()
     {
-        return array('В обработке','Заказ подтвержден','На складе','Отправлено','Доставлено','Заказ отменен','Задержка товара');
-    }
-
-    public function getSqlDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
-    {
-        return "ENUM('В обработке','Заказ подтвержден','На складе','Отправлено','Доставлено','Заказ отменен','Задержка товара') COMMENT '(DC2Type:enumstatus)'";
-    }
-
-    public function convertToPHPValue($value, AbstractPlatform $platform)
-    {
-        return $value;
-    }
-
-    public function convertToDatabaseValue($value, AbstractPlatform $platform)
-    {
-        if (!in_array($value,array_keys($this->toArray()) )) {
-            throw new \InvalidArgumentException("Invalid status");
-        }
-        return $value;
-    }
-
-    public function getName()
-    {
-        return self::ENUM_STATUS;
+        return array('new'=>'В обработке','confirmed'=>'Подтвержден','in_storage' => 'На складе','sended'=>'Отправлено','delivered'=>'Доставлено','canceled'=>'Отменен','delay'=>'Задержка');
     }
 }

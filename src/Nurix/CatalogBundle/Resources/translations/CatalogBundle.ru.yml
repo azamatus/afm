@@ -56,3 +56,23 @@ itemInBin:
   checkout: Заказать
   card_is_empty: Корзина пуста
 start_searching: Искать
+
+checkout:
+  continue: Продолжить
+  form_title: Форма оформления заказа
+  user_detail: Пользовательские данные
+  fullname: Ф.И.О
+  phone:  Телефон
+  email:  E-mail
+  needdelivery: Доставить заказ?
+  address:  Адрес
+  datetime: Дата доставки
+  delo_detail: Детали доставки
+
+new: В обработке
+confirmed: Подтвержден,
+in_storage: На складе
+sended: Отправлено
+delivered: Доставлено
+canceled: Отменено
+delay: Задержка

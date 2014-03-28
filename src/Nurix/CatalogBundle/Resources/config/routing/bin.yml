@@ -21,7 +21,7 @@ nurix_bin_main_widget:
       expose: true
 
 nurix_bin_order_form:
-    pattern: /order/
+    pattern: /checkout/
     defaults: { _controller: CatalogBundle:Bin:binOrderForm }
 
 nurix_bin_delete_good:

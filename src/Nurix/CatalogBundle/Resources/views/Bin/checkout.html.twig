@@ -1,0 +1,64 @@
+{% extends "::base.html.twig" %}
+{% block title %}
+    {{ parent() }} : Оформление заказа
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript" src="{{ asset('bundles/catalog/js/checkout.js') }}"></script>
+{% endblock javascripts %}
+
+{% block body %}
+    <h2>{{ 'checkout.form_title'|trans({},'CatalogBundle') }}</h2>
+
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-notice">
+            {{ flashMessage }}
+        </div>
+    {% else %}
+        <div class="row">
+            <div class="span12">
+                <form method="post" action="{{ path("nurix_bin_order_form") }}" class="form-horizontal">
+
+                <div class="checkout-outer">
+                    <div class="checkout-header">
+                        <h4><i class="icon-caret-down"></i> {{ 'checkout.user_detail'|trans({},'CatalogBundle') }}</h4>
+                    </div><!--end checkout-header-->
+
+                    <div class="checkout-content">
+
+                        {% include '@Catalog/Bin/_checkout_field.html.twig' with {'field':form.fio} %}
+                        {% include '@Catalog/Bin/_checkout_field.html.twig' with {'field':form.phone} %}
+                        {% include '@Catalog/Bin/_checkout_field.html.twig' with {'field':form.email} %}
+                        {{ form_widget(form.delivery,{'attr':{'style':'display:none;`'} }) }}
+
+                    </div><!--end checkout-content-->
+                </div><!--end checkout-outer-->
+
+
+                <div class="checkout-outer" id="chechout-delivery">
+                    <div class="checkout-header">
+                        <a href="#" class="invarseColor pull-right" data-toggle="tooltip" data-placment="top" data-title="EDIT" style="margin-right:12px; color:#333; font-size:13px;"><i class="icon-pencil"></i></a>
+                        <h4><i class="icon-caret-right"></i> {{ 'checkout.delivery_detail'|trans({},'CatalogBundle') }}</h4>
+                    </div><!--end checkout-header-->
+
+                    <div class="checkout-content" style="display: none;">
+                        {% include '@Catalog/Bin/_checkout_field.html.twig' with {'field':form.address} %}
+                        {% include '@Catalog/Bin/_checkout_field.html.twig' with {'field':form.delivery_time} %}
+                    </div><!--end checkout-content-->
+
+                </div><!--end checkout-outer-->
+                    <div class="control-group">
+                        <div class="controls">
+                            <button type="submit" class="pull-right btn btn-primary">{{ 'checkout.continue'|trans({},'CatalogBundle') }}</button>
+                        </div>
+                    </div><!--end control-group-->
+                    {{ form_errors(form) }}
+                    {{ form_rest(form) }}
+                </form><!--end form-->
+
+            </div><!--end span12-->
+        </div><!--end row-->
+    {% endfor %}
+{% endblock body %}

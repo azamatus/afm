@@ -1,0 +1,8 @@
+
+<div class="control-group">
+
+    <label class="control-label" for="{{ field.vars.name }}">{{ field.vars.label|trans({},'CatalogBundle') }}: {% if (field.vars.required) %}<span class="text-error">*</span>{% endif %}</label>
+    <div class="controls">
+        {{ form_widget(field) }}
+    </div>
+</div><!--end control-group-->

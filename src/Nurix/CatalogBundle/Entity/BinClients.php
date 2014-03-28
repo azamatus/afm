@@ -13,8 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class BinClients
 {
 
-	const STATUS_DISABLED = false;
-	const STATUS_ACTIVE = 1;
+	const STATUS_NEW = "new";
     /**
      * @var integer
      *
@@ -69,9 +68,9 @@ class BinClients
     /**
      * @var varchar
      *
-     * @ORM\Column(name="active", type="string", columnDefinition="ENUM('В обработке','Заказ подтвержден','На складе','Отправлено','Доставлено','Заказ отменен','Задержка товара')")
+     * @ORM\Column(name="active", type="enumstatus")
      */
-    private $active = self::STATUS_ACTIVE;
+    private $status = self::STATUS_NEW;
 
     /**
      * @var \DateTime
@@ -250,9 +249,9 @@ class BinClients
      * @param boolean $active
      * @return BinClients
      */
-    public function setActive($active)
+    public function setStatus($active)
     {
-        $this->active = $active;
+        $this->status = $active;
     
         return $this;
     }
@@ -262,9 +261,9 @@ class BinClients
      *
      * @return boolean 
      */
-    public function getActive()
+    public function getStatus()
     {
-        return $this->active;
+        return $this->status;
     }
 
     /**

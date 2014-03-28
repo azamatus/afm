@@ -197,7 +197,7 @@ class BinController extends Controller
                 $this->get('session')->getFlashBag()->add('notice', 'Ваш заказ принят');
             }
         }
-        return $this->render("CatalogBundle:Bin:binOrderForm.html.twig", array(
+        return $this->render("CatalogBundle:Bin:checkout.html.twig", array(
             "form" => $form->createView()
         ));
     }
@@ -216,8 +216,8 @@ class BinController extends Controller
         $orders=$repository->GetClientOrders($binClients->getId());
         $message = \Swift_Message::newInstance()
             ->setSubject('Новый заказ')
-            ->setFrom('nurixkg@gmail.com')
-            ->setTo('nurixkg@gmail.com')
+            ->setFrom($this->container->getParameter('email_from'))
+            ->setTo($this->container->getParameter('email_to'))
             ->setBody(
                 $this->get('templating')->render(
                     'CatalogBundle:Bin:email.txt.twig',
