@@ -67,7 +67,7 @@ checkout:
   needdelivery: Доставить заказ?
   address:  Адрес
   datetime: Дата доставки
-  delo_detail: Детали доставки
+  delivery_detail: Детали доставки
 
 new: В обработке
 confirmed: Подтвержден,
