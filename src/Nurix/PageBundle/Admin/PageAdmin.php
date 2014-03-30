@@ -2,6 +2,7 @@
 
 namespace Nurix\PageBundle\Admin;
 
+use Nurix\PageBundle\DBAL\PageTypeEnum;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Admin\AdminInterface;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -17,6 +18,7 @@ class PageAdmin extends Admin
         $showMapper
             ->add('id')
             ->add('url')
+            ->add('position')
             ->add('title')
             ->add('content')
         ;
@@ -27,6 +29,7 @@ class PageAdmin extends Admin
         $formMapper
             ->with('Страница')
             ->add('url')
+            ->add('position','choice',array('label'=>'положение','choices'=>PageTypeEnum::getArray()))
             ->add('translations', 'a2lix_translations', array(
             'fields' => array(                      // [3]
                 'title' => array(                   // [3.a]
@@ -50,6 +53,7 @@ class PageAdmin extends Admin
         $listMapper
             ->addIdentifier('id')
             ->addIdentifier('url')
+            ->add('position')
             ->add('title')
         ;
     }

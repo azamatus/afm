@@ -6,15 +6,6 @@ services:
         class: Nurix\CatalogBundle\Menu\MenuBuilder
         arguments: ["@knp_menu.factory"]
 
-    catalog.menu.catalog_sidebar:
-            class: Knp\Menu\MenuItem
-            factory_service: catalog.menu_builder
-            factory_method: createCatalogSideMenu
-            arguments:  [@request,@doctrine.orm.entity_manager]
-            scope: request
-            tags:
-                - { name: knp_menu.menu, alias: catalog_sidebar } # Named "sidebar" this time
-
     catalog.menu.catalog_side_menu:
             class: Knp\Menu\MenuItem
             factory_service: catalog.menu_builder

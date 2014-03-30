@@ -25,23 +25,6 @@ class MenuBuilder extends ContainerAware
      * @return mixed
      */
 
-    public function createCatalogSideMenu(Request $request,$em)
-    {
-        $menu = $this->factory->createItem('catalog_sidebar');
-        $menu->setCurrentUri($request->getRequestUri());
-        $menu->setChildrenAttribute('class','nav');
-        $menu->addChild('Home', array('route' => 'nurix_homepage','label'=>'Home'))
-            ->setExtra('icon',true);
-        $menu->addChild('Catalog', array('route' => 'nurix_goods_get_catalog','routeParameters'=>array('cid'=>null),'label'=>'Каталог'));
-
-        $this->getCatalogMenu($em, $menu);
-
-        $menu->addChild('available', array('route' => 'nurix_catalog_get_available','label'=>'В наличии'));
-        $menu->addChild('pages.howToOrder', array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => 'howtoorder')));
-        $menu->addChild('pages.conditions', array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => 'conditions')));
-        $menu->addChild('pages.contact', array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => 'contact')));
-        return $menu;
-    }
 
     public function createCatalogLeftMenu(Request $request,$em){
 
@@ -53,26 +36,10 @@ class MenuBuilder extends ContainerAware
     }
 
     /**
-     * создает боковое меню каталога
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @return mixed
-     */
-
-    public function createSiteMapMenu(Request $request,$em)
-    {
-        $menu = $this->factory->createItem('catalog_sitemap');
-        $menu->setCurrentUri($request->getRequestUri());
-        $menu->setChildrenAttribute('class','siteMapLinks');
-
-        $this->getCatalogMenu($em, $menu);
-        return $menu;
-    }
-
-    /**
      * @param $em
      * @param $menu
      */
-    private function getCatalogMenu($em, $menu)
+    public function getCatalogMenu($em, $menu)
     {
         $cm = $em->getRepository("CatalogBundle:Catalog");
 

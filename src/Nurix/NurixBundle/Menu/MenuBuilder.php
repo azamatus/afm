@@ -1,20 +1,27 @@
 <?php
 namespace Nurix\NurixBundle\Menu;
 
+use Doctrine\ORM\EntityManager;
 use Knp\Menu\FactoryInterface;
+use Knp\Menu\ItemInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\DependencyInjection\ContainerAware;
 
 class MenuBuilder extends ContainerAware
 {
     private $factory;
+    /**
+     * @var EntityManager
+     */
+    private $em;
 
     /**
      * @param FactoryInterface $factory
      */
-    public function __construct(FactoryInterface $factory)
+    public function __construct(FactoryInterface $factory,$em)
     {
         $this->factory = $factory;
+        $this->em = $em;
     }
 
     /**
@@ -23,14 +30,20 @@ class MenuBuilder extends ContainerAware
      * @return mixed
      */
 
-    public function createMainMenu(Request $request)
+    public function createMainMenu(Request $request,\Nurix\CatalogBundle\Menu\MenuBuilder $catalogMenuBuilder)
     {
-        $menu = $this->factory->createItem('main_menu');
+        $menu = $this->factory->createItem('main');
+        $menu->setCurrentUri($request->getRequestUri());
+        $menu->setChildrenAttribute('class','nav');
+        $menu->addChild('Home', array('route' => 'nurix_homepage','label'=>'Home'))
+            ->setExtra('icon',true);
+        $menu->addChild('Catalog', array('route' => 'nurix_goods_get_catalog','routeParameters'=>array('cid'=>null),'label'=>'Каталог'));
 
-        $menu->addChild('home', array('route' => 'nurix_homepage','label'=>'Главная'));
-        $menu->addChild('contacts', array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => 'contact'),'label'=>'Контакты'));
-        //$menu->addChild('sitemap', array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => 'sitemap'),'label'=>'Карта сайта'));
-        $menu->setChildrenAttribute('class','main_menu');
+        $catalogMenuBuilder->getCatalogMenu($this->em, $menu);
+
+        $menu->addChild('available', array('route' => 'nurix_catalog_get_available','label'=>'В наличии'));
+
+        $this->getPagesMenu($menu, 'top');
         return $menu;
     }
 
@@ -40,65 +53,26 @@ class MenuBuilder extends ContainerAware
      * @return mixed
      */
 
-    public function createInfoSideMenu(Request $request)
+    public function createBottomMenu(Request $request)
     {
-        $menu = $this->factory->createItem('sidebar');
+        $menu = $this->factory->createItem('bottom');
         $menu->setCurrentUri($request->getRequestUri());
 
-        $menu->setChildrenAttribute('class','side_menu');
+        $menu->setChildrenAttribute('class','unstyled');
 
-        $menu->addChild('Interesting',array('label'=>'Интересное'))
-            ->setAttribute('class','catalog_menu')
-            ->setLabelAttribute('class','f20');
-
-        $this->getInterestingMenu($menu);
-
+        $this->getPagesMenu($menu, 'bottom');
         return $menu;
     }
 
-
-
-    /**
-     * создает Карту сайта
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @return mixed
-     */
-
-    public function createSiteMapMenu(Request $request)
+    private function getPagesMenu(ItemInterface $menu,$position)
     {
-        $menu = $this->factory->createItem('info_sitemap');
-        $menu->setCurrentUri($request->getRequestUri());
+        $pagesRepository=$this->em->getRepository('NurixPageBundle:Pages');
+        $pages = $pagesRepository->findBy(array('position'=>$position));
 
-        $menu->setChildrenAttribute('class','otherLinks');
+        foreach ($pages as $page)
+        {
+            $menu->addChild($page->getTitle(), array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => $page->getUrl())));
+        }
 
-        $this->getInterestingMenu($menu);
-
-        return $menu;
-    }
-
-    /**
-     * @param $menu \Knp\Menu\ItemInterface
-     */
-    public function getInterestingMenu($menu)
-    {
-        $menu->addChild('Наши новости', array('route' => 'sonata_news_local_inter', 'routeParameters' => array('type' => 'local')));
-
-        $menu->addChild('Мировые новости', array('route' => 'sonata_news_local_inter', 'routeParameters' => array('type' => 'international')));
-
-        $menu->addChild('О магазине', array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => 'about')));
-
-        $menu->addChild('Контакты', array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => 'contact')));
-
-        $menu->addChild('Условия доставки', array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => 'conditions')));
-
-        $menu->addChild('Как оформить заказ', array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => 'howtoorder')));
-
-        //$menu->addChild('Способы оплаты', array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => 'payment')));
-
-        $menu->addChild('Справка', array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => 'help')));
-
-        $menu->addChild('Отзывы', array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => 'feedback')));
-
-        //$menu->addChild('Оптовым покупателям', array('route' => 'nurix_create_pages', 'routeParameters' => array('url' => 'optom')));
     }
 }

@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Prezent\Doctrine\Translatable\Annotation as Prezent;
 use Prezent\Doctrine\Translatable\Entity\AbstractTranslatable;
 use Nurix\PageBundle\Entity\PagesTranslation;
+use Strokit\CoreBundle\DBAL\BaseTranslatable;
 
 /**
  * Pages
@@ -14,7 +15,7 @@ use Nurix\PageBundle\Entity\PagesTranslation;
  * @ORM\Table(value="pages")
  * @ORM\Entity
  */
-class Pages extends AbstractTranslatable
+class Pages extends BaseTranslatable
 {
     /**
      * @var integer
@@ -33,14 +34,16 @@ class Pages extends AbstractTranslatable
     private $url;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="position", type="pagetype_enum", nullable=false)
+     */
+    private $position;
+
+    /**
      * @Prezent\Translations(targetEntity="Nurix\PageBundle\Entity\PagesTranslation")
      */
     protected $translations;
-
-    /**
-     * @Prezent\CurrentLocale
-     */
-    private $currentLocale;
 
     public function __construct()
     {
@@ -81,41 +84,11 @@ class Pages extends AbstractTranslatable
         return $this->url;
     }
 
-    private $currentTranslation; // Cache current translation. Useful in Doctrine 2.4+
-
-
-    /**
-     * Translation helper method
-     */
-    public function translate($locale = null)
-    {
-        if (null === $locale) {
-            $locale = $this->currentLocale;
-        }
-
-        if (!$locale) {
-            throw new \RuntimeException('No locale has been set and currentLocale is empty');
-        }
-
-        if ($this->currentTranslation && $this->currentTranslation->getLocale() === $locale) {
-            return $this->currentTranslation;
-        }
-
-        if (!$translation = $this->translations->get($locale)) {
-            $translation = new PagesTranslation();
-            $translation->setLocale($locale);
-            $this->addTranslation($translation);
-        }
-
-        $this->currentTranslation = $translation;
-        return $translation;
-    }
-
     // Proxy getters and setters
 
     public function getTitle()
     {
-        return $this->translate()->getTitle();
+        return $this->getFieldTranslation('title');
     }
 
     public function setTitle($title)
@@ -149,5 +122,21 @@ class Pages extends AbstractTranslatable
     public function setCurrentLocale($currentLocale)
     {
         $this->currentLocale = $currentLocale;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * @param string $position
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
     }
 }

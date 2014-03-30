@@ -53,6 +53,7 @@ doctrine:
         types:
             json: Sonata\Doctrine\Types\JsonType
             enumstatus: Nurix\CatalogBundle\DBAL\EnumStatusType
+            pagetype_enum: Nurix\PageBundle\DBAL\PageTypeEnum
         mapping_types:
             enum: string
 
