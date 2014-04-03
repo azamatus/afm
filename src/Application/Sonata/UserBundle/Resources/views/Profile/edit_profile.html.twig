@@ -14,9 +14,11 @@ file that was distributed with this source code.
 {% endblock %}
 
 {% block fos_user_content %}
-<div class="sonata-user-edit-profile">
-
-    <h2>{{ "title_user_account" | trans({}, 'SonataUserBundle')}} - {{ "title_user_edit_profile" | trans({}, 'SonataUserBundle')}}</h2>
+<div class="span9">
+<div class="sonata-user-edit-profile register">
+    <div class="titleHeader clearfix">
+        <h3>{{ "my_account" | trans({}, 'SonataUserBundle')}}</h3>
+    </div><!--end titleHeader-->
 
     {{ form_errors(form) }}
 
@@ -28,47 +30,49 @@ file that was distributed with this source code.
     {% endblock field_row %}
 
     <form action="{{ path('sonata_user_profile_edit') }}" method="POST" class="form-horizontal">
+    <h4>&nbsp;&nbsp;&nbsp;&nbsp;{{ "title_user_edit_profile" | trans({}, 'SonataUserBundle')}}</h4>
         <div class="control-group">
-            {{ form_label(form.firstname, 'form.label_firstname'| trans({}, 'SonataUserBundle'), {'attr': {'class': 'control-label'}}) }}
+            {{ form_label(form.firstname, 'form.label_firstname'| trans({}, 'SonataUserBundle'), {'label_attr': {'class': 'control-label'}}) }}
             <div class="controls">{{ form_widget(form.firstname) }}</div>
         </div>
         <div class="control-group">
-            {{ form_label(form.lastname, 'form.label_lastname'| trans({}, 'SonataUserBundle'), {'attr': {'class': 'control-label'}}) }}
+            {{ form_label(form.lastname, 'form.label_lastname'| trans({}, 'SonataUserBundle'), {'label_attr': {'class': 'control-label'}}) }}
             <div class="controls">{{ form_widget(form.lastname) }}</div>
         </div>
         <div class="control-group">
-            {{ form_label(form.website , 'form.label_website'| trans({}, 'SonataUserBundle'), {'attr': {'class': 'control-label'}}) }}
+            {{ form_label(form.website , 'form.label_website'| trans({}, 'SonataUserBundle'), {'label_attr': {'class': 'control-label'}}) }}
             <div class="controls">{{ form_widget(form.website) }}</div>
         </div>
         <div class="control-group">
-            {{ form_label(form.dateOfBirth, 'form.label_date_of_birth'| trans({}, 'SonataUserBundle'), {'attr': {'class': 'control-label'}}) }}
-            <div class="controls">{{ form_widget(form.dateOfBirth, {'attr': {'class': 'span1'}}) }}</div>
+            {{ form_label(form.dateOfBirth, 'form.label_date_of_birth'| trans({}, 'SonataUserBundle'), {'label_attr': {'class': 'control-label'}}) }}
+            {{ form_widget(form.dateOfBirth, {'attr': {'class': 'controls, span1'}}) }}
         </div>
         <div class="control-group">
-            {{ form_label(form.biography, 'form.label_biography'| trans({}, 'SonataUserBundle'), {'attr': {'class': 'control-label'}}) }}
+            {{ form_label(form.biography, 'form.label_biography'| trans({}, 'SonataUserBundle'), {'label_attr': {'class': 'control-label'}}) }}
             <div class="controls">{{ form_widget(form.biography) }}</div>
         </div>
         <div class="control-group">
-            {{ form_label(form.timezone, 'form.label_timezone'| trans({}, 'SonataUserBundle'), {'attr': {'class': 'control-label'}}) }}
+            {{ form_label(form.timezone, 'form.label_timezone'| trans({}, 'SonataUserBundle'), {'label_attr': {'class': 'control-label'}}) }}
             <div class="controls">{{ form_widget(form.timezone) }}</div>
         </div>
         <div class="control-group">
-            {{ form_label(form.gender, 'form.label_gender' | trans({}, 'SonataUserBundle'), {'attr': {'class': 'control-label'}}) }}
+            {{ form_label(form.gender, 'form.label_gender' | trans({}, 'SonataUserBundle'), {'label_attr': {'class': 'control-label'}}) }}
             <div class="controls">{{ form_widget(form.gender) }}</div>
         </div>
         <div class="control-group">
-            {{ form_label(form.phone, 'form.label_phone'| trans({}, 'SonataUserBundle'), {'attr': {'class': 'control-label'}}) }}
+            {{ form_label(form.phone, 'form.label_phone'| trans({}, 'SonataUserBundle'), {'label_attr': {'class': 'control-label'}}) }}
             <div class="controls">{{ form_widget(form.phone) }}</div>
         </div>
         <div class="control-group">
-            {{ form_label(form.address, 'form.label_address'| trans({}, 'SonataUserBundle'), {'attr': {'class': 'control-label'}}) }}
+            {{ form_label(form.address, 'form.label_address'| trans({}, 'SonataUserBundle'), {'label_attr': {'class': 'control-label'}}) }}
             <div class="controls">{{ form_widget(form.address) }}</div>
         </div>
-
-        {{ form_rest(form) }}
-        <div class="registration_submit">
-            <input type="submit" name="submit" class="button_buy-trn" value="{{ 'sonata_user_submit'|trans({}, 'SonataUserBundle') }}" />
+        <div class="control-group">
+            <div class="controls">
+                <input type="submit" name="submit" class=" btn btn-primary" value="{{ 'sonata_user_submit'|trans({}, 'SonataUserBundle') }}" />
+            </div>
         </div>
     </form>
+</div>
 </div>
 {% endblock %}
