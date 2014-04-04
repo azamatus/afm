@@ -10,41 +10,55 @@ file that was distributed with this source code.
 #}
 {% extends "FOSUserBundle::layout.html.twig" %}
 {% block title %}
-    {{ parent() }} : Профиль пользователя app.user.fullname
+    {{ parent() }} : {{ "title_user_account" | trans({}, 'SonataUserBundle')}} {{ app.user.fullname }}
 {% endblock %}
 {% block fos_user_content %}
-    <div class="sonata-user-show">
+    <div class="container">
+        <div class="row">
+            <div class="span9">
+                <div class="account-list-outer">
+                    <div class="titleHeader clearfix">
+                        <h3>{{ "my_account" | trans({}, 'SonataUserBundle')}}</h3>
+                    </div><!--end titleHeader-->
+                    {#<table class="profile">#}
+                        {#<tr>#}
+                            {#<td class="label"> {{ 'form.label_firstname' | trans({}, 'SonataUserBundle') }}:</td>#}
+                            {#<td class="value"> {{ app.user.firstname }}  </td>#}
+                        {#</tr>#}
+                        {#<tr>#}
+                            {#<td class="label"> {{ 'form.label_lastname' | trans({}, 'SonataUserBundle') }}:</td>#}
+                            {#<td class="value"> {{ app.user.lastname }}  </td>#}
+                        {#</tr>#}
+                        {#<tr>#}
+                            {#<td class="label"> {{ 'form.label_email' | trans({}, 'SonataUserBundle') }}:</td>#}
+                            {#<td class="value"> {{ app.user.email }}  </td>#}
+                        {#</tr>#}
+                        {#<tr>#}
+                            {#<td class="label"> {{ 'form.label_phone' | trans({}, 'SonataUserBundle') }}:</td>#}
+                            {#<td class="value"> {{ app.user.phone }}  </td>#}
+                        {#</tr>#}
+                        {#<tr>#}
+                            {#<td class="label"> {{ 'form.label_address' | trans({}, 'SonataUserBundle') }}:</td>#}
+                            {#<td class="value"> {{ app.user.address }}  </td>#}
+                        {#</tr>#}
+                    {#</table>#}
+                    <ul class="account-list">
+                        <li><a href="{{ path('sonata_user_profile_edit') }}" class="invarseColor"><i class="icon-caret-right"></i> {{ "link_edit_profile" | trans({}, 'SonataUserBundle') }}</a></li>
+                        <li><a href="{{ path('fos_user_change_password') }}" class="invarseColor"><i class="icon-caret-right"></i> {{ "change_password.submit" | trans({}, 'FOSUserBundle') }}</a></li>
+                    </ul>
 
-        <h2 class="pages_center">{{ "title_user_account" | trans({}, 'SonataUserBundle')}}</h2>
+                    {#<div class="titleHeader clearfix">#}
+                        {#<h3>{{ 'my_orders' | trans({}, 'CatalogBundle') }}</h3>#}
+                    {#</div><!--end titleHeader-->#}
+                    {#<ul class="account-list">#}
+                        {#<li><a href="#" class="invarseColor"><i class="icon-caret-right"></i> View Your Order History</a></li>#}
+                        {#<li><a href="#" class="invarseColor"><i class="icon-caret-right"></i> View Your DownLoads</a></li>#}
+                        {#<li><a href="#" class="invarseColor"><i class="icon-caret-right"></i> View Your Review Points</a></li>#}
+                        {#<li><a href="#" class="invarseColor"><i class="icon-caret-right"></i> View Your Transactions</a></li>#}
+                    {#</ul>#}
+                </div><!--end -->
+            </div><!--end span9-->
+        </div><!--end row-->
 
-        <h3>{{ app.user.fullname }}</h3>
-        <table class="profile">
-            <tr>
-                <td class="label"> {{ 'form.label_firstname' | trans({}, 'SonataUserBundle') }}:</td>
-                <td class="value"> {{ app.user.firstname }}  </td>
-            </tr>
-            <tr>
-                <td class="label"> {{ 'form.label_lastname' | trans({}, 'SonataUserBundle') }}:</td>
-                <td class="value"> {{ app.user.lastname }}  </td>
-            </tr>
-            <tr>
-                <td class="label"> {{ 'form.label_email' | trans({}, 'SonataUserBundle') }}:</td>
-                <td class="value"> {{ app.user.email }}  </td>
-            </tr>
-            <tr>
-                <td class="label"> {{ 'form.label_phone' | trans({}, 'SonataUserBundle') }}:</td>
-                <td class="value"> {{ app.user.phone }}  </td>
-            </tr>
-            <tr>
-                <td class="label"> {{ 'form.label_address' | trans({}, 'SonataUserBundle') }}:</td>
-                <td class="value"> {{ app.user.address }}  </td>
-            </tr>
-        </table>
-        <div>
-            <a class="button_buy-trn" href="{{ path('sonata_user_profile_edit') }}">{{ "link_edit_profile" | trans({}, 'SonataUserBundle') }}</a>
-
-            <a class="button_buy-trn float_right" href="{{ path('fos_user_change_password') }}">{{ "change_password.submit" | trans({}, 'FOSUserBundle') }}</a>
-        </div>
-
-    </div>
+    </div><!--end conatiner-->
 {% endblock %}

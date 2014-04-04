@@ -378,6 +378,10 @@
                 <source>link_edit_profile</source>
                 <target>Редактировать</target>
             </trans-unit>
+             <trans-unit id="my_account">
+                <source>my_account</source>
+                <target>Мой профиль</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
