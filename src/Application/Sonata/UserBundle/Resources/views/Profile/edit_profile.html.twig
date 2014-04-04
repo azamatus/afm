@@ -10,7 +10,7 @@ file that was distributed with this source code.
 #}
 {% extends "FOSUserBundle::layout.html.twig" %}
 {% block title %}
-    {{ parent() }} : Редактирование профиля
+    {{ parent() }} : {{ "title_user_edit_profile" | trans({}, 'SonataUserBundle')}}
 {% endblock %}
 
 {% block fos_user_content %}
