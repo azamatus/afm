@@ -1,64 +1,60 @@
-
-<h1>Регистрация</h1>
-<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register" id="registration">
-
+<div class="register" id="form_registration">
+    <div class="titleHeader clearfix">
+        <h3>{{ "register.title"|trans({}, 'ApplicationSonataUserBundle')}}</h3>
+    </div><!--end titleHeader-->
+<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register form-horizontal" id="registration">
     {{ form_errors(form) }}
 
-    <div>
-        <div class="registration_label">{{ form_label(form.username, 'Логин:') }}</div>
-        {{ form_errors(form.username) }}
-        <div class="registration_input">{{ form_widget(form.username) }}</div>
+    <h4>&nbsp;&nbsp;&nbsp;&nbsp;Персональные данные</h4>
+    {{ form_errors(form.username) }}
+    <div class="control-group">
+        {{ form_label(form.username, 'Логин:',{'label_attr': {'class': 'control-label'}}) }}
+        <div class="controls">{{ form_widget(form.username) }}</div>
     </div>
 
-    <div>
-        <div class="registration_label">{{ form_label(form.email, 'E-mail') }}</div>
-        {{ form_errors(form.email) }}
-        <div class="registration_input">{{ form_widget(form.email) }}</div>
-
+    {{ form_errors(form.email) }}
+    <div class="control-group">
+        {{ form_label(form.email, "profile.show.email"|trans({}, 'FOSUserBundle'), {'label_attr': {'class': 'control-label'}}) }}
+        <div class="controls">{{ form_widget(form.email) }}</div>
     </div>
-
-    <div>
-        <div class="registration_label">{{ form_label(form.plainPassword.first, 'Пароль:') }}</div>
-    {{ form_errors(form.plainPassword.first) }}
-        <div class="registration_input">{{ form_widget(form.plainPassword.first) }}</div>
-    </div>
-
-    <div>
-        <div class="registration_label">{{ form_label(form.plainPassword.second, 'Повтор пароля:') }}</div>
-    {{ form_errors(form.plainPassword.second) }}
-        <div class="registration_input">
-            {{ form_widget(form.plainPassword.second) }}
-        </div>
-    </div>
-
-    <div>
-        <div class="registration_label">{{ form_label(form.firstname, 'Имя:') }}</div>
+    <div class="control-group">
+        {{ form_label(form.firstname, 'Имя:', {'label_attr': {'class': 'control-label'}}) }}
         {{ form_errors(form.firstname) }}
-        <div class="registration_input">{{ form_widget(form.firstname) }}</div>
+        <div class="controls">
+            {{ form_widget(form.firstname) }}</div>
     </div>
-
-
-    <div>
-        <div class="registration_label">{{ form_label(form.lastname, 'Фамилия:') }}</div>
+    <div class="control-group">
+        {{ form_label(form.lastname, 'Фамилия:', {'label_attr': {'class': 'control-label'}}) }}
         {{ form_errors(form.lastname) }}
-        <div class="registration_input">{{ form_widget(form.lastname) }}</div>
+        <div class="controls">{{ form_widget(form.lastname) }}</div>
     </div>
-
-    <div>
-        <div class="registration_label">{{ form_label(form.phone, 'Номер телефона:') }}</div>
+    <div class="control-group">
+        {{ form_label(form.phone, 'Номер телефона:', {'label_attr': {'class': 'control-label'}}) }}
         {{ form_errors(form.phone) }}
-        <div class="registration_input">{{ form_widget(form.phone) }}</div>
+        <div class="controls">{{ form_widget(form.phone) }}</div>
     </div>
-
-
-    <div>
-        <div class="registration_label">{{ form_label(form.address, 'Домашний адрес:') }}</div>
+    <div class="control-group">
+        {{ form_label(form.address, 'Домашний адрес:', {'label_attr': {'class': 'control-label'}}) }}
         {{ form_errors(form.address) }}
-        <div class="registration_input">{{ form_widget(form.address) }}</div>
+        <div class="controls">{{ form_widget(form.address) }}</div>
     </div>
-
+    <h4>&nbsp;&nbsp;&nbsp;&nbsp;Пароль</h4>
+    <div class="control-group">
+        {{ form_label(form.plainPassword.first, 'Пароль:', {'label_attr': {'class': 'control-label'}}) }}
+        {{ form_errors(form.plainPassword.first) }}
+        <div class="controls">{{ form_widget(form.plainPassword.first) }}</div>
+    </div>
+    <div class="control-group">
+        {{ form_label(form.plainPassword.second, 'Повтор пароля:', {'label_attr': {'class': 'control-label'}}) }}
+        {{ form_errors(form.plainPassword.second) }}
+        <div class="controls">{{ form_widget(form.plainPassword.second) }}</div>
+    </div>
     {{ form_rest(form) }}
-    <div class="registration_submit">
-        <input type="submit" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" class="submit_button" />
-    </div>
+    <div class="control-group">
+        <div class="controls">
+        <br>
+            <input type="submit" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" class="btn btn-primary"/>
+        </div>
+    </div><!--end control-group-->
 </form>
+</div>

@@ -207,6 +207,53 @@ function changeQuantityCatalog(){
 
 }
 
+function validateRegistrationForm(){
+    $('#form_registration form').validate({
+        rules: {
+            "fos_user_registration_form[username]":{
+                required: true
+            },
+            "fos_user_registration_form[email]":{
+                required: true,
+                email: true
+            },
+            "fos_user_registration_form[firstname]":{
+                required: true
+            },
+            "fos_user_registration_form[lastname]":{
+                required: true
+            },
+            "fos_user_registration_form[phone]":{
+                required: true
+            },
+            "fos_user_registration_form[address]":{
+                required: true
+            },
+            "fos_user_registration_form[plainPassword][first]":{
+                required: true
+            },
+            "fos_user_registration_form[plainPassword][second]":{
+                required: true,
+                equalTo: "#fos_user_registration_form_plainPassword_first"
+            }
+        },
+        errorPlacement: function(error, element) {
+            if (element.hasClass("error")){
+                element.next().remove();
+                element.parent().append('<span style="color: #b94a48;" class="help-inline"><i class="icon-remove"></i> Invalid input!</span>');
+                if(element.attr('id') == 'fos_user_registration_form_plainPassword_second'){
+                    element.next().remove();
+                    element.parent().append('<span style="color: #b94a48;" class="help-inline"><i class="icon-remove"></i> Пароли не совпадают!</span>');
+                }
+            }else {
+                element.next().remove();
+            }
+        },
+        success: function() {
+        }
+    })
+}
+
 $(document).ready(function () {
     changeCatalogStyle();
     changeCurrency();
@@ -223,4 +270,5 @@ $(document).ready(function () {
     rangePriceSlider();
     sortable();
     changeQuantityCatalog();
+    validateRegistrationForm();
 });
