@@ -1,6 +1,17 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
+{% block javascripts %}
+    <script>
+        var trans = {
+            someMessage: {
+                invalide_input : "{{ 'register.invalid_input'|trans({},'SonataUserBundle') }}",
+                password_not_match : "{{ 'register.password_not_match'|trans({},'SonataUserBundle') }}"
+                }
+            };
+    </script>
+    <script src="{{ asset('bundles/applicationsonatauser/js/registration.js') }}"
+{% endblock %}
 {% block title %}
-    {{ parent() }} : Регистрация
+    {{ parent() }} : {{ "register.title"|trans({}, 'SonataUserBundle')}}
 {% endblock %}
 
 {% block fos_user_content %}
