@@ -223,12 +223,6 @@ function validateRegistrationForm(){
             "fos_user_registration_form[lastname]":{
                 required: true
             },
-            "fos_user_registration_form[phone]":{
-                required: true
-            },
-            "fos_user_registration_form[address]":{
-                required: true
-            },
             "fos_user_registration_form[plainPassword][first]":{
                 required: true
             },
@@ -240,12 +234,15 @@ function validateRegistrationForm(){
         errorPlacement: function(error, element) {
             if (element.hasClass("error")){
                 element.next().remove();
-                element.parent().append('<span style="color: #b94a48;" class="help-inline"><i class="icon-remove"></i> Invalid input!</span>');
+                element.parent().parent().addClass('error');
+                element.parent().append("<span class='help-inline'><i class='icon-remove'></i>  Неверные данные</span>");
                 if(element.attr('id') == 'fos_user_registration_form_plainPassword_second'){
+                    element.parent().parent().addClass('error');
                     element.next().remove();
-                    element.parent().append('<span style="color: #b94a48;" class="help-inline"><i class="icon-remove"></i> Пароли не совпадают!</span>');
+                    element.parent().append('<span class="help-inline"><i class="icon-remove"></i>  Пароли не совпадают!</span>');
                 }
             }else {
+                element.parent().parent().removeClass('error');
                 element.next().remove();
             }
         },

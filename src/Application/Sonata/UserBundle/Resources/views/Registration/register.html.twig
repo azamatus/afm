@@ -1,6 +1,6 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 {% block title %}
-    {{ parent() }} : Регистрация
+    {{ parent() }} : {{ "register.title"|trans({}, 'SonataUserBundle')}}
 {% endblock %}
 
 {% block fos_user_content %}

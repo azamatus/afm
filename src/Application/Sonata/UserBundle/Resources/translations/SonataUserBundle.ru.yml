@@ -1,2 +1,11 @@
 register:
     title: Регистрация
+    username: Логин:
+    email: Электронная почта:
+    password: Пароль:
+    password_repeat: Повтор пароля:
+    name: Имя:
+    surname: Фамилия:
+    phone: Телефон:
+    address: Адрес:
+    email_confirmation: Подтверждение E-mail
