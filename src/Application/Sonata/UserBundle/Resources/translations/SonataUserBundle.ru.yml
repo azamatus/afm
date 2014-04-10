@@ -9,3 +9,5 @@ register:
     phone: Телефон:
     address: Адрес:
     email_confirmation: Подтверждение E-mail
+    invalid_input:   Неверные данные
+    password_not_match:   Пароли не совпадают
