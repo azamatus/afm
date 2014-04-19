@@ -25,3 +25,9 @@ nurix_search:
     defaults: { _controller: CatalogBundle:Search:index }
     requirements:
         _method:  GET
+
+good_review_new:
+    path:   /goods/{id}/review/new/
+    defaults: { _controller:  CatalogBundle:Product:newReview }
+    requirements:
+      id: \d+

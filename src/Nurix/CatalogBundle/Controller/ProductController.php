@@ -2,10 +2,12 @@
 
 namespace Nurix\CatalogBundle\Controller;
 
+use Nurix\CatalogBundle\Entity\Review;
+use Nurix\CatalogBundle\Form\ReviewType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Nurix\CatalogBundle\Entity\Goods;
 use Nurix\CatalogBundle\Entity;
-use Doctrine\ORM\QueryBuilder;
+use Symfony\Component\HttpFoundation\Request;
 
 
 class ProductController extends Controller
@@ -47,5 +49,29 @@ class ProductController extends Controller
             ->getRelativeProducts($product,$this->container->getParameter('related_product_count'));
 
         return $this->render('CatalogBundle:Product:get_related_items.html.twig', array('products' => $same,'title' => "Похожие позиции"));
+    }
+
+    public function newReviewAction(Request $request,$id){
+        $review = new Review();
+
+        $rForm = $this->createForm(new ReviewType(),$review);
+
+        $rForm->handleRequest($request);
+
+
+        if($rForm->isValid()){
+
+            $em = $this->getDoctrine()->getManager();
+            $good = $em->getRepository('CatalogBundle:Goods')->find($id);
+            $good->addReview($review);
+            $review->setCreated(new \DateTime('now'));
+            $review->setGood($good);
+
+            $em->persist($good);
+            $em->flush();
+            return $this->redirect($this->generateUrl('nurix_goods_get_info',array('id'=>$id)));
+        }
+
+        return $this->render('@Catalog/Review/new.html.twig',array('rForm'=>$rForm->createView(),'product_id'=>$id));
     }
 }

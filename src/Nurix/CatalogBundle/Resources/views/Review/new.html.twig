@@ -1,0 +1,55 @@
+
+<div class="tab-pane" id="make-review">
+    <form method="post" action="{{ path('good_review_new',{'id':product_id}) }}" class="form-horizontal">
+        <div class="control-group">
+            {% if not app.user %}
+                <label class="control-label" for="inputName">Your Name <span class="text-error">*</span></label>
+            {% endif %}
+
+            <div class="controls">
+                {% if app.user %}
+                    {% set value = app.user %}
+                    <input type="hidden" value="{{ app.user }}" maxlength="30" required="required" name="nurix_catalogbundle_review[author]" id="nurix_catalogbundle_review_author">
+                    {% else %}
+                        {{ form_widget(rForm.author) }}
+                {% endif %}
+
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputReview">Your Review <span
+                        class="text-error">*</span></label>
+
+            <div class="controls">
+                {{ form_widget(rForm.comment) }}
+                {{ form_widget(rForm.rating) }}
+                {{ form_widget(rForm._token) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputReview">Your Review <span
+                        class="text-error">*</span></label>
+
+            <div class="controls">
+                <div class="btn-group" data-toggle="buttons-radio">
+                    <button type="button" class="btn" data-toggle="tooltip" data-title="1/5"><i
+                                class="icon-star"></i></button>
+                    <button type="button" class="btn" data-toggle="tooltip" data-title="2/5"><i
+                                class="icon-star"></i></button>
+                    <button type="button" class="btn" data-toggle="tooltip" data-title="3/5"><i
+                                class="icon-star"></i></button>
+                    <button type="button" class="btn" data-toggle="tooltip" data-title="4/5"><i
+                                class="icon-star"></i></button>
+                    <button type="button" class="btn" data-toggle="tooltip" data-title="5/5"><i
+                                class="icon-star"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" class="btn btn-primary" name="submit">Add Review</button>
+            </div>
+        </div>
+    </form>
+    <!--end form-->
+</div>
