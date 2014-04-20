@@ -15,11 +15,9 @@
             <span>{{ product.price | price }}</span>
         </div>
         <ul class="rating">
-            <li><i class="star-on"></i></li>
-            <li><i class="star-on"></i></li>
-            <li><i class="star-on"></i></li>
-            <li><i class="star-off"></i></li>
-            <li><i class="star-off"></i></li>
+            {% for i in 1..5 %}
+                <li><i class="{% if i <=  product.avgReview %} star-on {% else %} star-off {% endif %}"></i></li>
+            {% endfor %}
         </ul>
     </div>
 </li>

@@ -78,3 +78,13 @@ canceled: Отменено
 delay: Задержка
 
 my_orders: Мои заказы
+
+review_count:
+  single: отзыв
+  several: отзыва
+  many: отзывов
+
+review_form:
+  your_name: Ваше имя
+  your_review: Ваш отзыв
+  add_review: Оставить отзыв
