@@ -61,7 +61,7 @@
                                 <li><i class="{% if i <=  product.avgReview %} star-on {% else %} star-off {% endif %}"></i></li>
                             {% endfor %}
                         </ul>
-                        <span> {{ product.reviews|length|count('review_count.single'|trans({},'CatalogBundle'),'review_count.several'|trans({},'CatalogBundle'),'review_count.many'|trans({},'CatalogBundle')) }} <a href="#">{{ 'product_info.makeFeedback'|trans({}, 'CatalogBundle') }}</a></span>
+                        <span> {{ product.reviews|length|count('review_count.single'|trans({},'CatalogBundle'),'review_count.several'|trans({},'CatalogBundle'),'review_count.many'|trans({},'CatalogBundle')) }} {#<a href="#">{{ 'product_info.makeFeedback'|trans({}, 'CatalogBundle') }}</a>#}</span>
                     </div>
                     <!--end product-inputs-->
                     <div class="product-info">
