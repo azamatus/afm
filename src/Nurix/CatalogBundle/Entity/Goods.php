@@ -597,7 +597,8 @@ class Goods
         return $this->reviews;
     }
 
-    public function getAvgReview(){
+    public function getAvgReview()
+    {
         $sum = 0;
         $i=0;
         foreach($this->reviews as $review){
@@ -605,6 +606,17 @@ class Goods
             $i++;
         }
 
-        return $sum/$i;
+        return $i?$sum/$i:0;
+    }
+
+    public function getTotalReview()
+    {
+        $sum = 0;
+        foreach($this->reviews as $review)
+        {
+            $sum+=$review->getRating();
+        }
+
+        return $sum;
     }
 }

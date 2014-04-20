@@ -3,7 +3,7 @@
     <form method="post" action="{{ path('good_review_new',{'id':product_id}) }}" class="form-horizontal">
         <div class="control-group">
             {% if not app.user %}
-                <label class="control-label" for="inputName">Your Name <span class="text-error">*</span></label>
+                <label class="control-label" for="inputName">{{ 'review_form.your_name'|trans({}, 'CatalogBundle') }} <span class="text-error">*</span></label>
             {% endif %}
 
             <div class="controls">
@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label" for="inputReview">Your Review <span
+            <label class="control-label" for="inputReview">{{ 'review_form.your_review'|trans({}, 'CatalogBundle') }} <span
                         class="text-error">*</span></label>
 
             <div class="controls">
@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label" for="inputReview">Your Review <span
+            <label class="control-label" for="inputReview">{{ 'review_form.your_review'|trans({}, 'CatalogBundle') }} <span
                         class="text-error">*</span></label>
 
             <div class="controls">
@@ -47,7 +47,7 @@
         </div>
         <div class="control-group">
             <div class="controls">
-                <button type="submit" class="btn btn-primary" name="submit">Add Review</button>
+                <button type="submit" class="btn btn-primary" name="submit">{{ 'review_form.add_review'|trans({}, 'CatalogBundle') }}</button>
             </div>
         </div>
     </form>
