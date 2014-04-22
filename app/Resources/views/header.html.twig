@@ -57,7 +57,7 @@
                             <li class="divider"></li>
                             <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'ru'})) }}">RU</a></li>
                         </ul>
-                        {%endblock %}
+                        {% endblock %}
                     </div>
 
                     <div class="btn-group" id="bin_widget">{% render controller("CatalogBundle:Bin:mainBin") %}</div>
