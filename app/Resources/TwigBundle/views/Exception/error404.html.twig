@@ -1,4 +1,4 @@
-{% extends request.isxmlhttprequest? '' : '::base.html.twig' %}
+{% extends app.request.isxmlhttprequest ? '' : '::base.html.twig' %}
 {% block body %}
     <h1>Ошибка 404! Страница не найдена</h1>
     <h3>Возможно Вы ввели неправильный адрес или страница еще в разработке.</h3>
