@@ -49,6 +49,7 @@
                         <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
                             {{ app.request.locale|upper }} <span class="caret"></span>
                         </a>
+                        {% block language_menu %}
                         <ul class="dropdown-menu language">
                             <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}">EN</a></li>
                             <li class="divider"></li>
@@ -56,6 +57,7 @@
                             <li class="divider"></li>
                             <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'ru'})) }}">RU</a></li>
                         </ul>
+                        {%endblock %}
                     </div>
 
                     <div class="btn-group" id="bin_widget">{% render controller("CatalogBundle:Bin:mainBin") %}</div>
