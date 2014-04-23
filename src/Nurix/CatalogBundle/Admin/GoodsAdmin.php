@@ -127,12 +127,11 @@ class GoodsAdmin extends Admin
 
         $id = $object->getId();
         $container = $this->getConfigurationPool()->getContainer();
-
+        $url = $object->getYandexUrl();
         if (isset($url)) {
             $entity_manager = $container->get('doctrine')->getManager();
             $repository = $entity_manager->getRepository("CatalogBundle:Characteristic");
             $repository->deleteByGoodId($id);
-
             $container
                 ->get('catalog.product.parser')
                 ->parseYandex($url, $id);

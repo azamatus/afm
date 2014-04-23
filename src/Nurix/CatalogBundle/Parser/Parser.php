@@ -100,4 +100,16 @@ class Parser
                 }
             }
     }
+    public function isValidYandexUrl($url){
+        $pattern = '/^http:\/\/market\.yandex.ru\/model(-spec)?\.xml\?modelid=([0-9]+)&hid=([0-9]+)$/';
+        $valid = false;
+        if(preg_match($pattern,$url,$matches)){
+            $url = 'http://market.yandex.ru/model-spec.xml?modelid='. $matches[2].'&hid='.$matches[3];
+            $valid= true;
+        }
+        elseif($url==null)
+            $valid=true;
+        return array('valid'=>$valid,'url'=>$url);
+
+    }
 }
