@@ -143,11 +143,11 @@
     <div class="product-tab">
         <ul class="nav nav-tabs">
             <li class="active">
-                <a href="#descraption" data-toggle="tab">{{ 'product_info.description'|trans({}, 'CatalogBundle') }}</a>
-            </li>
-            <li>
                 <a href="#specfications"
                    data-toggle="tab">{{ 'product_info.specifications'|trans({}, 'CatalogBundle') }}</a>
+            </li>
+            <li>
+                <a href="#descraption" data-toggle="tab">{{ 'product_info.description'|trans({}, 'CatalogBundle') }}</a>
             </li>
             <li>
                 <a href="#review" data-toggle="tab">{{ 'product_info.review'|trans({}, 'CatalogBundle') }}</a>
@@ -165,28 +165,33 @@
             </li>
         </ul>
         <div class="tab-content">
-            <div class="tab-pane active" id="descraption">
-                <p>
-                    {% if product.fullDesctiption %}
-                    {{ product.fullDesctiption }}
-                    {% else %}
-
-                <p>{{ 'product_info.notuploaded'|trans({}, 'CatalogBundle') }}</p>
-                {% endif %}
-                </p>
-            </div>
-            <div class="tab-pane" id="specfications">
+            <div class="tab-pane active" id="specfications">
                 {% if mainchar %}
                     {% include  "CatalogBundle:Product:characteristic.html.twig" %}
                 {% else %}
                     <p>{{ 'product_info.notuploaded'|trans({}, 'CatalogBundle') }}</p>
                 {% endif %}
             </div>
-            <div class="tab-pane" id="review">
+            <div class="tab-pane" id="descraption">
+                <p>
+                    {% if product.fullDesctiption %}
+                    {{ product.fullDesctiption }}
+                    {% else %}
+                <p>{{ 'product_info.notuploaded'|trans({}, 'CatalogBundle') }}</p>
+                {% endif %}
+                </p>
+            </div>
+         <div class="tab-pane" id="review">
                 {% if product.review %}
-                    {{ product.review|raw }}
+                    {{ product.review|raw }}<br/>
                 {% else %}
                     <p>{{ 'product_info.notuploaded'|trans({}, 'CatalogBundle') }}</p>
+                {% endif %}
+                <h3>{{ 'product_info.video'|trans({}, 'CatalogBundle') }}</h3>
+                {% if product.youtube %}
+                    {% include  "CatalogBundle:Product:video.html.twig" %}
+                {% else %}
+                    <p>{{ 'product_info.video_notuploaded'|trans({}, 'CatalogBundle') }}</p>
                 {% endif %}
             </div>
 
