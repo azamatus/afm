@@ -21,6 +21,8 @@ product_info:
   selectSize: Выбрать размер
   size: Размер
   related_products: Похожие товары
+  video: Видео
+  video_notuploaded: Видео еще не загружено
 catalog:
   view_all: Показать всё
   updated_title: Обновленные
