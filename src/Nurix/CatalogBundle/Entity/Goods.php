@@ -2,6 +2,7 @@
 
 namespace Nurix\CatalogBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -140,12 +141,19 @@ class Goods
     private $views = 0;
 
     /**
+     * @var Review
+     * @ORM\OneToMany(targetEntity="Review", mappedBy="good", cascade={"persist"})
+     */
+    private $reviews;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->videos = new \Doctrine\Common\Collections\ArrayCollection();
         $this->characteristic = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->reviews = new ArrayCollection();
     }
 
     /**
@@ -554,5 +562,61 @@ class Goods
     public function getViews()
     {
         return $this->views;
+    }
+
+    /**
+     * Add reviews
+     *
+     * @param \Nurix\CatalogBundle\Entity\Review $reviews
+     * @return Goods
+     */
+    public function addReview(\Nurix\CatalogBundle\Entity\Review $reviews)
+    {
+        $this->reviews[] = $reviews;
+    
+        return $this;
+    }
+
+    /**
+     * Remove reviews
+     *
+     * @param \Nurix\CatalogBundle\Entity\Review $reviews
+     */
+    public function removeReview(\Nurix\CatalogBundle\Entity\Review $reviews)
+    {
+        $this->reviews->removeElement($reviews);
+    }
+
+    /**
+     * Get reviews
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getReviews()
+    {
+        return $this->reviews;
+    }
+
+    public function getAvgReview()
+    {
+        $sum = 0;
+        $i=0;
+        foreach($this->reviews as $review){
+            $sum+=$review->getRating();
+            $i++;
+        }
+
+        return $i?$sum/$i:0;
+    }
+
+    public function getTotalReview()
+    {
+        $sum = 0;
+        foreach($this->reviews as $review)
+        {
+            $sum+=$review->getRating();
+        }
+
+        return $sum;
     }
 }

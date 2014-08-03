@@ -21,6 +21,8 @@ product_info:
   selectSize: Выбрать размер
   size: Размер
   related_products: Похожие товары
+  video: Видео
+  video_notuploaded: Видео еще не загружено
 catalog:
   view_all: Показать всё
   updated_title: Обновленные
@@ -76,3 +78,15 @@ sended: Отправлено
 delivered: Доставлено
 canceled: Отменено
 delay: Задержка
+
+my_orders: Мои заказы
+
+review_count:
+  single: отзыв
+  several: отзыва
+  many: отзывов
+
+review_form:
+  your_name: Ваше имя
+  your_review: Ваш отзыв
+  add_review: Оставить отзыв

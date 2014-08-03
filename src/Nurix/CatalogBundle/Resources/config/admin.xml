@@ -77,5 +77,11 @@
             <argument>Nurix\CatalogBundle\Entity\BinOrders</argument>
             <argument>SonataAdminBundle:CRUD</argument>
         </service>
+        <service id="sonata.admin.reviews" class="Nurix\CatalogBundle\Admin\ReviewsAdmin">
+            <tag name="sonata.admin" manager_type="orm" group="Каталог" label="Отзывы" />
+            <argument/>
+            <argument>Nurix\CatalogBundle\Entity\Review</argument>
+            <argument>SonataAdminBundle:CRUD</argument>
+        </service>
     </services>
 </container>

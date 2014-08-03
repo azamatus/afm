@@ -1480,8 +1480,8 @@ footer {margin:82px 0 0 0;}
 	    border-bottom: 1px solid #e0e0e0;
 	    font-family: 'Sanchez', serif;
 	    font-size:14px;
-	    text-transform: capitalize;
 	    line-height:22px;
+        text-transform: uppercase;
 	}
 	.register .form-horizontal hr {
 		padding:0;
@@ -1872,5 +1872,11 @@ footer {margin:82px 0 0 0;}
 .display_none{
     display: none!important;
 }
-
-
+#registration ul li{
+    list-style: none;
+    color: #b94a48;
+    margin: -10px 135px;
+}
+#review h3{
+    margin-bottom: 10px;
+}

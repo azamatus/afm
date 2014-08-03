@@ -15,11 +15,9 @@
             <div class="thumbPriceRate clearfix">
                 <span>{{ product.price | price('USD') }}</span>
                 <ul class="rating">
-                    <li><i class="star-on"></i></li>
-                    <li><i class="star-on"></i></li>
-                    <li><i class="star-on"></i></li>
-                    <li><i class="star-on"></i></li>
-                    <li><i class="star-off"></i></li>
+                    {% for i in 1..5 %}
+                        <li><i class="{% if i <=  product.avgReview %} star-on {% else %} star-off {% endif %}"></i></li>
+                    {% endfor %}
                 </ul>
                 <strong><a href="#">18 Reviews</a></strong>
             </div>

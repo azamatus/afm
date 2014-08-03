@@ -204,9 +204,7 @@ function changeQuantityCatalog(){
         $.cookie("cookieQuantity", $(this).val(), { expires: 3, path: '/' });
         location.reload();
     });
-
 }
-
 $(document).ready(function () {
     changeCatalogStyle();
     changeCurrency();
