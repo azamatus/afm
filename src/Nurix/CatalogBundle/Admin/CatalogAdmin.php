@@ -54,7 +54,6 @@ class CatalogAdmin extends Admin{
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-                ->add('cname',null,array('label'=>'Заголовок'))
-                ->add('parent',null,array('label'=>'Родитель'));
+                ->add('cname',null,array('label'=>'Заголовок'));
     }
 }
