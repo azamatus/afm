@@ -7,7 +7,7 @@
         <div class="thumbSetting">
             <div class="thumbTitle">
                 <a href="{{ path('nurix_goods_get_info', {'id': product.id}) }}"
-                   class="invarseColor">{{ product.name }}</a>
+                   class="invarseColor" title="{{ product.name }}">{{ product.name }}</a>
             </div>
             <div class="thumbPrice">
                 <span>{{ product.price | price('USD') }}</span>
