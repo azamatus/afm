@@ -485,6 +485,11 @@ footer {margin:82px 0 0 0;}
 	.hProductItems .thumbSetting .thumbTitle a {
 		line-height:20px;
 		font-weight: 600;
+		text-overflow: ellipis;
+		white-space: nowrap;
+		overflow: hidden;
+		display: block;
+		
 	}
 	/* price */
 	.hProductItems .thumbSetting .thumbPrice {
