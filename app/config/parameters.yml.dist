@@ -17,6 +17,7 @@ parameters:
     slider_count:   5
     related_product_count:   3
     phone_number: 0555-123456
+    phone_number2: 0555-123456
     email: test@test.ru
     address: Bishkek
     email_from: nurixkg@gmail.com
