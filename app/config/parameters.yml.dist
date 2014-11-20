@@ -3,7 +3,7 @@ parameters:
     database_driver: pdo_mysql
     database_host: localhost
     database_port: null
-    database_name: nurix
+    database_name: afm
     database_user: root
     database_password: null
     mailer_transport: smtp
@@ -13,12 +13,12 @@ parameters:
     locale: ru
     secret: ThisTokenIsNotSoSecretChangeIt
     good_image_count:   3
-    media_upload_url: /nurazia/web/uploads/media
+    media_upload_url: /afm/web/uploads/media
     slider_count:   5
     related_product_count:   3
-    phone_number: 0555-123456
-    phone_number2: 0555-123456
-    email: test@test.ru
+    phone_number: 0543-033336
+    phone_number2: 0543-033336
+    email: azamatkurmanbekov@gmail.com
     address: Bishkek
-    email_from: nurixkg@gmail.com
-    email_to: nurixkg@gmail.com
+    email_from: azamatkurmanbekov@gmail.com
+    email_to: azamatkurmanbekov@gmail.com

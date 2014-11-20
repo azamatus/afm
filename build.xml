@@ -12,7 +12,7 @@
 
     <target name="replace">
         <replace file="${property}" value="media_upload_url: /uploads/media">
-            <replacetoken>media_upload_url: /nurazia/web/uploads/media</replacetoken>
+            <replacetoken>media_upload_url: /afm/web/uploads/media</replacetoken>
         </replace>
     </target>
 
