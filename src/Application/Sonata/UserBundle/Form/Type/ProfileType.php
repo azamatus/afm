@@ -37,6 +37,9 @@ class ProfileType extends BaseType
 		parent::buildForm($builder,$options);
         $builder
             ->add('address', null, array('required' => false))
+            ->add('dateOfBirth', 'birthday', array(
+                'years' =>  range(\date("Y") - 13, \date("Y") - 100),
+            ))
         ;
     }
 }
