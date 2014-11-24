@@ -34,10 +34,9 @@ class MenuBuilder extends ContainerAware
     {
         $menu = $this->factory->createItem('main');
         $menu->setCurrentUri($request->getRequestUri());
-        $menu->setChildrenAttribute('class','nav');
-        $menu->addChild('Home', array('route' => 'nurix_homepage','label'=>'Home'))
-            ->setExtra('icon',true);
-        $menu->addChild('Catalog', array('route' => 'nurix_goods_get_catalog','routeParameters'=>array('cid'=>null),'label'=>'Каталог'));
+        $menu->setChildrenAttribute('class','nav navbar-nav collapse navbar-collapse');
+        $menu->addChild('Home', array('route' => 'nurix_homepage','label'=>'Главный'));
+        $menu->addChild('Catalog', array('route' => 'nurix_goods_get_catalog','routeParameters'=>array('cid'=>null),'label'=>'Весь каталог'));
 
         $catalogMenuBuilder->getCatalogMenu($this->em, $menu);
 
