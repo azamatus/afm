@@ -136,6 +136,7 @@ ivory_ck_editor:
     default_config: my_config
     configs:
         my_config:
+            forcePasteAsPlainText: true
             filebrowserBrowseRoute: admin_sonata_media_media_browser
             filebrowserImageBrowseRoute: admin_sonata_media_media_browser
             # Display images by default when clicking the image dialog browse button
