@@ -13,6 +13,7 @@ class SliderAdmin extends Admin
     {
         $showMapper
             ->add('title')
+            ->add('description')
             ->add('active')
             ->add('sliderOrder')
             ->add('url')
@@ -23,6 +24,7 @@ class SliderAdmin extends Admin
     {
         $formMapper
             ->add('title')
+            ->add('description')
             ->add('sliderOrder','integer')
             ->add('active', null, array('required' => false))
             ->add('url')
@@ -34,6 +36,7 @@ class SliderAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('title')
+            ->addIdentifier('description')
             ->add('active', 'boolean', array('editable' => true))
             ->add('sliderOrder')
         ;
@@ -41,7 +44,7 @@ class SliderAdmin extends Admin
 
     public function preUpdate($object)
     {
-        $repository = $this->getConfigurationPool()->getContainer()->get('doctrine')->getEntityManager()->getRepository("NurixSliderBundle:Slider");
+        $repository = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager()->getRepository("NurixSliderBundle:Slider");
         $original = (object) $this->getModelManager()->getEntityManager($this->getClass())->getUnitOfWork()->getOriginalEntityData($object);
         if ($original->sliderOrder!=$object->getSliderOrder())
             $repository->updateOrders($object->getSliderOrder(),$object->getId());

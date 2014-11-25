@@ -5,12 +5,5 @@
 {% endblock %}
 
 {% block slider %}
-
-    <div class="row">
-        {% render controller("NurixSliderBundle:Slider:getSlider") %}
-        <div class="span4">
-            {% render controller("CatalogBundle:Content:showSliderProductList") %}
-        </div>
-        <!--end span4-->
-    </div>
+    {% render controller("NurixSliderBundle:Slider:getSlider") %}
 {% endblock %}

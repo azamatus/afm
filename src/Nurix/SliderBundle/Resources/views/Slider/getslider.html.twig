@@ -1,25 +1,46 @@
-
 {% if sliders %}
-
-
-        <div class="span8">
-            <div class="flexslider">
-                <ul class="slides">
-                    {% for slider in sliders %}
-                        <li>
-                            {% if slider.url %}
-                            <a href="{{ slider.url }}">
-                                <img src="{% path slider.image, 'slider_standard' %}"/>
-                            </a>
-                            {% else %}
-                                <img src="{% path slider.image, 'slider_standard' %}"/>
-                            {% endif %}
-                        </li>
-                    {% endfor %}
-
-                </ul>
-            </div><!--end flexslider-->
-        </div><!--end span8-->
-
-
+    <section id="slider">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="slider-carousel" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            {% set loop_quantity = 0 %}
+                            {% for slider in sliders %}
+                                {% set loop_quantity = loop.length %}
+                                <div class="item {% if loop.first %} active {% endif %}">
+                                    <div class="col-sm-6">
+                                        <h1><span>{{ slider.title }}</span></h1>
+                                        <p class="slider_desc">{{ slider.description|raw }}</p>
+                                        <button type="button" class="btn btn-default get">Купить</button> {#TODO добавить ссылку на корзину#}
+                                    </div>
+                                    <div class="col-sm-6">
+                                        {% if slider.url %}
+                                            <a href="{{ slider.url }}">
+                                                <img class="slider_image" src="{% path slider.image, 'slider_standard' %}"/>
+                                            </a>
+                                        {% else %}
+                                            <img class="slider_image" src="{% path slider.image, 'slider_standard' %}"/>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <ol class="carousel-indicators">
+                            {% for bullet in 0..loop_quantity - 1 %}
+                                <li data-target="#slider-carousel" data-slide-to="{{ bullet }}"
+                                    class="{% if loop.first %} active {% endif %}"></li>
+                            {% endfor %}
+                        </ol>
+                        <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                        <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endif %}

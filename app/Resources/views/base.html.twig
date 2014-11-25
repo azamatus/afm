@@ -35,9 +35,9 @@
 <div id="mainContainer" class="clearfix">
     {% include '::header.html.twig' %}
     <div id="tovar-added" title="{{ 'product_info.addedToCard'|trans({}, 'CatalogBundle') }}"></div>
-    <div class="container">
     {% block slider %}
     {% endblock %}
+    <div class="container">
     {% block body %}{% endblock %}
     </div>
     {% include '::footer.html.twig' %}
