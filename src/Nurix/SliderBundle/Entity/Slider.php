@@ -2,15 +2,14 @@
 
 namespace Nurix\SliderBundle\Entity;
 
-use Application\Sonata\MediaBundle\Entity\Media;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Slider
  *
  * @ORM\Table(name="slider")
- * @ORM\Entity(repositoryClass="Nurix\SliderBundle\Entity\SliderRepository")
-     */
+ * @ORM\Entity
+ */
 class Slider
 {
     /**
@@ -61,6 +60,12 @@ class Slider
      */
     private $sliderOrder;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
 
 
     /**
@@ -120,26 +125,26 @@ class Slider
     }
 
     /**
-     * Set content
+     * Set url
      *
-     * @param string $content
+     * @param string $url
      * @return Slider
      */
-    public function setImage($content)
+    public function setUrl($url)
     {
-        $this->image = $content;
+        $this->url = $url;
     
         return $this;
     }
 
     /**
-     * Get content
+     * Get url
      *
      * @return string 
      */
-    public function getImage()
+    public function getUrl()
     {
-        return $this->image;
+        return $this->url;
     }
 
     /**
@@ -166,18 +171,49 @@ class Slider
     }
 
     /**
-     * @return string
+     * Set description
+     *
+     * @param string $description
+     * @return Slider
      */
-    public function getUrl()
+    public function setDescription($description)
     {
-        return $this->url;
+        $this->description = $description;
+    
+        return $this;
     }
 
     /**
-     * @param string $url
+     * Get description
+     *
+     * @return string 
      */
-    public function setUrl($url)
+    public function getDescription()
     {
-        $this->url = $url;
+        return $this->description;
     }
+
+    /**
+     * Set content
+     *
+     * @param string $content
+     * @return Slider
+     */
+    public function setImage($content)
+    {
+        $this->image = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
 }
