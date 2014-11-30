@@ -1,47 +1,20 @@
-<li class="clearfix">
-    <div class="span3">
-        <div class="thumbnail">
-            <a href="{{ path('nurix_goods_get_info', {'id': product.id} ) }}">
-                {{ product.imagePath|galleryThumb(asset('public/img/372x370.jpg'),'goods_big') }}
-            </a>
-        </div>
-    </div>
-    <div class="span6">
-        <div class="thumbSetting">
-            <div class="thumbTitle">
-                <a href="{{ path('nurix_goods_get_info', {'id': product.id}) }}"
-                   class="invarseColor">{{ product.name }}</a>
-            </div>
-            <div class="thumbPriceRate clearfix">
-                <span>{{ product.price | price('USD') }}</span>
-                <ul class="rating">
-                    {% for i in 1..5 %}
-                        <li><i class="{% if i <=  product.avgReview %} star-on {% else %} star-off {% endif %}"></i></li>
-                    {% endfor %}
-                </ul>
-                <strong><a href="#">18 Reviews</a></strong>
-            </div>
-            <div class="thumbDesc">
-                <p>
-                    {% if product.fullDesctiption %}
-                        {{ product.fullDesctiption }}
-                    {% else %}
-                <p>{{ 'product_info.notuploaded'|trans({}, 'CatalogBundle') }}</p>
-                {% endif %}
-                </p>
-            </div>
-            <div class="thumbButtons">
-                <a class="btn btn-primary button_buy btn-small" data-id="{{ product.id }}"
-                   href="{{ path('nurix_bin_ajax_add_item',{'id':product.id}) }}"
-                   onclick="return false;">
-                    <i class="icon-shopping-cart"></i>
-                    {{ 'product_info.addToCard'|trans({}, 'CatalogBundle') }}
+<div class="col-sm-4">
+    <div class="product-image-wrapper">
+        <div class="single-products">
+            <div class="productinfo text-center">
+                <a href="{{ path('nurix_goods_get_info', {'id': product.id} ) }}">
+                    {{ product.imagePath|galleryThumb(asset('public/img/372x370.jpg'),'goods_big') }}
                 </a>
-                {#<button class="btn btn-small" data-title="+To WishList" data-placement="top" data-toggle="tooltip">#}
-                    {#<i class="icon-heart"></i>#}
-                {#</button>#}
 
+                <h2>{{ product.price | price('USD') }}</h2>
+
+                <p>{{ product.name }}</p>
+                <button class="btn btn-default add-to-cart button_buy"
+                        data-title="{{ 'product_info.addToCard'|trans({}, 'CatalogBundle') }}" data-placement="top"
+                        data-id="{{ product.id }}">
+                    <i class="fa fa-shopping-cart"></i> Добавить в корзину
+                </button>
             </div>
         </div>
     </div>
-</li>
+</div>

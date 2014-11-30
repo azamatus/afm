@@ -26,7 +26,7 @@ class ContentController extends Controller
                 $this->limitPerPage);
 
         $pagination->setUsedRoute('nurix_catalog_get_rndcatalog');
-            return $this->render('CatalogBundle:Content:showRandomProductList.html.twig', array( 'pagination' => $pagination, 'title' => "Весь каталог"));
+            return $this->render('CatalogBundle:Content:showRandomProductList.html.twig', array( 'pagination' => $pagination, 'title' => "Последние добавленные товары"));
 
     }
 

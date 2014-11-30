@@ -699,10 +699,10 @@ h2.title:before{
 	position: absolute;
 	background: #fff;
 	bottom: -6px;
-	width: 220px;
+	width: 400px;
 	height: 30px;
 	z-index: -1;
-	left: 50%;
+	left: 39%;
 	margin-left: -110px;
 }
 
@@ -846,7 +846,7 @@ h2.title {
 }
 
 .product-image-wrapper{
-	border:1px solid #F7F7F5;
+	/*border:1px solid #F7F7F5;*/
 	overflow: hidden;
 	margin-bottom:30px;
 }
@@ -882,8 +882,9 @@ h2.title {
   color: #696763;
 }
 
-.productinfo img{
+.productinfo img, .product-overlay img{
   width: 100%;
+  height: 100%;
 }
 
 .productinfo{
@@ -949,6 +950,7 @@ h2.title {
   font-family: 'Roboto', sans-serif;
   font-size: 15px;
   margin-bottom: 25px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);;
 }
 
 .add-to-cart:hover {
@@ -1218,8 +1220,8 @@ h2.title {
   border: 1px solid #F7F7F0;
   overflow: hidden;
   padding-bottom: 60px;
-  padding-left: 60px;
-  padding-top: 60px;
+  padding-left: 30px;
+  padding-top: 30px;
   position: relative;
 }
 
@@ -1354,10 +1356,6 @@ h2.title {
   padding: 8px;
   width: 48%;
 }
-#reviews form span input:last-child {
-  margin-left: 3%;
-}
-
 #reviews textarea {
   background: #F0F0E9;
   border: medium none;
@@ -1375,7 +1373,7 @@ h2.title {
 #reviews button {
   background: #FE980F;
   border: 0 none;
-  border-radius: 0;
+  /*border-radius: 0;*/
   color: #FFFFFF;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
@@ -2526,4 +2524,35 @@ h2.title {
 .col-sm-6 .slider_desc{
     width: 80%;
 }
-
+.col-sm-4 .box_shadow{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.footer_custom ul li a i{
+    margin-right: 10px!important;
+}
+.rating{
+    position: relative;
+    left: -40px;
+}
+#reviews .controls .btn-group .btn{
+    background: #e9e9e9;
+    border: 0 none !important;
+    color: #333333!important;
+    margin-left: 0!important;
+}
+.controls .btn-group .btn.active, .btn:active{
+    background-color: #fe980f!important;
+}
+#review_list ul li a{
+    text-decoration: none;
+    cursor: default;
+}
+#review_list ul li i{
+    color: gold;
+}
+#similar-product .carousel-inner .fancybox img{
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    margin-left: 0;
+}

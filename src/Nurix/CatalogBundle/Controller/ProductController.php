@@ -53,7 +53,10 @@ class ProductController extends Controller
 
     public function newReviewAction(Request $request,$id){
         $review = new Review();
-
+        $goodRepository = $this->getDoctrine()
+            ->getRepository('CatalogBundle:Goods');
+        $entity = $goodRepository
+            ->find($id);
         $rForm = $this->createForm(new ReviewType(),$review);
 
         $rForm->handleRequest($request);
@@ -72,6 +75,6 @@ class ProductController extends Controller
             return $this->redirect($this->generateUrl('nurix_goods_get_info',array('id'=>$id)));
         }
 
-        return $this->render('@Catalog/Review/new.html.twig',array('rForm'=>$rForm->createView(),'product_id'=>$id));
+        return $this->render('@Catalog/Review/new.html.twig',array('product'=>$entity, 'rForm'=>$rForm->createView(),'product_id'=>$id));
     }
 }

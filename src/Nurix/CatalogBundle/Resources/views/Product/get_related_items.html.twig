@@ -1,17 +1,16 @@
 {% if products %}
-<div class="related-product">
-    <div class="titleHeader clearfix">
-        <h3>{{ 'product_info.related_products'|trans({},'CatalogBundle') }}</h3>
-    </div>
-    <!--end titleHeader-->
+<div class="recommended_items"><!--recommended_items-->
+    <h2 class="title text-center">{{ 'product_info.related_products'|trans({},'CatalogBundle') }}</h2>
 
-    <div class="row">
-        <ul class="hProductItems clearfix">
+    <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
             {% for product in products %}
-                {% include  "CatalogBundle:Content:_item_grid.html.twig" with {'product':product} %}
+                <div class="item {% if loop.first or loop.index < 4 %}active{% endif %}">
+                    {% include  "CatalogBundle:Content:_item_list.html.twig" with {'product':product} %}
+                </div>
             {% endfor %}
-        </ul>
+            <!--end row-->
+        </div>
     </div>
-    <!--end row-->
 </div>
 {% endif %}

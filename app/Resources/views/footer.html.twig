@@ -1,86 +1,40 @@
 <!--begain footer-->
-<footer>
-    <div class="footerOuter">
+<footer id="footer"><!--Footer-->
+    <div class="footer-widget">
         <div class="container">
-            <div class="row-fluid">
-
-                <div class="span6">
-                    <div class="titleHeader clearfix">
-                        <h3>Usefull Links</h3>
-                    </div>
-
-
-                    <div class="usefullLinks">
-                        <div class="row-fluid">
-                            {{ knp_menu_render('bottom',{'template':'::bottom_menu.html.twig'}) }}
-                        </div>
-                    </div>
-
-                </div><!--end span6-->
+            <div class="row">
 
                 <div class="span3">
-                    <div class="titleHeader clearfix">
-                        <h3>{{ 'contact_info'|trans({},'messages') }}</h3>
-                    </div>
-
-                    <div class="contactInfo">
-                        <ul class="unstyled">
+                    <div class="single-widget footer_custom">
+                        <h2>{{ 'contact_info'|trans({},'messages') }}</h2>
+                        <ul class="nav nav-pills nav-stacked">
                             <li>
-                                <button class="btn btn-small">
-                                    <i class="icon-phone"></i>
-                                </button>
-                                <span class="invarseColor" >{{ get_param('phone_number') }}</span>
+                                <a href="javascript:void(0)"><i class="fa fa-mobile"></i>{{ get_param('phone_number') }}</a>
                             </li>
                             <li>
-                                <button class="btn btn-small">
-                                    <i class="icon-phone"></i>
-                                </button>
-                                <span class="invarseColor" >{{ get_param('phone_number2') }}</span>
+                                <a href="javascript:void(0)"><i class="fa fa-mobile"></i>{{ get_param('phone_number2') }}</a>
                             </li>
                             <li>
-                                <button class="btn btn-small">
-                                    <i class="icon-envelope-alt"></i>
-                                </button>
-                                <span class="invarseColor">{{ get_param('email') }}</span>
+                                <a href="javascript:void(0)"><i class="fa fa-share"></i>{{ get_param('email') }}</a>
                             </li>
                             <li>
-                                <button class="btn btn-small">
-                                    <i class="icon-map-marker"></i>
-                                </button>
-                                {{ get_param('address') }}
+                                <a href="javascript:void(0)"> <i class="fa fa-map-marker"></i>{{ get_param('address') }}</a>
                             </li>
                         </ul>
                     </div>
 
                 </div><!--end span3-->
 
-                {#<div class="span3">
-                    <div class="titleHeader clearfix">
-                        <h3>Newslatter</h3>
-                    </div>
-
-                    <div class="newslatter">
-                        <form method="get" action="page">
-                            <input class="input-block-level" type="text" name="email" value="" placeholder="Your Name...">
-                            <input class="input-block-level" type="text" name="email" value="" placeholder="Your E-Mail...">
-                            <button class="btn btn-block" type="submit" name="">Join Us Now</button>
-                        </form>
-                    </div>
-
-                </div>#}<!--end span3-->
-
             </div><!--end row-fluid-->
 
         </div><!--end container-->
     </div><!--end footerOuter-->
-
-    <div class="container">
-        <div class="row">
-            <div class="span12">
-                <a class="inline pull-right invarseColor" href="http://strokit.net">
-                    StrOkIT © {{ date()|format_date('YYYY') }}
-                </a>
-                <p>© {{ 'copyright'|trans({'year':date()|format_date('YYYY')},'messages') }}</p>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <p class="pull-left">AFM © 2014 E-Магазин Inc. All rights reserved. {{ date()|format_date('YYYY') }}</p>
+                <p class="pull-right">© {{ 'copyright'|trans({'year':date()|format_date('YYYY')},'messages') }}</p>
+                {#<p>© {{ 'copyright'|trans({'year':date()|format_date('YYYY')},'messages') }}</p>#}
             </div>
         </div>
     </div>
