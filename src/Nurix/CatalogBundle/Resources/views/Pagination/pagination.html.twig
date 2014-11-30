@@ -1,6 +1,6 @@
 {% if pageCount > 1 %}
     <span class="pull-left">{{ 'showing_pages'|trans({'page_index':current,'page_count':pageCount},'messages') }}:</span>
-    <ul>
+    <ul class="pagination_list">
     {% if previous is defined %}
         <li class="previous">
             <a class="invarseColor" href="{{ path(route, query|merge({(pageParameterName): previous})) }}" title="Предыдущий">{{ 'pagination.prev'|trans({}, 'CatalogBundle') }}</a>

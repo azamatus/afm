@@ -2556,3 +2556,36 @@ h2.title {
     margin-bottom: 5px;
     margin-left: 0;
 }
+.productFilter{
+    margin-bottom: 20px;
+}
+.productFilter div, .productFilter select{
+    position: relative;
+}
+.productFilter .sortBy div{
+    top: 25px;
+}
+.productFilter .sortBy select{
+    left: 90px;
+}
+.productFilter .showItem div{
+    top: 25px;
+    left: 100px;
+}
+.productFilter .showItem select{
+    left: 170px;
+}
+.pagination-right{
+    float: right;
+    width: 70%;
+    position: relative;
+    right: 60px;
+    color: #696763;
+}
+.pagination_list{
+    float: right;
+    min-width: 300px;
+}
+.pagination_list li a{
+    color: #696763;
+}

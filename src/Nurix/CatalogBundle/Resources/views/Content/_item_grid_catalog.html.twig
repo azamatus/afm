@@ -1,0 +1,32 @@
+<div class="col-sm-4" style="width: 30%">
+    <div class="product-image-wrapper box_shadow">
+        <div class="single-products">
+            <div class="productinfo text-center">
+                <a href="{{ path('nurix_goods_get_info', {'id': product.id} ) }}">
+                        {{ product.imagePath|galleryThumb(asset('public/img/212x192.jpg'),'goods_big') }}
+                    </a>
+                <h2>{{ product.price | price('USD') }}</h2>
+                <p>{{ product.name }}</p>
+                <button class="btn btn-default add-to-cart button_buy"
+                        data-title="{{ 'product_info.addToCard'|trans({}, 'CatalogBundle') }}" data-placement="top"
+                        data-id="{{ product.id }}">
+                    <i class="fa fa-shopping-cart"></i> Добавить в корзину
+                </button>
+
+            </div>
+            <div class="product-overlay">
+                <div class="overlay-content">
+                    <h2>{{ product.price | price('USD') }}</h2>
+                    <p><a href="{{ path('nurix_goods_get_info', {'id': product.id} ) }}">
+                            {{ product.imagePath|galleryThumb(asset('public/img/212x192.jpg'),'goods_big') }}
+                        </a></p>
+                    <p>{{ product.name }}</p>
+                    <button class="btn btn-default add-to-cart button_buy data-title="{{ 'product_info.addToCard'|trans({}, 'CatalogBundle') }}" data-placement="top"
+                    data-toggle="tooltip" data-id="{{ product.id }}">
+                    <i class="fa fa-shopping-cart"></i>Добавить в корзину
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
