@@ -1,53 +1,64 @@
+<div class="col-sm-12 tab-pane" id="review_list">
+    {% for review in product.reviews %}
+            {#<ul class="rating">#}
+                  {#{% for i in 1..5 %}#}
+                      {#<li><i class="{% if i <=  review.rating %} fa fa-star {% else %} fa fa-star-o {% endif %}"></i></li>#}
+                  {#{% endfor %}#}
+            {#</ul>#}
+            <ul>
+                <li><a href="javascript:void(0)"><i class="fa fa-user"></i>{{ review.author }}</a></li>
+                <li><a href="javascript:void(0)"><i class="fa fa-clock-o"></i>{{ review.created|date('d-m-Y') }}</a></li>
+                {% for i in 1..5 %}
+                    <li><i class="{% if i <=  review.rating %} fa fa-star {% else %} fa fa-star-o {% endif %}"></i></li>
+                {% endfor %}
+            </ul>
+            <!--end review-header-->
+            <p>
+                 {{ review.comment }}
+            </p>
 
-<div class="tab-pane" id="make-review">
+            <!--end review-body-->
+    {% endfor %}
     <form method="post" action="{{ path('good_review_new',{'id':product_id}) }}" class="form-horizontal">
-        <div class="control-group">
-            {% if not app.user %}
-                <label class="control-label" for="inputName">{{ 'review_form.your_name'|trans({}, 'CatalogBundle') }} <span class="text-error">*</span></label>
+        {#{% if not app.user %}#}
+                {#<label class="control-label" for="inputName">{{ 'review_form.your_name'|trans({}, 'CatalogBundle') }} <span class="text-error">*</span></label>#}
+            {#{% endif %}#}
+            {% if app.user %}
+            {% set value = app.user %}
+                 <span><input type="hidden" value="{{ app.user }}" maxlength="30" required="required" name="nurix_catalogbundle_review[author]" id="nurix_catalogbundle_review_author"></span>
+            {% else %}
+                <span>{{ form_widget(rForm.author, {'attr':{'placeholder': 'Ваше имя'} }) }}</span>
             {% endif %}
 
-            <div class="controls">
-                {% if app.user %}
-                    {% set value = app.user %}
-                    <input type="hidden" value="{{ app.user }}" maxlength="30" required="required" name="nurix_catalogbundle_review[author]" id="nurix_catalogbundle_review_author">
-                    {% else %}
-                        {{ form_widget(rForm.author) }}
-                {% endif %}
+            {{ form_widget(rForm.comment) }}
+            {{ form_widget(rForm.rating) }}
+            {{ form_widget(rForm._token) }}
 
-            </div>
-        </div>
-        <div class="control-group">
-            <label class="control-label" for="inputReview">{{ 'review_form.your_review'|trans({}, 'CatalogBundle') }} <span
-                        class="text-error">*</span></label>
 
-            <div class="controls">
-                {{ form_widget(rForm.comment) }}
-                {{ form_widget(rForm.rating) }}
-                {{ form_widget(rForm._token) }}
-            </div>
-        </div>
         <div class="control-group">
-            <label class="control-label" for="inputReview">{{ 'review_form.your_review'|trans({}, 'CatalogBundle') }} <span
-                        class="text-error">*</span></label>
+            <p><label class="control-label" for="inputReview">{{ 'review_form.your_review'|trans({}, 'CatalogBundle') }} <span
+                        class="text-error"></span></label></p>
 
             <div class="controls">
                 <div class="btn-group" data-toggle="buttons-radio">
                     <button type="button" class="btn" data-toggle="tooltip" data-title="1/5"><i
-                                class="icon-star"></i></button>
+                                class="fa fa-star"></i></button>
                     <button type="button" class="btn" data-toggle="tooltip" data-title="2/5"><i
-                                class="icon-star"></i></button>
+                                class="fa fa-star"></i></button>
                     <button type="button" class="btn" data-toggle="tooltip" data-title="3/5"><i
-                                class="icon-star"></i></button>
+                                class="fa fa-star"></i></button>
                     <button type="button" class="btn" data-toggle="tooltip" data-title="4/5"><i
-                                class="icon-star"></i></button>
+                                class="fa fa-star"></i></button>
                     <button type="button" class="btn" data-toggle="tooltip" data-title="5/5"><i
-                                class="icon-star"></i></button>
+                                class="fa fa-star"></i></button>
                 </div>
             </div>
         </div>
         <div class="control-group">
             <div class="controls">
-                <button type="submit" class="btn btn-primary" name="submit">{{ 'review_form.add_review'|trans({}, 'CatalogBundle') }}</button>
+                <button type="submit" class="btn btn-default pull-right btn-primary">
+                    {{ 'review_form.add_review'|trans({}, 'CatalogBundle') }}
+                </button>
             </div>
         </div>
     </form>

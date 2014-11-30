@@ -7,11 +7,10 @@
     {{ product.name }} в Бишкеке по цене {{ product.price }}$. {{ product.shortDescription }}
 {% endblock %}
 {% block body %}
-    <div class="container">
-
     <div class="row">
 
-    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             <h3 id="myModalLabel">{{ 'product_info.makeFeedback'|trans({}, 'CatalogBundle') }}</h3>
@@ -22,48 +21,64 @@
         </div>
     </div>
 
-    <div class="span9">
-    <div class="row">
-
-        <div class="product-details clearfix">
-            <div class="span5">
-                <div class="product-title">
-                    <h4>{{ product.name }}</h4>
-                </div>
-                <div class="product-img">
-                    <a class="fancybox" href="{{ product.imagePath|path( asset('public/img/650x700.jpg'),'goods_original') }}">
-                        {{ product.imagePath|galleryThumb( asset('public/img/372x370.jpg'),'goods_middle') }}
-                    </a>
-                </div>
-                <!--end product-img-->
-                <div class="product-img-thumb">
-                    {% if product.imagePath %}
-                        {% for galleryHasMedia in product.imagePath.GalleryHasMedias %}
-                            <a class="fancybox" rel="gallery" href="{% path galleryHasMedia.media, 'goods_original' %}">
-                                <img src="{% path galleryHasMedia.media, 'goods_small' %}"/>
-                            </a>
-                        {% endfor %}
-                    {% endif %}
-                </div>
-                <!--end flexslider-thumb-->
+    <div class="col-sm-9 padding-right">
+    <div class="product-details"><!--product-details-->
+        <div class="col-sm-5">
+            <div class="view-product">
+                <a class="fancybox"
+                   href="{{ product.imagePath|path( asset('public/img/650x700.jpg'),'goods_original') }}">
+                    {{ product.imagePath|galleryThumb( asset('public/img/372x370.jpg'),'goods_middle') }}
+                </a>
             </div>
-            <!--end span5-->
+            <div id="similar-product" class="carousel slide" data-ride="carousel">
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <div class="item active product-img-thumb">
+                        {% if product.imagePath %}
+                            {% for galleryHasMedia in product.imagePath.GalleryHasMedias %}
+                                <a class="fancybox" rel="gallery"
+                                   href="{% path galleryHasMedia.media, 'goods_original' %}">
+                                    <img src="{% path galleryHasMedia.media, 'goods_small' %}"/>
+                                </a>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-7">
+            <div class="product-information"><!--/product-information-->
+                <h2>{{ product.name }}</h2>
+                <ul class="rating">
+                    <p style="float: left; margin-right: 10px"><b>Рейтинг:</b></p>
+                    {% for i in 1..5 %}
+                        <li style="float: left; color: gold">
+                            <i class="{% if i <=  product.avgReview %}fa fa-star {% else %}fa fa-star-o {% endif %}"></i>
+                        </li>
+                    {% endfor %}
+                </ul>
+            <span>
+			<span>{{ product.price| price('USD') }}</span>
+			<label>Количество:</label>
+			<input id="item-amount" class="span1 quantity-input" type="text" value="1"/>
+            <button class="btn btn-fefault cart button_buy_bin" data-id="{{ product.id }}" onclick="return false;">
+                <i class="fa fa-shopping-cart"></i>
+                {{ 'product_info.addToCard'|trans({}, 'CatalogBundle') }}
+            </button>
+                {#<button class="btn" data-toggle="tooltip" data-title="+To Wishlist"><i#}
+                {#class="icon-heart"></i></button>#}
+            </span>
+            <p><b>{{ 'product_info.article'|trans({}, 'CatalogBundle') }}:</b> {{ product.article }}</p>
+            <p><b>{{ 'product_info.catalog'|trans({}, 'CatalogBundle') }}:</b> {{ product.catalog }}</p>
+            <p><b>{{ 'product_info.reviewPoints'|trans({}, 'CatalogBundle') }}:</b> {{ product.TotalReview }}</p>
+            </div>
+            <!--/product-information-->
+        </div>
+        <div class="product-details clearfix">
 
             <div class="span4">
                 <div class="product-set">
-                    <div class="product-price">
-                        <span> {{ product.price| price('USD') }}</span>
-                    </div>
-                    <!--end product-price-->
-                    <div class="product-rate clearfix">
-                        <ul class="rating">
-                            {% for i in 1..5 %}
-                                <li><i class="{% if i <=  product.avgReview %} star-on {% else %} star-off {% endif %}"></i></li>
-                            {% endfor %}
-                        </ul>
-                        <span> {{ product.reviews|length|count('review_count.single'|trans({},'CatalogBundle'),'review_count.several'|trans({},'CatalogBundle'),'review_count.many'|trans({},'CatalogBundle')) }} {#<a href="#">{{ 'product_info.makeFeedback'|trans({}, 'CatalogBundle') }}</a>#}</span>
-                    </div>
-                    <!--end product-inputs-->
                     <div class="product-info">
                         <dl class="dl-horizontal">
                             <dt>{{ 'product_info.availability'|trans({}, 'CatalogBundle') }}:</dt>
@@ -83,45 +98,13 @@
                     <!--end product-info-->
                     <div class="product-inputs">
                         <form method="post" action="page">
-                            {#<div class="controls-row">#}
-                                {#<select class="span2" name="#">#}
-                                    {#<option>{{ 'product_info.selectColor'|trans({}, 'CatalogBundle') }}</option>#}
-                                    {#<option value="">{{ 'product_info.red'|trans({}, 'CatalogBundle') }}</option>#}
-                                    {#<option value="">{{ 'product_info.blue'|trans({}, 'CatalogBundle') }}</option>#}
-                                    {#<option value="">{{ 'product_info.brown'|trans({}, 'CatalogBundle') }}</option>#}
-                                {#</select>#}
-                                {#<select class="span2" name="#">#}
-                                    {#<option>{{ 'product_info.selectSize'|trans({}, 'CatalogBundle') }}</option>#}
-                                    {#<option value="">{{ 'product_info.size'|trans({}, 'CatalogBundle') }} 36</option>#}
-                                    {#<option value="">{{ 'product_info.size'|trans({}, 'CatalogBundle') }} 12</option>#}
-                                    {#<option value="">{{ 'product_info.size'|trans({}, 'CatalogBundle') }} 18</option>#}
-                                {#</select>#}
-                            {#</div>#}
-                            <!--end controls-row-->
-
-                            {#<div class="controls-row">#}
-                                {#<input type="text" class="span2" name="" value="" placeholder="input...">#}
-                                {#<input type="text" class="span2" name="" value="" placeholder="input...">#}
-                            {#</div>#}
-                            {#<!--end controls-row-->#}
-
-                            {#<div class="controls-row">#}
-                                {#<input type="text" class="span3" name="" value="" placeholder="input...">#}
-                                {#<input type="text" class="span1" name="" value="" placeholder="input...">#}
-                            {#</div>#}
-                            {#<!--end controls-row-->#}
-
-                            {#<textarea name="" class="span4" placeholder="textarea..."></textarea>#}
-
-                            <div class="input-append">
+                       <div class="input-append">
                                 <input id="item-amount" class="span1 quantity-input" type="text" value="1">
                                 <button class="btn btn-primary button_buy_bin" data-id="{{ product.id }}"
-                                   onclick="return false;">
+                                        onclick="return false;">
                                     <i class="icon-shopping-cart"></i>
                                     {{ 'product_info.addToCard'|trans({}, 'CatalogBundle') }}
                                 </button>
-                                {#<button class="btn" data-toggle="tooltip" data-title="+To Wishlist"><i#}
-                                            {#class="icon-heart"></i></button>#}
                             </div>
                         </form>
                         <!--end form-->
@@ -140,7 +123,8 @@
     <!--end row-->
 
 
-    <div class="product-tab">
+    <div class="category-tab shop-details-tab"><!--category-tab-->
+        <div class="col-sm-12">
         <ul class="nav nav-tabs">
             <li class="active">
                 <a href="#descraption" data-toggle="tab">{{ 'product_info.description'|trans({}, 'CatalogBundle') }}</a>
@@ -148,29 +132,24 @@
             <li>
                 <a href="#review" data-toggle="tab">{{ 'product_info.review'|trans({}, 'CatalogBundle') }}</a>
             </li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle"
-                   data-toggle="dropdown">{{ 'product_info.feedback'|trans({}, 'CatalogBundle') }} <i
-                            class="icon-caret-down"></i></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#read-review"
-                           data-toggle="tab">{{ 'product_info.readFeedback'|trans({}, 'CatalogBundle') }}</a></li>
-                    <li><a href="#make-review"
-                           data-toggle="tab">{{ 'product_info.makeFeedback'|trans({}, 'CatalogBundle') }}</a></li>
-                </ul>
+            <li>
+                <a href="#reviews" data-toggle="tab">{{ 'product_info.feedback'|trans({}, 'CatalogBundle') }}</a>
             </li>
         </ul>
         <div class="tab-content">
-            <div class="tab-pane active" id="descraption">
-                <p>
-                    {% if product.fullDesctiption %}
-                    {{ product.fullDesctiption }}
-                    {% else %}
-                <p>{{ 'product_info.notuploaded'|trans({}, 'CatalogBundle') }}</p>
-                {% endif %}
-                </p>
+            <div class="tab-pane active in fade" id="descraption">
+                <div class="col-sm-12">
+                    <p>
+                        {% if product.fullDesctiption %}
+                            {{ product.fullDesctiption }}
+                        {% else %}
+                            <p>{{ 'product_info.notuploaded'|trans({}, 'CatalogBundle') }}</p>
+                        {% endif %}
+                     </p>
+                </div>
             </div>
-         <div class="tab-pane" id="review">
+            <div class="tab-pane fade" id="review">
+
                 {% if product.review %}
                     {{ product.review|raw }}<br/>
                 {% else %}
@@ -184,55 +163,40 @@
                 {% endif %}
             </div>
 
-            <div class="tab-pane" id="read-review">
-                {% for review in product.reviews %}
+            <div class="tab-pane fade" id="reviews">
+                {#<div class="col-sm-12">#}
+                    {#<ul>#}
+                        {#<li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>#}
+                        {#<li><a href=""><i class="fa fa-clock-o"></i>12:41 PM</a></li>#}
+                        {#<li><a href=""><i class="fa fa-calendar-o"></i>31 DEC 2014</a></li>#}
+                    {#</ul>#}
+                    {#<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>#}
+                    {#<p><b>Write Your Review</b></p>#}
 
-                <div class="single-review clearfix">
-                    <div class="review-header">
-                        <ul class="rating">
-                            {% for i in 1..5 %}
-                                <li><i class="{% if i <=  review.rating %} star-on {% else %} star-off {% endif %}"></i></li>
-                            {% endfor %}
-                        </ul>
-                        <h4>{{ review.author }}</h4>
-                        <small>{{ review.created|date('d-m-Y') }}</small>
-                    </div>
-                    <!--end review-header-->
-
-                    <div class="review-body">
-                        <p>
-                            {{ review.comment }}
-                        </p>
-                    </div>
-                    <!--end review-body-->
-                </div>
-                <!--end single-review-->
-                {% endfor %}
-
+                    {#<form action="#">#}
+										{#<span>#}
+											{#<input type="text" placeholder="Your Name"/>#}
+											{#<input type="email" placeholder="Email Address"/>#}
+										{#</span>#}
+                        {#<textarea name="" ></textarea>#}
+                        {#<b>Rating: </b> <img src="images/product-details/rating.png" alt="" />#}
+                        {#<button type="button" class="btn btn-default pull-right">#}
+                            {#Submit#}
+                        {#</button>#}
+                    {#</form>#}
+                {#</div>#}
+                {{ render(controller('CatalogBundle:Product:newReview',{'id': product.id })) }}
             </div>
-
-        {{ render(controller('CatalogBundle:Product:newReview',{'id': product.id })) }}
         </div>
         <!--end tab-content-->
     </div>
     <!--end product-tab-->
 
 
+
+
+    </div>
     {% render controller("CatalogBundle:Product:getSame", {'product':product}) %}
-
-    <!--end related-product-->
-
     </div>
-    <!--end span9-->
-
-
-    <aside class="span3">
-        {% render controller("CatalogBundle:Content:showSliderProductList") %}
-    </aside>
-    <!--end span3-->
-
     </div>
-    <!--end row-->
-
-    </div><!--end conatiner-->
 {% endblock %}

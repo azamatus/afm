@@ -64,7 +64,7 @@ class ExchangeExtension extends \Twig_Extension
 		if (!$currentCurrency || $currentCurrency->getCurrency() == 'USD')
 		{
 			$price = number_format($number, $decimals, $decPoint, '');
-			$price = '$' . '<span class="value">' . $price . '</span>';
+			$price = '<span class="value">$' . $price . '</span>';
 
 		}
 		else

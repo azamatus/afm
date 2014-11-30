@@ -1,32 +1,32 @@
-<li class="span3 clearfix">
-        <div class="thumbnail">
-            <a href="{{ path('nurix_goods_get_info', {'id': product.id} ) }}">
-                {{ product.imagePath|galleryThumb(asset('public/img/212x192.jpg'),'goods_big') }}
-            </a>
-        </div>
-        <div class="thumbSetting">
-            <div class="thumbTitle">
-                <a href="{{ path('nurix_goods_get_info', {'id': product.id}) }}"
-                   class="invarseColor" title="{{ product.name }}">{{ product.name }}</a>
-            </div>
-            <div class="thumbPrice">
-                <span>{{ product.price | price('USD') }}</span>
-            </div>
-
-            <div class="thumbButtons">
-                <button class="btn btn-primary btn-small button_buy" data-title="{{ 'product_info.addToCard'|trans({}, 'CatalogBundle') }}" data-placement="top" data-toggle="tooltip" data-id="{{ product.id}}">
-                    <i class="icon-shopping-cart"></i>
+<div class="col-sm-4" style="width: 25%">
+    <div class="product-image-wrapper box_shadow">
+        <div class="single-products">
+            <div class="productinfo text-center">
+                <a href="{{ path('nurix_goods_get_info', {'id': product.id} ) }}">
+                        {{ product.imagePath|galleryThumb(asset('public/img/212x192.jpg'),'goods_big') }}
+                    </a>
+                <h2>{{ product.price | price('USD') }}</h2>
+                <p>{{ product.name }}</p>
+                <button class="btn btn-default add-to-cart button_buy"
+                        data-title="{{ 'product_info.addToCard'|trans({}, 'CatalogBundle') }}" data-placement="top"
+                        data-id="{{ product.id }}">
+                    <i class="fa fa-shopping-cart"></i> Добавить в корзину
                 </button>
-                {#<button class="btn btn-small" data-title="+To WishList" data-placement="top" data-toggle="tooltip">#}
-                    {#<i class="icon-heart"></i>#}
-                {#</button>#}
 
             </div>
-
-            <ul class="rating">
-                {% for i in 1..5 %}
-                    <li><i class="{% if i <=  product.avgReview %} star-on {% else %} star-off {% endif %}"></i></li>
-                {% endfor %}
-            </ul>
+            <div class="product-overlay">
+                <div class="overlay-content">
+                    <h2>{{ product.price | price('USD') }}</h2>
+                    <p><a href="{{ path('nurix_goods_get_info', {'id': product.id} ) }}">
+                            {{ product.imagePath|galleryThumb(asset('public/img/212x192.jpg'),'goods_big') }}
+                        </a></p>
+                    <p>{{ product.name }}</p>
+                    <button class="btn btn-default add-to-cart button_buy data-title="{{ 'product_info.addToCard'|trans({}, 'CatalogBundle') }}" data-placement="top"
+                    data-toggle="tooltip" data-id="{{ product.id }}">
+                    <i class="fa fa-shopping-cart"></i>Добавить в корзину
+                    </button>
+                </div>
+            </div>
         </div>
-    </li>
+    </div>
+</div>

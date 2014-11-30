@@ -45,7 +45,7 @@
                                 <li><a href="{{ path('sonata_user_profile_show') }}"><i class="fa fa-user"></i>{{ 'layout.my_profile'|trans({},'FOSUserBundle') }}</a></li>
                             {% endif %}
                             <li><a href="{{ path('nurix_bin_order_form') }}"><i class="fa fa-crosshairs"></i> {{ 'itemInBin.checkout'|trans({}, 'CatalogBundle') }}</a></li>
-                            <li><a href="{{ path('nurix_bin_item') }}"><i class="fa fa-shopping-cart"></i> {{ 'itemInBin.view_card'|trans({}, 'CatalogBundle') }}</a></li>
+                            <li><a href="{{ path('nurix_bin_item') }}" class="btn-group" id="bin_widget">{% render controller("CatalogBundle:Bin:mainBin") %}</a></li>
                             {% if app.user and is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                 <li><a href="javascript:void(0)">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}&nbsp;</a></li>
                                 <li><a class="invarseColor" href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out"></i>{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>

@@ -30,6 +30,7 @@ class CharacteristicAdmin extends Admin
     {
         $formmapper
             ->add('cTypeId', 'sonata_type_model', array('label' => 'Тип'))
+            ->add('good', null, array('label' => 'Товар'))
             ->add('value', null, array('label' => 'Значение'));
     }
 

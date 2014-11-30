@@ -1,53 +1,6 @@
 {% if goods %}
     {% set totalPrice = 0 %}
-    <a class="btn dropdown-toggle" data-toggle="dropdown" href="{{ path('nurix_bin_item') }}">
-
-        <i class="icon-shopping-cart"></i> {{ count|count('items_count.single'|trans({},'CatalogBundle'),'items_count.several'|trans({},'CatalogBundle'),'items_count.many'|trans({},'CatalogBundle')) }}
-        <span class="caret"></span>
-    </a>
-
-    <div class="dropdown-menu cart-content pull-right">
-        <table class="table-cart">
-            <tbody>
-            {% for good in goods %}
-                {% set count = attribute(goodCount,good.id) %}
-                {% set totalPrice = totalPrice + good.price * attribute(goodCount,good.id) %}
-                <tr id="widjet_item_{{ good.id }}">
-                    <td class="cart-product-info">
-                        <a href="{{ path('nurix_goods_get_info', {'id': good.id} ) }}">{{ good.imagePath|galleryThumb(asset('bundles/catalog/img/noImage/good_small.jpg'),'goods_small',{'class':'bin_itemPic','alt':'product image'}) }}</a>
-
-                        <div class="cart-product-desc">
-                            <p><a class="invarseColor"
-                                  href="{{ path('nurix_goods_get_info', {'id': good.id} ) }}">{{ good.name }}</a>
-                            </p>
-                            <ul class="unstyled">
-                                <li>{{ good.shortDescription }}</li>
-                            </ul>
-                        </div>
-                    </td>
-                    <td class="cart-product-setting">
-                        <p><strong>{{ count }}x-{{ good.price|price('USD') }}</strong></p>
-                        <span class="remove-pro remove-item" data-id="{{ good.id }}" data-toggle="tooltip"
-                           data-title="Delete"><i class="icon-trash"></i></span>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-            <tfoot>
-            <tr>
-                <td class="cart-product-info">
-                    <a href="{{ path('nurix_bin_item') }}" class="btn btn-small">{{ 'itemInBin.view_card'|trans({}, 'CatalogBundle') }}</a>
-                    <a href="{{ path('nurix_bin_order_form') }}" class="btn btn-small btn-primary">{{ 'itemInBin.checkout'|trans({}, 'CatalogBundle') }}</a>
-                </td>
-                <td>
-                    <h3>{{ 'itemInBin.total_price'|trans({}, 'CatalogBundle') }}<br>{{ sum|price('USD') }}</h3>
-                </td>
-            </tr>
-            </tfoot>
-        </table>
-    </div>
+    <i class="fa fa-shopping-cart"></i>{{ count|count('items_count.single'|trans({},'CatalogBundle'),'items_count.several'|trans({},'CatalogBundle'),'items_count.many'|trans({},'CatalogBundle')) }}
 {% else %}
-    <a class="btn" href="{{ path('nurix_bin_item') }}">
-        <i class="icon-shopping-cart"></i> {{ 'itemInBin.card_is_empty'|trans({}, 'CatalogBundle') }}
-    </a>
+    <i class="fa fa-shopping-cart"></i>{{ 'itemInBin.card_is_empty'|trans({}, 'CatalogBundle') }}
 {% endif %}
