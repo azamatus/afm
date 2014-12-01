@@ -2557,7 +2557,7 @@ h2.title {
     margin-left: 0;
 }
 .productFilter{
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 .productFilter div, .productFilter select{
     position: relative;
@@ -2588,4 +2588,21 @@ h2.title {
 }
 .pagination_list li a{
     color: #696763;
+}
+.display_none{
+    display: none;
+}
+.category-products .panel-default a{
+    color: #696763;
+    font-family: "Roboto",sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.category-products li{
+    margin-bottom: 10px!important;
+}
+.category-products .panel-default .submenu{
+    padding: 5px 20px;
 }

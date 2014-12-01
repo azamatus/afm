@@ -61,7 +61,7 @@
             {%- set attributes = attributes|merge({'class': classes|join(' ')}) %}
         {%- endif %}
         {# displaying the item #}
-        <li{{ _self.attributes(attributes) }}>
+        <li class="panel panel-default" {{ _self.attributes(attributes) }}>
             {%- set childrenClasses = item.childrenAttribute('class') is not empty ? [item.childrenAttribute('class')] : ['submenu'] %}
             {%- set childrenClasses = childrenClasses|merge(['menu_level_' ~ item.level]) %}
             {%- set classes = item.linkAttributes('class') is not empty ? [item.attribute('class')] : [] %}
@@ -78,6 +78,9 @@
             {%- set attributes = attributes|merge({'class': classes|join(' ')}) %}
             {%- if item.uri is not empty and (not item.current or options.currentAsLink) %}
                 {{ block('linkElement') }}
+                {% if item.children is not empty %}
+                    <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                {% endif %}
             {%- else %}
                 {{ block('spanElement') }}
             {%- endif %}

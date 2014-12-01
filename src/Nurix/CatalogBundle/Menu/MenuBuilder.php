@@ -30,7 +30,7 @@ class MenuBuilder extends ContainerAware
 
         $menu = $this->factory->createItem('catalog_side_menu');
         $menu->setCurrentUri($request->getRequestUri());
-        $menu->setChildrenAttribute('class','unstyled');
+//        $menu->setChildrenAttribute('class','panel panel-default');
         $this->getCatalogMenu($em, $menu);
         return $menu;
     }
