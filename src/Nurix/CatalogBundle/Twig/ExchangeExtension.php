@@ -64,18 +64,17 @@ class ExchangeExtension extends \Twig_Extension
 		if (!$currentCurrency || $currentCurrency->getCurrency() == 'USD')
 		{
 			$price = number_format($number, $decimals, $decPoint, '');
-			$price = '<span class="value">$' . $price . '</span>';
+			$price = '$<span class="value">' . $price . '</span>';
 
 		}
 		else
 		{
 			$exchange_rate = $this->doctrine->getRepository("CatalogBundle:Exchange")->getRate($currentCurrency);
-			//var_dump("test");die;
 			if ($exchange_rate)
 			{
 				$currency_name = $currentCurrency->getCurrencyName();
 				$price = number_format($number * $exchange_rate->getExchangeRate(), $decimals, $decPoint, '');
-				$price = '<span class="value">' . $price . ' ' . $currency_name . '</span>';
+				$price = '<span class="value">' . $price .  '</span>'.' ' .$currency_name ;
 			}
 			else
 				throw new \Symfony\Component\DependencyInjection\Exception\InvalidArgumentException('Не правильная валюта! ' . $currentCurrency);

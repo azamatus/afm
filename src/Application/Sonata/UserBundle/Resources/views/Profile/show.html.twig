@@ -15,9 +15,9 @@ file that was distributed with this source code.
 {% block fos_user_content %}
     <div class="container">
         <div class="row">
-            <div class="span9">
-                <div class="account-list-outer">
-                    <div class="titleHeader clearfix">
+            <div class="col-sm-9">
+                <div class="blog-post-area shop-menu">
+                    <div class="single-blog-post">
                         <h3>{{ "my_account" | trans({}, 'SonataUserBundle')}}</h3>
                     </div><!--end titleHeader-->
                     {#<table class="profile">#}
@@ -43,8 +43,8 @@ file that was distributed with this source code.
                         {#</tr>#}
                     {#</table>#}
                     <ul class="account-list">
-                        <li><a href="{{ path('sonata_user_profile_edit') }}" class="invarseColor"><i class="icon-caret-right"></i> {{ "link_edit_profile" | trans({}, 'SonataUserBundle') }}</a></li>
-                        <li><a href="{{ path('fos_user_change_password') }}" class="invarseColor"><i class="icon-caret-right"></i> {{ "change_password.submit" | trans({}, 'FOSUserBundle') }}</a></li>
+                        {#<li><a href="{{ path('sonata_user_profile_edit') }}" class="invarseColor"><i class="fa fa-edit"></i> {{ "link_edit_profile" | trans({}, 'SonataUserBundle') }}</a></li>#}
+                        <li><a href="{{ path('fos_user_change_password') }}" class="invarseColor"><i class="fa fa-exchange"></i>{{ "change_password.submit" | trans({}, 'FOSUserBundle') }}</a></li>
                     </ul>
 
                     {#<div class="titleHeader clearfix">#}

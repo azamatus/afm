@@ -1,48 +1,48 @@
-<div class="register" id="form_registration">
+<div class="register col-sm-4 signup-form" id="form_registration">
 <form style="margin: 0" action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register form-horizontal" id="registration">
     {{ form_errors(form) }}
 
-    <h4>&nbsp;&nbsp;&nbsp;&nbsp;{{ "register.title"|trans({}, 'SonataUserBundle')}}</h4>
+    <h2>&nbsp;&nbsp;&nbsp;&nbsp;{{ "register.title"|trans({}, 'SonataUserBundle')}}</h2>
     {{ form_errors(form.username) }}
     <div class="control-group">
-        {{ form_label(form.username, "register.username"|trans({}, 'SonataUserBundle'),{'label_attr': {'class': 'control-label'}}) }}
-        <div class="controls">{{ form_widget(form.username) }}</div>
+        {#{{ form_label(form.username, "register.username"|trans({}, 'SonataUserBundle'),{'label_attr': {'class': 'control-label'}}) }}#}
+        <div class="controls">{{ form_widget(form.username, {'attr': {'placeholder':'Логин'}}) }}</div>
     </div>
     {{ form_errors(form.email) }}
     <div class="control-group">
-        {{ form_label(form.email, "register.email"|trans({}, 'SonataUserBundle'), {'label_attr': {'class': 'control-label'}}) }}
-        <div class="controls">{{ form_widget(form.email) }}</div>
+        {#{{ form_label(form.email, "register.email"|trans({}, 'SonataUserBundle'), {'label_attr': {'class': 'control-label'}}) }}#}
+        <div class="controls">{{ form_widget(form.email, {'attr': {'placeholder':'Электронная почта'}}) }}</div>
     </div>
     <div class="control-group">
-        {{ form_label(form.plainPassword.first, "register.password"|trans({}, 'SonataUserBundle'), {'label_attr': {'class': 'control-label'}}) }}
-        {{ form_errors(form.plainPassword.first) }}
-        <div class="controls">{{ form_widget(form.plainPassword.first) }}</div>
+        {#{{ form_label(form.plainPassword.first, "register.password"|trans({}, 'SonataUserBundle'), {'label_attr': {'class': 'control-label'}}) }}#}
+        <div class="text-danger">{{ form_errors(form.plainPassword.first) }}</div>
+        <div class="controls">{{ form_widget(form.plainPassword.first, {'attr': {'placeholder':'Пароль'}}) }}</div>
     </div>
     <div class="control-group">
-        {{ form_label(form.plainPassword.second, "register.password_repeat"|trans({}, 'SonataUserBundle'), {'label_attr': {'class': 'control-label'}}) }}
-        {{ form_errors(form.plainPassword.second) }}
-        <div class="controls">{{ form_widget(form.plainPassword.second) }}</div>
+        {#{{ form_label(form.plainPassword.second, "register.password_repeat"|trans({}, 'SonataUserBundle'), {'label_attr': {'class': 'control-label'}}) }}#}
+        <div class="text-danger">{{ form_errors(form.plainPassword.second) }}</div>
+        <div class="controls">{{ form_widget(form.plainPassword.second, {'attr': {'placeholder':'Подтверждение пароля'}}) }}</div>
     </div>
    <div class="control-group">
-        {{ form_label(form.firstname, "register.name"|trans({}, 'SonataUserBundle'), {'label_attr': {'class': 'control-label'}}) }}
+        {#{{ form_label(form.firstname, "register.name"|trans({}, 'SonataUserBundle'), {'label_attr': {'class': 'control-label'}}) }}#}
         {{ form_errors(form.firstname) }}
         <div class="controls">
-            {{ form_widget(form.firstname) }}</div>
+            {{ form_widget(form.firstname, {'attr': {'placeholder':'Имя'}}) }}</div>
     </div>
     <div class="control-group">
-        {{ form_label(form.lastname, "register.surname"|trans({}, 'SonataUserBundle'), {'label_attr': {'class': 'control-label'}}) }}
+        {#{{ form_label(form.lastname, "register.surname"|trans({}, 'SonataUserBundle'), {'label_attr': {'class': 'control-label'}}) }}#}
         {{ form_errors(form.lastname) }}
-        <div class="controls">{{ form_widget(form.lastname) }}</div>
+        <div class="controls">{{ form_widget(form.lastname, {'attr': {'placeholder':'Фамилия'}}) }}</div>
     </div>
     <div class="control-group">
-        {{ form_label(form.phone, "register.phone"|trans({}, 'SonataUserBundle'), {'label_attr': {'class': 'control-label'}}) }}
+        {#{{ form_label(form.phone, "register.phone"|trans({}, 'SonataUserBundle'), {'label_attr': {'class': 'control-label'}}) }}#}
         {{ form_errors(form.phone) }}
-        <div class="controls">{{ form_widget(form.phone) }}</div>
+        <div class="controls">{{ form_widget(form.phone, {'attr': {'placeholder':'Телефон'}}) }}</div>
     </div>
     <div class="control-group">
-        {{ form_label(form.address, "register.address"|trans({}, 'SonataUserBundle'), {'label_attr': {'class': 'control-label'}}) }}
+        {#{{ form_label(form.address, "register.address"|trans({}, 'SonataUserBundle'), {'label_attr': {'class': 'control-label'}}) }}#}
         {{ form_errors(form.address) }}
-        <div class="controls">{{ form_widget(form.address) }}</div>
+        <div class="controls">{{ form_widget(form.address, {'attr': {'placeholder':'Адрес'}}) }}</div>
     </div>
     {{ form_rest(form) }}
     <div class="control-group">

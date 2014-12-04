@@ -10,20 +10,24 @@
 {% endblock javascripts %}
 
 {% block body %}
-    <h2>{{ 'checkout.form_title'|trans({},'CatalogBundle') }}</h2>
-
+    <section id="cart_items">
+    <div class="step-one">
+        <h2 class="heading">{{ 'checkout.form_title'|trans({},'CatalogBundle') }}</h2>
+    </div>
     {% for flashMessage in app.session.flashbag.get('notice') %}
-        <div class="flash-notice">
-            {{ flashMessage }}
+        <div class="shopper-info">
+           <p> {{ flashMessage }}</p>
         </div>
     {% else %}
+        <div class="shopper-informations">
         <div class="row">
-            <div class="span12">
-                <form method="post" action="{{ path("nurix_bin_order_form") }}" class="form-horizontal">
+            <div class="col-sm-3">
+                <div class="shopper-info">
+                <form method="post" action="{{ path("nurix_bin_order_form") }}" class="checkout_form">
 
                 <div class="checkout-outer">
                     <div class="checkout-header">
-                        <h4><i class="icon-caret-down"></i> {{ 'checkout.user_detail'|trans({},'CatalogBundle') }}</h4>
+                        <p>{{ 'checkout.user_detail'|trans({},'CatalogBundle') }}</p>
                     </div><!--end checkout-header-->
 
                     <div class="checkout-content">
@@ -31,13 +35,14 @@
                         {% include '@Catalog/Bin/_checkout_field.html.twig' with {'field':form.fio} %}
                         {% include '@Catalog/Bin/_checkout_field.html.twig' with {'field':form.phone} %}
                         {% include '@Catalog/Bin/_checkout_field.html.twig' with {'field':form.email} %}
+                        {% include '@Catalog/Bin/_checkout_field.html.twig' with {'field':form.address} %}
                         {{ form_widget(form.delivery,{'attr':{'style':'display:none;`'} }) }}
 
                     </div><!--end checkout-content-->
                 </div><!--end checkout-outer-->
 
 
-                <div class="checkout-outer" id="chechout-delivery">
+                <div class="checkout-outer" id="chechout-delivery" style="display: none">
                     <div class="checkout-header">
                         <a href="#" class="invarseColor pull-right" data-toggle="tooltip" data-placment="top" data-title="EDIT" style="margin-right:12px; color:#333; font-size:13px;"><i class="icon-pencil"></i></a>
                         <h4><i class="icon-caret-right"></i> {{ 'checkout.delivery_detail'|trans({},'CatalogBundle') }}</h4>
@@ -49,7 +54,7 @@
                     </div><!--end checkout-content-->
 
                 </div><!--end checkout-outer-->
-                    <div class="control-group">
+                    <div class="control-group checkout_submit">
                         <div class="controls">
                             <button type="submit" class="pull-right btn btn-primary">{{ 'checkout.continue'|trans({},'CatalogBundle') }}</button>
                         </div>
@@ -57,8 +62,10 @@
                     {{ form_errors(form) }}
                     {{ form_rest(form) }}
                 </form><!--end form-->
-
+            </div>
             </div><!--end span12-->
         </div><!--end row-->
+        </div>
     {% endfor %}
+    </section>
 {% endblock body %}
