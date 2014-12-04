@@ -7,7 +7,7 @@
         {% endif %}
         <span class="caret"></span>
     </button>
-    <ul class="dropdown-menu">
+    <ul class="dropdown-menu currency">
         <li><a href="#" id="USD">$</a></li>
         {% for currency in exchangeList %}
         <li><a href="#" id="{{ currency.currency }}">{{ currency.currencyName }}</a></li>

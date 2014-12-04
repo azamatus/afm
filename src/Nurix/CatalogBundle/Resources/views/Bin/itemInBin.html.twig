@@ -10,7 +10,7 @@
 
 {% block body %}
 
-    <div>
+    <section id="cart_items">
     {% if goods %}
         {% set totalPrice = 0 %}
 
@@ -18,209 +18,76 @@
 
         <div class="container">
 
-        <div class="row">
+        <div class="table-responsive cart_info">
 
-        <div class="span12">
-            <table class="table bin-table">
+        <table class="table table-condensed bin-table">
                 <thead>
-                <tr>
-                    <th>{{ 'itemInBin.item'|trans({}, 'CatalogBundle') }}</th>
-                    <th class="desc">{{ 'itemInBin.description'|trans({}, 'CatalogBundle') }}</th>
-                    <th>{{ 'itemInBin.quantity'|trans({}, 'CatalogBundle') }}</th>
-                    <th>{{ 'itemInBin.unit_price'|trans({}, 'CatalogBundle') }}</th>
-                    <th>{{ 'itemInBin.sub_price'|trans({}, 'CatalogBundle') }}</th>
-                    <th>{{ 'itemInBin.action'|trans({}, 'CatalogBundle') }}</th>
+                <tr class="cart_menu">
+                    <td class="image">{{ 'itemInBin.item'|trans({}, 'CatalogBundle') }}</td>
+                    <td class="description">{{ 'itemInBin.description'|trans({}, 'CatalogBundle') }}</td>
+                    <td class="price">{{ 'itemInBin.unit_price'|trans({}, 'CatalogBundle') }}</td>
+                    <td class="quantity">{{ 'itemInBin.quantity'|trans({}, 'CatalogBundle') }}</td>
+                    <td class="price">{{ 'itemInBin.sub_price'|trans({}, 'CatalogBundle') }}</td>
+                    <td>{{ 'itemInBin.action'|trans({}, 'CatalogBundle') }}</td>
                 </tr>
                 </thead>
-
 
                 <tbody>
                 {% for good in goods %}
                     {% set count = attribute(goodCount,good.id) %}
                     {% set totalPrice = totalPrice + good.price * attribute(goodCount,good.id) %}
                     <tr id="{{ good.id }}">
-                        <td>
+                        <td class="cart_product">
                             <a href="{{ path('nurix_goods_get_info', {'id': good.id} ) }}">{{ good.imagePath|galleryThumb(asset('bundles/catalog/img/noImage/good_small.jpg'),'goods_big',{'class':'bin_itemPic'}) }}</a>
                         </td>
-                        <td class="desc">
+                        <td class="cart_description">
                             <h4><a href="{{ path('nurix_goods_get_info', {'id': good.id} ) }}" class="invarseColor">
                                     {{ good.name }}
                                 </a></h4>
                             <ul class="rating clearfix">
-                                <li><i class="star-on"></i></li>
-                                <li><i class="star-on"></i></li>
-                                <li><i class="star-on"></i></li>
-                                <li><i class="star-off"></i></li>
-                                <li><i class="star-off"></i></li>
+                                <p style="float: left; margin-right: 10px"><b>Рейтинг:</b></p>
+                                {% for i in 1..5 %}
+                                    <li style="float: left; color: gold">
+                                        <i class="{% if i <=  good.avgReview %}fa fa-star {% else %}fa fa-star-o {% endif %}"></i>
+                                    </li>
+                                {% endfor %}
                             </ul>
-                            <ul class="unstyled">
-                                <li>{{ good.shortDescription }}</li>
-                            </ul>
+                           <p class="shortDescription">{{ good.shortDescription }}</p>
                         </td>
-                        <td class="quantity">
-                            <div class="input-prepend input-append">
-                                <div class="btn itemSub"><i class="icon-chevron-left"></i></div>
-                                <input class="quantity-input" type="text" id="{{ good.id }}" value="{{ count }}"
-                                       name="bin[{{ good.id }}]">
-                                <div class="btn itemAdd"><i class="icon-chevron-right"></i></div>
+                        <td class="cart_price">
+                            <p id="price_{{ good.id }}">{{ good.price | price('USD') }}</p>
+                        </td>
+                        <td class="cart_quantity">
+                            <div class="cart_quantity_button">
+                                <a class="btn itemSub  cart_quantity_up" href="javascript:void(0)"> - </a>
+                                <input class="quantity-input cart_quantity_input" name="quantity bin[{{ good.id }}]" autocomplete="off" size="2" type="text" id="{{ good.id }}" value="{{ count }}"/>
+                                <a class="btn itemAdd cart_quantity_down" href="javascript:void(0)"> + </a>
                             </div>
                         </td>
-                        <td class="sub-price">
-                            <h2 id="price_{{ good.id }}">{{ good.price | price('USD') }}</h2>
+                        {#<td class="sub-price">#}
+                            {#<h2 id="price_{{ good.id }}">{{ good.price | price('USD') }}</h2>#}
+                        {#</td>#}
+                        <td class="cart_total total-price goodTotal_{{ good.id }}" style="width: 140px">
+                            <p id="goodTotal_{{ good.id }}" class="tDollar cart_total_price" style="font-size: 22px">{{ (good.price * count)|price('USD') }}</p>
                         </td>
-                        <td class="total-price goodTotal_{{ good.id }}">
-                            <h2 id="goodTotal_{{ good.id }}" class="tDollar">{{ (good.price * count)|price('USD') }}</h2>
-                        </td>
-                        <td>
-                            <button class="btn btn-small btn-success" type="submit" value="refresh" name="bin-btn"><i class="icon-refresh"></i></button>
-                            <div class="btn btn-small btn-danger remove-item"  data-id="{{ good.id }}"><i class="icon-trash"></i></div>
+                        {#<td class="cart_delete">#}
+                            {#<button class="btn btn-small btn-success" type="submit" value="refresh" name="bin-btn"><i class="icon-refresh"></i></button>#}
+                            {#<div class="btn btn-small btn-danger remove-item"  data-id="{{ good.id }}"><i class="icon-trash"></i></div>#}
+                        {#</td>#}
+                        <td class="cart_delete">
+                            <a class="cart_quantity_delete remove-item" href="javascript:void(0)" data-id="{{ good.id }}"><i class="fa fa-times"></i></a>
                         </td>
                     </tr>
                 {% endfor %}
                 </tbody>
             </table>
-        </div>
+
         <!--end span12-->
 
-
-        <div class="span7">
-            {#<div class="cart-accordain" id="cart-acc">#}
-
-                {#<div class="accordion-group">#}
-                    {#<div class="accordion-heading">#}
-                        {#<a class="accordion-toggle" data-toggle="collapse" data-parent="#cart-acc" href="#estimate">#}
-                            {#<i class="icon-caret-right"></i> Estimate Shipping &amp; Taxes#}
-                        {#</a>#}
-                    {#</div>#}
-                    {#<div id="estimate" class="accordion-body collapse in">#}
-                        {#<div class="accordion-inner">#}
-                            {#<form class="form-horizontal">#}
-                                {#<div class="control-group">#}
-                                    {#<div class="control-label">#}
-                                        {#<strong>Your Country</strong>#}
-                                    {#</div>#}
-                                    {#<div class="controls">#}
-                                        {#<select name="">#}
-                                            {#<option value="">-- Select Country --</option>#}
-                                            {#<option value="">Country1</option>#}
-                                            {#<option value="">Country2</option>#}
-                                            {#<option value="">Country3</option>#}
-                                            {#<option value="">Country4</option>#}
-                                            {#<option value="">Country5</option>#}
-                                            {#<option value="">Country6</option>#}
-                                        {#</select>#}
-                                    {#</div>#}
-                                {#</div>#}
-                                {#<!--end control-group-->#}
-                                {#<div class="control-group">#}
-                                    {#<div class="control-label">#}
-                                        {#<strong>Your Region</strong>#}
-                                    {#</div>#}
-                                    {#<div class="controls">#}
-                                        {#<select name="">#}
-                                            {#<option value="">-- Select Region --</option>#}
-                                            {#<option value="">region1</option>#}
-                                            {#<option value="">region2</option>#}
-                                            {#<option value="">region3</option>#}
-                                            {#<option value="">region4</option>#}
-                                            {#<option value="">region5</option>#}
-                                            {#<option value="">region6</option>#}
-                                        {#</select>#}
-                                    {#</div>#}
-                                {#</div>#}
-                                {#<!--end control-group-->#}
-                                {#<div class="control-group">#}
-                                    {#<label class="control-label" for="inputpostCode">#}
-                                        {#<strong>Your Post Code</strong>#}
-                                    {#</label>#}
-
-                                    {#<div class="controls">#}
-                                        {#<input type="text" id="inputpostCode" placeholder="Post Code...">#}
-                                    {#</div>#}
-                                {#</div>#}
-                                {#<!--end control-group-->#}
-                                {#<div class="control-group">#}
-                                    {#<div class="controls">#}
-                                        {#<button type="submit" class="btn btn-primary">Get Quotes</button>#}
-                                    {#</div>#}
-                                {#</div>#}
-                                {#<!--end control-group-->#}
-                            {#</form>#}
-                        {#</div>#}
-                    {#</div>#}
-                {#</div>#}
-                {#<!--end accordion-group-->#}
-
-                {#<div class="accordion-group">#}
-                    {#<div class="accordion-heading">#}
-                        {#<a class="accordion-toggle" data-toggle="collapse" data-parent="#cart-acc"#}
-                           {#href="#discount-code">#}
-                            {#<i class="icon-caret-right"></i> Apply Discount Code#}
-                        {#</a>#}
-                    {#</div>#}
-                    {#<div id="discount-code" class="accordion-body collapse">#}
-                        {#<div class="accordion-inner">#}
-                            {#<form class="form-horizontal">#}
-                                {#<div class="control-group">#}
-                                    {#<label class="control-label" for="inputDiscount">#}
-                                        {#<strong>Discount Code</strong>#}
-                                    {#</label>#}
-
-                                    {#<div class="controls">#}
-                                        {#<input type="text" id="inputDiscount" placeholder="Inter Discount Code...">#}
-                                    {#</div>#}
-                                {#</div>#}
-                                {#<!--end control-group-->#}
-                                {#<div class="control-group">#}
-                                    {#<div class="controls">#}
-                                        {#<button type="submit" class="btn btn-primary">Apply Coupon</button>#}
-                                    {#</div>#}
-                                {#</div>#}
-                                {#<!--end control-group-->#}
-                            {#</form>#}
-                        {#</div>#}
-                    {#</div>#}
-                {#</div>#}
-                {#<!--end accordion-group-->#}
-
-                {#<div class="accordion-group">#}
-                    {#<div class="accordion-heading">#}
-                        {#<a class="accordion-toggle" data-toggle="collapse" data-parent="#cart-acc" href="#gift-voucher">#}
-                            {#<i class="icon-caret-right"></i> Use Gift Voucher#}
-                        {#</a>#}
-                    {#</div>#}
-                    {#<div id="gift-voucher" class="accordion-body collapse">#}
-                        {#<div class="accordion-inner">#}
-                            {#<form class="form-horizontal">#}
-                                {#<div class="control-group">#}
-                                    {#<label class="control-label" for="inputVoucher">#}
-                                        {#<strong>Voucher Code</strong>#}
-                                    {#</label>#}
-
-                                    {#<div class="controls">#}
-                                        {#<input type="text" id="inputVoucher" placeholder="Inter Voucher Code...">#}
-                                    {#</div>#}
-                                {#</div>#}
-                                {#<!--end control-group-->#}
-                                {#<div class="control-group">#}
-                                    {#<div class="controls">#}
-                                        {#<button type="submit" class="btn btn-primary">Apply Voucher</button>#}
-                                    {#</div>#}
-                                {#</div>#}
-                                {#<!--end control-group-->#}
-                            {#</form>#}
-                        {#</div>#}
-                    {#</div>#}
-                {#</div>#}
-                {#<!--end accordion-group-->#}
-
-            {#</div>#}
-            {#<!--end cart-accordain-->#}
-        </div>
         {#<!--end span7-->#}
 
 
-        <div class="span5">
+        <div class="col-sm-7">
             <div class="cart-receipt">
                 <table class="table table-receipt">
                     <tr>
@@ -232,7 +99,7 @@
                             <button class="btn" type="submit" value="continue" name="bin-btn">{{ 'itemInBin.continue'|trans({}, 'CatalogBundle') }}</button>
                         </td>
                         <td class="alignLeft">
-                            <button class="btn btn-primary" type="submit" value="checkout" name="bin-btn">{{ 'itemInBin.checkout'|trans({}, 'CatalogBundle') }}</button>
+                            <a href="{{ url('nurix_bin_order_form') }}" class="btn btn-primary" type="submit" value="checkout" name="bin-btn">{{ 'itemInBin.checkout'|trans({}, 'CatalogBundle') }}</a>
                         </td>
                     </tr>
                 </table>
@@ -250,6 +117,6 @@
     {% else %}
         <h1>{{ 'itemInBin.card_is_empty'|trans({}, 'CatalogBundle') }}</h1>
     {% endif %}
-    </div>
+    </section>
 
 {% endblock body %}

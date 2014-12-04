@@ -43,6 +43,6 @@ class BinClientsAdmin extends Admin{
             ->add('email',null,array('label'=>'E-mail'))
             ->add('deliveryTime',null,array('label'=>'Время доставки'))
             ->add('delivery',null,array('label'=>'Доставка'))
-            ->add('active','trans',array('label'=>'Статус'));
+            ->add('status','trans',array('label'=>'Статус'));
     }
 }
